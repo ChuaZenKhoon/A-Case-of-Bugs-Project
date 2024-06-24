@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb6825bd09b5044b96c908f05bf8db9, type: 3}
+  m_Name: FlyNet
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5450798009186736383, guid: 9e3eced16e382204c9ae620cdbb410db, type: 3}
+  sprite: {fileID: 21300000, guid: 7ea3674310d75ba4e9bb43b9ec380b28, type: 3}
+  objectName: Fly Net
+  objectDescription: Used to collect live adult flies
+  interactions:
+  - equipmentInteractionButtonText: E
+    equipmentInteractionDescriptionText: Catch flies

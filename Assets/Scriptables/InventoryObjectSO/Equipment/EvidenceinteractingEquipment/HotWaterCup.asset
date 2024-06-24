@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb6825bd09b5044b96c908f05bf8db9, type: 3}
+  m_Name: HotWaterCup
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5450798009186736383, guid: ca0d8dd1b267b504685baa4e76007310, type: 3}
+  sprite: {fileID: 21300000, guid: 289cf3ba35c448a44a406e2b151dae12, type: 3}
+  objectName: Hot Water Cup
+  objectDescription: Used to kill maggots for identification.
+  interactions:
+  - equipmentInteractionButtonText: E
+    equipmentInteractionDescriptionText: Place maggots
+  - equipmentInteractionButtonText: R
+    equipmentInteractionDescriptionText: Kill maggots

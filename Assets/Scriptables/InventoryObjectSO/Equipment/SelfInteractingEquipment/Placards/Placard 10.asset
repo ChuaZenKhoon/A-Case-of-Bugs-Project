@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce295008006dcd4198dd0cbae84bde8, type: 3}
+  m_Name: Placard 10
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1633547020457205110, guid: db77803908f792f418b723241454e5f4, type: 3}
+  sprite: {fileID: 21300000, guid: bbba8f35a6a95464daf3310026caa173, type: 3}
+  objectName: Placard
+  objectDescription: Used in exhibit marking.

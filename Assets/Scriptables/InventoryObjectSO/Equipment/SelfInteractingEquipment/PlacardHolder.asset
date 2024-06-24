@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb6825bd09b5044b96c908f05bf8db9, type: 3}
+  m_Name: PlacardHolder
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5450798009186736383, guid: 09ea91335caaf194c8a947b3cb49b98f, type: 3}
+  sprite: {fileID: 21300000, guid: bbba8f35a6a95464daf3310026caa173, type: 3}
+  objectName: Placard Holder
+  objectDescription: Holds a stack of placards that can be put down to mark exhibits
+    for phototaking.
+  interactions:
+  - equipmentInteractionButtonText: E
+    equipmentInteractionDescriptionText: Put Placard
+  - equipmentInteractionButtonText: R
+    equipmentInteractionDescriptionText: Pick up Placard

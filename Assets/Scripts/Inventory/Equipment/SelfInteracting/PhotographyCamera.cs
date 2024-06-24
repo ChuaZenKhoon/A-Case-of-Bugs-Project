@@ -61,6 +61,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
         cameraCrossHair.enabled = true;
         clickText.enabled = true;
         gameplayCanvas.alpha = 0f;
+        Cursor.visible = false;
     }
 
     private void ExitFromCameraMode() {
@@ -71,6 +72,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
         cameraCrossHair.enabled = false;
         clickText.enabled = false;
         gameplayCanvas.alpha = 1f;
+        Cursor.visible = true;
     }
 
     private void TakePicture() {

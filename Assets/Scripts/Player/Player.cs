@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System;
 using UnityEngine;
 
@@ -105,61 +106,76 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
         Vector3 cameraForward = viewCamera.transform.forward;
         Vector3 cameraRight = viewCamera.transform.right;
 
+
         // Project the forward and right vectors onto the XZ plane (ignoring Y component) to prevent moving up or down
-        cameraForward.y = 0;
+
         cameraRight.y = 0;
+        cameraForward.y = 0;
+
+
+        if (cameraForward == Vector3.zero) {
+            float dotUp = Vector3.Dot(viewCamera.transform.forward, Vector3.up);
+            if (dotUp > 0.9f) {
+                // If facing up, use -camera.transform.up
+                cameraForward = -viewCamera.transform.up;
+            } else if (dotUp < -0.9f) {
+                // If facing down, use camera.transform.up
+                cameraForward = viewCamera.transform.up;
+            }
+        }
+
         cameraForward.Normalize();
         cameraRight.Normalize();
 
         Vector3 relativeMoveDirection = (cameraRight * moveDirection.x + cameraForward * moveDirection.z).normalized;
-        
+
         float moveDistance = moveSpeed * Time.deltaTime;
 
         //Fire Raycast if player collides with collider
-/*        bool hasCollided = Physics.CapsuleCast(transform.position + Vector3.up, transform.position + Vector3.up * playerHeight, 
-            playerRadius, relativeMoveDirection, out RaycastHit hitInfo, moveDistance);
-        bool isSliding = false;
+        /*        bool hasCollided = Physics.CapsuleCast(transform.position + Vector3.up, transform.position + Vector3.up * playerHeight, 
+                    playerRadius, relativeMoveDirection, out RaycastHit hitInfo, moveDistance);
+                bool isSliding = false;
 
-        if (hasCollided) {
+                if (hasCollided) {
 
-            // Check for step
-            float stepHeight = 0.2f; // The height the player can step up
-            float stepForwardDistance = 0.1f; // The forward distance to check for a step
+                    // Check for step
+                    float stepHeight = 0.2f; // The height the player can step up
+                    float stepForwardDistance = 0.1f; // The forward distance to check for a step
 
-            Vector3 stepUpCheckPosition = body.position + relativeMoveDirection * stepForwardDistance;
-            Vector3 stepUpRayStart = stepUpCheckPosition + Vector3.up * (stepHeight + 0.1f); // Start raycast slightly above step height
-            Vector3 stepUpRayDirection = Vector3.down; // Cast ray downwards
+                    Vector3 stepUpCheckPosition = body.position + relativeMoveDirection * stepForwardDistance;
+                    Vector3 stepUpRayStart = stepUpCheckPosition + Vector3.up * (stepHeight + 0.1f); // Start raycast slightly above step height
+                    Vector3 stepUpRayDirection = Vector3.down; // Cast ray downwards
 
-            if (Physics.Raycast(stepUpRayStart, stepUpRayDirection, out RaycastHit stepHit, stepHeight + 0.2f)) {
-                // If the step is within the step height, move the player up
-                if (stepHit.distance <= stepHeight + 0.1f) {
-                    body.position += Vector3.up * (stepHeight + 0.1f - stepHit.distance);
-                    // Adjust relativeMoveDirection to consider the new height
-                    hasCollided = false; // Allow movement after stepping up
-                }
-            }
-
-
-            //Player to slide against wall instead of being stuck
-            //Check if it is a corner at the same time
-            Vector3 slideDirection = Vector3.ProjectOnPlane(relativeMoveDirection, hitInfo.normal).normalized;
-            bool isCorner = Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
-            playerRadius, slideDirection, moveDistance);
+                    if (Physics.Raycast(stepUpRayStart, stepUpRayDirection, out RaycastHit stepHit, stepHeight + 0.2f)) {
+                        // If the step is within the step height, move the player up
+                        if (stepHit.distance <= stepHeight + 0.1f) {
+                            body.position += Vector3.up * (stepHeight + 0.1f - stepHit.distance);
+                            // Adjust relativeMoveDirection to consider the new height
+                            hasCollided = false; // Allow movement after stepping up
+                        }
+                    }
 
 
-            if (!Physics.Raycast(transform.position, slideDirection, playerRadius) && !isCorner) {
-                // Apply the sliding direction if possible to move in that direction, and not a corner
-                relativeMoveDirection = slideDirection;
-                isSliding = true;
-            }
-        }*/
+                    //Player to slide against wall instead of being stuck
+                    //Check if it is a corner at the same time
+                    Vector3 slideDirection = Vector3.ProjectOnPlane(relativeMoveDirection, hitInfo.normal).normalized;
+                    bool isCorner = Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
+                    playerRadius, slideDirection, moveDistance);
 
-/*        if (isSliding || !hasCollided) {
-            
 
-        }*/
-        body.MovePosition(transform.position + relativeMoveDirection * moveDistance);
+                    if (!Physics.Raycast(transform.position, slideDirection, playerRadius) && !isCorner) {
+                        // Apply the sliding direction if possible to move in that direction, and not a corner
+                        relativeMoveDirection = slideDirection;
+                        isSliding = true;
+                    }
+                }*/
 
+        /*        if (isSliding || !hasCollided) {
+
+
+                }*/
+        Vector3 velocity = relativeMoveDirection * moveSpeed;
+        body.velocity = new Vector3(velocity.x, body.velocity.y, velocity.z);
         isWalking = relativeMoveDirection != Vector3.zero;
       
     }
@@ -266,6 +282,7 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
         //Update to new item
         if (inventoryObjectSO == null) {
             this.currentHeldObject = null;
+            OnUpdateHeldItemToEquipment?.Invoke(this, null);
         } else {
             GameObject inventoryObjectToSpawn = Instantiate(inventoryObjectSO.prefab);
 
@@ -283,7 +300,6 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
             if (currentHeldObject is Equipment) {
                 EquipmentSO currentHeldEquipmentSO = currentHeldObject.GetInventoryObjectSO() as EquipmentSO;
                 OnUpdateHeldItemToEquipment?.Invoke(this, currentHeldEquipmentSO);
-
             }
 
             if (currentHeldObject is EvidenceInteractingEquipment) {

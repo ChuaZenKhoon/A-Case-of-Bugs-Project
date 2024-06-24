@@ -19,7 +19,7 @@ public class FingerprintDusterUI : MonoBehaviour {
     }
 
     private void UpdateText(int usesLeft) {
-        usesLeftText.text = usesLeft.ToString() + " / 3";
+        usesLeftText.text = usesLeft.ToString() + " / " + FingerprintDuster.USES;
     }
 
     private void OnDestroy() {

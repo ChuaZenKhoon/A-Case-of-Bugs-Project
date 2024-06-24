@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8566033277688626651}
   - component: {fileID: 3230177554624967148}
   m_Layer: 6
-  m_Name: Coke Can Opened
+  m_Name: Can Drink Unopened
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56da51594c6d7944a6e319d24e0433d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObjectSO: {fileID: 11400000, guid: e4b9c6411e416fc41969e902bbc6f7e9, type: 2}
+  inventoryObjectSO: {fileID: 11400000, guid: e876a1ee25d4e6846bca97c235f33554, type: 2}
 --- !u!1 &5719734854478995792
 GameObject:
   m_ObjectHideFlags: 0

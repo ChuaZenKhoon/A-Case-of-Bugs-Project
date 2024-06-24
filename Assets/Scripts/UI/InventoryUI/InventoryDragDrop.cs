@@ -16,7 +16,8 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     //For drag drop function to identify
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    
+    private Canvas canvas;
+
     private Transform originalParentPosition;
     
     private bool isDragging;
@@ -24,6 +25,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GameObject.Find("Gameplay Canvas").GetComponent<Canvas>();
     }
 
     //Drags the inventory slot sprite with left click drag only
@@ -43,7 +45,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     //Handles the drag tracking of the sprite with the cursor
     public void OnDrag(PointerEventData eventData) {
         if (isDragging) {
-            rectTransform.anchoredPosition += eventData.delta;
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         } else {
             return;
         }

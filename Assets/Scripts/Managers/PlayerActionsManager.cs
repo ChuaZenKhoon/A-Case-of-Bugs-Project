@@ -87,7 +87,8 @@ public class PlayerActionsManager : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); // Reset to default cursor
         } else {
-            Cursor.SetCursor(cursorCrossHairSprite, Vector2.zero, CursorMode.ForceSoftware);
+            Vector2 cursorHotspot = new Vector2(cursorCrossHairSprite.width / 2f, cursorCrossHairSprite.height / 2f);
+            Cursor.SetCursor(cursorCrossHairSprite, cursorHotspot, CursorMode.ForceSoftware);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }

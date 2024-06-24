@@ -5,7 +5,8 @@ public class FingerprintDuster : SelfInteractingEquipment {
 
     public event EventHandler<int> OnFingerprintDusterUse;
 
-    private static int USES_LEFT = 3;
+    private static int USES_LEFT = 5;
+    public const int USES = 5;
 
     private const float DUSTING_RADIUS = 2f;
 
@@ -14,7 +15,7 @@ public class FingerprintDuster : SelfInteractingEquipment {
     [SerializeField] private LayerMask dustingLayer;
 
     new public static void ResetStaticData() {
-        USES_LEFT = 3;
+        USES_LEFT = 5;
     }
 
     public override void Interact() {

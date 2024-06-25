@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UndoSketch",
+                    "name": "ClearSketch",
                     "type": "Button",
                     "id": "d05a38d7-a8ef-46cc-939d-1d0544566a51",
                     "expectedControlType": "Button",
@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ToggleSketchView",
+                    "type": "Button",
+                    "id": "67f9da66-ca0d-428a-9768-2d3917f84499",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -280,7 +289,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UndoSketch",
+                    "action": "ClearSketch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -292,6 +301,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseSketchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5950ad03-4a33-415c-bdd1-f8635b607eb1",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleSketchView",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

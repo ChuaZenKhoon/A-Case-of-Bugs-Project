@@ -11,11 +11,14 @@ using UnityEngine.UI;
 public class PauseGameUI : MonoBehaviour {
 
     [SerializeField] private OptionsMenuUI optionsMenuUI;
+    [SerializeField] private GameInstructionsUI gameInstructionsUI;
 
     [SerializeField] private Button restartLevelButton;
     [SerializeField] private Button optionsMenuButton;
     [SerializeField] private Button returnToMainMenuButton;
     [SerializeField] private Button closePauseMenuButton;
+    
+    [SerializeField] private Button instructionsMenuButton;
 
     //Add listeners to pause menu buttons
     private void Awake() {
@@ -35,6 +38,12 @@ public class PauseGameUI : MonoBehaviour {
         closePauseMenuButton.onClick.AddListener(() => {
             PauseManager.Instance.TogglePause();
         });
+
+        if (instructionsMenuButton != null) {
+            instructionsMenuButton.onClick.AddListener(() => {
+                gameInstructionsUI.Show();
+            });
+        }
     }
 
     //Subscribe to pause game events
@@ -44,7 +53,12 @@ public class PauseGameUI : MonoBehaviour {
         Hide();
     }
 
+    private void GameInstructionsUI_OnSkipAhead(object sender, EventArgs e) {
+        Hide();
+    }
+
     private void PauseManager_OnGameUnpause(object sender, EventArgs e) {
+        gameInstructionsUI.Hide();
         Hide();
     }
 

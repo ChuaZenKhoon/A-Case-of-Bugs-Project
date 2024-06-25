@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 88d76e0d767d8244abe3039edae1020f, type: 3}
   sprite: {fileID: 21300000, guid: ccfb0f3fff3c6694ea2420ca7abda709, type: 3}
-  objectName: Container
+  objectName: '[Equipment] Container'
   objectDescription: Used to store appropriate evidence.
   interactions:
   - equipmentInteractionButtonText: E

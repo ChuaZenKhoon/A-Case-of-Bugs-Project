@@ -13,11 +13,14 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
 
     [SerializeField] private Button backButton;
 
+    [SerializeField] private CanvasGroup canvasVisiblity;
+    [SerializeField] private Canvas toggleViewCanvas;
+
     private Texture2D canvasTexture;
     private RectTransform canvasRectTransform;
 
     private Color brushColor = Color.black;
-    private float brushSize = 5f;
+    private float brushSize = 4f;
 
     private Vector2 previousMousePosition;
     private Vector2 resettedMousePosition;
@@ -25,7 +28,7 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     private Stack<ICommand> drawingHistory;
     private DrawLineCommand currentCommand;
 
-
+    private bool isViewToggled;
     private void Awake() {
 
         drawingHistory = new Stack<ICommand>();
@@ -38,6 +41,8 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
         backButton.onClick.AddListener(() => {
             SaveDetails();
         });
+
+        isViewToggled = false;
     }
     private void InitializeCanvas(Texture2D savedSketch) {
         int width = (int)canvasRectTransform.rect.width;
@@ -53,14 +58,30 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
         sketch.texture = canvasTexture;
     }
     private void Start() {
-        GameInput.Instance.OnUndoLine += GameInput_OnUndoLine;
+        GameInput.Instance.OnClearSketch += GameInput_OnClearSketch;
         GameInput.Instance.OnSketchMouseMove += GameInput_OnSketchMouseMove;
         GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
+        GameInput.Instance.OnToggleSketchView += GameInput_OnToggleSketchView;
         Hide();
     }
 
+    private void GameInput_OnToggleSketchView(object sender, System.EventArgs e) {
+        if (gameObject.activeSelf) {
+            isViewToggled = !isViewToggled;
+
+            if (isViewToggled) {
+                canvasVisiblity.alpha = 0f;
+                toggleViewCanvas.gameObject.SetActive(true);
+            } else {
+                canvasVisiblity.alpha = 1f;
+                toggleViewCanvas.gameObject.SetActive(false);
+            }
+
+        }
+    }
+
     private void GameInput_OnInteract2Action(object sender, System.EventArgs e) {
-        ClearCanvas();
+        UndoLastLine();
     }
 
     private void GameInput_OnSketchMouseMove(object sender, Vector2 e) {
@@ -68,8 +89,10 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     }
 
     private void OnDestroy() {
-        GameInput.Instance.OnUndoLine -= GameInput_OnUndoLine;
+        GameInput.Instance.OnClearSketch -= GameInput_OnClearSketch;
+        GameInput.Instance.OnInteract2Action -= GameInput_OnInteract2Action;
         GameInput.Instance.OnSketchMouseMove -= GameInput_OnSketchMouseMove;
+        GameInput.Instance.OnToggleSketchView -= GameInput_OnToggleSketchView;
     }
 
     private void Hide() {
@@ -92,17 +115,28 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     private void SaveSketchImage() {
         Sprite sprite = Sprite.Create(canvasTexture, new Rect(0, 0, canvasTexture.width, canvasTexture.height), new Vector2(0.5f, 0.5f));
         EquipmentStorageManager.Instance.UpdateSavedSketchImages(sprite);
+        drawingHistory.Clear();
     }
-    private void GameInput_OnUndoLine(object sender, System.EventArgs e) {
-        UndoLastLine();
+    private void GameInput_OnClearSketch(object sender, System.EventArgs e) {
+        if (gameObject.activeSelf) {
+            ClearCanvas();
+        }
     }
 
 
     public void OnBeginDrag(PointerEventData eventData) {
+        if (isViewToggled) {
+            return;
+        }
+        
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, eventData.position, null, out previousMousePosition);
         currentCommand = new DrawLineCommand(canvasTexture, brushColor, brushSize);
     }
     public void OnDrag(PointerEventData eventData) {
+        if (isViewToggled) {
+            return;
+        }
+
         Vector2 currentMousePosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, eventData.position, null, out currentMousePosition);
 
@@ -112,6 +146,10 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     }
 
     public void OnEndDrag(PointerEventData eventData) {
+        if (isViewToggled) {
+            return;
+        }
+
         drawingHistory.Push(currentCommand);
         currentCommand = null;
     }
@@ -127,13 +165,17 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     }
 
     public void UndoLastLine() {
-        if (drawingHistory.Count > 0) {
+        if (drawingHistory.Count > 0 && !isViewToggled) {
             ICommand lastCommand = drawingHistory.Pop();
             lastCommand.Undo();
         }
     }
 
     private void ClearCanvas() {
+        if (isViewToggled) {
+            return;
+        }
+        
         canvasTexture.SetPixels32(new Color32[canvasTexture.width * canvasTexture.height]);
         canvasTexture.Apply();
         drawingHistory.Clear();

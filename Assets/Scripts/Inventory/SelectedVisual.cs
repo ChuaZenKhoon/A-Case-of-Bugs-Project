@@ -28,6 +28,15 @@ public class SelectedVisual : MonoBehaviour {
         foreach (GameObject selectedCounterVisual in selectedVisualArray) {
             selectedCounterVisual.SetActive(true);
         }
+        
+        if (inventoryObject is Evidence) {
+            Evidence evidence = inventoryObject as Evidence;
+            if (evidence.IsSealed()) {
+                selectedVisualArray[0].SetActive(false);
+            } else {
+                selectedVisualArray[1].SetActive(false);
+            }
+        }
     }
 
     private void Hide() {

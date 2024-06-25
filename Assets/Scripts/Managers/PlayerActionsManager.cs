@@ -37,7 +37,10 @@ public class PlayerActionsManager : MonoBehaviour {
         InventoryManager.Instance.OnInventoryUIOpenStateChange += InventoryManager_OnInventoryUIOpenStateChange;
         PhotographyCameraUI.OnOpenPhotoGallery += PhotographyCameraUI_OnOpenPhotoGallery;
         SketchPlanUI.OnOpenSketchPlan += SketchPlanUI_OnOpenSketchPlan;
+        Phone.OnPhoneOpen += Phone_OnPhoneOpen;
     }
+
+    
 
     private void UpdatePlayerActions() {
 
@@ -106,6 +109,9 @@ public class PlayerActionsManager : MonoBehaviour {
         }
     }
 
+    private void Phone_OnPhoneOpen(object sender, System.EventArgs e) {
+        UpdatePlayerActions();
+    }
     private void TutorialLevelManager_OnStateChange(object sender, System.EventArgs e) {
         UpdatePlayerActions();
     }

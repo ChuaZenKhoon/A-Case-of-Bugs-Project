@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 151628df58d1d8d4084cf4f480263a9c, type: 3}
   sprite: {fileID: 21300000, guid: b8442b462b09f5046bec365dc20304fb, type: 3}
-  objectName: Fingerprint Lifter
+  objectName: '[Equipment] Fingerprint Lifter'
   objectDescription: Used to gather fingerprint evidence.
   interactions:
   - equipmentInteractionButtonText: E

@@ -23,6 +23,11 @@ public class PauseManager : MonoBehaviour {
 
     private void Start() {
         GameInput.Instance.OnPauseScreenAction += GameInput_OnPauseExitScreen;
+        GameInstructionsUI.OnSkipAhead += GameInstructionsUI_OnSkipAhead;
+    }
+
+    private void GameInstructionsUI_OnSkipAhead(object sender, EventArgs e) {
+        TogglePause();
     }
 
     private void GameInput_OnPauseExitScreen(object sender, EventArgs e) {

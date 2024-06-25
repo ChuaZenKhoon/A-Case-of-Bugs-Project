@@ -14,5 +14,7 @@ public class ResetStaticDataOnSceneChange : MonoBehaviour {
         PlacardHolder.ResetStaticData();
         FingerprintDuster.ResetStaticData();
         NextLocationArrow.ResetStaticData();
+        Phone.ResetStaticData();
+        GameInstructionsUI.ResetStaticData();
     }
 }

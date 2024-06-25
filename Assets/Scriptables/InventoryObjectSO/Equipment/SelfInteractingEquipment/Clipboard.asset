@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 1fdd9510a3c7f4346ac3cff347d728aa, type: 3}
   sprite: {fileID: 21300000, guid: 05e4730121016184ea7d00549e67719c, type: 3}
-  objectName: Clipboard
+  objectName: '[Equipment] Clipboard'
   objectDescription: Used to draw a sketch plan.
   interactions:
   - equipmentInteractionButtonText: E

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 09ea91335caaf194c8a947b3cb49b98f, type: 3}
   sprite: {fileID: 21300000, guid: bbba8f35a6a95464daf3310026caa173, type: 3}
-  objectName: Placard Holder
+  objectName: '[Equipment] Placard Holder'
   objectDescription: Holds a stack of placards that can be put down to mark exhibits
     for phototaking.
   interactions:

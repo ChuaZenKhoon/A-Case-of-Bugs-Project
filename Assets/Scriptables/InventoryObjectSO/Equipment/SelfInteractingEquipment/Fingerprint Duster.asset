@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 058638e545f9b8147b4feefb178bad5a, type: 3}
   sprite: {fileID: 21300000, guid: 7f60c8c4a25b7264692383d5b43eb64d, type: 3}
-  objectName: Fingerprint Duster
+  objectName: '[Equipment] Fingerprint Duster'
   objectDescription: Used to reveal hidden fingerprints.
   interactions:
   - equipmentInteractionButtonText: E

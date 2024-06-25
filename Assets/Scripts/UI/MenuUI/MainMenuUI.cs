@@ -13,11 +13,12 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button quitButton;
 
     [SerializeField] private OptionsMenuUI optionsMenuUI;
+    [SerializeField] private DifficultySettingUI difficultySettingUI;
 
     //Add listeners to main menu buttons
     private void Awake() {
         playButton.onClick.AddListener(() => {
-            StartGame();
+            SelectDifficulty();
         });
         tutorialButton.onClick.AddListener(() => {
             StartTutorial();
@@ -30,10 +31,8 @@ public class MainMenuUI : MonoBehaviour {
         });
     }
 
-    public void StartGame() {
-        // Load the loading screen scene
-        SceneManager.LoadScene(Loader.Scene.LoadingScreen.ToString());
-        Loader.targetScene = Loader.Scene.CrimeScene;
+    public void SelectDifficulty() {
+        difficultySettingUI.Show();
     }
 
     private void StartTutorial() {

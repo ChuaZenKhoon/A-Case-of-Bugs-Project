@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: a461be446fffe1940bd9b6e9c66492ae, type: 3}
   sprite: {fileID: 21300000, guid: 54f848377a4c2284bbfae6b925c0904f, type: 3}
-  objectName: Measuring Tool
+  objectName: '[Equipment] Measuring Tool'
   objectDescription: Used to measure distances between points.
   interactions:
   - equipmentInteractionButtonText: E
-    equipmentInteractionDescriptionText: Use Tool
+    equipmentInteractionDescriptionText: Start Measuring

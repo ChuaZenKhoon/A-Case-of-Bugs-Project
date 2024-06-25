@@ -307,6 +307,14 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
                 currentHeldEvidenceInteractingEquipment.SetEquipmentID(equipmentID);
             }
 
+            if (currentHeldObject is Evidence) {
+                Evidence currentHeldEvidence = currentHeldObject as Evidence;
+                currentHeldEvidence.SealEvidence();
+                BoxCollider[] colliders = currentHeldEvidence.GetComponentsInChildren<BoxCollider>();
+                if (colliders[1] != null) {
+                    colliders[1].enabled = false;
+                }
+            }
         }
     }
 }

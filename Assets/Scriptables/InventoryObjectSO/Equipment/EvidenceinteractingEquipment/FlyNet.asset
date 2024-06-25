@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 9e3eced16e382204c9ae620cdbb410db, type: 3}
   sprite: {fileID: 21300000, guid: 7ea3674310d75ba4e9bb43b9ec380b28, type: 3}
-  objectName: Fly Net
+  objectName: '[Equipment] Fly Net'
   objectDescription: Used to collect live adult flies
   interactions:
   - equipmentInteractionButtonText: E

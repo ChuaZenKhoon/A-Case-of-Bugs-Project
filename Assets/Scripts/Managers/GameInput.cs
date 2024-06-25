@@ -36,10 +36,11 @@ public class GameInput : MonoBehaviour {
     //Event for when interact2 key is pressed
     public event EventHandler OnInteract2Action;
 
-    public event EventHandler OnUndoLine;
+    public event EventHandler OnClearSketch;
 
     public event EventHandler<Vector2> OnSketchMouseMove;
 
+    public event EventHandler OnToggleSketchView;
 
     public class OnInventoryBarSelectEventArgs : EventArgs {
         public InventoryBarSlot inventoryBarSlot;
@@ -78,10 +79,15 @@ public class GameInput : MonoBehaviour {
 
         playerInputActions.Player.TakePicture.performed += TakePicture_performed;
         
-        playerInputActions.Player.UndoSketch.performed += UndoSketch_performed;
+        playerInputActions.Player.ClearSketch.performed += ClearSketch_performed;
         playerInputActions.Player.MouseSketchPosition.performed += MouseSketchPosition_performed;
         playerInputActions.Player.MouseSketchPosition.canceled += MouseSketchPosition_canceled;
+        playerInputActions.Player.ToggleSketchView.performed += ToggleSketchView_performed;
 
+    }
+
+    private void ToggleSketchView_performed(InputAction.CallbackContext obj) {
+        OnToggleSketchView?.Invoke(this, EventArgs.Empty);
     }
 
     private void MouseSketchPosition_canceled(InputAction.CallbackContext obj) {
@@ -92,8 +98,8 @@ public class GameInput : MonoBehaviour {
         OnSketchMouseMove?.Invoke(this, playerInputActions.Player.MouseSketchPosition.ReadValue<Vector2>());
     }
 
-    private void UndoSketch_performed(InputAction.CallbackContext obj) {
-        OnUndoLine?.Invoke(this, EventArgs.Empty);
+    private void ClearSketch_performed(InputAction.CallbackContext obj) {
+        OnClearSketch?.Invoke(this, EventArgs.Empty);
     }
 
     private void Interact2_performed(InputAction.CallbackContext obj) {
@@ -123,9 +129,10 @@ public class GameInput : MonoBehaviour {
         playerInputActions.Player.PauseScreen.performed -= PauseScreen_performed;
         playerInputActions.Player.TakePicture.performed -= TakePicture_performed;
         playerInputActions.Player.Interact2.performed -= Interact2_performed;
-        playerInputActions.Player.UndoSketch.performed -= UndoSketch_performed;
+        playerInputActions.Player.ClearSketch.performed -= ClearSketch_performed;
         playerInputActions.Player.MouseSketchPosition.performed -= MouseSketchPosition_performed;
         playerInputActions.Player.MouseSketchPosition.canceled -= MouseSketchPosition_canceled;
+        playerInputActions.Player.ToggleSketchView.performed -= ToggleSketchView_performed;
         playerInputActions.Dispose();
     }
 

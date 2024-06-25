@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5450798009186736383, guid: 10fcb459661b82a43aefaac64da8d764, type: 3}
   sprite: {fileID: 21300000, guid: 49fcc6d4f515f92408190ba82d822b11, type: 3}
-  objectName: Acetone Kill Jar
+  objectName: '[Equipment] Acetone Kill Jar'
   objectDescription: A jar to trap and kill adult flies for identification. Contains
     Acetone.
   interactions:

@@ -17,6 +17,16 @@ public class AvailableInteractionsManager : MonoBehaviour {
         Player.Instance.OnUpdateHeldItemToEquipment += Player_OnUpdateHeldItemToEquipment;
         HotWaterCup.OnChangeInteractActionDetails += HotWaterCup_OnChangeInteractActionDetails;
         FlyNet.OnChangeInteractActionDetails += FlyNet_OnChangeInteractActionDetails;
+        MeasuringTool.OnChangeInteractActionDetails += MeasuringTool_OnChangeInteractActionDetails;
+        Phone.OnChangeInteractActionDetails += Phone_OnChangeInteractActionDetails;
+    }
+
+    private void Phone_OnChangeInteractActionDetails(object sender, EquipmentSO e) {
+        OnEquipmentHold?.Invoke(this, e);
+    }
+
+    private void MeasuringTool_OnChangeInteractActionDetails(object sender, EquipmentSO e) {
+        OnEquipmentHold?.Invoke(this, e);
     }
 
     private void FlyNet_OnChangeInteractActionDetails(object sender, EquipmentSO e) {

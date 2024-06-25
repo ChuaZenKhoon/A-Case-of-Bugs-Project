@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb6825bd09b5044b96c908f05bf8db9, type: 3}
+  m_Name: Phone
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5450798009186736383, guid: 33878081319341d49a64ba74fec19f12, type: 3}
+  sprite: {fileID: 21300000, guid: 22e865aff54ad9c45b6c3410216aaeb7, type: 3}
+  objectName: '[Equipment] Phone'
+  objectDescription: Used to check weather condiitons.
+  interactions:
+  - equipmentInteractionButtonText: E
+    equipmentInteractionDescriptionText: Check Local Weather

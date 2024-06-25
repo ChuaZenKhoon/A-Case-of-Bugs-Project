@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +8,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
 
     [SerializeField] private Camera equipmentCamera;
     [SerializeField] private PhotographyCameraUI photographyCameraUI;
-    [SerializeField] private Image cameraCrossHair;
+    [SerializeField] private GameObject cameraCrossHair;
     [SerializeField] private TextMeshProUGUI clickText;
     [SerializeField] private CanvasGroup gameplayCanvas;
 
@@ -14,11 +16,14 @@ public class PhotographyCamera: SelfInteractingEquipment {
 
     private bool isInCameraMode;
 
+    private bool isCameraCooldownOver;
+
     private void Awake() {
         isInCameraMode = false;
+        isCameraCooldownOver = true;
         equipmentCamera.enabled = false;
         playerCamera = Camera.main;
-        cameraCrossHair.enabled = false;
+        cameraCrossHair.SetActive(false);
         clickText.enabled = false;
         GameObject canvas = GameObject.Find("Gameplay Canvas");
         gameplayCanvas = canvas.GetComponent<CanvasGroup>();
@@ -58,7 +63,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
         Equipment.isInAction = true;
         equipmentCamera.enabled = true;
         playerCamera.enabled = false;
-        cameraCrossHair.enabled = true;
+        cameraCrossHair.SetActive(true);
         clickText.enabled = true;
         gameplayCanvas.alpha = 0f;
         Cursor.visible = false;
@@ -69,14 +74,15 @@ public class PhotographyCamera: SelfInteractingEquipment {
         Equipment.isInAction = false;
         playerCamera.enabled = true;
         equipmentCamera.enabled = false;
-        cameraCrossHair.enabled = false;
+        cameraCrossHair.SetActive(false);
         clickText.enabled = false;
         gameplayCanvas.alpha = 1f;
         Cursor.visible = true;
     }
 
     private void TakePicture() {
-        if (isInCameraMode) {
+        if (isInCameraMode && isCameraCooldownOver) {
+            StartCoroutine(CameraCooldownCoroutine());
             RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
             equipmentCamera.targetTexture = renderTexture;
             RenderTexture.active = renderTexture;
@@ -91,7 +97,15 @@ public class PhotographyCamera: SelfInteractingEquipment {
             RenderTexture.active = null;
 
             MessageLogManager.Instance.LogMessage("Photo successfully taken!");
+        } else if (isInCameraMode && !isCameraCooldownOver) {
+            MessageLogManager.Instance.LogMessage("Camera still processing previous photo.");
         }
+    }
+
+    private IEnumerator CameraCooldownCoroutine() {
+        isCameraCooldownOver = false;
+        yield return new WaitForSeconds(1.5f);
+        isCameraCooldownOver = true;
     }
 
     public bool IsInCameraMode() {

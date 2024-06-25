@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -10,6 +11,14 @@ public class CrimeSceneLevelManager : MonoBehaviour {
 
     //Event for when game state changes
     public event EventHandler OnStateChange;
+
+    [SerializeField] private List<DifficultyEvidenceList> difficultyEvidenceList;
+
+    [Serializable]
+    public struct DifficultyEvidenceList {
+        public DifficultySO difficultySO;
+        public List<GameObject> evidenceToPlace;
+    }
 
     //Designate game states for easy tracking
     public enum State {
@@ -29,6 +38,14 @@ public class CrimeSceneLevelManager : MonoBehaviour {
     private void Awake() {
         Instance = this;
         state = State.ReadingReport;
+
+        foreach (DifficultyEvidenceList evidenceList in difficultyEvidenceList) {
+            if (evidenceList.difficultySO == DifficultySettingManager.difficultyLevelSelected) {
+                foreach (GameObject evidence in evidenceList.evidenceToPlace) {
+                    evidence.SetActive(true);
+                }
+            }
+        }
     }
 
     //Subscribe to events that change game flow and state
@@ -99,5 +116,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         return gameTimerMin; 
     }
 
-
+    public void SkipAhead() {
+        gameTime = 0f;
+    }
 }

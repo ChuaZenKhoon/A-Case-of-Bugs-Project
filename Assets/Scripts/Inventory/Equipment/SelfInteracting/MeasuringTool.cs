@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MeasuringTool : SelfInteractingEquipment {
 
+    public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
+
     public event EventHandler<float> OnMeasuringDistanceChange;
 
     [SerializeField] GameObject marker;
@@ -17,6 +19,10 @@ public class MeasuringTool : SelfInteractingEquipment {
 
     private Vector3 startPosition;
     private Vector3 currentPosition;
+
+    new public static void ResetStaticData() {
+        OnChangeInteractActionDetails = null;
+    }
 
     private void Awake() {
         isInMeasuringMode = false;
@@ -34,10 +40,23 @@ public class MeasuringTool : SelfInteractingEquipment {
             Equipment.isInAction = true;
             MessageLogManager.Instance.LogMessage("Starting measurement...");
             StartMeasuring();
+            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+            if (equipmentSO != null) {
+                equipmentSO.ChangeInteractionText("Stop Measuring", 0);
+            }
+
+            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         } else {
             Equipment.isInAction = false;
             MessageLogManager.Instance.LogMessage("Measurement stopped.");
             StopMeasuring();
+
+            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+            if (equipmentSO != null) {
+                equipmentSO.ChangeInteractionText("Start Measuring", 0);
+            }
+
+            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         }
     }
 

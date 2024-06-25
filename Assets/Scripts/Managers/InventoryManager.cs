@@ -40,22 +40,20 @@ public class InventoryManager : MonoBehaviour {
     private void Start() {
         if (Loader.targetScene == Loader.Scene.CrimeScene) {
             CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
+            DifficultySO difficultySO = DifficultySettingManager.difficultyLevelSelected;
+
+            if (difficultySO != null) {
+                foreach (EquipmentSO equipmentSO in difficultySO.equipmentListToAdd) {
+                    this.AddToInventory(equipmentSO);
+                }
+            }
+
+            AssignEquipmentID();
         }
 
         if (Loader.targetScene == Loader.Scene.TutorialScene) {
             TutorialLevelManager.Instance.OnStateChange += TutorialLevelManager_OnStateChange;
         }
-
-        int id = 1;
-        for (int index = 0; index < inventoryObjectsArray.Length; index++) {
-            if (inventoryObjectsArray[index] != null && inventoryObjectsArray[index] is EvidenceInteractingEquipment) {
-                equipmentIDArray[index] = id;
-                id++;
-            } else {
-                equipmentIDArray[index] = 0;
-            }
-        }
-
     }
 
     private void TutorialLevelManager_OnStateChange(object sender, EventArgs e) {
@@ -223,6 +221,11 @@ public class InventoryManager : MonoBehaviour {
      */
     public void DropFromInventory(int index) {
         GameObject newInventoryObjectToDrop = Instantiate(inventoryObjectsArray[index].GetInventoryObjectSO().prefab);
+
+        if (newInventoryObjectToDrop.TryGetComponent<Evidence>(out Evidence evidence)) {
+            evidence.SealEvidence();
+        }
+
         newInventoryObjectToDrop.transform.position = Player.Instance.GetStareAtPosition();
 
         inventoryObjectsArray[index] = null;
@@ -239,5 +242,17 @@ public class InventoryManager : MonoBehaviour {
         }
         
         UpdateFreeInventorySlot();
+    }
+
+    private void AssignEquipmentID() {
+        int id = 1;
+        for (int index = 0; index < inventoryObjectsArray.Length; index++) {
+            if (inventoryObjectsArray[index] != null && inventoryObjectsArray[index] is EvidenceInteractingEquipment) {
+                equipmentIDArray[index] = id;
+                id++;
+            } else {
+                equipmentIDArray[index] = 0;
+            }
+        }
     }
 }

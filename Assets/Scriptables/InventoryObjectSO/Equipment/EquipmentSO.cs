@@ -14,7 +14,6 @@ public class EquipmentSO : InventoryObjectSO {
 
     public List<EquipmentInteraction> interactions;
 
-
     public void ChangeInteractionText(string text, int index) {
         EquipmentInteraction equipmentInteraction = interactions[index];
         equipmentInteraction.equipmentInteractionDescriptionText = text;

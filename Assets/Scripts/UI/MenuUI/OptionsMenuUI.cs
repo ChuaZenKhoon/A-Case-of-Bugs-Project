@@ -24,9 +24,6 @@ public class OptionsMenuUI : MonoBehaviour {
     //Event for when graphics quality option is changed
     public event EventHandler<int> OnGraphicsQualityChange;
 
-    //Event for when resolution option is changed
-    public event EventHandler<int> OnResolutionChange;
-
     //Event for when Fullscreen toggle is changed
     public event EventHandler<bool> OnFullscreenChange;
 
@@ -55,7 +52,6 @@ public class OptionsMenuUI : MonoBehaviour {
     [SerializeField] private Button applyGraphicsButton;
     
     [SerializeField] private TMP_Dropdown graphicsQualityDropDown;
-    [SerializeField] private TMP_Dropdown resolutionDropDown;
     [SerializeField] private Toggle fullScreenToggle;
     [SerializeField] private Toggle vSyncToggle;
 
@@ -120,7 +116,6 @@ public class OptionsMenuUI : MonoBehaviour {
 
         //Graphics set up
         InitialiseGraphicsQualityDropDown();
-        InitaliseResolutionDropDown();
         fullScreenToggle.isOn = GraphicsManager.Instance.IsFullscreen();
         vSyncToggle.isOn = GraphicsManager.Instance.IsVsyncOn();
         
@@ -163,18 +158,6 @@ public class OptionsMenuUI : MonoBehaviour {
         graphicsQualityDropDown.RefreshShownValue();
         graphicsQualityDropDown.onValueChanged.AddListener((int value) => {
             OnGraphicsQualityChange?.Invoke(this, value);
-        });
-    }
-
-    private void InitaliseResolutionDropDown() {
-        resolutionDropDown.ClearOptions();
-        List<Resolution> resolutionOptions = GraphicsManager.resolutions;
-        List<string> resolutionStrings = resolutionOptions.Select(res => res.width + " x " + res.height).ToList();
-        resolutionDropDown.AddOptions(resolutionStrings);
-        resolutionDropDown.value = GraphicsManager.Instance.GetResolution();
-        resolutionDropDown.RefreshShownValue();
-        resolutionDropDown.onValueChanged.AddListener((int value) => {
-            OnResolutionChange?.Invoke(this, value);
         });
     }
 

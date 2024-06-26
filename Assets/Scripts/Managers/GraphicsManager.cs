@@ -11,18 +11,15 @@ public class GraphicsManager : MonoBehaviour {
 
     //Player Preferences keys for storing information
     private const string PLAYER_PREFS_GRAPHICSQUALITY_VALUE = "GraphicsQuality";
-    private const string PLAYER_PREFS_RESOLUTION_VALUE = "Resolution";
     private const string PLAYER_PREFS_FULLSCREEN_VALUE = "Fullscreen";
     private const string PLAYER_PREFS_VSYNC_VALUE = "Vsync";
     
     //Graphic settings to take from saved settings, temp settings not confirmed set
     private int graphicsQualityValue;
-    private int resolutionValue;
     private bool isFullscreenOn;
     private bool isVsyncOn;
 
     private int savedGraphicsQualityValue;
-    private int savedResolutionValue;
     private bool savedIsFullscreenOn;
     private bool savedIsVsyncOn;
 
@@ -34,22 +31,16 @@ public class GraphicsManager : MonoBehaviour {
         "High"
     };
 
-    //Using Unity.Resolution
-    public static List<Resolution> resolutions;
-
     private void Awake() {
         Instance = this;
 
         //Get Player Prefs else default value
         //Resolutions will be based on what the player's device can use
-        resolutions = Screen.resolutions.ToList();
         savedGraphicsQualityValue = PlayerPrefs.GetInt(PLAYER_PREFS_GRAPHICSQUALITY_VALUE, 1);
-        savedResolutionValue = PlayerPrefs.GetInt(PLAYER_PREFS_RESOLUTION_VALUE, resolutions.Count - 1);
         savedIsFullscreenOn = PlayerPrefs.GetInt(PLAYER_PREFS_FULLSCREEN_VALUE, 0) == 1;
         savedIsVsyncOn = PlayerPrefs.GetInt(PLAYER_PREFS_VSYNC_VALUE, 0) == 1;
 
         SetGraphicsQuality(savedGraphicsQualityValue);
-        SetResolution(savedResolutionValue);
         SetFullscreen(savedIsFullscreenOn);
         SetVsync(savedIsVsyncOn);
 
@@ -61,7 +52,6 @@ public class GraphicsManager : MonoBehaviour {
     private void Start() {
         if (OptionsMenuUI.Instance != null) {
             OptionsMenuUI.Instance.OnGraphicsQualityChange += OptionsMenuUI_OnGraphicsQualityChange;
-            OptionsMenuUI.Instance.OnResolutionChange += OptionsMenuUI_OnResolutionChange;
             OptionsMenuUI.Instance.OnFullscreenChange += OptionsMenuUI_OnFullscreenChange;
             OptionsMenuUI.Instance.OnVSyncChange += OptionsMenuUI_OnVsyncChange;
         }
@@ -75,20 +65,12 @@ public class GraphicsManager : MonoBehaviour {
         SetFullscreen(e);
     }
 
-    private void OptionsMenuUI_OnResolutionChange(object sender, int e) {
-        SetResolution(e);
-    }
-
     private void OptionsMenuUI_OnGraphicsQualityChange(object sender, int e) {
         SetGraphicsQuality(e);
     }
 
     private void SetGraphicsQuality(int graphicsQualityValue) {
         this.graphicsQualityValue = graphicsQualityValue;
-    }
-
-    private void SetResolution(int resolutionValue) {
-        this.resolutionValue = resolutionValue;
     }
 
     private void SetVsync(bool isOn) {
@@ -101,10 +83,6 @@ public class GraphicsManager : MonoBehaviour {
 
     public int GetGraphicsQuality() {
         return savedGraphicsQualityValue;
-    }
-
-    public int GetResolution() {
-        return savedResolutionValue;
     }
 
     public bool IsFullscreen() {
@@ -123,7 +101,6 @@ public class GraphicsManager : MonoBehaviour {
      */
     public void ApplyGraphicSettings() {
         savedGraphicsQualityValue = graphicsQualityValue;
-        savedResolutionValue = resolutionValue;
         savedIsFullscreenOn = isFullscreenOn;
         savedIsVsyncOn = isVsyncOn;
 
@@ -135,10 +112,9 @@ public class GraphicsManager : MonoBehaviour {
             QualitySettings.vSyncCount = 0;
         }
 
-        Screen.SetResolution(resolutions[savedResolutionValue].width, resolutions[savedResolutionValue].height, savedIsFullscreenOn);
+        Screen.fullScreen = savedIsFullscreenOn;
 
         PlayerPrefs.SetInt(PLAYER_PREFS_GRAPHICSQUALITY_VALUE, this.savedGraphicsQualityValue);
-        PlayerPrefs.SetInt(PLAYER_PREFS_RESOLUTION_VALUE, this.savedResolutionValue);
 
         int fullscreenValue = 0;
         int vysncValue = 0; 

@@ -23,8 +23,16 @@ public class TutorialLevelManager : MonoBehaviour {
         Movement,
         Inventory,
         Interaction,
-        SelfInteracting,
-        EvidenceInteracting,
+        Equipment_Camera,
+        Equipment_Clipboard,
+        Equipment_PlacardHolder,
+        Equipment_MeasuringTool,
+        Equipment_Phone,
+        Equipment_FingerprintDuster_FingerprintLifter,
+        Equipment_Swab,
+        Equipment_Container,
+        Equipment_FlyNet_KillJar,
+        Equipment_HotWaterCup_EthanolContainer,
         Exit
     }
 
@@ -46,10 +54,12 @@ public class TutorialLevelManager : MonoBehaviour {
         state++;
 
         instructionUI.DisplayMessage(state);
+        Debug.Log(state);
         
         if (state == TutorialLevelManager.State.Exit) {
             exitTutorialUI.Show();
         }
+
         OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 
@@ -75,11 +85,7 @@ public class TutorialLevelManager : MonoBehaviour {
         return state == State.Interaction;
     }
 
-    public bool IsStartingSelfInteracting() {
-        return state == State.SelfInteracting;
-    }
-
-    public bool IsStartingEvidenceInteracting() {
-        return state == State.EvidenceInteracting;
+    public State GetState() {
+        return state;
     }
 }

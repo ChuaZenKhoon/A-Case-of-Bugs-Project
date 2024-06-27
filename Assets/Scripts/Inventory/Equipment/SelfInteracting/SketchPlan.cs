@@ -1,9 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class SketchPlan : SelfInteractingEquipment {
+
+    public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
+
+    new public static void ResetStaticData() {
+        OnChangeInteractActionDetails = null;
+    }
 
     [SerializeField] private SketchPlanUI sketchPlanUI;
 
@@ -21,9 +28,21 @@ public class SketchPlan : SelfInteractingEquipment {
         if (!SketchPlanUI.IsShown()) {
             Equipment.isInAction = true;
             sketchPlanUI.Show();
+            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+            if (equipmentSO != null) {
+                equipmentSO.ChangeInteractionText("Close Sketch Plan", 0);
+            }
+
+            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         } else {
             Equipment.isInAction = false;
             sketchPlanUI.Hide();
+            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+            if (equipmentSO != null) {
+                equipmentSO.ChangeInteractionText("Open Sketch Plan", 0);
+            }
+
+            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         }
     }
 }

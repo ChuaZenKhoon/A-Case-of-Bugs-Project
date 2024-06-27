@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,10 @@ public class PhoneUI : MonoBehaviour {
     [SerializeField] Button closeTemperatureScreenButton;
     [SerializeField] Button closeHumidityScreenButton;
     [SerializeField] Button closeWeatherConditionScreenButton;
+
+    [SerializeField] TextMeshProUGUI temperatureText;
+    [SerializeField] TextMeshProUGUI humidityText;
+    [SerializeField] TextMeshProUGUI weatherText;
 
     private void Awake() {
         checkTemperatureButton.onClick.AddListener(() => {
@@ -53,5 +58,11 @@ public class PhoneUI : MonoBehaviour {
 
     public bool IsShown() {
         return gameObject.activeSelf;
+    }
+
+    public void UpdateText(EquipmentStorageManager.WeatherRecord weatherRecord) {
+        temperatureText.text = weatherRecord.temperatureRecord.ToString() + "°C";
+        humidityText.text = weatherRecord.humidityRecord.ToString() + "%";
+        weatherText.text = weatherRecord.weatherConditionRecord.ToString();
     }
 }

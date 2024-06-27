@@ -63,6 +63,10 @@ public class InventoryManager : MonoBehaviour {
             InventorySingleUI.OnSuccssfulDragDropItem += InventorySingleUI_OnSuccessfulDragDropItem;
             InventoryDropItemUI.OnConfirmedDropItem += InventoryDropItemUI_OnConfirmedDropItem;
         }
+
+        if (TutorialLevelManager.Instance.GetState() == TutorialLevelManager.State.Equipment_Swab) {
+            AssignEquipmentID();
+        }
     }
 
     //Only subscribe to inventory actions when game is playing

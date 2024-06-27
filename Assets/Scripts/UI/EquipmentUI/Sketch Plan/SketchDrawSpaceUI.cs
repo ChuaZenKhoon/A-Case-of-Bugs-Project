@@ -47,7 +47,6 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
     private void InitializeCanvas(Texture2D savedSketch) {
         int width = (int)canvasRectTransform.rect.width;
         int height = (int)canvasRectTransform.rect.height;
-
         if (savedSketch != null) {
             canvasTexture = savedSketch;
         } else {

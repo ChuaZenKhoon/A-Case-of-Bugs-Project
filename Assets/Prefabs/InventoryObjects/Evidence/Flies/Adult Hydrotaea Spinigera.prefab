@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObject: {fileID: 0}
+  inventoryObject: {fileID: 8472572540937798892}
   selectedVisualArray:
   - {fileID: 7124339886857549720}
 --- !u!1 &5450798009186736383
@@ -149,6 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: e6f4e1965ab77bc4d88bbfb2ccce1d37, type: 2}
+  sealedEvidence: {fileID: 0}
+  evidenceVisual: {fileID: 0}
+  sealedCollider: {fileID: 0}
+  evidenceCollider: {fileID: 0}
 --- !u!1001 &3793281485983885593
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,6 +23,15 @@ public class EquipmentStorageManager : MonoBehaviour {
 
     [SerializeField] private Placard[] placards;
 
+    [Serializable] 
+    public struct WeatherRecord {
+        public int temperatureRecord;
+        public int humidityRecord;
+        public string weatherConditionRecord;
+    }
+
+    [SerializeField] private List<WeatherRecord> weatherRecords;
+
     //Evidence Storage
     [Serializable] public struct FingerprintLifting {
         public Fingerprint liftedFingerprint;
@@ -47,6 +56,8 @@ public class EquipmentStorageManager : MonoBehaviour {
     private List<Maggot> maggotCollection;
 
     private List<Maggot> killedMaggotsCollection;
+
+    private float killingMaggotsDuration;
 
     private void Awake() {
         Instance = this;
@@ -124,6 +135,10 @@ public class EquipmentStorageManager : MonoBehaviour {
         placards[index] = placard;
     }
 
+
+    public WeatherRecord GetWeatherRecord(int index) {
+        return weatherRecords[index];
+    } 
 
     //Evidence
     public void SetFingerprint(int fingerprintLifterNum, Fingerprint fingerprint) {
@@ -215,5 +230,13 @@ public class EquipmentStorageManager : MonoBehaviour {
 
     public void ClearMaggotKilledCollection() {
         killedMaggotsCollection.Clear();
+    }
+
+    public void SetKillingMaggotProgressDuration(float duration) {
+        killingMaggotsDuration = duration;
+    }
+
+    public float GetKillingMaggotProgressDuration() {
+        return killingMaggotsDuration;
     }
 }

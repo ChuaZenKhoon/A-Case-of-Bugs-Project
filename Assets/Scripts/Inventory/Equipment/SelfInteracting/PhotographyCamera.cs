@@ -9,7 +9,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
     [SerializeField] private Camera equipmentCamera;
     [SerializeField] private PhotographyCameraUI photographyCameraUI;
     [SerializeField] private GameObject cameraCrossHair;
-    [SerializeField] private TextMeshProUGUI clickText;
     [SerializeField] private CanvasGroup gameplayCanvas;
 
     private Camera playerCamera;
@@ -24,7 +23,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
         equipmentCamera.enabled = false;
         playerCamera = Camera.main;
         cameraCrossHair.SetActive(false);
-        clickText.enabled = false;
         GameObject canvas = GameObject.Find("Gameplay Canvas");
         gameplayCanvas = canvas.GetComponent<CanvasGroup>();
     }
@@ -64,7 +62,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
         equipmentCamera.enabled = true;
         playerCamera.enabled = false;
         cameraCrossHair.SetActive(true);
-        clickText.enabled = true;
         gameplayCanvas.alpha = 0f;
         Cursor.visible = false;
     }
@@ -75,7 +72,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
         playerCamera.enabled = true;
         equipmentCamera.enabled = false;
         cameraCrossHair.SetActive(false);
-        clickText.enabled = false;
         gameplayCanvas.alpha = 1f;
         Cursor.visible = true;
     }

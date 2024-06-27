@@ -16,5 +16,6 @@ public class ResetStaticDataOnSceneChange : MonoBehaviour {
         NextLocationArrow.ResetStaticData();
         Phone.ResetStaticData();
         GameInstructionsUI.ResetStaticData();
+        SketchPlan.ResetStaticData();
     }
 }

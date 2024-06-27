@@ -34,7 +34,9 @@ public class SelectedVisual : MonoBehaviour {
             if (evidence.IsSealed()) {
                 selectedVisualArray[0].SetActive(false);
             } else {
-                selectedVisualArray[1].SetActive(false);
+                if (selectedVisualArray.Length > 1) {
+                    selectedVisualArray[1].SetActive(false);
+                }
             }
         }
     }

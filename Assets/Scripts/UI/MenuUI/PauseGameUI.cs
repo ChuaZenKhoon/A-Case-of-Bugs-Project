@@ -58,7 +58,9 @@ public class PauseGameUI : MonoBehaviour {
     }
 
     private void PauseManager_OnGameUnpause(object sender, EventArgs e) {
-        gameInstructionsUI.Hide();
+        if (gameInstructionsUI != null) {
+            gameInstructionsUI.Hide();
+        }
         Hide();
     }
 

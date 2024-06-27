@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4218979301904642271}
   m_Layer: 0
-  m_Name: CanObjectVisual
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

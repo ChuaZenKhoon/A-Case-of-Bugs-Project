@@ -7,14 +7,28 @@ public class Phone : SelfInteractingEquipment {
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
 
+
     [SerializeField] private PhoneUI phoneUI;
 
     public static event EventHandler OnPhoneOpen;
+
+    private EquipmentStorageManager.WeatherRecord weatherRecord;
 
     new public static void ResetStaticData() {
         OnPhoneOpen = null;
         OnChangeInteractActionDetails = null;
     }
+
+    private void Start() {
+
+        if (Loader.targetScene == Loader.Scene.CrimeScene) {
+            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(1);
+        } else {
+            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(0);
+        }
+        phoneUI.UpdateText(weatherRecord);
+    }
+
     public override void Interact() {
         if (InventoryScreenUI.isInAction) {
             MessageLogManager.Instance.LogMessage("Close Inventory first before using phone.");

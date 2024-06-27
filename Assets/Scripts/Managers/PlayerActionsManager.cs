@@ -30,7 +30,9 @@ public class PlayerActionsManager : MonoBehaviour {
 
         if (Loader.targetScene == Loader.Scene.TutorialScene) {
             TutorialLevelManager.Instance.OnStateChange += TutorialLevelManager_OnStateChange;
+            TutorialItemsManager.Instance.OnEquipmentGuideUIOpenClose += TutorialItemsManager_OnEquipmentGuideUIOpenClose;
         }
+
         PauseManager.Instance.OnGamePause += PauseManager_OnGamePause;
         PauseManager.Instance.OnGameUnpause += PauseManager_OnGameUnpause;
 
@@ -40,7 +42,7 @@ public class PlayerActionsManager : MonoBehaviour {
         Phone.OnPhoneOpen += Phone_OnPhoneOpen;
     }
 
-    
+
 
     private void UpdatePlayerActions() {
 
@@ -66,8 +68,13 @@ public class PlayerActionsManager : MonoBehaviour {
             
             bool isInventoryInUse = InventoryManager.Instance.IsInventoryOpen();
             bool isEquipmentInUse = Equipment.isInAction;
+            bool isTutorial = FindAnyObjectByType<TutorialItemsManager>();
+            bool isEquipmentGuideScreenShowing = false;
+            if (isTutorial) {
+                isEquipmentGuideScreenShowing = TutorialItemsManager.Instance.IsEquipmentGuideOpen();
+            }
 
-            if (isInventoryInUse || isEquipmentInUse) {
+            if (isInventoryInUse || isEquipmentInUse || isEquipmentGuideScreenShowing) {
                 canCameraMove = false;
                 canPlayerMove = false;
                 canCursorMove = true;
@@ -109,6 +116,9 @@ public class PlayerActionsManager : MonoBehaviour {
         }
     }
 
+    private void TutorialItemsManager_OnEquipmentGuideUIOpenClose(object sender, System.EventArgs e) {
+        UpdatePlayerActions();
+    }
     private void Phone_OnPhoneOpen(object sender, System.EventArgs e) {
         UpdatePlayerActions();
     }

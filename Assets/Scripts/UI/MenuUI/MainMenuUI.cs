@@ -10,10 +10,12 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button playButton;
     [SerializeField] private Button tutorialButton;
     [SerializeField] private Button optionsButton;
+    [SerializeField] private Button creditsButton;
     [SerializeField] private Button quitButton;
 
     [SerializeField] private OptionsMenuUI optionsMenuUI;
     [SerializeField] private DifficultySettingUI difficultySettingUI;
+    [SerializeField] private CreditsScreenUI creditsScreenUI;
 
     //Add listeners to main menu buttons
     private void Awake() {
@@ -25,6 +27,9 @@ public class MainMenuUI : MonoBehaviour {
         });
         optionsButton.onClick.AddListener(() => {
             optionsMenuUI.Show();
+        });
+        creditsButton.onClick.AddListener(() => {
+            creditsScreenUI.Show();
         });
         quitButton.onClick.AddListener(() => {
             Application.Quit();

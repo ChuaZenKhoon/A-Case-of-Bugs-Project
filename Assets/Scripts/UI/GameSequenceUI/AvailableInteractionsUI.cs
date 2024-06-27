@@ -30,11 +30,6 @@ public class AvailableInteractionsUI : MonoBehaviour {
         }
 
         List<EquipmentSO.EquipmentInteraction> equipmentInteractions = equipmentSO.interactions;
-        if (equipmentInteractions.Count % 2 == 0) {
-            container.GetComponent<HorizontalLayoutGroup>().padding.left = -100;
-        } else {
-            container.GetComponent<HorizontalLayoutGroup>().padding.left = 0;
-        }
 
         foreach (EquipmentSO.EquipmentInteraction equipmentInteraction in equipmentInteractions) {
             Transform singleInteraction = Instantiate(template, container);

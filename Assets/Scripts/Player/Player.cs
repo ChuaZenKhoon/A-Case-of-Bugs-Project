@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
 
     [SerializeField] private Rigidbody body;
 
-    private const float moveSpeed = 3f;
+    private const float moveSpeed = 3.5f;
 
     private Vector2 currentMoveDirection = Vector2.zero;
 
@@ -310,10 +310,13 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
             if (currentHeldObject is Evidence) {
                 Evidence currentHeldEvidence = currentHeldObject as Evidence;
                 currentHeldEvidence.SealEvidence();
-                BoxCollider[] colliders = currentHeldEvidence.GetComponentsInChildren<BoxCollider>();
-                if (colliders[1] != null) {
-                    colliders[1].enabled = false;
+                BoxCollider[] colliders = currentHeldEvidence.GetComponents<BoxCollider>();
+                if (colliders.Length > 1) {
+                    if (colliders[1] != null) {
+                        colliders[1].enabled = false;
+                    }
                 }
+                
             }
         }
     }

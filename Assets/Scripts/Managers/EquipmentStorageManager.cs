@@ -53,9 +53,9 @@ public class EquipmentStorageManager : MonoBehaviour {
 
     private List<AdultFly> deadAdultFlyCollection;
 
-    private List<Maggot> maggotCollection;
+    private List<Larvae> maggotCollection;
 
-    private List<Maggot> killedMaggotsCollection;
+    private List<Larvae> killedMaggotsCollection;
 
     private float killingMaggotsDuration;
 
@@ -72,8 +72,8 @@ public class EquipmentStorageManager : MonoBehaviour {
         capturedAdultFlyCollection = new List<AdultFly>();
         killingAdultFlyCollection = new List<AdultFly>();
         deadAdultFlyCollection = new List<AdultFly>();
-        maggotCollection = new List<Maggot>();
-        killedMaggotsCollection = new List<Maggot>();
+        maggotCollection = new List<Larvae>();
+        killedMaggotsCollection = new List<Larvae>();
     }
 
     //Photograph Camera
@@ -206,11 +206,11 @@ public class EquipmentStorageManager : MonoBehaviour {
         deadAdultFlyCollection.Add(adultFly);
     }
 
-    public List<Maggot> GetMaggots() {
+    public List<Larvae> GetMaggots() {
         return maggotCollection;
     }
 
-    public void CollectMaggots(Maggot maggot) {
+    public void CollectMaggots(Larvae maggot) {
         maggotCollection.Add(maggot);
     }
 
@@ -218,12 +218,12 @@ public class EquipmentStorageManager : MonoBehaviour {
         maggotCollection.Clear();
     }
 
-    public List<Maggot> GetKilledMaggots() {
+    public List<Larvae> GetKilledMaggots() {
         return killedMaggotsCollection;
     }
 
-    public void AddKilledMaggots(List<Maggot> maggotsKilled) {
-        foreach (Maggot maggot in maggotsKilled) {
+    public void AddKilledMaggots(List<Larvae> maggotsKilled) {
+        foreach (Larvae maggot in maggotsKilled) {
             killedMaggotsCollection.Add(maggot);
         }
     }

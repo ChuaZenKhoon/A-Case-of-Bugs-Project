@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Container : EvidenceInteractingEquipment {
 
-    [SerializeField] private GameObject megacephalaFlyVisual;
-    [SerializeField] private GameObject spinigeraFlyVisual;
+    [SerializeField] private GameObject megacephalaMaleFlyVisual;
+    [SerializeField] private GameObject megacephalaFemaleFlyVisual;
+    [SerializeField] private GameObject scalarisFlyVisual;
+    [SerializeField] private GameObject ruficornisFlyVisual;
 
     private List<AdultFly> deadFliesCollected;
 
 
     private void Awake() {
-        megacephalaFlyVisual.SetActive(false);
-        spinigeraFlyVisual.SetActive(false);
+        megacephalaMaleFlyVisual.SetActive(false);
+        megacephalaFemaleFlyVisual.SetActive(false);
+        scalarisFlyVisual.SetActive(false);
+        ruficornisFlyVisual.SetActive(false);
     }
 
     private void Start() {
@@ -22,7 +26,7 @@ public class Container : EvidenceInteractingEquipment {
 
     public override void Interact() {
         
-        InventoryObject currentStareAt = Player.Instance.GetStareAt();
+        InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
         if (currentStareAt is AdultFly) {
             AdultFly currentAdultFlyStaringAt = currentStareAt as AdultFly;
@@ -45,16 +49,27 @@ public class Container : EvidenceInteractingEquipment {
         if (deadFliesCollected.Count > 0) {
             foreach (AdultFly adultFly in deadFliesCollected) {
                 string flyType = adultFly.GetInventoryObjectSO().objectName;
-                if (flyType == "Black Fly") {
-                    spinigeraFlyVisual.SetActive(true);
+                if (flyType == "Green Fly with dark eyes") {
+                    megacephalaFemaleFlyVisual.SetActive(true);
                 }
 
-                if (flyType == "Green Fly") {
-                    megacephalaFlyVisual.SetActive(true);
+                if (flyType == "Green Fly with bright orange eyes") {
+                    megacephalaMaleFlyVisual.SetActive(true);
+                }
+
+                if (flyType == "Small Brown Fly") {
+                    scalarisFlyVisual.SetActive(true);
+                }
+
+                if (flyType == "Grey Fly") {
+                    ruficornisFlyVisual.SetActive(true);
                 }
             }
 
         }
     }
 
+    public List<AdultFly> GetDeadFlies() {
+        return deadFliesCollected;
+    }
 }

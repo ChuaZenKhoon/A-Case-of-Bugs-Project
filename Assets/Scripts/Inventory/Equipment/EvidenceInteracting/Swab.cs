@@ -23,7 +23,7 @@ public class Swab : EvidenceInteractingEquipment {
 
     public override void Interact() {
         if (bloodStain == null) {
-            InventoryObject currentStareAt = Player.Instance.GetStareAt();
+            InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
             if (currentStareAt is Bloodstain) {
                 Bloodstain currentBloodStainStaringAt = currentStareAt as Bloodstain;

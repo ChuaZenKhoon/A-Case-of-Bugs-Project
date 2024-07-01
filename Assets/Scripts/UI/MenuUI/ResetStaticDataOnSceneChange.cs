@@ -17,5 +17,8 @@ public class ResetStaticDataOnSceneChange : MonoBehaviour {
         Phone.ResetStaticData();
         GameInstructionsUI.ResetStaticData();
         SketchPlan.ResetStaticData();
+        LabSceneMessageUI.ResetStaticData();
+        LabEquipment.ResetStaticData();
+        Microscope.ResetStaticData();
     }
 }

@@ -1338,10 +1338,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credits\n\nProgramming, Art, Animation, Music: \nChua Zen Khoon\n\nSupervisor:
-    \nRaudhah Thongkam (TEL Imaginarium)\n\nConsulting Professors: \nA/P Stella Tan
-    Wei Ling\nA/P Heo Chong Chin (UiTM) \nDr Shawn Ming Yang Lee\n\nSpecial thanks
-    to friends for their feedback and playtesting!"
+  m_text: "Credits\n\nConsulting Professors: \nA/P Stella Tan Wei Ling\nA/P Heo Chong
+    Chin (UiTM) \nDr Shawn Ming Yang Lee\n\nSupervisor: \nRaudhah Thongkam (TEL Imaginarium)\n\nProgramming,
+    Art, Animation, Music: \nChua Zen Khoon\n\nSpecial thanks to friends for their
+    feedback and playtesting!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 49d6394db670d684a81148d89b9b8327, type: 2}
   m_sharedMaterial: {fileID: 3960482426063753138, guid: 49d6394db670d684a81148d89b9b8327,

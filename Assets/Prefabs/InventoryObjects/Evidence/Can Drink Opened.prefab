@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObject: {fileID: 3230177554624967148}
+  interactableObject: {fileID: 3230177554624967148}
   selectedVisualArray:
   - {fileID: 721419868950520285}
   - {fileID: 570256089363500523}

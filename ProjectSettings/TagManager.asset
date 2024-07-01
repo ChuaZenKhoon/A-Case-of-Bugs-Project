@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - inventoryObjectLayer
+  - interactableObjectLayer
   - dropItemUILayer
   - droppableLayer
   - hiddenFingerprintsLayer

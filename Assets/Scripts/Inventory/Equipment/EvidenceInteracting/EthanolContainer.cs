@@ -7,7 +7,7 @@ public class EthanolContainer : EvidenceInteractingEquipment {
     [SerializeField] private GameObject megacephalaMaggotVisual;
     [SerializeField] private GameObject spinigeraMaggotVisual;
 
-    private List<Maggot> maggotsKilled;
+    private List<Larvae> larvaeKilled;
 
     private void Awake() {
         megacephalaMaggotVisual.SetActive(false);
@@ -15,11 +15,11 @@ public class EthanolContainer : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        maggotsKilled = EquipmentStorageManager.Instance.GetKilledMaggots();
+        larvaeKilled = EquipmentStorageManager.Instance.GetKilledMaggots();
         SetCorrectVisual();
     }
     public override void Interact() {
-        if (maggotsKilled.Count == 0) {
+        if (larvaeKilled.Count == 0) {
             MessageLogManager.Instance.LogMessage("I need to preserve killed maggots in this.");
         } else {
             MessageLogManager.Instance.LogMessage("I need to examine the maggots in the laboratory.");
@@ -28,8 +28,8 @@ public class EthanolContainer : EvidenceInteractingEquipment {
 
 
     private void SetCorrectVisual() {
-        if (maggotsKilled != null) {
-            foreach (Maggot maggot in maggotsKilled) {
+        if (larvaeKilled != null) {
+            foreach (Larvae maggot in larvaeKilled) {
                 string maggotType = maggot.GetInventoryObjectSO().objectName;
 
                 if (maggotType == "Long Thin Maggot") {
@@ -41,6 +41,10 @@ public class EthanolContainer : EvidenceInteractingEquipment {
                 }
             }
         }
+    }
+
+    public List<Larvae> GetKilledLarvae() {
+        return larvaeKilled;
     }
 
 }

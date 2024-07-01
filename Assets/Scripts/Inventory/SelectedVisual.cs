@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SelectedVisual : MonoBehaviour {
 
-    [SerializeField] private InventoryObject inventoryObject;
+    [SerializeField] private InteractableObject interactableObject;
     [SerializeField] private GameObject[] selectedVisualArray;
 
     private void Start() {
-        Player.Instance.OnPlayerStareAtInventoryObjectChange += Player_OnPlayerStareAtInventoryObjectChange;
+        Player.Instance.OnPlayerStareAtInteractableObjectChange += Player_OnPlayerStareAtInventoryObjectChange;
     }
 
-    private void Player_OnPlayerStareAtInventoryObjectChange(object sender, Player.OnPlayerStareAtInventoryObjectChangeEventArgs e) {
-        if (e.inventoryObject == inventoryObject) {
+    private void Player_OnPlayerStareAtInventoryObjectChange(object sender, Player.OnPlayerStareAtInteractableObjectChangeEventArgs e) {
+        if (e.interactableObject == interactableObject) {
             Show();
         } else {
             Hide();
@@ -21,7 +21,7 @@ public class SelectedVisual : MonoBehaviour {
 
     //Object stops listening when it is destroyed
     private void OnDestroy() {
-        Player.Instance.OnPlayerStareAtInventoryObjectChange -= Player_OnPlayerStareAtInventoryObjectChange;
+        Player.Instance.OnPlayerStareAtInteractableObjectChange -= Player_OnPlayerStareAtInventoryObjectChange;
     }
 
     private void Show() {
@@ -29,8 +29,8 @@ public class SelectedVisual : MonoBehaviour {
             selectedCounterVisual.SetActive(true);
         }
         
-        if (inventoryObject is Evidence) {
-            Evidence evidence = inventoryObject as Evidence;
+        if (interactableObject is Evidence) {
+            Evidence evidence = interactableObject as Evidence;
             if (evidence.IsSealed()) {
                 selectedVisualArray[0].SetActive(false);
             } else {

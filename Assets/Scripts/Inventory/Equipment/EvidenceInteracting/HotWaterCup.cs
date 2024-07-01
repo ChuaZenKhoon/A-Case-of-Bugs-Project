@@ -18,7 +18,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
         OnChangeInteractActionDetails = null;
     }
 
-    private List<Maggot> maggotsCollected;
+    private List<Larvae> maggotsCollected;
 
     private Coroutine killMaggotCoroutine;
     private bool isKillingDone;
@@ -29,7 +29,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
     private void Awake() {
         megacephalaMaggotVisual.SetActive(false);
         spinigeraMaggotVisual.SetActive(false);
-        maggotsCollected = new List<Maggot>();
+        maggotsCollected = new List<Larvae>();
         SetUpContainer(false);
         isKillingDone = false;
         killMaggotCoroutine = null;
@@ -106,12 +106,12 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             return;
         }
 
-        InventoryObject currentStareAt = Player.Instance.GetStareAt();
+        InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
-        if (currentStareAt is Maggot) {
-            Maggot currentMaggotStaringAt = currentStareAt as Maggot;
+        if (currentStareAt is Larvae) {
+            Larvae currentMaggotStaringAt = currentStareAt as Larvae;
 
-            Maggot maggotToCollect = currentMaggotStaringAt.GetInventoryObjectSO().prefab.GetComponent<Maggot>();
+            Larvae maggotToCollect = currentMaggotStaringAt.GetInventoryObjectSO().prefab.GetComponent<Larvae>();
             
             //maggotsCollected.Add(maggotToCollect);
             EquipmentStorageManager.Instance.CollectMaggots(maggotToCollect);
@@ -128,7 +128,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
     private void SetCorrectVisual() {
         if (maggotsCollected.Count > 0) {
-            foreach (Maggot maggot in maggotsCollected) {
+            foreach (Larvae maggot in maggotsCollected) {
                 string maggotType = maggot.GetInventoryObjectSO().objectName;
 
                 if (maggotType == "Long Thin Maggot") {

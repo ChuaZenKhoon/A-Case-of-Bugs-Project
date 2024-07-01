@@ -32,7 +32,7 @@ public class PlacardHolder : SelfInteractingEquipment {
     }
 
     private void GameInput_OnInteract2Action(object sender, EventArgs e) {
-        InventoryObject currentStareAt = Player.Instance.GetStareAt();
+        InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
         if (currentStareAt is Placard) {
             Placard currentPlacardStaringAt = currentStareAt as Placard;

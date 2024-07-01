@@ -14,6 +14,10 @@ public class GameOverUI : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        nextButton.onClick.AddListener(() => {  
+            CrimeSceneLevelManager.Instance.MoveToLab();
+            Hide();
+        });
     }
     //Subscribe to game state change event
     private void Start() {

@@ -102,6 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: 587d59fd07c152643ba35ad154aa6d84, type: 2}
+  sealedEvidence: {fileID: 0}
+  evidenceVisual: {fileID: 0}
+  sealedCollider: {fileID: 0}
+  evidenceCollider: {fileID: 0}
 --- !u!1 &5124043305830366668
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObject: {fileID: 8296349659183015417}
+  interactableObject: {fileID: 8296349659183015417}
   selectedVisualArray:
   - {fileID: 2601881161015485578}
 --- !u!1 &5450798009186736383

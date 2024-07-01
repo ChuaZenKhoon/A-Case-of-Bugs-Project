@@ -22,7 +22,7 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
 
     public override void Interact() {
         if (fingerprintLifted == null) {
-            InventoryObject currentStareAt = Player.Instance.GetStareAt();
+            InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
             if (currentStareAt is Fingerprint) {
                 Fingerprint currentFingerprintStaringAt = currentStareAt as Fingerprint;

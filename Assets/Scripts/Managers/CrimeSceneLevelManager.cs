@@ -25,8 +25,14 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         ReadingReport,
         GameStartCountdown,
         GamePlaying,
-        GameEnd
+        GameEnd,
+        LabMessage,
+        LabPlaying,
+        LabEnd
     }
+
+    [SerializeField] private Transform labSpawnLocation;
+    [SerializeField] private ExitDoor exitDoor;
 
     private State state;
 
@@ -51,6 +57,19 @@ public class CrimeSceneLevelManager : MonoBehaviour {
     //Subscribe to events that change game flow and state
     private void Start() {
         InformationReportUI.Instance.OnClickReadFinishReport += InformationReportUI_OnClickReadFinishReport;
+
+        LabSceneMessageUI.OnMessageClickFinish += LabSceneMessageUI_OnMessageClickFinish;
+        exitDoor.OnExitLab += ExitDoor_OnExitLab;
+    }
+
+    private void LabSceneMessageUI_OnMessageClickFinish(object sender, EventArgs e) {
+        state = State.LabPlaying;
+        OnStateChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void ExitDoor_OnExitLab(object sender, EventArgs e) {
+        state = State.LabEnd;
+        OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 
     private void InformationReportUI_OnClickReadFinishReport(object sender, System.EventArgs e) {
@@ -69,6 +88,14 @@ public class CrimeSceneLevelManager : MonoBehaviour {
                 HandleGamePlaying();
                 break;
             case State.GameEnd:
+                break;
+            case State.LabMessage:
+                break;
+            case State.LabPlaying:
+                break;
+            case State.LabEnd:
+                break;
+            default:
                 break;
         }
     }
@@ -106,6 +133,19 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         return state == State.GameEnd;
     }
 
+    public bool IsLabStarted() {
+        return state == State.LabMessage;
+    }
+
+    public bool IsLabPlaying() {
+        return state == State.LabPlaying;
+    }
+
+    public bool IsLabEnded() {
+        return state == State.LabEnd;
+    }
+
+
     //For UI timers to get time
     public float GetCountdownTime() {
         return gameStartCountdownTime;
@@ -118,5 +158,12 @@ public class CrimeSceneLevelManager : MonoBehaviour {
 
     public void SkipAhead() {
         gameTime = 0f;
+    }
+
+    public void MoveToLab() {
+        Player.Instance.gameObject.transform.position = labSpawnLocation.position;
+        Player.Instance.gameObject.transform.rotation = labSpawnLocation.rotation;
+        state = State.LabMessage;
+        OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 }

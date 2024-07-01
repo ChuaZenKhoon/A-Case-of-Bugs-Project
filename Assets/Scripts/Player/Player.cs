@@ -10,18 +10,18 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     public static Player Instance { get; private set; }
 
     //Event for handling inventory object hovering for interaction
-    public event EventHandler<OnPlayerStareAtInventoryObjectChangeEventArgs> OnPlayerStareAtInventoryObjectChange;
+    public event EventHandler<OnPlayerStareAtInteractableObjectChangeEventArgs> OnPlayerStareAtInteractableObjectChange;
     public event EventHandler<EquipmentSO> OnUpdateHeldItemToEquipment;
 
-    public class OnPlayerStareAtInventoryObjectChangeEventArgs {
-        public InventoryObject inventoryObject;
+    public class OnPlayerStareAtInteractableObjectChangeEventArgs {
+        public InteractableObject interactableObject;
     }
     
     [SerializeField] private Camera viewCamera;
 
     [SerializeField] private Transform objectHoldPoint;
 
-    [SerializeField] private LayerMask inventoryObjectLayer;
+    [SerializeField] private LayerMask interactableObjectLayer;
     [SerializeField] private LayerMask droppableLayer;
     [SerializeField] private LayerMask groundLayer;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     private InventoryObject currentHeldObject;
 
     //Note: For the sake of specificity, all interactable objects are inventoryObjects hence labelled as such.
-    private InventoryObject currentInteractableObjectStaringAt;
+    private InteractableObject currentInteractableObjectStaringAt;
     private Vector3 currentDroppablePosition;
     private void Awake() {
         Instance = this;
@@ -76,9 +76,9 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     }
 
     private void CrimeSceneLevelManager_OnStateChange(object sender, EventArgs e) {
-        if(CrimeSceneLevelManager.Instance.IsGamePlaying()) {
+        if (CrimeSceneLevelManager.Instance.IsGamePlaying()) {
             isActivated = true;
-            
+
             //Allow interaction only when game is playing
             GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
             GameInput.Instance.OnMove += GameInput_OnMove;
@@ -206,10 +206,10 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
         float interactDistance = 2.5f;
 
         bool isHit = Physics.Raycast(viewCamera.transform.position, viewCamera.transform.forward, 
-            out RaycastHit rayCastHit, interactDistance, inventoryObjectLayer);
+            out RaycastHit rayCastHit, interactDistance, interactableObjectLayer);
         if (isHit) {
-            if (rayCastHit.transform.TryGetComponent(out InventoryObject inventoryObject)) {
-                SetStareAtObject(inventoryObject);
+            if (rayCastHit.transform.TryGetComponent(out InteractableObject interactableObject)) {
+                SetStareAtObject(interactableObject);
             } else {
                 SetStareAtObject(null);
             }
@@ -243,22 +243,24 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
      * 
      * @Param inventoryObject The InventoryObject currently being looked at
      */
-    private void SetStareAtObject(InventoryObject inventoryObject) {
-        this.currentInteractableObjectStaringAt = inventoryObject;
-        OnPlayerStareAtInventoryObjectChange?.Invoke(this, new OnPlayerStareAtInventoryObjectChangeEventArgs {
-            inventoryObject = inventoryObject
+    private void SetStareAtObject(InteractableObject interactableObject) {
+        this.currentInteractableObjectStaringAt = interactableObject;
+        OnPlayerStareAtInteractableObjectChange?.Invoke(this, new OnPlayerStareAtInteractableObjectChangeEventArgs {
+            interactableObject = interactableObject
         });
     }
 
     public Vector3 GetStareAtPosition() {
         return currentDroppablePosition;
     }
-    public InventoryObject GetStareAt() {
+    public InteractableObject GetStareAt() {
         return currentInteractableObjectStaringAt;
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
-        if (currentHeldObject is Equipment) {
+        if (currentInteractableObjectStaringAt is LabEquipment) {
+            currentInteractableObjectStaringAt.Interact();
+        } else if (currentHeldObject is Equipment) {
             currentHeldObject.Interact();
         } else if (currentInteractableObjectStaringAt != null) {
             currentInteractableObjectStaringAt.Interact();
@@ -319,5 +321,9 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
                 
             }
         }
+    }
+
+    public InventoryObject GetHeldItem() {
+        return currentHeldObject;
     }
 }

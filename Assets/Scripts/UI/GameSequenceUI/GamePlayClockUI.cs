@@ -19,6 +19,17 @@ public class GamePlayClockUI : MonoBehaviour {
         Instance = this;
         timer = 0f;
     }
+
+    private void Start() {
+        CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
+    }
+
+    private void CrimeSceneLevelManager_OnStateChange(object sender, System.EventArgs e) {
+        if (CrimeSceneLevelManager.Instance.IsLabStarted()) {
+            Hide();
+        }
+    }
+
     private void Update() {
         float minutesLeft = CrimeSceneLevelManager.Instance.GetGamePlayTimeLeft(out float secondsTime);
         minutesText.text = minutesLeft.ToString();
@@ -34,5 +45,9 @@ public class GamePlayClockUI : MonoBehaviour {
             tickText.gameObject.SetActive(!tickText.gameObject.activeSelf);
             timer = 0f;
         }
+    }
+
+    private void Hide() {
+        gameObject.SetActive(false);
     }
 }

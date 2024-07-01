@@ -137,6 +137,8 @@ public class InventoryManager : MonoBehaviour {
             return;
         }
 
+        Debug.Log("Here");
+
         isInventoryOpened = !isInventoryOpened;
         OnInventoryUIOpenStateChange?.Invoke(this, EventArgs.Empty);
     }

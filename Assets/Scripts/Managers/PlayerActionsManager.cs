@@ -40,8 +40,8 @@ public class PlayerActionsManager : MonoBehaviour {
         PhotographyCameraUI.OnOpenPhotoGallery += PhotographyCameraUI_OnOpenPhotoGallery;
         SketchPlanUI.OnOpenSketchPlan += SketchPlanUI_OnOpenSketchPlan;
         Phone.OnPhoneOpen += Phone_OnPhoneOpen;
+        Microscope.OnUseMicroscope += Microscope_OnUseMicroscope;
     }
-
 
 
     private void UpdatePlayerActions() {
@@ -52,7 +52,7 @@ public class PlayerActionsManager : MonoBehaviour {
         bool isGamePlaying = false;
         
         if (Loader.targetScene == Loader.Scene.CrimeScene) {
-            isGamePlaying = CrimeSceneLevelManager.Instance.IsGamePlaying();
+            isGamePlaying = CrimeSceneLevelManager.Instance.IsGamePlaying() || CrimeSceneLevelManager.Instance.IsLabPlaying();
         }
 
         if (Loader.targetScene == Loader.Scene.TutorialScene) {
@@ -68,13 +68,14 @@ public class PlayerActionsManager : MonoBehaviour {
             
             bool isInventoryInUse = InventoryManager.Instance.IsInventoryOpen();
             bool isEquipmentInUse = Equipment.isInAction;
+            bool isLabEquipmentInUse = LabEquipment.isInAction;
             bool isTutorial = FindAnyObjectByType<TutorialItemsManager>();
             bool isEquipmentGuideScreenShowing = false;
             if (isTutorial) {
                 isEquipmentGuideScreenShowing = TutorialItemsManager.Instance.IsEquipmentGuideOpen();
             }
 
-            if (isInventoryInUse || isEquipmentInUse || isEquipmentGuideScreenShowing) {
+            if (isInventoryInUse || isEquipmentInUse || isLabEquipmentInUse || isEquipmentGuideScreenShowing) {
                 canCameraMove = false;
                 canPlayerMove = false;
                 canCursorMove = true;
@@ -116,6 +117,10 @@ public class PlayerActionsManager : MonoBehaviour {
         }
     }
 
+
+    private void Microscope_OnUseMicroscope(object sender, System.EventArgs e) {
+        UpdatePlayerActions();
+    }
     private void TutorialItemsManager_OnEquipmentGuideUIOpenClose(object sender, System.EventArgs e) {
         UpdatePlayerActions();
     }

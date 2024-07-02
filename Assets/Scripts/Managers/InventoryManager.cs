@@ -137,8 +137,6 @@ public class InventoryManager : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Here");
-
         isInventoryOpened = !isInventoryOpened;
         OnInventoryUIOpenStateChange?.Invoke(this, EventArgs.Empty);
     }
@@ -260,5 +258,9 @@ public class InventoryManager : MonoBehaviour {
                 equipmentIDArray[index] = 0;
             }
         }
+    }
+
+    public void RemoveFromInventory(int index) {
+
     }
 }

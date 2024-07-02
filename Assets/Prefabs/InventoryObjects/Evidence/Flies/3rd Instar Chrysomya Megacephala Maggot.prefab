@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObject: {fileID: 0}
+  interactableObject: {fileID: 1361198880629049051}
   selectedVisualArray:
   - {fileID: 3949720192741028445}
 --- !u!1 &5450798009186736383
@@ -153,8 +153,10 @@ MonoBehaviour:
   evidenceVisual: {fileID: 0}
   sealedCollider: {fileID: 0}
   evidenceCollider: {fileID: 0}
-  examinedSprites: []
-  speciesName: 
+  examinedSprites:
+  - {fileID: 21300000, guid: c3d551066fb7ad941bf31bb4c47675d0, type: 3}
+  - {fileID: 21300000, guid: 05ce0513e07e84a45837f08f6f18daf5, type: 3}
+  speciesName: 3rd Instar Chrysomya megacephala
 --- !u!1001 &3836519847758561580
 PrefabInstance:
   m_ObjectHideFlags: 0

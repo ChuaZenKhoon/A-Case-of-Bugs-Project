@@ -11,6 +11,7 @@ public class ScoringSystemManager : MonoBehaviour {
     }
 
     //Collected fingerprint with bare hand
+
     //Collected bloodstain with bare hand
 
     //walked too much on main walking path
@@ -22,13 +23,14 @@ public class ScoringSystemManager : MonoBehaviour {
 
     //less than 10 photographs
 
-    //placards not used?
-
     //Never checked weather?
+
     //Never fill in sketch plan details
-    
 
     //Stepping on deceased body
+    
+    //Stepping on dead adult flies
+
     //
 
 }

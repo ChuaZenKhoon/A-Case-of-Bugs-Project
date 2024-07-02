@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 5450798009186736383, guid: 689db5f3f8a9e7f45b5563f0ae630aea, type: 3}
   sprite: {fileID: 21300000, guid: da274cd2fc6e419488e806e675e0d0a2, type: 3}
   objectName: '[Equipment] Swab'
-  objectDescription: Used to sample areas, dry or wet.
+  objectDescription: Used to sample areas of interest.
   interactions:
   - equipmentInteractionButtonText: E
     equipmentInteractionDescriptionText: Use Swab

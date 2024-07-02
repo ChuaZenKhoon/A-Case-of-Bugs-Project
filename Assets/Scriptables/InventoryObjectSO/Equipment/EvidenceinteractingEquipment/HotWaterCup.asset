@@ -15,9 +15,9 @@ MonoBehaviour:
   prefab: {fileID: 5450798009186736383, guid: ca0d8dd1b267b504685baa4e76007310, type: 3}
   sprite: {fileID: 21300000, guid: 289cf3ba35c448a44a406e2b151dae12, type: 3}
   objectName: '[Equipment] Hot Water Cup'
-  objectDescription: Used to kill maggots for mPMI estimation.
+  objectDescription: Used to kill larvae and pupae for mPMI estimation.
   interactions:
   - equipmentInteractionButtonText: E
-    equipmentInteractionDescriptionText: Place maggots
+    equipmentInteractionDescriptionText: Collect
   - equipmentInteractionButtonText: R
-    equipmentInteractionDescriptionText: Kill maggots
+    equipmentInteractionDescriptionText: Kill specimens

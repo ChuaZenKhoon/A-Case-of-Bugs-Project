@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 5450798009186736383, guid: 7bdcf774270d84f419afa49f3aa2d784, type: 3}
   sprite: {fileID: 21300000, guid: ccfb0f3fff3c6694ea2420ca7abda709, type: 3}
   objectName: '[Equipment] Ethanol Container'
-  objectDescription: Used to preserve dead maggots.
+  objectDescription: Used to preserve dead larvae and pupae.
   interactions:
   - equipmentInteractionButtonText: E
     equipmentInteractionDescriptionText: Examine Container

@@ -20,5 +20,6 @@ public class ResetStaticDataOnSceneChange : MonoBehaviour {
         LabSceneMessageUI.ResetStaticData();
         LabEquipment.ResetStaticData();
         Microscope.ResetStaticData();
+        BloodTestStation.ResetStaticData();
     }
 }

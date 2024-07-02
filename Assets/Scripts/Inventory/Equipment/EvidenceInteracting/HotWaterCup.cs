@@ -9,7 +9,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
 
     [SerializeField] private GameObject megacephalaMaggotVisual;
-    [SerializeField] private GameObject spinigeraMaggotVisual;
+    [SerializeField] private GameObject scalarisPupaVisual;
     [SerializeField] private List<GameObject> ethanolContainerVisual;
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
@@ -28,7 +28,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
     private void Awake() {
         megacephalaMaggotVisual.SetActive(false);
-        spinigeraMaggotVisual.SetActive(false);
+        scalarisPupaVisual.SetActive(false);
         maggotsCollected = new List<Larvae>();
         SetUpContainer(false);
         isKillingDone = false;
@@ -51,7 +51,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
                 }
 
                 killMaggotCoroutine = StartCoroutine(KillMaggotCoroutine());
-                MessageLogManager.Instance.LogMessage("Killing maggots with hot water...");
+                MessageLogManager.Instance.LogMessage("Poured hot water. Waiting for specimens to be killed...");
             }
         } else {
            
@@ -62,11 +62,11 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
             SetUpContainer(false);
             isKillingDone = false;
-            MessageLogManager.Instance.LogMessage("Maggots transferred to ethanol container in inventory.");
+            MessageLogManager.Instance.LogMessage("Specimens transferred to ethanol container in inventory.");
 
             EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
             if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Kill maggots", 1);
+                equipmentSO.ChangeInteractionText("Kill specimens", 1);
             }
             OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
             
@@ -89,7 +89,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
         isKillingDone = true;
         EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
         if (equipmentSO != null) {
-            equipmentSO.ChangeInteractionText("Transfer Maggot", 1);
+            equipmentSO.ChangeInteractionText("Transfer Specimens", 1);
         }
         OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
     }
@@ -102,7 +102,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
     public override void Interact() {
 
         if (savedKillingMaggotDuration > 0f) {
-            MessageLogManager.Instance.LogMessage("Killing batch of maggots in progress. Wait for batch to be done and transferred.");
+            MessageLogManager.Instance.LogMessage("Killing batch of specimen in progress. Wait for batch to be done and transferred.");
             return;
         }
 
@@ -120,7 +120,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
             SetCorrectVisual();
 
-            MessageLogManager.Instance.LogMessage("Maggot successfully collected!");
+            MessageLogManager.Instance.LogMessage("Specimen successfully collected!");
         } else {
             MessageLogManager.Instance.LogMessage("Unsuitable equipment for picking up such items.");
         }
@@ -131,8 +131,8 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             foreach (Larvae maggot in maggotsCollected) {
                 string maggotType = maggot.GetInventoryObjectSO().objectName;
 
-                if (maggotType == "Long Thin Maggot") {
-                    spinigeraMaggotVisual.SetActive(true);
+                if (maggotType == "Long thin cylinder") {
+                    scalarisPupaVisual.SetActive(true);
                 }
 
                 if (maggotType == "Cylindrical Maggot") {
@@ -140,7 +140,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
                 }
             } 
         } else {
-            spinigeraMaggotVisual.SetActive(false);
+            scalarisPupaVisual.SetActive(false);
             megacephalaMaggotVisual.SetActive(false);
         }
     }
@@ -152,7 +152,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             killMaggotCoroutine = null;
             EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
             if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Kill maggots", 1);
+                equipmentSO.ChangeInteractionText("Kill specimens", 1);
             }
             OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
         } else if (isKillingDone) {

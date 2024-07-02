@@ -5,13 +5,13 @@ using UnityEngine;
 public class EthanolContainer : EvidenceInteractingEquipment {
 
     [SerializeField] private GameObject megacephalaMaggotVisual;
-    [SerializeField] private GameObject spinigeraMaggotVisual;
+    [SerializeField] private GameObject scalarisPupaVisual;
 
     private List<Larvae> larvaeKilled;
 
     private void Awake() {
         megacephalaMaggotVisual.SetActive(false);
-        spinigeraMaggotVisual.SetActive(false);
+        scalarisPupaVisual.SetActive(false);
     }
 
     private void Start() {
@@ -20,9 +20,9 @@ public class EthanolContainer : EvidenceInteractingEquipment {
     }
     public override void Interact() {
         if (larvaeKilled.Count == 0) {
-            MessageLogManager.Instance.LogMessage("I need to preserve killed maggots in this.");
+            MessageLogManager.Instance.LogMessage("I need to preserve killed larvae and pupae in this.");
         } else {
-            MessageLogManager.Instance.LogMessage("I need to examine the maggots in the laboratory.");
+            MessageLogManager.Instance.LogMessage("I need to examine the larvae and pupae in the laboratory.");
         }
     }
 
@@ -32,8 +32,8 @@ public class EthanolContainer : EvidenceInteractingEquipment {
             foreach (Larvae maggot in larvaeKilled) {
                 string maggotType = maggot.GetInventoryObjectSO().objectName;
 
-                if (maggotType == "Long Thin Maggot") {
-                    spinigeraMaggotVisual.SetActive(true);
+                if (maggotType == "Long thin cylinder") {
+                    scalarisPupaVisual.SetActive(true);
                 }
 
                 if (maggotType == "Cylindrical Maggot") {

@@ -1,14 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fingerprint : Evidence {
 
+    public static event EventHandler OnImproperFingerprintCollection;
+
+    public static void ResetStaticData() {
+        OnImproperFingerprintCollection = null;
+    }
+
+
     [SerializeField] private GameObject visual;
     [SerializeField] private SelectedVisual selectedVisual;
 
     private const string HIDDEN_LAYER_NAME = "hiddenFingerprintsLayer";
-    private const string VISIBLE_LAYER_NAME = "inventoryObjectLayer";
+    private const string VISIBLE_LAYER_NAME = "interactableObjectLayer";
 
 
     private void Awake() {
@@ -24,6 +32,7 @@ public class Fingerprint : Evidence {
     }
 
     public override void Interact() {
+        OnImproperFingerprintCollection?.Invoke(this, EventArgs.Empty);
         Destroy(this.gameObject);
     }
 

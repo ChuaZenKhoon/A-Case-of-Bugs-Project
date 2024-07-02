@@ -34,6 +34,8 @@ public class CrimeSceneLevelManager : MonoBehaviour {
     [SerializeField] private Transform labSpawnLocation;
     [SerializeField] private ExitDoor exitDoor;
 
+    private DifficultyEvidenceList evidenceListToCompare;
+
     private State state;
 
     private float gameStartCountdownTime = 5f;
@@ -47,6 +49,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
 
         foreach (DifficultyEvidenceList evidenceList in difficultyEvidenceList) {
             if (evidenceList.difficultySO == DifficultySettingManager.difficultyLevelSelected) {
+                evidenceListToCompare = evidenceList;
                 foreach (GameObject evidence in evidenceList.evidenceToPlace) {
                     evidence.SetActive(true);
                 }
@@ -165,5 +168,9 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         Player.Instance.gameObject.transform.rotation = labSpawnLocation.rotation;
         state = State.LabMessage;
         OnStateChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    public List<GameObject> GetDifficultyEvidenceListItems() {
+        return evidenceListToCompare.evidenceToPlace;
     }
 }

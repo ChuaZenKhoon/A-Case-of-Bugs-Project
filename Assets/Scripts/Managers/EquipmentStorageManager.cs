@@ -188,6 +188,10 @@ public class EquipmentStorageManager : MonoBehaviour {
         return null;
     }
 
+    public List<BloodStainCollection> GetBloodStains() {
+        return bloodStainCollection;
+    }
+
     public List<AdultFly> GetCapturedFlies() {
         return capturedAdultFlyCollection;
     }

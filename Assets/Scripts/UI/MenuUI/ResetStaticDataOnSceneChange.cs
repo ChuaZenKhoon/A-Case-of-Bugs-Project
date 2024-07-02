@@ -21,5 +21,6 @@ public class ResetStaticDataOnSceneChange : MonoBehaviour {
         LabEquipment.ResetStaticData();
         Microscope.ResetStaticData();
         BloodTestStation.ResetStaticData();
+        AdultFly.ResetStaticData();
     }
 }

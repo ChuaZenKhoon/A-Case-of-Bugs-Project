@@ -41,8 +41,8 @@ public class PlayerActionsManager : MonoBehaviour {
         SketchPlanUI.OnOpenSketchPlan += SketchPlanUI_OnOpenSketchPlan;
         Phone.OnPhoneOpen += Phone_OnPhoneOpen;
         Microscope.OnUseMicroscope += Microscope_OnUseMicroscope;
+        BloodTestStation.OnUseBloodTestStation += BloodTestStation_OnUseBloodTestStation;
     }
-
 
     private void UpdatePlayerActions() {
 
@@ -117,7 +117,9 @@ public class PlayerActionsManager : MonoBehaviour {
         }
     }
 
-
+    private void BloodTestStation_OnUseBloodTestStation(object sender, System.EventArgs e) {
+        UpdatePlayerActions();
+    }
     private void Microscope_OnUseMicroscope(object sender, System.EventArgs e) {
         UpdatePlayerActions();
     }

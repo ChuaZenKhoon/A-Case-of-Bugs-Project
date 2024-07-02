@@ -43,6 +43,8 @@ public class EquipmentStorageManager : MonoBehaviour {
     [Serializable] public struct BloodStainCollection {
         public Bloodstain bloodStainCollected;
         public int swabID;
+        public bool testedPositive;
+        public bool cannotBeUsedAnymore;
     }
 
     private List<BloodStainCollection> bloodStainCollection;
@@ -157,20 +159,32 @@ public class EquipmentStorageManager : MonoBehaviour {
         return null;
     }
 
-    public void SetBloodStain(int swabNum, Bloodstain bloodStain) {
+    public void SetBloodStain(int swabNum, Bloodstain bloodStain, bool positive, bool obsolete) {
+        for (int i = 0; i < bloodStainCollection.Count; i++) {
+            if (bloodStainCollection[i].swabID == swabNum) {
+                bloodStainCollection.RemoveAt(i);
+            }
+        }
+
         bloodStainCollection.Add(new BloodStainCollection {
             swabID = swabNum,
-            bloodStainCollected = bloodStain
+            bloodStainCollected = bloodStain,
+            testedPositive = positive,
+            cannotBeUsedAnymore = obsolete
         });
     }
 
-    public Bloodstain GetBloodStain(int swabNum) {
+    public Bloodstain GetBloodStain(int swabNum, out bool positive, out bool cannotBeUsed) {
         for (int i = 0; i < bloodStainCollection.Count; i++) {
             if (bloodStainCollection[i].swabID == swabNum) {
+                positive = bloodStainCollection[i].testedPositive;
+                cannotBeUsed = bloodStainCollection[i].cannotBeUsedAnymore;
                 return bloodStainCollection[i].bloodStainCollected;
             }
         }
 
+        positive = false;
+        cannotBeUsed = false;
         return null;
     }
 

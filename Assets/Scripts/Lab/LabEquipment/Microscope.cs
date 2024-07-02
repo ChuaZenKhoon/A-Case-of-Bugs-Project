@@ -26,6 +26,11 @@ public class Microscope : LabEquipment {
 
     private string currentItemName;
     public override void Interact() {
+        if (InventoryScreenUI.isInAction) {
+            MessageLogManager.Instance.LogMessage("Close Inventory first before using the lab equipment.");
+            return;
+        }
+
         InventoryObject playerHeldItem = Player.Instance.GetHeldItem();
 
         if (!(playerHeldItem is Container || playerHeldItem is AcetoneKillJar || playerHeldItem is EthanolContainer)) {

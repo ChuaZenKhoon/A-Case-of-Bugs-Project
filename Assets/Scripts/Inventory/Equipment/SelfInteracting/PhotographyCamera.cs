@@ -44,7 +44,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
             return;
         }
 
-        if (InventoryScreenUI.isInAction) {
+        if (InventoryManager.Instance.IsInventoryOpen()) {
             MessageLogManager.Instance.LogMessage("Close Inventory first before using the camera");
             return;
         }

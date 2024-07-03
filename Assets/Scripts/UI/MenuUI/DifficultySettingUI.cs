@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/**
+ * A UI element that represents the difficulty settings of the game.
+ */
 public class DifficultySettingUI : MonoBehaviour {
 
     [SerializeField] private Button easyModeButton;
@@ -16,18 +19,17 @@ public class DifficultySettingUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI difficultyText;
     [SerializeField] private TextMeshProUGUI difficultyNameText;
 
+    [SerializeField] private CanvasGroup canvasGroup;
+
     private void Awake() {
         easyModeButton.onClick.AddListener(() => {
-            DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Easy);
-            UpdateDifficultyDescription(DifficultySettingManager.difficultyLevelSelected);
+            DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Easy); 
         });
         mediumModeButton.onClick.AddListener(() => {
             DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Medium);
-            UpdateDifficultyDescription(DifficultySettingManager.difficultyLevelSelected);
         });
         hardModeButton.onClick.AddListener(() => {
             DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Hard);
-            UpdateDifficultyDescription(DifficultySettingManager.difficultyLevelSelected);
         });
         enterGameButton.onClick.AddListener(() => {
             StartGame();
@@ -37,6 +39,7 @@ public class DifficultySettingUI : MonoBehaviour {
         });
     }
 
+    //Sets target scene to main game, scene to load async set, then goes to loading screen
     private void StartGame() {
         SceneManager.LoadScene(Loader.Scene.LoadingScreen.ToString());
         Loader.targetScene = Loader.Scene.CrimeScene;
@@ -47,15 +50,19 @@ public class DifficultySettingUI : MonoBehaviour {
     }
 
     private void Hide() {
-        gameObject.SetActive(false);
+        canvasGroup.alpha = 0f;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
     }
 
     public void Show() {
-        gameObject.SetActive(true);
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
     }
 
-    private void UpdateDifficultyDescription(DifficultySO difficultySO) {
-        difficultyText.text = difficultySO.difficultyDescription;
-        difficultyNameText.text = difficultySO.difficultyLevel.ToString();
+    public void UpdateDifficultyDescription(string difficultyDescription, string difficultyLevelName) {
+        difficultyText.text = difficultyDescription;
+        difficultyNameText.text = difficultyLevelName;
     }
 }

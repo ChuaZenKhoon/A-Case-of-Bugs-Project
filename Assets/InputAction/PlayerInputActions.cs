@@ -89,42 +89,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TakePicture"",
-                    ""type"": ""Button"",
-                    ""id"": ""1644a7d8-0feb-42c2-94df-560301188554"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ClearSketch"",
-                    ""type"": ""Button"",
-                    ""id"": ""d05a38d7-a8ef-46cc-939d-1d0544566a51"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MouseSketchPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""f9039d83-d939-49f6-901a-6fd1231c844a"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ToggleSketchView"",
-                    ""type"": ""Button"",
-                    ""id"": ""67f9da66-ca0d-428a-9768-2d3917f84499"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -273,17 +237,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e9b4a0f8-b522-48c6-8c05-167ef8b6b675"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TakePicture"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a6a9e3c8-d598-456e-8178-89727bf36345"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -303,10 +256,65 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""PauseScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Equipment"",
+            ""id"": ""46a2dc38-e938-4d31-8ed9-5d34e1111415"",
+            ""actions"": [
+                {
+                    ""name"": ""TakePicture"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac8e964b-da0a-41cb-9a42-103a6f7a16b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClearSketch"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0dbd94b-e7d1-43e8-b73c-eb5d4b17d87a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseSketchPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""7d87e390-1bdd-4a1c-ada9-af1ae41f4290"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToggleSketchView"",
+                    ""type"": ""Button"",
+                    ""id"": ""2fb65cc7-6912-43e9-aeb6-32a807a8c05c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ba91f910-447e-4c54-80e3-cbe8e1ff4178"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TakePicture"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""86716548-0724-4f9c-be77-339f82f72d23"",
+                    ""id"": ""c9054cf5-40cc-417d-9e45-b27abebeb89a"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -317,7 +325,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""72f0912e-a2ab-429f-a649-1e5ea94ca84c"",
+                    ""id"": ""2c546b86-e93a-4838-bcbd-21cfc4beee90"",
                     ""path"": ""<Pointer>/position"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -328,7 +336,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5950ad03-4a33-415c-bdd1-f8635b607eb1"",
+                    ""id"": ""fb3464ff-df53-4810-a51f-c5a49ca16d84"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -351,10 +359,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_PauseScreen = m_Player.FindAction("PauseScreen", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Interact2 = m_Player.FindAction("Interact2", throwIfNotFound: true);
-        m_Player_TakePicture = m_Player.FindAction("TakePicture", throwIfNotFound: true);
-        m_Player_ClearSketch = m_Player.FindAction("ClearSketch", throwIfNotFound: true);
-        m_Player_MouseSketchPosition = m_Player.FindAction("MouseSketchPosition", throwIfNotFound: true);
-        m_Player_ToggleSketchView = m_Player.FindAction("ToggleSketchView", throwIfNotFound: true);
+        // Equipment
+        m_Equipment = asset.FindActionMap("Equipment", throwIfNotFound: true);
+        m_Equipment_TakePicture = m_Equipment.FindAction("TakePicture", throwIfNotFound: true);
+        m_Equipment_ClearSketch = m_Equipment.FindAction("ClearSketch", throwIfNotFound: true);
+        m_Equipment_MouseSketchPosition = m_Equipment.FindAction("MouseSketchPosition", throwIfNotFound: true);
+        m_Equipment_ToggleSketchView = m_Equipment.FindAction("ToggleSketchView", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -423,10 +433,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PauseScreen;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Interact2;
-    private readonly InputAction m_Player_TakePicture;
-    private readonly InputAction m_Player_ClearSketch;
-    private readonly InputAction m_Player_MouseSketchPosition;
-    private readonly InputAction m_Player_ToggleSketchView;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -438,10 +444,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @PauseScreen => m_Wrapper.m_Player_PauseScreen;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Interact2 => m_Wrapper.m_Player_Interact2;
-        public InputAction @TakePicture => m_Wrapper.m_Player_TakePicture;
-        public InputAction @ClearSketch => m_Wrapper.m_Player_ClearSketch;
-        public InputAction @MouseSketchPosition => m_Wrapper.m_Player_MouseSketchPosition;
-        public InputAction @ToggleSketchView => m_Wrapper.m_Player_ToggleSketchView;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -472,18 +474,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact2.started += instance.OnInteract2;
             @Interact2.performed += instance.OnInteract2;
             @Interact2.canceled += instance.OnInteract2;
-            @TakePicture.started += instance.OnTakePicture;
-            @TakePicture.performed += instance.OnTakePicture;
-            @TakePicture.canceled += instance.OnTakePicture;
-            @ClearSketch.started += instance.OnClearSketch;
-            @ClearSketch.performed += instance.OnClearSketch;
-            @ClearSketch.canceled += instance.OnClearSketch;
-            @MouseSketchPosition.started += instance.OnMouseSketchPosition;
-            @MouseSketchPosition.performed += instance.OnMouseSketchPosition;
-            @MouseSketchPosition.canceled += instance.OnMouseSketchPosition;
-            @ToggleSketchView.started += instance.OnToggleSketchView;
-            @ToggleSketchView.performed += instance.OnToggleSketchView;
-            @ToggleSketchView.canceled += instance.OnToggleSketchView;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -509,18 +499,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact2.started -= instance.OnInteract2;
             @Interact2.performed -= instance.OnInteract2;
             @Interact2.canceled -= instance.OnInteract2;
-            @TakePicture.started -= instance.OnTakePicture;
-            @TakePicture.performed -= instance.OnTakePicture;
-            @TakePicture.canceled -= instance.OnTakePicture;
-            @ClearSketch.started -= instance.OnClearSketch;
-            @ClearSketch.performed -= instance.OnClearSketch;
-            @ClearSketch.canceled -= instance.OnClearSketch;
-            @MouseSketchPosition.started -= instance.OnMouseSketchPosition;
-            @MouseSketchPosition.performed -= instance.OnMouseSketchPosition;
-            @MouseSketchPosition.canceled -= instance.OnMouseSketchPosition;
-            @ToggleSketchView.started -= instance.OnToggleSketchView;
-            @ToggleSketchView.performed -= instance.OnToggleSketchView;
-            @ToggleSketchView.canceled -= instance.OnToggleSketchView;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -538,6 +516,76 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Equipment
+    private readonly InputActionMap m_Equipment;
+    private List<IEquipmentActions> m_EquipmentActionsCallbackInterfaces = new List<IEquipmentActions>();
+    private readonly InputAction m_Equipment_TakePicture;
+    private readonly InputAction m_Equipment_ClearSketch;
+    private readonly InputAction m_Equipment_MouseSketchPosition;
+    private readonly InputAction m_Equipment_ToggleSketchView;
+    public struct EquipmentActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public EquipmentActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TakePicture => m_Wrapper.m_Equipment_TakePicture;
+        public InputAction @ClearSketch => m_Wrapper.m_Equipment_ClearSketch;
+        public InputAction @MouseSketchPosition => m_Wrapper.m_Equipment_MouseSketchPosition;
+        public InputAction @ToggleSketchView => m_Wrapper.m_Equipment_ToggleSketchView;
+        public InputActionMap Get() { return m_Wrapper.m_Equipment; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EquipmentActions set) { return set.Get(); }
+        public void AddCallbacks(IEquipmentActions instance)
+        {
+            if (instance == null || m_Wrapper.m_EquipmentActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_EquipmentActionsCallbackInterfaces.Add(instance);
+            @TakePicture.started += instance.OnTakePicture;
+            @TakePicture.performed += instance.OnTakePicture;
+            @TakePicture.canceled += instance.OnTakePicture;
+            @ClearSketch.started += instance.OnClearSketch;
+            @ClearSketch.performed += instance.OnClearSketch;
+            @ClearSketch.canceled += instance.OnClearSketch;
+            @MouseSketchPosition.started += instance.OnMouseSketchPosition;
+            @MouseSketchPosition.performed += instance.OnMouseSketchPosition;
+            @MouseSketchPosition.canceled += instance.OnMouseSketchPosition;
+            @ToggleSketchView.started += instance.OnToggleSketchView;
+            @ToggleSketchView.performed += instance.OnToggleSketchView;
+            @ToggleSketchView.canceled += instance.OnToggleSketchView;
+        }
+
+        private void UnregisterCallbacks(IEquipmentActions instance)
+        {
+            @TakePicture.started -= instance.OnTakePicture;
+            @TakePicture.performed -= instance.OnTakePicture;
+            @TakePicture.canceled -= instance.OnTakePicture;
+            @ClearSketch.started -= instance.OnClearSketch;
+            @ClearSketch.performed -= instance.OnClearSketch;
+            @ClearSketch.canceled -= instance.OnClearSketch;
+            @MouseSketchPosition.started -= instance.OnMouseSketchPosition;
+            @MouseSketchPosition.performed -= instance.OnMouseSketchPosition;
+            @MouseSketchPosition.canceled -= instance.OnMouseSketchPosition;
+            @ToggleSketchView.started -= instance.OnToggleSketchView;
+            @ToggleSketchView.performed -= instance.OnToggleSketchView;
+            @ToggleSketchView.canceled -= instance.OnToggleSketchView;
+        }
+
+        public void RemoveCallbacks(IEquipmentActions instance)
+        {
+            if (m_Wrapper.m_EquipmentActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IEquipmentActions instance)
+        {
+            foreach (var item in m_Wrapper.m_EquipmentActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_EquipmentActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public EquipmentActions @Equipment => new EquipmentActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -547,6 +595,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnPauseScreen(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInteract2(InputAction.CallbackContext context);
+    }
+    public interface IEquipmentActions
+    {
         void OnTakePicture(InputAction.CallbackContext context);
         void OnClearSketch(InputAction.CallbackContext context);
         void OnMouseSketchPosition(InputAction.CallbackContext context);

@@ -11,9 +11,6 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
     
     [SerializeField] private int index;
 
-    //Event for when a successful drag drop happens
-    public static event EventHandler<OnSuccessfulDragDropItemEventArgs> OnSuccssfulDragDropItem;
-
     //Event for when cursor hovers over the inventory slot UI element
     public static event EventHandler<int> OnHoverEnterInventorySlot;
 
@@ -25,7 +22,6 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     //Reset static events on scene load
     public static void ResetStaticData() {
-        OnSuccssfulDragDropItem = null;
         OnHoverEnterInventorySlot = null;
         OnHoverLeaveInventorySlot = null;
         OnRightClickInventorySlot = null;
@@ -69,7 +65,7 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     //Tell drop item UI element that is it being called
     public void OnPointerClick(PointerEventData eventData) {
-        if(eventData.button == PointerEventData.InputButton.Right && inventoryDragDrop.GetIconImage().sprite != null) {
+        if(eventData.button == PointerEventData.InputButton.Right && inventoryDragDrop.GetIconSprite() != null) {
             OnRightClickInventorySlot?.Invoke(this, new OnRightClickInventorySlotEventArgs {
                 mousePosition = eventData.position,
                 inventorySlotIndex = this.index,
@@ -95,20 +91,16 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
             //Successful drop, swap inventory items
             InventoryDragDrop incomingInventoryDragDrop = eventData.pointerDrag.GetComponent<InventoryDragDrop>();
             
-            Sprite incomingSprite = incomingInventoryDragDrop.GetIconImage().sprite;
+            Sprite incomingSprite = incomingInventoryDragDrop.GetIconSprite();
             int incomingIndex = incomingInventoryDragDrop.GetParent().GetIndex();
 
-            Sprite currentSprite = this.inventoryDragDrop.GetIconImage().sprite;
+            Sprite currentSprite = this.inventoryDragDrop.GetIconSprite();
             int currentIndex = this.index;
 
             incomingInventoryDragDrop.SetIconSprite(currentSprite);
             this.inventoryDragDrop.SetIconSprite(incomingSprite);
 
-            OnSuccssfulDragDropItem?.Invoke(this, new OnSuccessfulDragDropItemEventArgs {
-                oldIndex = this.index,
-                newIndex = incomingIndex
-
-            });
+            InventoryManager.Instance.SuccessfulSwap(this.index, incomingIndex);
         }
     }
 

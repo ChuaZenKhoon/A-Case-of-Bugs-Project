@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,30 +9,18 @@ using UnityEngine.UI;
  */
 public class OptionsMenuUI : MonoBehaviour {
 
-    public static OptionsMenuUI Instance {  get; private set; }
-
-    //Event for when master volume slider is dragged
+    //Events for when settings are changed by player
     public event EventHandler<float> OnMasterVolumeChange;
-
-    //Event for when SFX volume slider is dragged
     public event EventHandler<float> OnSFXVolumeChange;
-
-    //Event for when BGM volume slider is dragged
     public event EventHandler<float> OnBGMVolumeChange;
 
-    //Event for when graphics quality option is changed
     public event EventHandler<int> OnGraphicsQualityChange;
-
-    //Event for when Fullscreen toggle is changed
     public event EventHandler<bool> OnFullscreenChange;
-
-    //Event for when VSync toggle is changed
     public event EventHandler<bool> OnVSyncChange;
 
-    //Event for when mouse sensitivity is changed
     public event EventHandler<float> OnMouseSensitivityChange;
 
-
+    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Button closeButton;
 
     //Tabs
@@ -41,7 +28,6 @@ public class OptionsMenuUI : MonoBehaviour {
     [SerializeField] private Button graphicsTab;
     [SerializeField] private Button gameSettingsTab;
     [SerializeField] private GameObject[] settingTabs;
-
 
     //Sounds
     [SerializeField] private Slider masterVolSlider;
@@ -60,7 +46,6 @@ public class OptionsMenuUI : MonoBehaviour {
 
     //Add listeners to buttons and sliders
     private void Awake() {
-        Instance = this;
 
         masterVolSlider.onValueChanged.AddListener((float volume) => {
             OnMasterVolumeChange?.Invoke(this, volume);
@@ -119,18 +104,16 @@ public class OptionsMenuUI : MonoBehaviour {
         fullScreenToggle.isOn = GraphicsManager.Instance.IsFullscreen();
         vSyncToggle.isOn = GraphicsManager.Instance.IsVsyncOn();
         
-
+        //In game, QOL effect of closing options menu and pause screen together
         GameObject levelManager = GameObject.Find("LevelManager");
         if (levelManager != null) {
             PauseManager levelManagerComponent = levelManager.GetComponent<PauseManager>();
             if (levelManagerComponent != null) {
-                //Is in game
                 PauseManager.Instance.OnGameUnpause += PauseManager_OnGameUnpause;
             }
         }
 
         //Game Settings Set up
-
         mouseSensitivitySlider.value = GameSettingsManager.Instance.GetSensitivity();
 
         Hide();
@@ -143,11 +126,17 @@ public class OptionsMenuUI : MonoBehaviour {
     }
 
     public void Show() {
-        gameObject.SetActive(true);
+        //Show UI not enable, due to needing to find it by settingManagers
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         SwitchTab(0);
     }
     private void Hide() {
-        gameObject.SetActive(false);
+        //Hide UI not disable, due to needing to find it by settingManagers
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     private void InitialiseGraphicsQualityDropDown() {
@@ -161,6 +150,11 @@ public class OptionsMenuUI : MonoBehaviour {
         });
     }
 
+    /**
+     * Enables player to switch between different menu tabs of settings.
+     * 
+     * @param index The index of the tab 
+     */
     private void SwitchTab(int index) {
         for (int i = 0; i< settingTabs.Length; i++) {
             if (i == index) {

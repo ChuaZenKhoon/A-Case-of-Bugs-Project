@@ -30,7 +30,7 @@ public class Phone : SelfInteractingEquipment {
     }
 
     public override void Interact() {
-        if (InventoryScreenUI.isInAction) {
+        if (InventoryManager.Instance.IsInventoryOpen()) {
             MessageLogManager.Instance.LogMessage("Close Inventory first before using phone.");
             return;
         }

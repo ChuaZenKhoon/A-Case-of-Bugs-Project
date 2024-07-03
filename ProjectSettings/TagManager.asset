@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fingerprint
+  - OptionsMenuUI
   layers:
   - Default
   - TransparentFX

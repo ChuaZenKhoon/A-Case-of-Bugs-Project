@@ -5,7 +5,7 @@ using UnityEngine;
 /**
  * Handles the Player and its logic.
  */ 
-public class Player : MonoBehaviour, IObjectInteractionParent {
+public class Player : MonoBehaviour {
 
     public static Player Instance { get; private set; }
 
@@ -32,7 +32,8 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     private Vector2 currentMoveDirection = Vector2.zero;
 
     private bool isWalking;
-    private bool isActivated;
+    private bool isMovementActivated;
+    private bool isInteractionActivated;
 
     private InventoryObject currentHeldObject;
 
@@ -41,7 +42,8 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     private Vector3 currentDroppablePosition;
     private void Awake() {
         Instance = this;
-        isActivated = false;
+        isMovementActivated = false;
+        isInteractionActivated = false;
     }
 
     //Subscribe to events
@@ -59,17 +61,18 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
 
     private void TutorialLevelManager_OnStateChange(object sender, EventArgs e) {
         if (TutorialLevelManager.Instance.IsStartingMovement()) {
-            isActivated = true;
+            isMovementActivated = true;
             GameInput.Instance.OnMove += GameInput_OnMove;
         }
 
         if (TutorialLevelManager.Instance.IsStartingInteraction()) {
+            isInteractionActivated = true;
             GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         }
     }
 
     private void FixedUpdate() {
-        if (isActivated) {
+        if (isMovementActivated) {
             HandleWalking();
             HandleStareAt();
         }
@@ -77,8 +80,8 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
 
     private void CrimeSceneLevelManager_OnStateChange(object sender, EventArgs e) {
         if (CrimeSceneLevelManager.Instance.IsGamePlaying()) {
-            isActivated = true;
-
+            isMovementActivated = true;
+            isInteractionActivated = true;
             //Allow interaction only when game is playing
             GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
             GameInput.Instance.OnMove += GameInput_OnMove;
@@ -186,13 +189,17 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
 
     //In inventory screen, cannot move or interact
 
-    public void ToggleActivationState(bool isActivated) {
-        this.isActivated = isActivated;
+    public void ToggleMovementState(bool isActivated) {
+        this.isMovementActivated = isActivated;
 
         if (!isActivated) {
             isWalking = false;
             SetStareAtObject(null);
         }
+    }
+
+    public void ToggleInteractionState(bool isActivated) {
+        this.isInteractionActivated = isActivated;
     }
 
     /**
@@ -258,6 +265,10 @@ public class Player : MonoBehaviour, IObjectInteractionParent {
     }
 
     private void GameInput_OnInteractAction(object sender, EventArgs e) {
+        if (!isInteractionActivated) {
+            return;
+        }
+        
         if (currentInteractableObjectStaringAt is LabEquipment) {
             currentInteractableObjectStaringAt.Interact();
         } else if (currentHeldObject is Equipment) {

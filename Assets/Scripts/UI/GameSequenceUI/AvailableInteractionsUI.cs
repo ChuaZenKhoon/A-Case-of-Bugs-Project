@@ -3,39 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI element representing the available keys displayed to the player that can be pressed for an interaction.
+ */
 public class AvailableInteractionsUI : MonoBehaviour {
 
     [SerializeField] private Transform container;
     [SerializeField] private Transform template;
 
     private void Start () {
-        AvailableInteractionsManager.Instance.OnEquipmentHold += AvailableInteractionsManager_OnEquipmentHold;
         template.gameObject.SetActive(false);
     }
 
-    private void AvailableInteractionsManager_OnEquipmentHold(object sender, EquipmentSO e) {
-        UpdateVisual(e);
-    }
+    //Using a template format, each interaction is created from the template and updated.
 
-    private void UpdateVisual(EquipmentSO equipmentSO) {
+    /**
+     * Interactions from before are to be cleared first before update.
+     */
+    public void ClearInteractions() {
         foreach (Transform child in container) {
             if (child == template) {
                 continue;
             }
             Destroy(child.gameObject);
-        } 
-
-        if (equipmentSO == null) {
-            return;
         }
+    }
 
-        List<EquipmentSO.EquipmentInteraction> equipmentInteractions = equipmentSO.interactions;
-
-        foreach (EquipmentSO.EquipmentInteraction equipmentInteraction in equipmentInteractions) {
-            Transform singleInteraction = Instantiate(template, container);
-            singleInteraction.gameObject.SetActive(true);
-            singleInteraction.GetComponent<AvailableInteractionsSingleUI>().SetUpInteraction(equipmentInteraction);
-        }
+    /**
+     * Every addition of an interaction creates a single UI using the template.
+     */
+    public void AddInteraction(string buttonText, string descriptionText) {
+        Transform singleInteraction = Instantiate(template, container);
+        singleInteraction.gameObject.SetActive(true);
+        singleInteraction.GetComponent<AvailableInteractionsSingleUI>().SetUpInteraction(buttonText, descriptionText);
     }
 
 }

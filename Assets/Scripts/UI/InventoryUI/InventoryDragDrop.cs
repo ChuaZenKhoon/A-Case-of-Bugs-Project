@@ -66,17 +66,19 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         rectTransform.anchoredPosition = Vector2.zero;
     }
 
-    public Image GetIconImage() {
-        return this.iconImage;
+    public Sprite GetIconSprite() {
+        return this.iconImage.sprite;
     }
 
     //Player to drag item sprite in inventory slot
     public void SetIconSprite(Sprite sprite) {
         if (sprite != null) {
             this.iconImage.color = new Color(1, 1, 1, 1);
+            iconImage.raycastTarget = true;
             this.iconImage.sprite = sprite;
         } else {
             this.iconImage.color = new Color(1, 1, 1, 0);
+            iconImage.raycastTarget = false;
             this.iconImage.sprite = sprite;
         }
     }

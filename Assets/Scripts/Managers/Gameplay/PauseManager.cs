@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * A manager that handles the pausing logic of the game.
+ */
 public class PauseManager : MonoBehaviour {
     
     public static PauseManager Instance { get; private set; }
@@ -13,9 +16,13 @@ public class PauseManager : MonoBehaviour {
     //Event for when game is unpaused
     public event EventHandler OnGameUnpause;
 
-    private bool isPaused = false;
+    [SerializeField] private PauseGameUI pauseGameUI;
+
+    private bool isPaused;
     private void Awake() {
         Instance = this;
+
+        isPaused = false;
 
         //Case where game is paused then level is restarted
         Time.timeScale = 1.0f;
@@ -23,11 +30,6 @@ public class PauseManager : MonoBehaviour {
 
     private void Start() {
         GameInput.Instance.OnPauseScreenAction += GameInput_OnPauseExitScreen;
-        GameInstructionsUI.OnSkipAhead += GameInstructionsUI_OnSkipAhead;
-    }
-
-    private void GameInstructionsUI_OnSkipAhead(object sender, EventArgs e) {
-        TogglePause();
     }
 
     private void GameInput_OnPauseExitScreen(object sender, EventArgs e) {
@@ -35,15 +37,17 @@ public class PauseManager : MonoBehaviour {
     }
 
     /**
-      * Executes pause logic when pause event is fired and received
-      */
+     * Executes pause logic when pause event is fired and received
+     */
     public void TogglePause() {
         isPaused = !isPaused;
         if (isPaused) {
             Time.timeScale = 0f;
+            pauseGameUI.Show();
             OnGamePause?.Invoke(this, EventArgs.Empty);
         } else {
             Time.timeScale = 1f;
+            pauseGameUI.UnpauseGame();
             OnGameUnpause?.Invoke(this, EventArgs.Empty);
         }
     }

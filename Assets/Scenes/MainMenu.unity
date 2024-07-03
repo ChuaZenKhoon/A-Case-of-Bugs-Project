@@ -753,6 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398143126}
   - component: {fileID: 398143127}
+  - component: {fileID: 398143128}
   m_Layer: 5
   m_Name: DifficultySettingUI
   m_TagString: Untagged
@@ -805,6 +806,19 @@ MonoBehaviour:
   closeButton: {fileID: 612503331}
   difficultyText: {fileID: 1839577356}
   difficultyNameText: {fileID: 893123085}
+  canvasGroup: {fileID: 398143128}
+--- !u!225 &398143128
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398143125}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &491442521
 GameObject:
   m_ObjectHideFlags: 0
@@ -5529,6 +5543,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 996300468085344054, guid: 5717ea2d71d4a6344881dac9e8703ebf,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1102753729878388544, guid: 5717ea2d71d4a6344881dac9e8703ebf,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5542,7 +5561,7 @@ PrefabInstance:
     - target: {fileID: 2230533710226067942, guid: 5717ea2d71d4a6344881dac9e8703ebf,
         type: 3}
       propertyPath: m_Name
-      value: OptionsMenuUI
+      value: OptionsMenuUIMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2444589023486444187, guid: 5717ea2d71d4a6344881dac9e8703ebf,
         type: 3}
@@ -5769,6 +5788,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7458651442599274200, guid: 5717ea2d71d4a6344881dac9e8703ebf,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7549400191656926899, guid: 5717ea2d71d4a6344881dac9e8703ebf,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5830,10 +5854,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 2098678082}
   - {fileID: 1045161310}
-  - {fileID: 595688327}
   - {fileID: 12248813}
   - {fileID: 2067362371}
   - {fileID: 944099831}
+  - {fileID: 595688327}
   - {fileID: 811799055}
   - {fileID: 1735762829}
   - {fileID: 1905502488}

@@ -2,8 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameSettingsManager : MonoBehaviour {
+/**
+ * A manager in charge of handling the logic of game settings.
+ */
+public class GameSettingsManager : SettingsManager {
 
     public static GameSettingsManager Instance { get; private set; }
 
@@ -13,18 +17,34 @@ public class GameSettingsManager : MonoBehaviour {
 
     private float mouseSensitivityValue;
 
+    //Persistent Singleton
     private void Awake() {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        } else {
+            Destroy(gameObject);
+        }
 
         mouseSensitivityValue = PlayerPrefs.GetFloat(PLAYER_PREFS_MOUSE_SENSITIVITY, 0.9f/4.9f);
         SetSensitivity(mouseSensitivityValue);
     }
 
+    //Find Options Menu UI when scene loads
     private void Start() {
-        OptionsMenuUI.Instance.OnMouseSensitivityChange += OptionsMenuUI_OnMouseSensitivityChange;
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        SetUpOptionsMenuUI();
     }
 
-    private void OptionsMenuUI_OnMouseSensitivityChange(object sender, float e) {
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        SetUpOptionsMenuUI();
+    }
+
+    protected override void SubscribeToEvents(OptionsMenuUI optionsMenuUI) {
+        optionsMenuUI.OnMouseSensitivityChange += OptionsMenuUI_OnMouseSensitivityChange1;
+    }
+
+    private void OptionsMenuUI_OnMouseSensitivityChange1(object sender, float e) {
         SetSensitivity(e);
     }
 

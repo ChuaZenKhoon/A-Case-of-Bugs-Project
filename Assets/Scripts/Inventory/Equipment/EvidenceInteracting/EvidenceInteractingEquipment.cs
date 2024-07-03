@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvidenceInteractingEquipment : Equipment, IObjectInteractionParent {
-
-
+public class EvidenceInteractingEquipment : Equipment {
 
     private int equipmentID;
 

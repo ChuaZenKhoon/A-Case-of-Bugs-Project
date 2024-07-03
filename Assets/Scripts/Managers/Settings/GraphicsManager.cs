@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * A manager in charge of handling the logic of graphic settings of the game.
  */
-public class GraphicsManager : MonoBehaviour {
+public class GraphicsManager : SettingsManager {
 
     public static GraphicsManager Instance { get; private set; }
 
@@ -13,7 +14,7 @@ public class GraphicsManager : MonoBehaviour {
     private const string PLAYER_PREFS_GRAPHICSQUALITY_VALUE = "GraphicsQuality";
     private const string PLAYER_PREFS_FULLSCREEN_VALUE = "Fullscreen";
     private const string PLAYER_PREFS_VSYNC_VALUE = "Vsync";
-    
+
     //Graphic settings to take from saved settings, temp settings not confirmed set
     private int graphicsQualityValue;
     private bool isFullscreenOn;
@@ -31,8 +32,14 @@ public class GraphicsManager : MonoBehaviour {
         "High"
     };
 
+    //Persistent Singleton
     private void Awake() {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        } else {
+            Destroy(gameObject);
+        }
 
         //Get Player Prefs else default value
         //Resolutions will be based on what the player's device can use
@@ -45,18 +52,34 @@ public class GraphicsManager : MonoBehaviour {
         SetVsync(savedIsVsyncOn);
 
         ApplyGraphicSettings();
+
+
     }
 
 
-    //Subscribe to graphic settings change events from the options menu UI
+    //Find Options Menu UI when scene loads
     private void Start() {
-        if (OptionsMenuUI.Instance != null) {
-            OptionsMenuUI.Instance.OnGraphicsQualityChange += OptionsMenuUI_OnGraphicsQualityChange;
-            OptionsMenuUI.Instance.OnFullscreenChange += OptionsMenuUI_OnFullscreenChange;
-            OptionsMenuUI.Instance.OnVSyncChange += OptionsMenuUI_OnVsyncChange;
-        }
+        SceneManager.sceneLoaded += SceneManager_OnSceneLoaded;
+        SetUpOptionsMenuUI();
     }
 
+    private void SceneManager_OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        SetUpOptionsMenuUI();
+    }
+
+    protected override void SubscribeToEvents(OptionsMenuUI optionsMenuUI) {
+        optionsMenuUI.OnGraphicsQualityChange += OptionsMenuUI_OnGraphicsQualityChange;
+        optionsMenuUI.OnFullscreenChange += OptionsMenuUI_OnFullscreenChange;
+        optionsMenuUI.OnVSyncChange += OptionsMenuUI_OnVsyncChange;      
+    }
+
+    protected override void UnsubscribeFromEvents(OptionsMenuUI optionsMenuUI) {
+        optionsMenuUI.OnGraphicsQualityChange -= OptionsMenuUI_OnGraphicsQualityChange;
+        optionsMenuUI.OnFullscreenChange -= OptionsMenuUI_OnFullscreenChange;
+        optionsMenuUI.OnVSyncChange -= OptionsMenuUI_OnVsyncChange;
+    }
+
+    //Changes settings when options menu UI event is detected
     private void OptionsMenuUI_OnVsyncChange(object sender, bool e) {
         SetVsync(e);
     }

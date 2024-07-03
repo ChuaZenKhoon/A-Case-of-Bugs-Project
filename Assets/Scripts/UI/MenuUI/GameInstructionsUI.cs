@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI element that represents the game instructions menu in the main game
+ */
 public class GameInstructionsUI : MonoBehaviour {
-
-    public static event EventHandler OnSkipAhead;
 
     [SerializeField] private Button closeButton;
 
@@ -14,10 +15,6 @@ public class GameInstructionsUI : MonoBehaviour {
     [SerializeField] private GameObject confirmSkipAheadScreen;
     [SerializeField] private Button cancelSkipAheadButton;
     [SerializeField] private Button confirmSkipAheadButton;
-
-    public static void ResetStaticData() {
-        OnSkipAhead = null;
-    } 
 
     private void Awake() {
         closeButton.onClick.AddListener(() => {
@@ -29,11 +26,10 @@ public class GameInstructionsUI : MonoBehaviour {
         });
 
         confirmSkipAheadButton.onClick.AddListener(() => {
-            CrimeSceneLevelManager.Instance.SkipAhead();
-            gameObject.SetActive(false);
+            GameInstructionsManager.Instance.SkipAhead();
             confirmSkipAheadScreen.SetActive(false);
-            OnSkipAhead?.Invoke(this, EventArgs.Empty);
             skipAheadButton.interactable = false;
+            Hide();
         });
 
         skipAheadButton.interactable = false;

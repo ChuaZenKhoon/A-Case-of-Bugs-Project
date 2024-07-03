@@ -15,7 +15,7 @@ public class SketchPlan : SelfInteractingEquipment {
     [SerializeField] private SketchPlanUI sketchPlanUI;
 
     public override void Interact() {
-        if (InventoryScreenUI.isInAction) {
+        if (InventoryManager.Instance.IsInventoryOpen()) {
             MessageLogManager.Instance.LogMessage("Close Inventory first before opening sketch plan.");
             return;
         }

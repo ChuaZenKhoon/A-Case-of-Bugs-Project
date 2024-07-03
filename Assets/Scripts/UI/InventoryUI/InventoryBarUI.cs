@@ -10,22 +10,17 @@ public class InventoryBarUI : MonoBehaviour {
 
     private const int INVENTORY_BAR_SLOTS = 5;
 
-    //Subscribe to swapping event
-    private void Start() {
-        InventoryManager.Instance.OnSuccessfulSwapInvolvesInventoryBar += InventoryManager_OnSuccessfulSwapInventory;
-        UpdateVisual();
-    }
+    private static Color INVISIBLE_SPRITE_IMAGE = new Color(1, 1, 1, 0);
+    private static Color VISIBLE_SPRITE_IMAGE = new Color(1, 1, 1, 1);
 
     //Updates the inventory bar slot if affected by the swap
-    private void InventoryManager_OnSuccessfulSwapInventory(object sender, InventorySingleUI.OnSuccessfulDragDropItemEventArgs e) {
-        InventoryObject[] inventoryObjectsArray = InventoryManager.Instance.GetInventoryObjectArray();
-
-        if (e.newIndex < 5) {
-            UpdateSprite(e.newIndex, inventoryObjectsArray[e.newIndex]);
+    public void SwapInventoryBarVisual(int oldIndex, int newIndex, Sprite oldSprite, Sprite newSprite) {
+        if (newIndex < INVENTORY_BAR_SLOTS) {
+            UpdateSprite(newIndex, newSprite);
         }
 
-        if (e.oldIndex < 5) {
-            UpdateSprite(e.oldIndex, inventoryObjectsArray[e.oldIndex]);
+        if (oldIndex < INVENTORY_BAR_SLOTS) {
+            UpdateSprite(oldIndex, oldSprite);
         }
     }
 
@@ -35,26 +30,20 @@ public class InventoryBarUI : MonoBehaviour {
      * @param index The index of the inventory bar slot to be updated.
      * @param inventoryObject The inventoryObject used for updating.
      */
-    private void UpdateSprite(int index, InventoryObject inventoryObject) {
-        if (inventoryObject == null) {
+    private void UpdateSprite(int index, Sprite sprite) {
+        if (sprite == null) {
             inventoryBarImages[index].sprite = null;
-            inventoryBarImages[index].color = new Color(1, 1, 1, 0);  
+            inventoryBarImages[index].color = INVISIBLE_SPRITE_IMAGE;  
         } else {
-            inventoryBarImages[index].color = new Color(1, 1, 1, 1);
-            inventoryBarImages[index].sprite = inventoryObject.GetInventoryObjectSO().sprite;
+            inventoryBarImages[index].sprite = sprite;
+            inventoryBarImages[index].color = VISIBLE_SPRITE_IMAGE;
         }
     }
 
     //Updates the inventory bar visuals on startup
-    public void UpdateVisual() {
-        InventoryObject[] inventoryObjectsArray = InventoryManager.Instance.GetInventoryObjectArray();
+    public void UpdateVisual(Sprite[] inventorySpritesArray) {
         for (int i = 0; i < INVENTORY_BAR_SLOTS; i++) {
-            if (inventoryObjectsArray[i] != null) {
-                Sprite sprite = inventoryObjectsArray[i].GetInventoryObjectSO().sprite;
-                inventoryBarImages[i].sprite = sprite;
-            } else {
-                inventoryBarImages[i].color = new Color(1, 1, 1, 0);
-            }
+            UpdateSprite(i, inventorySpritesArray[i]);
         }
     }
 
@@ -63,12 +52,10 @@ public class InventoryBarUI : MonoBehaviour {
      * The item is in one of the inventory bar slots (first 5)
      * 
      * @param index The index of the inventory slot to update
-     * @param inventoryObjectSO The blueprint of the inventoryObject to add in
+     * @param inventoryObject The inventoryObject to add in
      */
-    public void AddToInventoryBarVisual(int index, InventoryObjectSO inventoryObjectSO) {
-        Sprite sprite = inventoryObjectSO.sprite;
-        inventoryBarImages[index].color = new Color(1, 1, 1, 1);
-        inventoryBarImages[index].sprite = sprite;
+    public void AddToInventoryBarVisual(int index, Sprite sprite) {
+        UpdateSprite(index, sprite);
     }
 
     /**
@@ -78,7 +65,6 @@ public class InventoryBarUI : MonoBehaviour {
      * @param index The index of the inventory slot to update
      */
     public void RemoveFromInventoryBarVisual(int index) {
-        inventoryBarImages[index].color = new Color(1, 1, 1, 0);
-        inventoryBarImages[index].sprite = null;
+        UpdateSprite(index, null);
     }
 }

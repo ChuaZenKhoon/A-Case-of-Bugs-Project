@@ -1403,9 +1403,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4072634979756452237}
   - component: {fileID: 714688424994551212}
+  - component: {fileID: 7458651442599274200}
   m_Layer: 5
   m_Name: OptionsMenuUI
-  m_TagString: Untagged
+  m_TagString: OptionsMenuUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,6 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2f12ddb52b0984b83e9fde14bbefe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 7458651442599274200}
   closeButton: {fileID: 1992410233522310379}
   soundsTab: {fileID: 5581043775564048354}
   graphicsTab: {fileID: 2093197849359569595}
@@ -1464,6 +1466,18 @@ MonoBehaviour:
   fullScreenToggle: {fileID: 7782525423553601449}
   vSyncToggle: {fileID: 8877482156845547710}
   mouseSensitivitySlider: {fileID: 6330485440601711696}
+--- !u!225 &7458651442599274200
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230533710226067942}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2289536979559102836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,7 +2642,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8768621982754697274}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.5
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

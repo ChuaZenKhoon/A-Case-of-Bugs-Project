@@ -64,7 +64,7 @@ public class PhotographyCameraUI : MonoBehaviour {
             return;
         }
 
-        if (InventoryScreenUI.isInAction) {
+        if (InventoryManager.Instance.IsInventoryOpen()) {
             MessageLogManager.Instance.LogMessage("Close Inventory first before viewing photo gallery.");
             return;
         }

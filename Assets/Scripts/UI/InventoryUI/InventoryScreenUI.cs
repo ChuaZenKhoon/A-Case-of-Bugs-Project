@@ -9,7 +9,6 @@ using UnityEngine.UI;
  */
 public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
 
-    public static bool isInAction;
     //Array of individual inventory slots
     [SerializeField] private InventorySingleUI[] inventorySingleUIslots;
 
@@ -26,11 +25,9 @@ public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
     //Subscribe to item hover event and inventory open/close event
     //For UI elements, hide on start
     private void Start() {
-        InventoryManager.Instance.OnInventoryUIOpenStateChange += InventoryManager_OnOpenInventoryUI;
         InventorySingleUI.OnHoverEnterInventorySlot += InventorySingleUI_OnHoverEnterInventorySlot;
         InventorySingleUI.OnHoverLeaveInventorySlot += InventorySingleUI_OnHoverLeaveInventorySlot;
         Hide();
-        UpdateVisual();
     }
 
 
@@ -53,39 +50,21 @@ public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
         }
     }
 
-    //Toggle between showing the inventory screen or hiding it
-    private void InventoryManager_OnOpenInventoryUI(object sender, System.EventArgs e) {
-        if (InventoryManager.Instance.IsInventoryOpen()) {
-            Show();
-        } else {
-            Hide();
-        }
-    }
-
-    private void Show() {
+    public void Show() {
         gameObject.SetActive(true);
-        isInAction = true;
     }
 
-    private void Hide() {
+    public void Hide() {
         gameObject.SetActive(false);
-        isInAction = false;
     }
 
     /**
      * Updates the individual inventory slots on start up
      */
-    public void UpdateVisual() {
-        InventoryObject[] inventoryObjectsArray = InventoryManager.Instance.GetInventoryObjectArray();
-        for (int i = 0; i < inventoryObjectsArray.Length; i++) {
-            if (inventoryObjectsArray[i] != null) {
-                Sprite sprite = inventoryObjectsArray[i].GetInventoryObjectSO().sprite;
-                inventorySingleUIslots[i].SetInventorySlotDragDropSprite(sprite);
-            } else {
-                inventorySingleUIslots[i].GetInventoryDragDrop().GetIconImage().color = new UnityEngine.Color(1,1,1,0);
-            }
+    public void UpdateVisual(Sprite[] inventorySpriteArray) {
+        for (int i = 0; i < inventorySpriteArray.Length; i++) {
+            inventorySingleUIslots[i].SetInventorySlotDragDropSprite(inventorySpriteArray[i]);
         }
-        InventoryManager.Instance.UpdateFreeInventorySlot();
     }
 
     /**
@@ -94,8 +73,7 @@ public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
      * @param index The index of the inventory slot to update
      * @param inventoryObjectSO The blueprint of the inventoryObject to add in
      */
-    public void AddToInventoryVisual(int index, InventoryObjectSO inventoryObjectSO) {
-        Sprite sprite = inventoryObjectSO.sprite;
+    public void AddToInventoryVisual(int index, Sprite sprite) {
         inventorySingleUIslots[index].SetInventorySlotDragDropSprite(sprite);
     }
 

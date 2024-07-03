@@ -9,7 +9,7 @@ public class TutorialItemsManager : MonoBehaviour {
     public static TutorialItemsManager Instance { get; private set; }
 
     public event EventHandler<OnEquipmentMarkerHitEventArgs> OnEquipmentMarkerHit;
-    public event EventHandler OnEquipmentGuideUIOpenClose;
+    public event EventHandler OnEquipmentGuideOpenClose;
 
     [SerializeField] private List<InventoryObjectSO> dummyItems;
     [SerializeField] private List<InventoryObjectSO> equipmentList;
@@ -127,7 +127,7 @@ public class TutorialItemsManager : MonoBehaviour {
                 equipmentGuideUI.Show();
                 isEquipmentGuideOpen = true;
 
-                OnEquipmentGuideUIOpenClose?.Invoke(this, EventArgs.Empty);
+                OnEquipmentGuideOpenClose?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -142,7 +142,7 @@ public class TutorialItemsManager : MonoBehaviour {
 
     private void EquipmentGuideUI_OnClose(object sender, EventArgs e) {
         isEquipmentGuideOpen = false;
-        OnEquipmentGuideUIOpenClose?.Invoke(this, EventArgs.Empty);
+        OnEquipmentGuideOpenClose?.Invoke(this, EventArgs.Empty);
     }
 
 }

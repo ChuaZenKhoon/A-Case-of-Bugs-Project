@@ -48,31 +48,21 @@ public class PauseGameUI : MonoBehaviour {
 
     //Subscribe to pause game events
     private void Start() {
-        PauseManager.Instance.OnGamePause += PauseManager_OnGamePause;
-        PauseManager.Instance.OnGameUnpause += PauseManager_OnGameUnpause;
         Hide();
     }
 
-    private void GameInstructionsUI_OnSkipAhead(object sender, EventArgs e) {
-        Hide();
-    }
-
-    private void PauseManager_OnGameUnpause(object sender, EventArgs e) {
+    public void UnpauseGame() {
         if (gameInstructionsUI != null) {
             gameInstructionsUI.Hide();
         }
         Hide();
     }
 
-    private void PauseManager_OnGamePause(object sender, EventArgs e) {
-        Show();
-    }
-
     private void Hide() {
         gameObject.SetActive(false);
     }
 
-    private void Show() {
+    public void Show() {
         gameObject.SetActive(true);
     }
 

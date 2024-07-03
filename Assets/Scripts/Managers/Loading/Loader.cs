@@ -14,7 +14,6 @@ public static class Loader {
         LoadingScreen,
         TutorialScene,
         CrimeScene,
-        LabAnalysis
     }
 
     public static Scene targetScene; //For scenes to set and refer to

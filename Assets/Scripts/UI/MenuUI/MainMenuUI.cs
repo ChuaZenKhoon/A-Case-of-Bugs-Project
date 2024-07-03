@@ -40,6 +40,7 @@ public class MainMenuUI : MonoBehaviour {
         difficultySettingUI.Show();
     }
 
+    //Sets target scene to tutorial, scene to load async set, then goes to loading screen
     private void StartTutorial() {
         SceneManager.LoadScene(Loader.Scene.LoadingScreen.ToString());
         Loader.targetScene = Loader.Scene.TutorialScene;

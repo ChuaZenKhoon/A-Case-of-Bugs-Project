@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 /**
  * A manager in charge of handling the logic of audio settings of the game.
  */
-public class SoundManager : MonoBehaviour {
+public class SoundManager : SettingsManager {
 
     public static SoundManager Instance { get; private set; }
 
@@ -24,31 +25,44 @@ public class SoundManager : MonoBehaviour {
     private float sfxVolume;
     private float bgmVolume;
 
+    //Persistent Singleton
     private void Awake() {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(Instance);
+        } else {
+            Destroy(gameObject);
+        }
 
         //Get Player Prefs else default value
         masterVolume = PlayerPrefs.GetFloat(PLAYER_PREFS_MASTER_VOL, 0.5f);
         sfxVolume = PlayerPrefs.GetFloat(PLAYER_PREFS_SFX_VOL, 0.5f);
         bgmVolume = PlayerPrefs.GetFloat(PLAYER_PREFS_BGM_VOL, 0.5f);
-
         SetMasterVolume(masterVolume);
         SetSFXVolume(sfxVolume);
         SetBGMVolume(bgmVolume);
     }
 
-    //Subscribe to audio volume change events from the options menu UI
+    //Find Options Menu UI when scene loads
     private void Start() {
-        if (OptionsMenuUI.Instance != null) {
-            OptionsMenuUI.Instance.OnMasterVolumeChange += OptionsMenuUI_OnMasterVolumeChange;
-            OptionsMenuUI.Instance.OnSFXVolumeChange += OptionsMenuUI_OnSFXVolumeChange;
-            OptionsMenuUI.Instance.OnBGMVolumeChange += OptionsMenuUI_OnBGMVolumeChange;
-        }
-        
+        SceneManager.sceneLoaded += SceneManager_OnSceneLoaded;
+        SetUpOptionsMenuUI();
     }
 
-    private void Instance_OnEventCallTest(object sender, System.EventArgs e) {
-        Debug.Log("Hi");
+    private void SceneManager_OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        SetUpOptionsMenuUI();
+    }
+
+    protected override void SubscribeToEvents(OptionsMenuUI optionsMenuUI) {
+        optionsMenuUI.OnMasterVolumeChange += OptionsMenuUI_OnMasterVolumeChange;
+        optionsMenuUI.OnSFXVolumeChange += OptionsMenuUI_OnSFXVolumeChange;
+        optionsMenuUI.OnBGMVolumeChange += OptionsMenuUI_OnBGMVolumeChange;
+    }
+
+    protected override void UnsubscribeFromEvents(OptionsMenuUI optionsMenuUI) {
+        optionsMenuUI.OnMasterVolumeChange -= OptionsMenuUI_OnMasterVolumeChange;
+        optionsMenuUI.OnSFXVolumeChange -= OptionsMenuUI_OnSFXVolumeChange;
+        optionsMenuUI.OnBGMVolumeChange -= OptionsMenuUI_OnBGMVolumeChange;
     }
 
     private void OptionsMenuUI_OnBGMVolumeChange(object sender, float e) {
@@ -78,7 +92,6 @@ public class SoundManager : MonoBehaviour {
         } else {
             audioMixer.SetFloat("Master", Mathf.Log10(masterVolume) * 20);
         }
-
         PlayerPrefs.SetFloat(PLAYER_PREFS_MASTER_VOL, masterVolume);
         PlayerPrefs.Save();
 

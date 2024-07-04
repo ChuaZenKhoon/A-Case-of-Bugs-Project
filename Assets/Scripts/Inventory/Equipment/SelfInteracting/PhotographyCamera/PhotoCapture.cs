@@ -1,24 +1,21 @@
 using System.Collections;
-using System.Threading;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PhotographyCamera: SelfInteractingEquipment {
+/**
+ * A logic component of the photography camera that handles the function of taking photos.
+ */
+public class PhotoCapture : MonoBehaviour {
+
+    [SerializeField] private PhotographyCamera photographyCamera;
 
     [SerializeField] private Camera equipmentCamera;
-    [SerializeField] private PhotographyCameraUI photographyCameraUI;
     [SerializeField] private GameObject cameraCrossHair;
     [SerializeField] private CanvasGroup gameplayCanvas;
 
     private Camera playerCamera;
-
-    private bool isInCameraMode;
-
     private bool isCameraCooldownOver;
 
     private void Awake() {
-        isInCameraMode = false;
         isCameraCooldownOver = true;
         equipmentCamera.enabled = false;
         playerCamera = Camera.main;
@@ -34,31 +31,8 @@ public class PhotographyCamera: SelfInteractingEquipment {
     private void OnDestroy() {
         GameInput.Instance.OnTakePictureLeftClick -= GameInput_OnTakePictureLeftClick;
     }
-    private void GameInput_OnTakePictureLeftClick(object sender, System.EventArgs e) {
-        TakePicture();
-    }
 
-    public override void Interact() {
-        if (PhotographyCameraUI.IsInPhotoGalleryMode()) {
-            MessageLogManager.Instance.LogMessage("Exit the Photo Gallery first before using the camera.");
-            return;
-        }
-
-        if (InventoryManager.Instance.IsInventoryOpen()) {
-            MessageLogManager.Instance.LogMessage("Close Inventory first before using the camera");
-            return;
-        }
-        
-        if (!isInCameraMode) {
-            GoIntoCameraMode();
-        } else {
-            ExitFromCameraMode();
-        }
-    }
-
-    private void GoIntoCameraMode() {
-        isInCameraMode = true;
-        Equipment.isInAction = true;
+    public void GoIntoCameraMode() {
         equipmentCamera.enabled = true;
         playerCamera.enabled = false;
         cameraCrossHair.SetActive(true);
@@ -66,9 +40,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
         Cursor.visible = false;
     }
 
-    private void ExitFromCameraMode() {
-        isInCameraMode = false;
-        Equipment.isInAction = false;
+    public void ExitFromCameraMode() {
         playerCamera.enabled = true;
         equipmentCamera.enabled = false;
         cameraCrossHair.SetActive(false);
@@ -76,8 +48,16 @@ public class PhotographyCamera: SelfInteractingEquipment {
         Cursor.visible = true;
     }
 
+    private void GameInput_OnTakePictureLeftClick(object sender, System.EventArgs e) {
+        TakePicture();
+    }
+
     private void TakePicture() {
-        if (isInCameraMode && isCameraCooldownOver) {
+        if (!photographyCamera.IsInCameraMode()) {
+            return;
+        }
+
+        if (isCameraCooldownOver) {
             StartCoroutine(CameraCooldownCoroutine());
             RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24);
             equipmentCamera.targetTexture = renderTexture;
@@ -93,18 +73,13 @@ public class PhotographyCamera: SelfInteractingEquipment {
             RenderTexture.active = null;
 
             MessageLogManager.Instance.LogMessage("Photo successfully taken!");
-        } else if (isInCameraMode && !isCameraCooldownOver) {
-            MessageLogManager.Instance.LogMessage("Camera still processing previous photo.");
+        } else if (!isCameraCooldownOver) {
+            MessageLogManager.Instance.LogMessage("Camera still refocusing.");
         }
     }
-
     private IEnumerator CameraCooldownCoroutine() {
         isCameraCooldownOver = false;
         yield return new WaitForSeconds(1.5f);
         isCameraCooldownOver = true;
-    }
-
-    public bool IsInCameraMode() {
-        return isInCameraMode;
     }
 }

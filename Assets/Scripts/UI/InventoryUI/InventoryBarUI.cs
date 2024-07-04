@@ -52,7 +52,7 @@ public class InventoryBarUI : MonoBehaviour {
      * The item is in one of the inventory bar slots (first 5)
      * 
      * @param index The index of the inventory slot to update
-     * @param inventoryObject The inventoryObject to add in
+     * @param sprite The Sprite that represents the inventory object
      */
     public void AddToInventoryBarVisual(int index, Sprite sprite) {
         UpdateSprite(index, sprite);

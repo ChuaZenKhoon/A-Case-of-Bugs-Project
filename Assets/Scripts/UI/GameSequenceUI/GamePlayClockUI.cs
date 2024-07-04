@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-
 /**
  * A UI element that represents the game clock.
  */
@@ -24,6 +23,7 @@ public class GamePlayClockUI : MonoBehaviour {
         CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
     }
 
+    //Hide clock during lab component, no more time limit
     private void CrimeSceneLevelManager_OnStateChange(object sender, System.EventArgs e) {
         if (CrimeSceneLevelManager.Instance.IsLabStarted()) {
             Hide();

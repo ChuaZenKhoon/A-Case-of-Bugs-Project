@@ -10,6 +10,8 @@ public class GameInstructionsManager : MonoBehaviour {
 
     public static GameInstructionsManager Instance { get; private set; }
 
+    public event EventHandler OnGameSkipAhead;
+
     [SerializeField] private GameInstructionsUI gameInstructionsUI;
 
     private void Awake() {
@@ -30,7 +32,7 @@ public class GameInstructionsManager : MonoBehaviour {
      * Skips the main game of 15 minutes to the end of that game portion
      */
     public void SkipAhead() {
-        CrimeSceneLevelManager.Instance.SkipAhead();
+        OnGameSkipAhead?.Invoke(this, EventArgs.Empty);
         PauseManager.Instance.TogglePause();
     }
 }

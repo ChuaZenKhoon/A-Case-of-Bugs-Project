@@ -1,13 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing a progress bar display. It can be part of anything
+ * that has some form of progress in its logic.
+ */
 public class ProgressBarUI : MonoBehaviour {
 
 
     [SerializeField] private Image bar;
     [SerializeField] private GameObject hasProgressGameObject;
+
+    private const float EMPTY_PROGRESS_BAR = 0f;
+    private const float FULL_PROGRESS_BAR = 1f;
+
 
     private IHasProgress hasProgress;
     private void Start() {
@@ -17,14 +23,14 @@ public class ProgressBarUI : MonoBehaviour {
         }
 
         hasProgress.OnActionProgress += UpdateProgressBar;
-        bar.fillAmount = 0f;
+        bar.fillAmount = EMPTY_PROGRESS_BAR;
         Hide();
     }
 
     private void UpdateProgressBar(object sender, float e) {
         bar.fillAmount = e;
 
-        if (e == 0f || e == 1f) {
+        if (e == EMPTY_PROGRESS_BAR || e == FULL_PROGRESS_BAR) {
             Hide();
         } else {
             Show();

@@ -14,6 +14,11 @@ public class InformationReportUI : MonoBehaviour {
     //Event for when information report is finished
     public event EventHandler OnClickReadFinishReport;
 
+    private static Vector2 NEXT_BUTTON_ORIGINAL_POSITION = new Vector2(0, -450);
+    private static Vector2 NEXT_BUTTON_SHIFTED_POSITION = new Vector2(200, -450);
+    private const string NEXT_BUTTON_ORIGINAL_TEXT = "Next";
+    private const string NEXT_BUTTON_FINAL_PAGE_TEXT = "Finish";
+
     [SerializeField] private Button nextButton;
     [SerializeField] private Button backButton;
     [SerializeField] private TextMeshProUGUI buttonText;
@@ -27,9 +32,6 @@ public class InformationReportUI : MonoBehaviour {
 
     private Page currentPage;
 
-    private Vector2 nextButtonOriginalPagePosition = new Vector2(0, -450);
-    private Vector2 nextButtonInBetweenPagesPosition = new Vector2(200, -450);
-
     //Sequence of pages in the information report
     private enum Page {
         First,
@@ -39,18 +41,20 @@ public class InformationReportUI : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
-        currentPage = Page.First;
-        ShowCurrentPage();
+
         nextButton.onClick.AddListener(() => {
             NextPage();
         });
         backButton.onClick.AddListener(() => {
             PreviousPage();
         });
+
+        currentPage = Page.First;
+        ShowCurrentPage();
+
     }
 
     private void NextPage() {
-
         if (currentPage < Page.Third) {
             currentPage++;
             ShowCurrentPage();
@@ -77,16 +81,16 @@ public class InformationReportUI : MonoBehaviour {
         switch (currentPage) {
             case Page.First:
                 backButton.gameObject.SetActive(false);
-                nextButton.GetComponent<RectTransform>().anchoredPosition = nextButtonOriginalPagePosition;
+                nextButton.GetComponent<RectTransform>().anchoredPosition = NEXT_BUTTON_ORIGINAL_POSITION;
                 nextButton.gameObject.SetActive(true);
                 break;
             case Page.Second:
-                nextButton.GetComponent<RectTransform>().anchoredPosition = nextButtonInBetweenPagesPosition;
+                nextButton.GetComponent<RectTransform>().anchoredPosition = NEXT_BUTTON_SHIFTED_POSITION;
                 backButton.gameObject.SetActive(true);
-                buttonText.text = "Next";
+                buttonText.text = NEXT_BUTTON_ORIGINAL_TEXT;
                 break;
             case Page.Third:
-                buttonText.text = "Finish";
+                buttonText.text = NEXT_BUTTON_FINAL_PAGE_TEXT;
                 break;
 
         }

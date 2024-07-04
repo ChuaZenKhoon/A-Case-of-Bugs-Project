@@ -36,8 +36,8 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
     }
 
     private void Start() {
-        maggotsCollected = EquipmentStorageManager.Instance.GetMaggots();
-        savedKillingMaggotDuration = EquipmentStorageManager.Instance.GetKillingMaggotProgressDuration();
+        maggotsCollected = EvidenceStorageManager.Instance.GetMaggots();
+        savedKillingMaggotDuration = EvidenceStorageManager.Instance.GetKillingMaggotProgressDuration();
         GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
         SetCorrectVisual();
     }
@@ -54,10 +54,10 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
                 MessageLogManager.Instance.LogMessage("Poured hot water. Waiting for specimens to be killed...");
             }
         } else {
-           
-            EquipmentStorageManager.Instance.AddKilledMaggots(maggotsCollected);
-            EquipmentStorageManager.Instance.ClearMaggotCollection();
-            EquipmentStorageManager.Instance.SetKillingMaggotProgressDuration(0f);
+
+            EvidenceStorageManager.Instance.AddKilledMaggots(maggotsCollected);
+            EvidenceStorageManager.Instance.ClearMaggotCollection();
+            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(0f);
             SetCorrectVisual();
 
             SetUpContainer(false);
@@ -83,7 +83,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             OnActionProgress?.Invoke(this, savedKillingMaggotDuration / killDuration);
         }
         savedKillingMaggotDuration = 0f;
-        EquipmentStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
+        EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
         killMaggotCoroutine = null;
         SetUpContainer(true);
         isKillingDone = true;
@@ -112,9 +112,9 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             Larvae currentMaggotStaringAt = currentStareAt as Larvae;
 
             Larvae maggotToCollect = currentMaggotStaringAt.GetInventoryObjectSO().prefab.GetComponent<Larvae>();
-            
+
             //maggotsCollected.Add(maggotToCollect);
-            EquipmentStorageManager.Instance.CollectMaggots(maggotToCollect);
+            EvidenceStorageManager.Instance.CollectMaggots(maggotToCollect);
 
             Destroy(currentStareAt.gameObject);
 
@@ -147,7 +147,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
 
     private void OnDestroy() {
         if (killMaggotCoroutine != null) {
-            EquipmentStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
+            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
             StopCoroutine(killMaggotCoroutine);
             killMaggotCoroutine = null;
             EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
@@ -156,7 +156,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             }
             OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
         } else if (isKillingDone) {
-            EquipmentStorageManager.Instance.SetKillingMaggotProgressDuration(30f);
+            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(30f);
         }
 
         GameInput.Instance.OnInteract2Action -= GameInput_OnInteract2Action;

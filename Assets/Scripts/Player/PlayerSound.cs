@@ -1,25 +1,22 @@
 using UnityEngine;
 
 /**
- * Controls the SFX of the Player. 
+ * A component of the Player that handles its SFX.
  */
 public class PlayerSound : MonoBehaviour {
 
+    [SerializeField] private PlayerMovement playerMovement;
+
     private float footstepTimer;
     private float footstepResetTiming = 0.3f;
-
-    private void Update() {
-        HandlePlayerWalkingSFX();
-    }
-
 
     /**
      * Plays the footstep sound at player's feet if player is walking.
      * Footstep timer introduced to space sound out appropriately.
      */
-    private void HandlePlayerWalkingSFX() {
+    public void HandlePlayerWalkingSFX() {
 
-        if (Player.Instance.IsWalking()) {
+        if (playerMovement.IsWalking()) {
             footstepTimer -= Time.deltaTime;
 
             if (footstepTimer <= 0) {

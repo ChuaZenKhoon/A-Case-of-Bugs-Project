@@ -18,7 +18,7 @@ public class Swab : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        bloodStain = EquipmentStorageManager.Instance.GetBloodStain(this.GetEquipmentID(), out bool positive, out bool cannotBeUsed);
+        bloodStain = EvidenceStorageManager.Instance.GetBloodStain(this.GetEquipmentID(), out bool positive, out bool cannotBeUsed);
 
         if (cannotBeUsed) {
             cannotBeUsedVisual.SetActive(true);
@@ -46,7 +46,7 @@ public class Swab : EvidenceInteractingEquipment {
 
                 Bloodstain liquidToSwab = currentBloodStainStaringAt.GetInventoryObjectSO().prefab.GetComponentInChildren<Bloodstain>();
                 bloodStain = liquidToSwab;
-                EquipmentStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, false, false);
+                EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, false, false);
 
                 usedVisual.SetActive(true);
 
@@ -61,13 +61,13 @@ public class Swab : EvidenceInteractingEquipment {
     }
 
     public void PositiveTestAdministered() {
-        EquipmentStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, true, false);
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, true, false);
         positiveResultVisual.SetActive(true);
         MessageLogManager.Instance.LogMessage("Cotton swab turns pink! Positive test result obtained. This sample could be human or animal blood!");
     }
 
     public void ImproperTestAdministered() {
-        EquipmentStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, false, true);
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, false, true);
         cannotBeUsedVisual.SetActive(true);
         canBeUsedVisual.SetActive(false);
         MessageLogManager.Instance.LogMessage("Improper test administered. Swab is stored and to be thrown later.");

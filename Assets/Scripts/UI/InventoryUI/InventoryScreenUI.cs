@@ -12,7 +12,7 @@ public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
     //Array of individual inventory slots
     [SerializeField] private InventorySingleUI[] inventorySingleUIslots;
 
-    //For Item examination on the left of the inventory screen
+    //For item examination on the left of the inventory screen
     [SerializeField] private TextMeshProUGUI currentHoverInventoryItemName;
     [SerializeField] private TextMeshProUGUI currentHoverInventoryItemDescription;
     [SerializeField] private Image currentHoverInventoryItemImage;
@@ -21,9 +21,7 @@ public class InventoryScreenUI : MonoBehaviour, IPointerClickHandler {
     [SerializeField] private InventoryDropItemUI dropItemUI;
     [SerializeField] private LayerMask dropItemLayerMask;
 
-
-    //Subscribe to item hover event and inventory open/close event
-    //For UI elements, hide on start
+    //For item examination
     private void Start() {
         InventorySingleUI.OnHoverEnterInventorySlot += InventorySingleUI_OnHoverEnterInventorySlot;
         InventorySingleUI.OnHoverLeaveInventorySlot += InventorySingleUI_OnHoverLeaveInventorySlot;

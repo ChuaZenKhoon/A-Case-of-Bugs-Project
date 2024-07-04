@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 /**
- * A UI element that represents the game clock.
+ * A UI element that represents the game start countdown timer.
  */
 public class GameStartCountdownUI : MonoBehaviour {
 

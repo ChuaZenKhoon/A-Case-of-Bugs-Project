@@ -20,7 +20,7 @@ public class Container : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        deadFliesCollected = EquipmentStorageManager.Instance.GetDeadFlies();
+        deadFliesCollected = EvidenceStorageManager.Instance.GetDeadFlies();
         SetCorrectVisual();
     }
 
@@ -32,7 +32,7 @@ public class Container : EvidenceInteractingEquipment {
             AdultFly currentAdultFlyStaringAt = currentStareAt as AdultFly;
 
             AdultFly adultFlyToCollect = currentAdultFlyStaringAt.GetInventoryObjectSO().prefab.GetComponent<AdultFly>();
-            EquipmentStorageManager.Instance.AddDeadFly(adultFlyToCollect);
+            EvidenceStorageManager.Instance.AddDeadFly(adultFlyToCollect);
             Destroy(currentStareAt.gameObject);
 
             SetCorrectVisual();

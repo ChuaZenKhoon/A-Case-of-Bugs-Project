@@ -21,7 +21,7 @@ public class AcetoneKillJar : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        killedFliesCollected = EquipmentStorageManager.Instance.GetKillingFlies();
+        killedFliesCollected = EvidenceStorageManager.Instance.GetKillingFlies();
         SetCorrectVisual();
     }
 

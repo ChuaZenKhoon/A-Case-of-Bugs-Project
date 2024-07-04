@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5040453814378835277}
-  - component: {fileID: 870993483508274137}
+  - component: {fileID: 7288514341465263122}
   m_Layer: 6
   m_Name: PhotoGalleryUI
   m_TagString: Untagged
@@ -314,7 +314,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &870993483508274137
+--- !u!114 &7288514341465263122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,16 +323,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 344016419732039316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef548e94a27bb04586abc38e913cb9c, type: 3}
+  m_Script: {fileID: 11500000, guid: fa270a60523a3c946a823c00b958f3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photographyCamera: {fileID: 5998718996200495178}
+  photoGallery: {fileID: 3092846772572175011}
   photographImage: {fileID: 7518078199897248578}
   backButton: {fileID: 7062373078142431195}
   nextButton: {fileID: 4521578997454886621}
   removePictureButton: {fileID: 2954508897687329727}
   photographText: {fileID: 5732047767455792711}
-  photographyCameraDeletePhotoUI: {fileID: 8114895588792722147}
 --- !u!1 &640850510891327687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,7 +2093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68edd7a1e21db774385751ec71f86178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photographyCameraUI: {fileID: 870993483508274137}
+  photoGallery: {fileID: 3092846772572175011}
   confirmRemovePictureButton: {fileID: 6565878030150974308}
   denyRemovePictureButton: {fileID: 4668878841432568205}
 --- !u!1 &5069038342744941354
@@ -2290,6 +2289,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 5998718996200495178}
+  - component: {fileID: 7573207073524954462}
+  - component: {fileID: 3092846772572175011}
   m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
@@ -2327,10 +2328,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: c6492306b98b5cd4e8b250a8c937a694, type: 2}
+  photoCapture: {fileID: 7573207073524954462}
+  photoGallery: {fileID: 3092846772572175011}
+--- !u!114 &7573207073524954462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d99fb87ecf31c43b0a7d7aef7ee7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photographyCamera: {fileID: 5998718996200495178}
   equipmentCamera: {fileID: 5999626115418204232}
-  photographyCameraUI: {fileID: 870993483508274137}
   cameraCrossHair: {fileID: 4281113047593254251}
   gameplayCanvas: {fileID: 0}
+--- !u!114 &3092846772572175011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478d949a7cd73f042a9c73e751e85f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photographyCamera: {fileID: 5998718996200495178}
+  photoGalleryUI: {fileID: 7288514341465263122}
+  photographyCameraDeletePhotoUI: {fileID: 8114895588792722147}
 --- !u!1 &5557285880934216164
 GameObject:
   m_ObjectHideFlags: 0

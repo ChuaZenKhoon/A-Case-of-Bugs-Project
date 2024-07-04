@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
+/**
+ * A manager that handles the scoring throughout the main game
+ */
 public class ScoringSystemManager : MonoBehaviour {
 
     public static ScoringSystemManager Instance { get; private set; }
 
     [SerializeField] private DeceasedBody deceasedBody;
 
-    [SerializeField] private MainPathScore mainPath;
+    [SerializeField] private MainPath mainPath;
 
-    private int didNotStepOnFliesPoint = 1; //event
+    private int didNotStepOnFliesPoint = 1; //One time trigger
 
-    private int didNotStepOnDeceasedBodyPoint = 1; //event
+    private int didNotStepOnDeceasedBodyPoint = 1; //One time trigger
 
-    private int walkOnMainPathTooMuchPoint = 1; //cumulative event
+    private int didNotWalkOnMainPathTooMuchPoint = 1; //Cumulative add up trigger
 
-    private int completeSketchPlanDetailsPoint = 1; //event
+    private int completeSketchPlanDetailsPoint = 1; //One time check at the end
 
-    private int properFingerprintCollectionPoint = 1; //event
+    private int properFingerprintCollectionPoint = 1; //One time trigger
 
-    private int checkedWeatherAppPoint = 0; //event
+    private int checkedWeatherAppPoint = 0; //One time trigger
 
-    private int completeEvidenceCollectionPoint = 1; //list of events
+    private int completeEvidenceCollectionPoint = 1; //One time check at the end
 
     private List<GameObject> evidenceListToCompare;
 
@@ -31,6 +34,7 @@ public class ScoringSystemManager : MonoBehaviour {
         Instance = this;
     }
     
+    //Subscribe to events for triggers
     private void Start() {
         CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
 
@@ -48,7 +52,7 @@ public class ScoringSystemManager : MonoBehaviour {
     }
 
     private void MainPath_OnMainPathWalkTooMuch(object sender, System.EventArgs e) {
-        walkOnMainPathTooMuchPoint = 0;
+        didNotWalkOnMainPathTooMuchPoint = 0;
     }
 
     private void Fingerprint_OnImproperFingerprintCollection(object sender, System.EventArgs e) {
@@ -67,75 +71,59 @@ public class ScoringSystemManager : MonoBehaviour {
         didNotStepOnDeceasedBodyPoint = 0;
     }
 
+    //Do one time checks at the end
     private void CrimeSceneLevelManager_OnStateChange(object sender, System.EventArgs e) {
         if (CrimeSceneLevelManager.Instance.IsGameOver()) {
-            string[] sketchPlanDetails = EquipmentStorageManager.Instance.GetSketchPlanSavedDetailsTextList();
-            foreach (string s in sketchPlanDetails) {
-                if (string.IsNullOrEmpty(s)) {
-                    completeSketchPlanDetailsPoint = 0;
-                }
-            }
-
-            for (int i = 0; i < evidenceListToCompare.Count; i++) {
-                Debug.Log("Checking Item");
-                if (evidenceListToCompare[i] == null) {
-                    continue;
-                }
-
-                if (evidenceListToCompare[i] != null) {
-                    if (evidenceListToCompare[i].GetComponentInChildren<Bloodstain>() != null) {
-                        continue;
-                    } else {
-                        Debug.Log("Item there");
-                        completeEvidenceCollectionPoint = 0;
-                    }
-                }
- 
-            }
-
-            if (EquipmentStorageManager.Instance.GetBloodStains().Count != 2) {
-                completeEvidenceCollectionPoint = 0;
-            }
+            OneTimeCheckSketchDetails();
+            OneTimeCheckEvidenceList();
 
             int points = SumPoints();
 
-            ScoringSystemUI.Instance.UpdateScores(didNotStepOnFliesPoint, didNotStepOnDeceasedBodyPoint, walkOnMainPathTooMuchPoint,
-                completeSketchPlanDetailsPoint, properFingerprintCollectionPoint, checkedWeatherAppPoint, completeEvidenceCollectionPoint,
-                points);
+            ScoringSystemUI.Instance.UpdateScores(didNotStepOnFliesPoint, didNotStepOnDeceasedBodyPoint, 
+                didNotWalkOnMainPathTooMuchPoint, completeSketchPlanDetailsPoint, 
+                properFingerprintCollectionPoint, checkedWeatherAppPoint, 
+                completeEvidenceCollectionPoint, points);
             
             ScoringSystemUI.Instance.Show();
+        }   
+    }
+
+    //For extension in the future
+    private int SumPoints() {
+        return didNotStepOnFliesPoint + didNotStepOnDeceasedBodyPoint + 
+            checkedWeatherAppPoint + completeSketchPlanDetailsPoint + 
+            completeEvidenceCollectionPoint + properFingerprintCollectionPoint + 
+            didNotWalkOnMainPathTooMuchPoint;
+    }
+
+
+    //One time checks
+
+    private void OneTimeCheckSketchDetails() {
+        string[] sketchPlanDetails = EquipmentStorageManager.Instance.GetSketchPlanSavedDetailsTextList();
+        foreach (string s in sketchPlanDetails) {
+            if (string.IsNullOrEmpty(s)) {
+                completeSketchPlanDetailsPoint = 0;
+            }
+        }
+    }
+
+    private void OneTimeCheckEvidenceList() {
+        for (int i = 0; i < evidenceListToCompare.Count; i++) {
+            if (evidenceListToCompare[i] != null) {
+                if (evidenceListToCompare[i].GetComponentInChildren<Bloodstain>() != null) {
+                    //Ignore, bloodstains will not disappear
+                    continue;
+                } else {
+                    //Incomplete collection
+                    completeEvidenceCollectionPoint = 0;
+                }
+            }
         }
 
-        
+        //Check if both swabs are used
+        if (EvidenceStorageManager.Instance.GetBloodStains().Count != 2) {
+            completeEvidenceCollectionPoint = 0;
+        }
     }
-
-    private int SumPoints() {
-        return didNotStepOnFliesPoint + didNotStepOnDeceasedBodyPoint + checkedWeatherAppPoint + completeSketchPlanDetailsPoint
-            + completeEvidenceCollectionPoint + properFingerprintCollectionPoint + walkOnMainPathTooMuchPoint;
-    }
-    //Collected fingerprint with bare hand
-
-
-
-    //Collected bloodstain with bare hand
-
-    //walked too much on main walking path
-
-    //Did not collect all evidence possible
-
-
-    //empty sketch plan
-
-    //less than 10 photographs
-
-    //Never checked weather?
-
-    //Never fill in sketch plan details
-
-    //Stepping on deceased body
-
-    //Stepping on dead adult flies
-
-    //
-
 }

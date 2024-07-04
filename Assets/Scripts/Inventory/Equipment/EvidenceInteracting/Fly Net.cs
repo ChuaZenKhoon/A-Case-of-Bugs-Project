@@ -34,7 +34,7 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
     }
 
     private void Start() {
-        fliesCollected = EquipmentStorageManager.Instance.GetCapturedFlies();
+        fliesCollected = EvidenceStorageManager.Instance.GetCapturedFlies();
         SetCorrectVisual();
     }
 
@@ -63,7 +63,7 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
 
             List<AdultFly> flyCaptured = groupOfFlies.CaptureFlies();
 
-            EquipmentStorageManager.Instance.CaptureFlies(flyCaptured);
+            EvidenceStorageManager.Instance.CaptureFlies(flyCaptured);
         }
 
         captureFlyCoroutine = null;
@@ -98,8 +98,8 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
         
         } else {
 
-            EquipmentStorageManager.Instance.AddToKillingJar(fliesCollected);
-            EquipmentStorageManager.Instance.ClearCapturedFlies();
+            EvidenceStorageManager.Instance.AddToKillingJar(fliesCollected);
+            EvidenceStorageManager.Instance.ClearCapturedFlies();
             SetCorrectVisual();
 
             SetUpContainer(false);

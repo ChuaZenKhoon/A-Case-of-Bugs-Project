@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component of the photo gallery for when the player wishes to delete a photo.
+ */
 public class PhotographyCameraDeletePhotoUI : MonoBehaviour {
 
-    [SerializeField] private PhotographyCameraUI photographyCameraUI;
+    [SerializeField] private PhotoGallery photoGallery;
 
     [SerializeField] private Button confirmRemovePictureButton;
     [SerializeField] private Button denyRemovePictureButton;
@@ -14,8 +15,7 @@ public class PhotographyCameraDeletePhotoUI : MonoBehaviour {
 
     private void Awake() {
         confirmRemovePictureButton.onClick.AddListener(() => {
-            EquipmentStorageManager.Instance.RemovePhotoFromPhotoGallery(indexToDelete);
-            photographyCameraUI.ChangePhotoAfterRemovePhoto();
+            photoGallery.ChangePhotoAfterRemovePhoto();
             Hide();
         });
         denyRemovePictureButton.onClick.AddListener(() => {
@@ -31,8 +31,7 @@ public class PhotographyCameraDeletePhotoUI : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void Show(int index) {
-        indexToDelete = index;
+    public void Show() {
         gameObject.SetActive(true);
     }
 }

@@ -7,10 +7,6 @@ using UnityEngine.EventSystems;
  */
 public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, IPointerClickHandler{
 
-    [SerializeField] private GameObject hoveredInventorySlotVisual;
-    
-    [SerializeField] private int index;
-
     //Event for when cursor hovers over the inventory slot UI element
     public static event EventHandler<int> OnHoverEnterInventorySlot;
 
@@ -20,6 +16,11 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
     //Event for when an item is selected to be dropped.
     public static event EventHandler<OnRightClickInventorySlotEventArgs> OnRightClickInventorySlot;
 
+    public class OnRightClickInventorySlotEventArgs {
+        public Vector2 mousePosition;
+        public int inventorySlotIndex;
+    }
+
     //Reset static events on scene load
     public static void ResetStaticData() {
         OnHoverEnterInventorySlot = null;
@@ -27,20 +28,13 @@ public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerEx
         OnRightClickInventorySlot = null;
     }
 
-    public class OnRightClickInventorySlotEventArgs {
-        public Vector2 mousePosition;
-        public int inventorySlotIndex;
-    }
-
-    public class OnSuccessfulDragDropItemEventArgs {
-        public int oldIndex;
-        public int newIndex;
-    }
-
     //Drag drop logic component attached to it
     [SerializeField] private InventoryDragDrop inventoryDragDrop;
 
-    //Hide UI hover element on startup
+    [SerializeField] private GameObject hoveredInventorySlotVisual;
+    
+    [SerializeField] private int index;
+
     private void Start () {
         Hide();
     }

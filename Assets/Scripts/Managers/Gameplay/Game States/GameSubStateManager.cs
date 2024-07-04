@@ -28,8 +28,8 @@ public class GameSubStateManager : PlayerActionsManager {
         InventoryManager.Instance.OnInventoryOpenStateChange += InventoryManager_OnInventoryUIOpenStateChange;
 
         //Game Equipment Use SubState
-        PhotographyCameraUI.OnOpenPhotoGallery += PhotographyCameraUI_OnOpenPhotoGallery;
-        SketchPlanUI.OnOpenSketchPlan += SketchPlanUI_OnOpenSketchPlan;
+        PhotographyCamera.OnOpenPhotoGallery += PhotographyCamera_OnOpenPhotoGallery;
+        SketchPlan.OnOpenSketchPlan += SketchPlanUI_OnOpenSketchPlan;
         Phone.OnPhoneOpen += Phone_OnPhoneOpen;
 
         //Game Lab Equipment Use SubState
@@ -90,7 +90,7 @@ public class GameSubStateManager : PlayerActionsManager {
         CheckGameSubState();
     }
 
-    private void PhotographyCameraUI_OnOpenPhotoGallery(object sender, System.EventArgs e) {
+    private void PhotographyCamera_OnOpenPhotoGallery(object sender, System.EventArgs e) {
         CheckGameSubState();
     }
 }

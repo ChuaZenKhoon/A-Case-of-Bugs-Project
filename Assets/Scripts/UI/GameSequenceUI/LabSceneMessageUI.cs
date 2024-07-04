@@ -1,11 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the message screen displayed to the player when transitioning
+ * to the lab portion of the game and during that portion.
+ */
 public class LabSceneMessageUI : MonoBehaviour {
 
     public static event EventHandler OnMessageClickFinish;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPathScore : MonoBehaviour {
+public class MainPath : MonoBehaviour {
 
     public event EventHandler OnMainPathWalkTooMuch;
 

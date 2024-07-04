@@ -11,7 +11,7 @@ public class SelectedVisual : MonoBehaviour {
         Player.Instance.OnPlayerStareAtInteractableObjectChange += Player_OnPlayerStareAtInventoryObjectChange;
     }
 
-    private void Player_OnPlayerStareAtInventoryObjectChange(object sender, Player.OnPlayerStareAtInteractableObjectChangeEventArgs e) {
+    private void Player_OnPlayerStareAtInventoryObjectChange(object sender, PlayerInteractor.OnPlayerStareAtInteractableObjectChangeEventArgs e) {
         if (e.interactableObject == interactableObject) {
             Show();
         } else {

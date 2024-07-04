@@ -19,6 +19,7 @@ public class GameOverUI : MonoBehaviour {
             Hide();
         });
     }
+
     //Subscribe to game state change event
     private void Start() {
         CrimeSceneLevelManager.Instance.OnStateChange += LevelManager_OnStateChange;

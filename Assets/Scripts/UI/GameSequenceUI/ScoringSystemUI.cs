@@ -4,9 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI element repesenting the score obtained by the player at the end of the main game.
+ */
 public class ScoringSystemUI : MonoBehaviour {
 
     public static ScoringSystemUI Instance { get; private set; }
+
+    private const string SCORE_TOTAL = " / 7";
+    private const int SCORE_EARNED = 1;
 
     [SerializeField] private Button closeButton;
 
@@ -23,7 +29,6 @@ public class ScoringSystemUI : MonoBehaviour {
         });
     }
 
-
     private void Start() {
         Hide();
     }
@@ -37,8 +42,8 @@ public class ScoringSystemUI : MonoBehaviour {
     }
 
     public void UpdateScores(int stepOnFlyScore, int stepOnDeceasedScore, int walkMainPathScore,
-        int sketchPlanDetailsPoint, int fingerprintCollectionPoint, int weatherAppPoint, int evidenceCollectionPoint,
-        int sumScore) {
+        int sketchPlanDetailsPoint, int fingerprintCollectionPoint, int weatherAppPoint, 
+        int evidenceCollectionPoint, int sumScore) {
 
         ToggleView(stepOnFlyScore, tickList[0], crossList[0]);
         ToggleView(stepOnDeceasedScore, tickList[1], crossList[1]);
@@ -48,11 +53,11 @@ public class ScoringSystemUI : MonoBehaviour {
         ToggleView(weatherAppPoint, tickList[5], crossList[5]);
         ToggleView(evidenceCollectionPoint, tickList[6], crossList[6]);
 
-        totalScoreText.text = sumScore.ToString() + " / 7";
+        totalScoreText.text = sumScore.ToString() + SCORE_TOTAL;
     }
 
     private void ToggleView(int score, Image tickIcon, Image CrossIcon) {
-        if (score == 1) {
+        if (score == SCORE_EARNED) {
             tickIcon.gameObject.SetActive(true);
             CrossIcon.gameObject.SetActive(false);
         } else {

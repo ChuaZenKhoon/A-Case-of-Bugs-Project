@@ -13,7 +13,7 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        fingerprintLifted = EquipmentStorageManager.Instance.GetFingerprint(this.GetEquipmentID());
+        fingerprintLifted = EvidenceStorageManager.Instance.GetFingerprint(this.GetEquipmentID());
 
         if (fingerprintLifted != null ) {
             fingerprintLiftedVisual.SetActive(true);
@@ -29,7 +29,7 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
 
                 Fingerprint fingerprintToLift = currentFingerprintStaringAt.GetInventoryObjectSO().prefab.GetComponent<Fingerprint>();
                 fingerprintLifted = fingerprintToLift;
-                EquipmentStorageManager.Instance.SetFingerprint(this.GetEquipmentID(), fingerprintLifted);
+                EvidenceStorageManager.Instance.SetFingerprint(this.GetEquipmentID(), fingerprintLifted);
                 Destroy(currentStareAt.gameObject);
                 
                 fingerprintLiftedVisual.SetActive(true);

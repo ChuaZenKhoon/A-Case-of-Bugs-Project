@@ -1,46 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class EquipmentStorageManager : MonoBehaviour {
+/**
+ * A manager that handles the storage logic for evidence
+ */
+public class EvidenceStorageManager : MonoBehaviour {
 
-    public static EquipmentStorageManager Instance { get; private set; }
-
-
-    //Equipment Storage
-    private List<RenderTexture> photoGallery;
-
-    private string[] savedSketchPlanDetailsTextList;
-
-    private List<string> savedSketchPlanLegendInputTextList;
-
-    private Texture2D savedSketchPlan;
-
-    private Sprite savedSketchImage;
-
-    [SerializeField] private Placard[] placards;
-
-    [Serializable] 
-    public struct WeatherRecord {
-        public int temperatureRecord;
-        public int humidityRecord;
-        public string weatherConditionRecord;
-    }
-
-    [SerializeField] private List<WeatherRecord> weatherRecords;
+    public static EvidenceStorageManager Instance { get; private set; }
 
     //Evidence Storage
-    [Serializable] public struct FingerprintLifting {
+    [Serializable]
+    public struct FingerprintLifting {
         public Fingerprint liftedFingerprint;
         public int fingerprintLifterID;
     }
 
     private List<FingerprintLifting> fingerprintLiftings;
 
-    [Serializable] public struct BloodStainCollection {
+    [Serializable]
+    public struct BloodStainCollection {
         public Bloodstain bloodStainCollected;
         public int swabID;
         public bool testedPositive;
@@ -64,11 +44,6 @@ public class EquipmentStorageManager : MonoBehaviour {
     private void Awake() {
         Instance = this;
 
-        photoGallery = new List<RenderTexture>();
-
-        savedSketchPlanDetailsTextList = new string[6];
-        savedSketchPlanLegendInputTextList = new List<string>();
-
         fingerprintLiftings = new List<FingerprintLifting>();
         bloodStainCollection = new List<BloodStainCollection>();
         capturedAdultFlyCollection = new List<AdultFly>();
@@ -78,74 +53,11 @@ public class EquipmentStorageManager : MonoBehaviour {
         killedMaggotsCollection = new List<Larvae>();
     }
 
-    //Photograph Camera
-    public List<RenderTexture> GetPhotoGallery() {
-        return photoGallery;
-    }
-
-    public void AddPhotoToPhotoGallery(RenderTexture picture) {
-        photoGallery.Add(picture);
-    }
-
-    public void RemovePhotoFromPhotoGallery(int index) {
-        photoGallery.RemoveAt(index);
-    }
-
-    //Sketch Plan
-
-    public Texture2D GetSavedSketchPlan() {
-        return savedSketchPlan;
-    }
-
-    public void UpdateSketchPlan(Texture2D sketch) {
-        this.savedSketchPlan = sketch;
-    }
-
-    public string[] GetSketchPlanSavedDetailsTextList() {
-        return this.savedSketchPlanDetailsTextList;
-    }
-
-    public void AddSketchPlanDetailsUI(string text, int index) {
-        savedSketchPlanDetailsTextList[index] = text;
-    }
-
-    public List<string> GetSketchPlanSavedLegendInputTextList() {
-        return this.savedSketchPlanLegendInputTextList;
-    }
-
-    public void AddSketchPlanLegendInputUI(string text) {
-        savedSketchPlanLegendInputTextList.Add(text);
-    }
-
-    public void ClearSketchPlanLegendInputUITextList() {
-        savedSketchPlanLegendInputTextList.Clear();
-    }
-
-    public void UpdateSavedSketchImages(Sprite sprite) {
-        savedSketchImage = sprite;
-    }
-
-    public Sprite GetSavedSketchImages() {
-        return savedSketchImage;
-    }
-
-    public Placard[] GetPlacardList() {
-        return placards;
-    }
-
-    public void SetPlacard(int index, Placard placard) {
-        placards[index] = placard;
-    }
-
-
-    public WeatherRecord GetWeatherRecord(int index) {
-        return weatherRecords[index];
-    } 
-
-    //Evidence
+    //Fingerprint
     public void SetFingerprint(int fingerprintLifterNum, Fingerprint fingerprint) {
         fingerprintLiftings.Add(new FingerprintLifting {
-            fingerprintLifterID = fingerprintLifterNum, liftedFingerprint = fingerprint
+            fingerprintLifterID = fingerprintLifterNum,
+            liftedFingerprint = fingerprint
         });
     }
 
@@ -159,6 +71,7 @@ public class EquipmentStorageManager : MonoBehaviour {
         return null;
     }
 
+    //Bloodstain
     public void SetBloodStain(int swabNum, Bloodstain bloodStain, bool positive, bool obsolete) {
         for (int i = 0; i < bloodStainCollection.Count; i++) {
             if (bloodStainCollection[i].swabID == swabNum) {
@@ -192,6 +105,8 @@ public class EquipmentStorageManager : MonoBehaviour {
         return bloodStainCollection;
     }
 
+
+    //FlyNet
     public List<AdultFly> GetCapturedFlies() {
         return capturedAdultFlyCollection;
     }
@@ -206,17 +121,20 @@ public class EquipmentStorageManager : MonoBehaviour {
         capturedAdultFlyCollection.Clear();
     }
 
-    public List<AdultFly> GetKillingFlies() {
-        return killingAdultFlyCollection;
-    }
-
     public void AddToKillingJar(List<AdultFly> adultFlyToKill) {
         foreach (AdultFly adultFly in adultFlyToKill) {
             killingAdultFlyCollection.Add(adultFly);
         }
-        
+
     }
 
+
+    //Acetone Kill Jar
+    public List<AdultFly> GetKillingFlies() {
+        return killingAdultFlyCollection;
+    }
+
+    //Container
     public List<AdultFly> GetDeadFlies() {
         return deadAdultFlyCollection;
     }
@@ -224,6 +142,7 @@ public class EquipmentStorageManager : MonoBehaviour {
         deadAdultFlyCollection.Add(adultFly);
     }
 
+    //HotWaterCup
     public List<Larvae> GetMaggots() {
         return maggotCollection;
     }
@@ -235,19 +154,10 @@ public class EquipmentStorageManager : MonoBehaviour {
     public void ClearMaggotCollection() {
         maggotCollection.Clear();
     }
-
-    public List<Larvae> GetKilledMaggots() {
-        return killedMaggotsCollection;
-    }
-
     public void AddKilledMaggots(List<Larvae> maggotsKilled) {
         foreach (Larvae maggot in maggotsKilled) {
             killedMaggotsCollection.Add(maggot);
         }
-    }
-
-    public void ClearMaggotKilledCollection() {
-        killedMaggotsCollection.Clear();
     }
 
     public void SetKillingMaggotProgressDuration(float duration) {
@@ -257,4 +167,10 @@ public class EquipmentStorageManager : MonoBehaviour {
     public float GetKillingMaggotProgressDuration() {
         return killingMaggotsDuration;
     }
+
+    //Ethanol Container
+    public List<Larvae> GetKilledMaggots() {
+        return killedMaggotsCollection;
+    }
+
 }

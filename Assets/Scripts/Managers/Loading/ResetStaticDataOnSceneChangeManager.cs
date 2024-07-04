@@ -34,16 +34,23 @@ public class ResetStaticDataOnSceneChangeManager : MonoBehaviour {
     private void ResetData() {
         InventoryDropItemUI.ResetStaticData();
         InventorySingleUI.ResetStaticData();
+
         Equipment.ResetStaticData();
+        LabEquipment.ResetStaticData();
+
+        PhotographyCamera.ResetStaticData();
+        SketchPlan.ResetStaticData();
         PlacardHolder.ResetStaticData();
         FingerprintDuster.ResetStaticData();
         NextLocationArrow.ResetStaticData();
         Phone.ResetStaticData();
-        SketchPlan.ResetStaticData();
+        
+        AdultFly.ResetStaticData();
+
         LabSceneMessageUI.ResetStaticData();
-        LabEquipment.ResetStaticData();
         Microscope.ResetStaticData();
         BloodTestStation.ResetStaticData();
-        AdultFly.ResetStaticData();
+        
+
     }
 }

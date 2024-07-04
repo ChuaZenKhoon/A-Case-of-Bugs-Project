@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI element representing the credits screen in the main menu
+ */
 public class CreditsScreenUI : MonoBehaviour {
 
     [SerializeField] private Image assetsCredits;

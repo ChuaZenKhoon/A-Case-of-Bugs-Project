@@ -6,7 +6,6 @@ using UnityEngine;
  */
 public class PlayerActionsManager : MonoBehaviour {
 
-    [SerializeField] private PlayerCamera playerCamera;
     [SerializeField] private Texture2D cursorCrossHairSprite;
 
     protected bool canCameraMove;
@@ -29,9 +28,9 @@ public class PlayerActionsManager : MonoBehaviour {
         }
 
         if (canCameraMove) {
-            playerCamera.ToggleActivationState(true);
+            Player.Instance.ToggleCameraMovementState(true);
         } else {
-            playerCamera.ToggleActivationState(false);
+            Player.Instance.ToggleCameraMovementState(false);
         }
 
         if (canPlayerMove) {

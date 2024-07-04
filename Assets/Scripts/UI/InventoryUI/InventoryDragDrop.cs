@@ -10,6 +10,9 @@ using UnityEngine.UI;
  */
 public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
 
+    private static Color INVISIBLE_SPRITE = new Color(1, 1, 1, 0);
+    private static Color VISIBLE_SPRITE = new Color(1, 1, 1, 1);
+
     [SerializeField] private Image iconImage;
     [SerializeField] InventorySingleUI parent;
 
@@ -36,6 +39,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
             return;
         }
 
+        //Adjust UI part to show drag action happening
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
         originalParentPosition = rectTransform.parent;
@@ -73,11 +77,11 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     //Player to drag item sprite in inventory slot
     public void SetIconSprite(Sprite sprite) {
         if (sprite != null) {
-            this.iconImage.color = new Color(1, 1, 1, 1);
+            this.iconImage.color = VISIBLE_SPRITE;
             iconImage.raycastTarget = true;
             this.iconImage.sprite = sprite;
         } else {
-            this.iconImage.color = new Color(1, 1, 1, 0);
+            this.iconImage.color = INVISIBLE_SPRITE;
             iconImage.raycastTarget = false;
             this.iconImage.sprite = sprite;
         }

@@ -15,7 +15,7 @@ public class EthanolContainer : EvidenceInteractingEquipment {
     }
 
     private void Start() {
-        larvaeKilled = EquipmentStorageManager.Instance.GetKilledMaggots();
+        larvaeKilled = EvidenceStorageManager.Instance.GetKilledMaggots();
         SetCorrectVisual();
     }
     public override void Interact() {

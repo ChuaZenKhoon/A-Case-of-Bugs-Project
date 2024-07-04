@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * A manager in charge of handling the gameplay logic and game flow.
+ * A manager in charge of handling the main game's flow and state.
  */
 public class CrimeSceneLevelManager : MonoBehaviour {
 
@@ -14,6 +14,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
 
     [SerializeField] private List<DifficultyEvidenceList> difficultyEvidenceList;
 
+    //Activate the sets of evidence based on difficulty of game
     [Serializable]
     public struct DifficultyEvidenceList {
         public DifficultySO difficultySO;
@@ -34,6 +35,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
     [SerializeField] private Transform labSpawnLocation;
     [SerializeField] private ExitDoor exitDoor;
 
+    //For scoring
     private DifficultyEvidenceList evidenceListToCompare;
 
     private State state;
@@ -47,6 +49,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         Instance = this;
         state = State.ReadingReport;
 
+        //Place evidence
         foreach (DifficultyEvidenceList evidenceList in difficultyEvidenceList) {
             if (evidenceList.difficultySO == DifficultySettingManager.difficultyLevelSelected) {
                 evidenceListToCompare = evidenceList;
@@ -57,12 +60,17 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         }
     }
 
-    //Subscribe to events that change game flow and state
+    //Subscribe to events that change game flow and state not controlled by this mananger
     private void Start() {
         InformationReportUI.Instance.OnClickReadFinishReport += InformationReportUI_OnClickReadFinishReport;
+        GameInstructionsManager.Instance.OnGameSkipAhead += GameInstructionManager_OnGameSkipAhead;
 
         LabSceneMessageUI.OnMessageClickFinish += LabSceneMessageUI_OnMessageClickFinish;
         exitDoor.OnExitLab += ExitDoor_OnExitLab;
+    }
+
+    private void GameInstructionManager_OnGameSkipAhead(object sender, EventArgs e) {
+        gameTime = 0f;
     }
 
     private void LabSceneMessageUI_OnMessageClickFinish(object sender, EventArgs e) {
@@ -82,21 +90,11 @@ public class CrimeSceneLevelManager : MonoBehaviour {
 
     private void Update() {
         switch (state) {
-            case State.ReadingReport:
-                break;
             case State.GameStartCountdown:
                 HandleGameStartCountdown();
                 break;
             case State.GamePlaying:
                 HandleGamePlaying();
-                break;
-            case State.GameEnd:
-                break;
-            case State.LabMessage:
-                break;
-            case State.LabPlaying:
-                break;
-            case State.LabEnd:
                 break;
             default:
                 break;
@@ -159,10 +157,6 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         return gameTimerMin; 
     }
 
-    public void SkipAhead() {
-        gameTime = 0f;
-    }
-
     public void MoveToLab() {
         Player.Instance.gameObject.transform.position = labSpawnLocation.position;
         Player.Instance.gameObject.transform.rotation = labSpawnLocation.rotation;
@@ -170,6 +164,7 @@ public class CrimeSceneLevelManager : MonoBehaviour {
         OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 
+    //For scoring
     public List<GameObject> GetDifficultyEvidenceListItems() {
         return evidenceListToCompare.evidenceToPlace;
     }

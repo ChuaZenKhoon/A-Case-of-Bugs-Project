@@ -1,18 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the main screen of the sketch plan.
+ * Note: The logic components are referenced here due to each part of the sketch plan
+ * being activated by clicking on the respective sections.
+ */
 public class SketchPlanUI : MonoBehaviour {
 
-    public static event EventHandler OnOpenSketchPlan;
-
-    [SerializeField] private SketchDrawSpaceUI drawSpaceUI;
-    [SerializeField] private SketchDetailsUI detailsUI;
-    [SerializeField] private SketchLegendUI legendUI;
+    [SerializeField] private SketchDrawSpace drawSpace;
+    [SerializeField] private SketchDetails details;
+    [SerializeField] private SketchLegend legend;
 
     [SerializeField] private Button drawSpaceButton;
     [SerializeField] private Button detailsButton;
@@ -20,30 +18,16 @@ public class SketchPlanUI : MonoBehaviour {
 
     [SerializeField] private Image sketchPlanImage;
 
-    public static bool isInSketchMode;
-    private static bool isShown;
-
     private void Awake() {
-
-        isInSketchMode = false;
-        isShown = false;
-
         drawSpaceButton.onClick.AddListener(() => {
-            drawSpaceUI.Show();
+            drawSpace.Show();
         });
         detailsButton.onClick.AddListener(() => {
-            detailsUI.Show();
+            details.Show();
         });
         legendButton.onClick.AddListener(() => {
-            legendUI.Show();
+            legend.Show();
         });
-
-        UpdateSketchImages();
-
-    }
-
-    public static bool IsShown() {
-        return isShown;
     }
 
     private void Start() {
@@ -51,25 +35,14 @@ public class SketchPlanUI : MonoBehaviour {
     }
 
     public void Hide() {
-        gameObject.SetActive(false);
-        isShown = false;
-        OnOpenSketchPlan?.Invoke(this, EventArgs.Empty);
+        gameObject.SetActive(false);   
     }
 
     public void Show() {
         gameObject.SetActive(true);
-        isShown = true;
-        UpdateSketchImages();
-        OnOpenSketchPlan?.Invoke(this, EventArgs.Empty);
     }
 
-    public void SaveSketch() {
-        Hide();
-    }
-
-    public void UpdateSketchImages() {
-        Sprite savedImage = EquipmentStorageManager.Instance.GetSavedSketchImages();
-
+    public void UpdateSketchImage(Sprite savedImage) {
         if (savedImage != null) {
             sketchPlanImage.sprite = savedImage;
         }

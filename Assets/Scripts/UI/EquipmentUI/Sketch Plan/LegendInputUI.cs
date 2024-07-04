@@ -1,10 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
+/**
+ * A UI component representing a singular tab in the legend screen in the sketch plan.
+ */
 public class LegendInputUI : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI legendInputIndexText;

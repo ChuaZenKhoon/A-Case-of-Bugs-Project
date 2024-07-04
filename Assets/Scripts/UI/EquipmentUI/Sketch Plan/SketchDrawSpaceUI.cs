@@ -7,13 +7,15 @@ using UnityEngine.UI;
 
 public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
 
+    [SerializeField] private SketchDrawSpace drawSpace;
+
     [SerializeField] private SketchPlanUI planUI;
 
     [SerializeField] private RawImage sketch;
 
     [SerializeField] private Button backButton;
 
-    [SerializeField] private CanvasGroup canvasVisiblity;
+    [SerializeField] private CanvasGroup canvasVisibility;
     [SerializeField] private Canvas toggleViewCanvas;
 
     private Texture2D canvasTexture;
@@ -39,7 +41,7 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
         InitializeCanvas(savedSketch);
 
         backButton.onClick.AddListener(() => {
-            SaveDetails();
+            drawSpace.SaveDetails(canvasTexture);
         });
 
         isViewToggled = false;
@@ -69,10 +71,10 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
             isViewToggled = !isViewToggled;
 
             if (isViewToggled) {
-                canvasVisiblity.alpha = 0f;
+                canvasVisibility.alpha = 0f;
                 toggleViewCanvas.gameObject.SetActive(true);
             } else {
-                canvasVisiblity.alpha = 1f;
+                canvasVisibility.alpha = 1f;
                 toggleViewCanvas.gameObject.SetActive(false);
             }
 
@@ -94,28 +96,14 @@ public class SketchDrawSpaceUI : MonoBehaviour, IDragHandler, IBeginDragHandler,
         GameInput.Instance.OnToggleSketchView -= GameInput_OnToggleSketchView;
     }
 
-    private void Hide() {
-        SketchPlanUI.isInSketchMode = false;
+    public void Hide() {
         gameObject.SetActive(false);
     }
 
     public void Show() {
-        SketchPlanUI.isInSketchMode = true;
         gameObject.SetActive(true);
     }
 
-    private void SaveDetails() {
-        EquipmentStorageManager.Instance.UpdateSketchPlan(canvasTexture);
-        SaveSketchImage();
-        planUI.UpdateSketchImages();
-        Hide();
-    }
-
-    private void SaveSketchImage() {
-        Sprite sprite = Sprite.Create(canvasTexture, new Rect(0, 0, canvasTexture.width, canvasTexture.height), new Vector2(0.5f, 0.5f));
-        EquipmentStorageManager.Instance.UpdateSavedSketchImages(sprite);
-        drawingHistory.Clear();
-    }
     private void GameInput_OnClearSketch(object sender, System.EventArgs e) {
         if (gameObject.activeSelf) {
             ClearCanvas();

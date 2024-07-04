@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour {
 
     public static InventoryManager Instance { get; private set; }
 
-    //Event for when inventory UI is to open/close
+    //Event for when inventory screen UI is to open/close
     public event EventHandler OnInventoryOpenStateChange;
 
     private const int INVENTORY_SLOTS = 20;
@@ -42,8 +42,9 @@ public class InventoryManager : MonoBehaviour {
         equipmentIDArray = new int[INVENTORY_SLOTS];
     }
 
-    //Subscribe to game state change event
+    
     private void Start() {
+        //For crime scene, add in equipment based on difficulty then assign equipment ID
         if (Loader.targetScene == Loader.Scene.CrimeScene) {
             CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
             DifficultySO difficultySO = DifficultySettingManager.difficultyLevelSelected;
@@ -57,6 +58,7 @@ public class InventoryManager : MonoBehaviour {
             AssignEquipmentID();
         }
 
+        //For tutorial scene, allow inventory use only from the correct stage
         if (Loader.targetScene == Loader.Scene.TutorialScene) {
             TutorialLevelManager.Instance.OnStateChange += TutorialLevelManager_OnStateChange;
         }
@@ -83,7 +85,8 @@ public class InventoryManager : MonoBehaviour {
             InventoryDropItemUI.OnConfirmedDropItem += InventoryDropItemUI_OnConfirmedDropItem;
         }
 
-        if (TutorialLevelManager.Instance.GetState() == TutorialLevelManager.State.Equipment_Swab) {
+        if (TutorialLevelManager.Instance.GetState() == TutorialLevelManager.State.Equipment_Swab || 
+            TutorialLevelManager.Instance.GetState() == TutorialLevelManager.State.Equipment_FingerprintDuster_FingerprintLifter) {
             AssignEquipmentID();
         }
     }
@@ -149,6 +152,10 @@ public class InventoryManager : MonoBehaviour {
     private void GameInput_OnInventoryOpen(object sender, System.EventArgs e) {
         //Guard clause to deny opening inventory if equipment is in use
         if (Equipment.isInAction) {
+            //For sketch plan, prevent confusing message when typing
+            if (SketchPlan.IsInSketchMode()) {
+                return;
+            }
             MessageLogManager.Instance.LogMessage("Equipment in use. Exit equipment usage before opening Inventory.");
             return;
         }
@@ -187,6 +194,7 @@ public class InventoryManager : MonoBehaviour {
         inventoryObjectsArray[oldIndex] = inventoryObjectsArray[newIndex];
         inventoryObjectsArray[newIndex] = temp;
 
+        //Swap equipment ID as well
         int tempInt = equipmentIDArray[oldIndex];
         equipmentIDArray[oldIndex] = equipmentIDArray[newIndex];
         equipmentIDArray[newIndex] = tempInt;
@@ -218,6 +226,9 @@ public class InventoryManager : MonoBehaviour {
         UpdateFreeInventorySlot();
     }
 
+    /**
+     * After each inventory change, updates the free slot for the next item to be added at
+     */
     public void UpdateFreeInventorySlot() {
         int currentIndex;
         

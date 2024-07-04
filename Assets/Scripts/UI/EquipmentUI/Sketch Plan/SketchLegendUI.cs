@@ -2,9 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the legend screen of the sketch plan.
+ */
 public class SketchLegendUI : MonoBehaviour {
 
-    [SerializeField] private SketchPlanUI planUI;
+    [SerializeField] private SketchLegend sketchLegend;
 
     [SerializeField] private Button addLegendButton;
     [SerializeField] private Button removeLegendButton;
@@ -14,48 +17,43 @@ public class SketchLegendUI : MonoBehaviour {
 
     [SerializeField] private RectTransform savedImageSpace;
 
-    private int index;
+    private const int MAX_SLOTS = 12;
+
     private void Awake() {
-
-        index = 0;
-
         addLegendButton.onClick.AddListener(() => {
-            AddLegendInput(null);
+            sketchLegend.AddLegendInput(null);
         });
 
         removeLegendButton.onClick.AddListener(() => {
-            RemoveLegendInput();
+            sketchLegend.RemoveLegendInput();
         });
 
         backButton.onClick.AddListener(() => {
             SaveDetails();
         });
 
-
+        //Logic component does not tell UI for this specific point.
+        UpdateButtons(0);
     }
 
     private void Start() {
-        List<string> savedLegendInputTextList = EquipmentStorageManager.Instance.GetSketchPlanSavedLegendInputTextList();
-        if (savedLegendInputTextList.Count != 0) {
-            foreach (string legendInputText in savedLegendInputTextList) {
-                AddLegendInput(legendInputText);
-            }
-        }
-
-        UpdateButtons();
         Hide();
     }
-    private void Hide() {
-        SketchPlanUI.isInSketchMode = false;
+    public void Hide() {
         gameObject.SetActive(false);
     }
 
     public void Show() {
-        SketchPlanUI.isInSketchMode = true;
         gameObject.SetActive(true);
     }
 
-    private void AddLegendInput(string legendInputText) {
+    /**
+     * Adds a new tab for input.
+     * 
+     * @param legendInputText Any stored string from before.
+     * @param index The index of the tab to be added.
+     */
+    public void AddLegendInput(string legendInputText, int index) {
         LegendInputUI newLegendInputUI = Instantiate(legendInputUIPrefab, container);
         
         if (legendInputText != null) {
@@ -63,51 +61,41 @@ public class SketchLegendUI : MonoBehaviour {
         } else {
             newLegendInputUI.UpdateText(null, index+1);
         }
-
-        index++;
-        UpdateButtons();
+        UpdateButtons(index+1);
     }
 
-    private void RemoveLegendInput() {
+    /**
+     * Removes the latest tab.
+     *
+     * @param index The index of the tab to be removed.
+     */
+    public void RemoveLegendInput(int index) {
         Transform child = container.GetChild(container.childCount - 1);
         Destroy(child.gameObject);
-        index--;
-        UpdateButtons();
+        UpdateButtons(index);
     }
 
-    private void UpdateButtons() {
-        addLegendButton.interactable = index < 12;
+    /**
+     * A sanity check to prevent UI overspill.
+     * 
+     * @param index Number of tabs currently in the UI to check against.
+     */
+    public void UpdateButtons(int index) {
+        addLegendButton.interactable = index < MAX_SLOTS;
         removeLegendButton.interactable = index > 0;
     }
 
+    //Processes information before passing to logic component for storage.
     private void SaveDetails() {
+        List<string> details = new List<string>();
 
-        EquipmentStorageManager.Instance.ClearSketchPlanLegendInputUITextList();
         foreach (Transform child in container) {
             LegendInputUI legendInputUI = child.GetComponent<LegendInputUI>();
             if (legendInputUI != null) {
-                EquipmentStorageManager.Instance.AddSketchPlanLegendInputUI(legendInputUI.GetText());
+                details.Add(legendInputUI.GetText());
             }
         }
 
-        //SaveLegendImage();
-        //planUI.UpdateSketchImages();
-        Hide();
+        sketchLegend.SaveDetails(details);
     }
-
-/*    private void SaveLegendImage() {
-        int width = (int)savedImageSpace.rect.width;
-        int height = (int)savedImageSpace.rect.height;
-
-        Texture2D texture = new Texture2D(width, height, TextureFormat.RGB24, false);
-        texture.ReadPixels(new Rect(((Screen.width - width) / 2) , (Screen.height - height)/ 2, width, height), 0, 0);
-        texture.Apply();
-
-        // Convert the Texture2D to a Sprite
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-        // Optionally, handle the sprite (e.g., save it or display it)
-        EquipmentStorageManager.Instance.UpdateSavedSketchImages(sprite, 2);
-
-    }*/
 }

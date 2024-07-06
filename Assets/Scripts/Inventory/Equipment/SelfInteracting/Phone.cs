@@ -1,16 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The class representing the phone equipment.
+ */
 public class Phone : SelfInteractingEquipment {
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
+    public static event EventHandler OnPhoneOpen;
+
+    private static int TUTORIAL_LEVEL_WEATHER_INDEX = 0;
+    private static int GAME_LEVEL_WEATHER_INDEX = 1;
 
 
     [SerializeField] private PhoneUI phoneUI;
-
-    public static event EventHandler OnPhoneOpen;
 
     private EquipmentStorageManager.WeatherRecord weatherRecord;
 
@@ -20,11 +23,10 @@ public class Phone : SelfInteractingEquipment {
     }
 
     private void Start() {
-
         if (Loader.targetScene == Loader.Scene.CrimeScene) {
-            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(1);
+            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(GAME_LEVEL_WEATHER_INDEX);
         } else {
-            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(0);
+            weatherRecord = EquipmentStorageManager.Instance.GetWeatherRecord(TUTORIAL_LEVEL_WEATHER_INDEX);
         }
         phoneUI.UpdateText(weatherRecord);
     }
@@ -36,27 +38,36 @@ public class Phone : SelfInteractingEquipment {
         }
 
         if (!phoneUI.IsShown()) {
-            Equipment.isInAction = true;
-            phoneUI.Show();
-            OnPhoneOpen?.Invoke(this, EventArgs.Empty);
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Close Phone", 0);
-            }
-
-            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+            OpenPhone();
         } else {
-            Equipment.isInAction = false;
-            phoneUI.Hide();
-            OnPhoneOpen?.Invoke(this, EventArgs.Empty);
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Check Local Weather", 0);
-            }
-            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+            ClosePhone();
         }
     }
 
+    private void OpenPhone() {
+        Equipment.isInAction = true;
+        phoneUI.Show();
+        OnPhoneOpen?.Invoke(this, EventArgs.Empty);
+        
+        //Update interaction text
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Close Phone", 0);
+        }
 
+        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+    }
 
+    private void ClosePhone() {
+        Equipment.isInAction = false;
+        phoneUI.Hide();
+        OnPhoneOpen?.Invoke(this, EventArgs.Empty);
+
+        //Update interaction text
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Check Local Weather", 0);
+        }
+        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+    }
 }

@@ -1,11 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * A logic component that handles highlighting the object to the player for interaction.
+ */
 public class SelectedVisual : MonoBehaviour {
 
     [SerializeField] private InteractableObject interactableObject;
     [SerializeField] private GameObject[] selectedVisualArray;
+
+    private const int EVIDENCE_INDEX = 0;
+    private const int SEALED_EVIDENCE_INDEX = 1;
 
     private void Start() {
         Player.Instance.OnPlayerStareAtInteractableObjectChange += Player_OnPlayerStareAtInventoryObjectChange;
@@ -25,25 +29,30 @@ public class SelectedVisual : MonoBehaviour {
     }
 
     private void Show() {
-        foreach (GameObject selectedCounterVisual in selectedVisualArray) {
-            selectedCounterVisual.SetActive(true);
+        foreach (GameObject selectedVisual in selectedVisualArray) {
+            selectedVisual.SetActive(true);
         }
-        
+
         if (interactableObject is Evidence) {
-            Evidence evidence = interactableObject as Evidence;
-            if (evidence.IsSealed()) {
-                selectedVisualArray[0].SetActive(false);
-            } else {
-                if (selectedVisualArray.Length > 1) {
-                    selectedVisualArray[1].SetActive(false);
-                }
-            }
+            HandleEvidenceSealing();
         }
     }
 
     private void Hide() {
         foreach (GameObject selectedCounterVisual in selectedVisualArray) {
             selectedCounterVisual.SetActive(false);
+        }
+    }
+
+    //If evidence is picked up, it is sealed and should highlight seal bag and not evidence.
+    private void HandleEvidenceSealing() {
+        Evidence evidence = interactableObject as Evidence;
+        if (evidence.IsSealed()) {
+            selectedVisualArray[EVIDENCE_INDEX].SetActive(false);
+        } else {
+            if (selectedVisualArray.Length > 1) {
+                selectedVisualArray[SEALED_EVIDENCE_INDEX].SetActive(false);
+            }
         }
     }
 }

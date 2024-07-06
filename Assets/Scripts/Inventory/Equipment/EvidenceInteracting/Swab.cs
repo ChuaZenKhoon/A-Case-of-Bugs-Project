@@ -1,39 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The class representing the swab equipment. 
+ * As of the current iteration, swabs can only collect red stains, not DNA.
+ */
 public class Swab : EvidenceInteractingEquipment {
 
-    [SerializeField] private GameObject usedVisual;
+    [SerializeField] private GameObject canBeTestedVisual;
+    [SerializeField] private GameObject usedVisual; //is part of the above
+
     [SerializeField] private GameObject positiveResultVisual;
-    [SerializeField] private GameObject cannotBeUsedVisual;
-    [SerializeField] private GameObject canBeUsedVisual;
+    
+    [SerializeField] private GameObject cannotBeTestedVisual;
+
+    public enum TestState {
+        Unused,
+        Used,
+        PositiveResult,
+        CannotBeTestedAnymore
+    }
 
     private Bloodstain bloodStain;
 
+    private TestState state;
+
     private void Awake() {
-        usedVisual.SetActive(false);
-        positiveResultVisual.SetActive(false);
-        cannotBeUsedVisual.SetActive(false);
+        state = TestState.Unused;
+        UpdateVisual(state);
     }
 
     private void Start() {
-        bloodStain = EvidenceStorageManager.Instance.GetBloodStain(this.GetEquipmentID(), out bool positive, out bool cannotBeUsed);
-
-        if (cannotBeUsed) {
-            cannotBeUsedVisual.SetActive(true);
-            canBeUsedVisual.SetActive(false);
-            return;
-        }
-
-        if (bloodStain != null) {
-            cannotBeUsedVisual.SetActive(false);
-            usedVisual.SetActive(true);
-        }
-
-        if (positive) {
-            positiveResultVisual.SetActive(true);
-        }
+        bloodStain = EvidenceStorageManager.Instance.GetBloodStain(this.GetEquipmentID(), out TestState testState);
+        state = testState;
+        UpdateVisual(testState);
     }
 
 
@@ -42,46 +42,75 @@ public class Swab : EvidenceInteractingEquipment {
             InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
             if (currentStareAt is Bloodstain) {
-                Bloodstain currentBloodStainStaringAt = currentStareAt as Bloodstain;
-
-                Bloodstain liquidToSwab = currentBloodStainStaringAt.GetInventoryObjectSO().prefab.GetComponentInChildren<Bloodstain>();
-                bloodStain = liquidToSwab;
-                EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, false, false);
-
-                usedVisual.SetActive(true);
-
-
+                CollectStain(currentStareAt);
                 MessageLogManager.Instance.LogMessage("Red stain successfully collected!");
             } else {
+                //Not bloodstain
                 MessageLogManager.Instance.LogMessage("Cannot pick up normal items with the swab.");
             }
         } else {
+            //Used
             MessageLogManager.Instance.LogMessage("This swab has already been used.");
         }
     }
 
+    private void CollectStain(InteractableObject currentStareAt) {
+        Bloodstain currentBloodStainStaringAt = currentStareAt as Bloodstain;
+
+        Bloodstain liquidToSwab = currentBloodStainStaringAt.GetInventoryObjectSO().prefab.GetComponentInChildren<Bloodstain>();
+        bloodStain = liquidToSwab;
+        state = TestState.Used;
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, state);
+
+        UpdateVisual(state);
+    }
+
+    //Updates the shown swab based on the state of it
+    private void UpdateVisual(TestState state) {
+        switch (state) {
+            case TestState.Unused:
+                cannotBeTestedVisual.SetActive(false);
+                usedVisual.SetActive(false);
+                positiveResultVisual.SetActive(false);
+                break;
+            case TestState.Used:
+                canBeTestedVisual.SetActive(true);
+                cannotBeTestedVisual.SetActive(false);
+                usedVisual.SetActive(true);
+                positiveResultVisual.SetActive(false);
+                break;
+            case TestState.PositiveResult:
+                cannotBeTestedVisual.SetActive(false);
+                positiveResultVisual.SetActive(true);
+                break;
+            case TestState.CannotBeTestedAnymore:
+                cannotBeTestedVisual.SetActive(true);
+                canBeTestedVisual.SetActive(false);
+                break;
+        }
+    }
+
+    /**
+     * Updates state from blood test station use when test gives positive result.
+     */
     public void PositiveTestAdministered() {
-        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, true, false);
-        positiveResultVisual.SetActive(true);
+        state = TestState.PositiveResult;
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, TestState.PositiveResult);
+        UpdateVisual(state);
         MessageLogManager.Instance.LogMessage("Cotton swab turns pink! Positive test result obtained. This sample could be human or animal blood!");
     }
 
+    /**
+     * Updates state from blood test station use when test is wrongly performed.
+     */
     public void ImproperTestAdministered() {
-        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, false, true);
-        cannotBeUsedVisual.SetActive(true);
-        canBeUsedVisual.SetActive(false);
+        state = TestState.CannotBeTestedAnymore;
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, TestState.CannotBeTestedAnymore);
+        UpdateVisual(state);
         MessageLogManager.Instance.LogMessage("Improper test administered. Swab is stored and to be thrown later.");
     }
 
-    public bool IsUsed() {
-        return bloodStain != null;
-    }
-
-    public bool IsPositiveTestedAlready() {
-        return positiveResultVisual.activeSelf;
-    }
-
-    public bool CannotBeUsed() {
-        return cannotBeUsedVisual.activeSelf;
+    public TestState CurrentState() {
+        return state;
     }
 }

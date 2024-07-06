@@ -105,7 +105,7 @@ public class PlayerInteractor : MonoBehaviour {
             }
 
         } else {
-            currentDroppablePosition = this.transform.position;
+            currentDroppablePosition = Player.Instance.transform.position;
             if (currentHeldObject is PlacardHolder) {
                 PlacardHolder placardHolder = currentHeldObject as PlacardHolder;
                 placardHolder.ShowPlacementPosition(currentDroppablePosition, false);

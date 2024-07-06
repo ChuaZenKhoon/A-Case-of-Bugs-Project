@@ -8,8 +8,9 @@ using UnityEngine;
 public class Evidence : InventoryObject {
 
     [SerializeField] private GameObject sealedEvidence;
-    [SerializeField] private GameObject evidenceVisual;
     [SerializeField] private BoxCollider sealedCollider;
+
+    [SerializeField] private GameObject evidenceVisual;
     [SerializeField] private BoxCollider evidenceCollider;
 
     public override void Interact() {
@@ -20,6 +21,7 @@ public class Evidence : InventoryObject {
         }
     }
     
+    //When evidence is picked up, it is put in a sealed bag. Adjust dropped evidence into sealed bag visual.
     public void SealEvidence() {
         if (sealedEvidence == null) {
             return;

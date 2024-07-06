@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307445951871617206}
   m_Layer: 0
-  m_Name: CannotBeUsedVisual
+  m_Name: CannotBeTestedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1307445951871617206}
   - {fileID: 6429649480717260768}
+  - {fileID: 1307445951871617206}
   m_Father: {fileID: 1425172521066773357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628857057335542664
@@ -480,10 +480,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: 461f12f4882c661489c48e2409a4874f, type: 2}
+  canBeTestedVisual: {fileID: 1628857057335542664}
   usedVisual: {fileID: 6639884972963572982}
   positiveResultVisual: {fileID: 7538792961815437262}
-  cannotBeUsedVisual: {fileID: 475769372718013846}
-  canBeUsedVisual: {fileID: 1628857057335542664}
+  cannotBeTestedVisual: {fileID: 475769372718013846}
 --- !u!1 &5767329968687555217
 GameObject:
   m_ObjectHideFlags: 0

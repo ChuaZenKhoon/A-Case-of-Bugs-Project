@@ -54,7 +54,6 @@ public class TutorialLevelManager : MonoBehaviour {
         state++;
 
         instructionUI.DisplayMessage(state);
-        Debug.Log(state);
         
         if (state == TutorialLevelManager.State.Exit) {
             exitTutorialUI.Show();

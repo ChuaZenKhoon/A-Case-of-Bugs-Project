@@ -1,7 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/**
+ * A component of the placardHolder equipment, representing a singluar placard to be placed.
+ */
 
 public class Placard : InventoryObject {
 

@@ -68,21 +68,22 @@ public class BloodTestStation : LabEquipment {
     }
 
     private bool CheckTestability(Swab swabToCheck) {
-        if (swabToCheck.CannotBeUsed()) {
-            MessageLogManager.Instance.LogMessage("This swab has already undergone wrong testing and cannot be tested again.");
-            return false;
-        }
+        Swab.TestState state = swabToCheck.CurrentState();
 
-        if (!swabToCheck.IsUsed()) {
-            MessageLogManager.Instance.LogMessage("This swab has not been used. There is nothing to test.");
-            return false;
-        } else {
-            if (swabToCheck.IsPositiveTestedAlready()) {
+        switch (state) {
+            case Swab.TestState.Unused:
+                MessageLogManager.Instance.LogMessage("This swab has not been used. There is nothing to test.");
+                return false;
+            case Swab.TestState.Used:
+                return true;
+            case Swab.TestState.PositiveResult:
                 MessageLogManager.Instance.LogMessage("This swab has already been positively tested. There is no need to test again.");
                 return false;
-            } else {
-                return true;
-            }
+            case Swab.TestState.CannotBeTestedAnymore:
+                MessageLogManager.Instance.LogMessage("This swab has already undergone wrong testing and cannot be tested again.");
+                return false;
+            default:
+                return false;
         }
     }
 
@@ -95,6 +96,7 @@ public class BloodTestStation : LabEquipment {
         equipmentCamera.enabled = true;
 
         gameplayCanvas.alpha = 0f;
+        gameplayCanvas.blocksRaycasts = false;
 
         bloodTestStationUI.Show();
     }
@@ -112,6 +114,7 @@ public class BloodTestStation : LabEquipment {
         playerCamera.enabled = true;
 
         gameplayCanvas.alpha = 1f;
+        gameplayCanvas.blocksRaycasts = true;
     }
 
     public bool CheckEthanolIsAddedFirst() {

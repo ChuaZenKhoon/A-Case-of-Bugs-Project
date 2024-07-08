@@ -1,11 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+/**
+ * A UI component that represents the pop up display to the player 
+ * that demonstrates the use of equipment for ease of learning.
+ */
 public class EquipmentGuideUI : MonoBehaviour {
 
     public event EventHandler OnClose;
@@ -40,6 +42,7 @@ public class EquipmentGuideUI : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
+    //Play the equipment guide video
     public void Show() {
         gameObject.SetActive(true);
         string videoPath = System.IO.Path.Combine(GetStreamingAssetsPath(), videoPathStorage);

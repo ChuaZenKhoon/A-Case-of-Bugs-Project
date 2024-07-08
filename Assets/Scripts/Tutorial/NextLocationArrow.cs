@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
+/**
+ * A logic component of the tutorial stage that triggers the following
+ * parts of the tutorial when the players moves over it.
+ */
 public class NextLocationArrow : MonoBehaviour {
 
     public static event EventHandler<int> OnTouchArrow;

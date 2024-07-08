@@ -117,7 +117,54 @@ public class BloodTestStation : LabEquipment {
         gameplayCanvas.blocksRaycasts = true;
     }
 
-    public bool CheckEthanolIsAddedFirst() {
+    //The following 4 methods deal with using the blood test station.
+
+
+    public void ExitStation() {
+        bool isTestedHalfWay = CheckHasBeenTestedHalfway();
+
+        if (isTestedHalfWay) {
+            IncompleteTestProcedure();
+        }
+
+        ExitFromEquipmentScreen();
+    }
+
+    public void AddEthanol() {
+        bool isCorrect = CheckEthanolIsAddedFirst();
+        if (isCorrect) {
+            MessageLogManager.Instance.LogMessage("Correct step! What next?");
+        } else {
+            bloodTestStationUI.Hide();
+            ExitFromEquipmentScreen();
+            WrongTestProcedure();
+        }
+    }
+
+    public void AddPhenophtalein() {
+        bool isCorrect = CheckPhenophthaleinIsAddedSecond();
+        if (isCorrect) {
+            MessageLogManager.Instance.LogMessage("Correct step! What next?");
+        } else {
+            bloodTestStationUI.Hide();
+            ExitFromEquipmentScreen();
+            WrongTestProcedure();
+        }
+    }
+
+    public void AddHydrogenPeroxide() {
+        bool isCorrect = CheckHydrogenPeroxideIsAddedThird();
+        if (isCorrect) {
+            CorrectTestProcedure();  
+        } else {
+            WrongTestProcedure();
+        }
+
+        bloodTestStationUI.Hide();
+        ExitFromEquipmentScreen();
+    }
+
+    private bool CheckEthanolIsAddedFirst() {
         if (!isEthanolAddedFirst && !isphenolphthaleinAddedSecond && !isHydrogenPeroxideAddedThird) {
             isEthanolAddedFirst = true;
             return true;
@@ -126,7 +173,7 @@ public class BloodTestStation : LabEquipment {
         }
     }
 
-    public bool CheckPhenophthaleinIsAddedSecond() {
+    private bool CheckPhenophthaleinIsAddedSecond() {
         if (isEthanolAddedFirst && !isphenolphthaleinAddedSecond && !isHydrogenPeroxideAddedThird) {
             isphenolphthaleinAddedSecond = true;
             return true;
@@ -135,7 +182,7 @@ public class BloodTestStation : LabEquipment {
         }
     }
 
-    public bool CheckHydrogenPeroxideIsAddedThird() {
+    private bool CheckHydrogenPeroxideIsAddedThird() {
         if (isEthanolAddedFirst && isphenolphthaleinAddedSecond && !isHydrogenPeroxideAddedThird) {
             isHydrogenPeroxideAddedThird = true;
             return true;
@@ -144,7 +191,7 @@ public class BloodTestStation : LabEquipment {
         }
     }
 
-    public bool CheckHasBeenTestedHalfway() {
+    private bool CheckHasBeenTestedHalfway() {
         if (isEthanolAddedFirst || isphenolphthaleinAddedSecond || isHydrogenPeroxideAddedThird) {
             return true;
         } else {
@@ -166,4 +213,5 @@ public class BloodTestStation : LabEquipment {
         swabToTest.AdministerIncompleteTest();
         swabToTest = null;
     }
+
 }

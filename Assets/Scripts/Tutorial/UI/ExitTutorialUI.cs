@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the display to the player upon finishing the tutorial.
+ */
 public class ExitTutorialUI : MonoBehaviour {
 
     [SerializeField] private Button exitButton;

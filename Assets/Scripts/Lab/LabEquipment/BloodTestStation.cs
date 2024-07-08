@@ -153,12 +153,17 @@ public class BloodTestStation : LabEquipment {
     }
 
     public void WrongTestProcedure() {
-        swabToTest.ImproperTestAdministered();
+        swabToTest.AdministerIncorrectTest();
         swabToTest = null;
     }
 
     public void CorrectTestProcedure() {
-        swabToTest.PositiveTestAdministered();
+        swabToTest.AdministerCorrectTest();
+        swabToTest = null;
+    }
+
+    public void IncompleteTestProcedure() {
+        swabToTest.AdministerIncompleteTest();
         swabToTest = null;
     }
 }

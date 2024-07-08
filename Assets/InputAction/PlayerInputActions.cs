@@ -282,15 +282,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MouseSketchPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""7d87e390-1bdd-4a1c-ada9-af1ae41f4290"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""ToggleSketchView"",
                     ""type"": ""Button"",
                     ""id"": ""2fb65cc7-6912-43e9-aeb6-32a807a8c05c"",
@@ -325,17 +316,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2c546b86-e93a-4838-bcbd-21cfc4beee90"",
-                    ""path"": ""<Pointer>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MouseSketchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""fb3464ff-df53-4810-a51f-c5a49ca16d84"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -363,7 +343,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Equipment = asset.FindActionMap("Equipment", throwIfNotFound: true);
         m_Equipment_TakePicture = m_Equipment.FindAction("TakePicture", throwIfNotFound: true);
         m_Equipment_ClearSketch = m_Equipment.FindAction("ClearSketch", throwIfNotFound: true);
-        m_Equipment_MouseSketchPosition = m_Equipment.FindAction("MouseSketchPosition", throwIfNotFound: true);
         m_Equipment_ToggleSketchView = m_Equipment.FindAction("ToggleSketchView", throwIfNotFound: true);
     }
 
@@ -522,7 +501,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IEquipmentActions> m_EquipmentActionsCallbackInterfaces = new List<IEquipmentActions>();
     private readonly InputAction m_Equipment_TakePicture;
     private readonly InputAction m_Equipment_ClearSketch;
-    private readonly InputAction m_Equipment_MouseSketchPosition;
     private readonly InputAction m_Equipment_ToggleSketchView;
     public struct EquipmentActions
     {
@@ -530,7 +508,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public EquipmentActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @TakePicture => m_Wrapper.m_Equipment_TakePicture;
         public InputAction @ClearSketch => m_Wrapper.m_Equipment_ClearSketch;
-        public InputAction @MouseSketchPosition => m_Wrapper.m_Equipment_MouseSketchPosition;
         public InputAction @ToggleSketchView => m_Wrapper.m_Equipment_ToggleSketchView;
         public InputActionMap Get() { return m_Wrapper.m_Equipment; }
         public void Enable() { Get().Enable(); }
@@ -547,9 +524,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClearSketch.started += instance.OnClearSketch;
             @ClearSketch.performed += instance.OnClearSketch;
             @ClearSketch.canceled += instance.OnClearSketch;
-            @MouseSketchPosition.started += instance.OnMouseSketchPosition;
-            @MouseSketchPosition.performed += instance.OnMouseSketchPosition;
-            @MouseSketchPosition.canceled += instance.OnMouseSketchPosition;
             @ToggleSketchView.started += instance.OnToggleSketchView;
             @ToggleSketchView.performed += instance.OnToggleSketchView;
             @ToggleSketchView.canceled += instance.OnToggleSketchView;
@@ -563,9 +537,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClearSketch.started -= instance.OnClearSketch;
             @ClearSketch.performed -= instance.OnClearSketch;
             @ClearSketch.canceled -= instance.OnClearSketch;
-            @MouseSketchPosition.started -= instance.OnMouseSketchPosition;
-            @MouseSketchPosition.performed -= instance.OnMouseSketchPosition;
-            @MouseSketchPosition.canceled -= instance.OnMouseSketchPosition;
             @ToggleSketchView.started -= instance.OnToggleSketchView;
             @ToggleSketchView.performed -= instance.OnToggleSketchView;
             @ToggleSketchView.canceled -= instance.OnToggleSketchView;
@@ -600,7 +571,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnTakePicture(InputAction.CallbackContext context);
         void OnClearSketch(InputAction.CallbackContext context);
-        void OnMouseSketchPosition(InputAction.CallbackContext context);
         void OnToggleSketchView(InputAction.CallbackContext context);
     }
 }

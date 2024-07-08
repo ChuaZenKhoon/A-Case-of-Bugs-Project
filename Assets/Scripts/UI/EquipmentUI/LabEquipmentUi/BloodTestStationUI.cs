@@ -20,7 +20,7 @@ public class BloodTestStationUI : MonoBehaviour {
             
             if (isTestedHalfWay) {
                 bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.WrongTestProcedure();
+                bloodTestStation.IncompleteTestProcedure();
             } else {
                 bloodTestStation.ExitFromEquipmentScreen();
             }

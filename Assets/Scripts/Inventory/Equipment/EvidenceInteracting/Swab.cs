@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 /**
@@ -90,10 +89,12 @@ public class Swab : EvidenceInteractingEquipment {
         }
     }
 
+    //The next 3 methods deal with the interaction with the blood test station lab equipment.
+
     /**
      * Updates state from blood test station use when test gives positive result.
      */
-    public void PositiveTestAdministered() {
+    public void AdministerCorrectTest() {
         state = TestState.PositiveResult;
         EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, TestState.PositiveResult);
         UpdateVisual(state);
@@ -103,11 +104,21 @@ public class Swab : EvidenceInteractingEquipment {
     /**
      * Updates state from blood test station use when test is wrongly performed.
      */
-    public void ImproperTestAdministered() {
+    public void AdministerIncorrectTest() {
         state = TestState.CannotBeTestedAnymore;
         EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, TestState.CannotBeTestedAnymore);
         UpdateVisual(state);
         MessageLogManager.Instance.LogMessage("Improper test administered. Swab is stored and to be thrown later.");
+    }
+
+    /**
+     * Updates state from blood test station use when test is incomplete.
+     */
+    public void AdministerIncompleteTest() {
+        state = TestState.CannotBeTestedAnymore;
+        EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), null, TestState.CannotBeTestedAnymore);
+        UpdateVisual(state);
+        MessageLogManager.Instance.LogMessage("Incomplete test administered. Try to finish the blood test without exiting next time.");
     }
 
     public TestState CurrentState() {

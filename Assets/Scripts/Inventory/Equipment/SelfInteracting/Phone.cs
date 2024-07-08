@@ -70,4 +70,15 @@ public class Phone : SelfInteractingEquipment {
         }
         OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
     }
+
+    /**
+     * Reset interaction details if restart level in the middle of interaction
+     * that creates change in interaction details
+     */
+    private void OnDestroy() {
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Check Local Weather", 0);
+        }
+    }
 }

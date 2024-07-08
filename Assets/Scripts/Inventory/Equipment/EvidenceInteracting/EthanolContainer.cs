@@ -1,7 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The class representing the ethanol container equipment that is used to store killed larvae and pupae.
+ */
 public class EthanolContainer : EvidenceInteractingEquipment {
 
     [SerializeField] private GameObject megacephalaMaggotVisual;
@@ -10,8 +12,7 @@ public class EthanolContainer : EvidenceInteractingEquipment {
     private List<Larvae> larvaeKilled;
 
     private void Awake() {
-        megacephalaMaggotVisual.SetActive(false);
-        scalarisPupaVisual.SetActive(false);
+        SetCorrectVisual();
     }
 
     private void Start() {
@@ -26,19 +27,22 @@ public class EthanolContainer : EvidenceInteractingEquipment {
         }
     }
 
-
     private void SetCorrectVisual() {
-        if (larvaeKilled != null) {
-            foreach (Larvae maggot in larvaeKilled) {
-                string maggotType = maggot.GetInventoryObjectSO().objectName;
+        if (larvaeKilled == null || larvaeKilled.Count <= 0) {
+            megacephalaMaggotVisual.SetActive(false);
+            scalarisPupaVisual.SetActive(false);
+            return;
+        }
+        
+        foreach (Larvae maggot in larvaeKilled) {
+            string maggotType = maggot.GetInventoryObjectSO().objectName;
 
-                if (maggotType == "Long thin cylinder") {
-                    scalarisPupaVisual.SetActive(true);
-                }
+            if (maggotType == "Long thin cylinder") {
+                scalarisPupaVisual.SetActive(true);
+            }
 
-                if (maggotType == "Cylindrical Maggot") {
-                    megacephalaMaggotVisual.SetActive(true);
-                }
+            if (maggotType == "Cylindrical Maggot") {
+                megacephalaMaggotVisual.SetActive(true);
             }
         }
     }

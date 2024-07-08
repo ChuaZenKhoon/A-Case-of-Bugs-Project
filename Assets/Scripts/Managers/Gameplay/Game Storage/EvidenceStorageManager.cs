@@ -125,7 +125,7 @@ public class EvidenceStorageManager : MonoBehaviour {
 
 
     //Acetone Kill Jar
-    public List<AdultFly> GetKillingFlies() {
+    public List<AdultFly> GetFliesToKill() {
         return killingAdultFlyCollection;
     }
 

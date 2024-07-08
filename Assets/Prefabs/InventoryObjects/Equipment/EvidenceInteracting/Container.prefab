@@ -31,11 +31,11 @@ Transform:
   m_Children:
   - {fileID: 5615513808620838852}
   - {fileID: 8627125330074208511}
+  - {fileID: 7452659752584567073}
   - {fileID: 5394891062881243433}
   - {fileID: 2060959777530609891}
   - {fileID: 6340892140296902956}
   - {fileID: 3557078633944082188}
-  - {fileID: 7452659752584567073}
   m_Father: {fileID: 1425172521066773357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4074594645448728220
@@ -281,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 8912646378809135154}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49572182, y: -0.11303924, z: 0.06526316, w: -0.85861677}
-  m_LocalPosition: {x: 0.213, y: 0.1805391, z: 0.14771147}
+  m_LocalPosition: {x: 0.3, y: 0.16, z: 0.136}
   m_LocalScale: {x: 1.3, y: 1.2, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +347,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_Name
-      value: Crane3
+      value: scalarisVisual
       objectReference: {fileID: 0}
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_IsActive
@@ -441,7 +441,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_Name
-      value: Crane (1)
+      value: malemegacephalaVisual
       objectReference: {fileID: 0}
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_IsActive
@@ -536,7 +536,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_Name
-      value: Crane2
+      value: ruficornisVIsual
       objectReference: {fileID: 0}
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_IsActive
@@ -630,7 +630,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_Name
-      value: Crane
+      value: femalemegacephalaVIsual
       objectReference: {fileID: 0}
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_IsActive

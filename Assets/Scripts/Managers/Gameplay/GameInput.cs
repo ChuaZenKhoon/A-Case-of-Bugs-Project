@@ -22,7 +22,6 @@ public class GameInput : MonoBehaviour {
 
     public event EventHandler OnTakePictureLeftClick;
     public event EventHandler OnClearSketch;
-    public event EventHandler<Vector2> OnSketchMouseMove;
     public event EventHandler OnToggleSketchView;
 
     public class OnInventoryBarSelectEventArgs : EventArgs {
@@ -61,8 +60,6 @@ public class GameInput : MonoBehaviour {
 
         playerInputActions.Equipment.TakePicture.performed += TakePicture_performed;       
         playerInputActions.Equipment.ClearSketch.performed += ClearSketch_performed;
-        playerInputActions.Equipment.MouseSketchPosition.performed += MouseSketchPosition_performed;
-        playerInputActions.Equipment.MouseSketchPosition.canceled += MouseSketchPosition_canceled;
         playerInputActions.Equipment.ToggleSketchView.performed += ToggleSketchView_performed;
 
     }
@@ -80,8 +77,6 @@ public class GameInput : MonoBehaviour {
         
         playerInputActions.Equipment.TakePicture.performed -= TakePicture_performed;
         playerInputActions.Equipment.ClearSketch.performed -= ClearSketch_performed;
-        playerInputActions.Equipment.MouseSketchPosition.performed -= MouseSketchPosition_performed;
-        playerInputActions.Equipment.MouseSketchPosition.canceled -= MouseSketchPosition_canceled;
         playerInputActions.Equipment.ToggleSketchView.performed -= ToggleSketchView_performed;
         playerInputActions.Dispose();
     }
@@ -154,14 +149,6 @@ public class GameInput : MonoBehaviour {
 
     private void ToggleSketchView_performed(InputAction.CallbackContext obj) {
         OnToggleSketchView?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void MouseSketchPosition_canceled(InputAction.CallbackContext obj) {
-        OnSketchMouseMove?.Invoke(this, playerInputActions.Equipment.MouseSketchPosition.ReadValue<Vector2>());
-    }
-
-    private void MouseSketchPosition_performed(InputAction.CallbackContext obj) {
-        OnSketchMouseMove?.Invoke(this, playerInputActions.Equipment.MouseSketchPosition.ReadValue<Vector2>());
     }
 
     private void ClearSketch_performed(InputAction.CallbackContext obj) {

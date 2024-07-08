@@ -12,7 +12,7 @@ public class ProgressBarUI : MonoBehaviour {
     [SerializeField] private GameObject hasProgressGameObject;
 
     private const float EMPTY_PROGRESS_BAR = 0f;
-    private const float FULL_PROGRESS_BAR = 1f;
+    private const float FULL_PROGRESS_BAR = 0.99f;
 
 
     private IHasProgress hasProgress;
@@ -30,7 +30,7 @@ public class ProgressBarUI : MonoBehaviour {
     private void UpdateProgressBar(object sender, float e) {
         bar.fillAmount = e;
 
-        if (e == EMPTY_PROGRESS_BAR || e == FULL_PROGRESS_BAR) {
+        if (e == EMPTY_PROGRESS_BAR || e >= FULL_PROGRESS_BAR) {
             Hide();
         } else {
             Show();

@@ -80,6 +80,15 @@ public class MeasuringTool : SelfInteractingEquipment {
         measuringLine.SetPosition(0, marker.transform.position);
         measuringLine.SetPosition(1, marker.transform.position);
     }
+    private void Update() {
+        if (isInMeasuringMode) {
+            currentPosition = Player.Instance.transform.position;
+            measuringLine.SetPosition(1, currentPosition);
+            float updatedDistance = GetMeasuringDistance();
+            OnMeasuringDistanceChange?.Invoke(this, updatedDistance);
+        }
+    }
+
     private void StopMeasuring() {
         Equipment.isInAction = false;
         isInMeasuringMode = false;
@@ -104,12 +113,14 @@ public class MeasuringTool : SelfInteractingEquipment {
         marker.SetActive(false);
     }
 
-    private void Update() {
-        if (isInMeasuringMode) {
-            currentPosition = Player.Instance.transform.position;
-            measuringLine.SetPosition(1, currentPosition);
-            float updatedDistance = GetMeasuringDistance();
-            OnMeasuringDistanceChange?.Invoke(this, updatedDistance);
+    /**
+     * Reset interaction details if restart level in the middle of interaction
+     * that creates change in interaction details
+     */
+    private void OnDestroy() {
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Start Measuring", 0);
         }
     }
 

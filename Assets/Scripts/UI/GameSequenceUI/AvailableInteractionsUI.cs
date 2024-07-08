@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 /**
  * A UI element representing the available keys displayed to the player that can be pressed for an interaction.
  */

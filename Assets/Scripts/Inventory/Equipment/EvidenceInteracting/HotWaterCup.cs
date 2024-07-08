@@ -1,106 +1,62 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
+/**
+ * The class representing the hot water cup equipment used to kill larvae and pupae.
+ */
 public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
-
-
-    [SerializeField] private GameObject megacephalaMaggotVisual;
-    [SerializeField] private GameObject scalarisPupaVisual;
-    [SerializeField] private List<GameObject> ethanolContainerVisual;
-
+    
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
-
+    public event EventHandler<float> OnActionProgress;
     new public static void ResetStaticData() {
         OnChangeInteractActionDetails = null;
     }
 
-    private List<Larvae> maggotsCollected;
+    private const float KILL_DURATION = 30f;
+
+    [SerializeField] private GameObject megacephalaMaggotVisual;
+    [SerializeField] private GameObject scalarisPupaVisual;
+    [SerializeField] private GameObject ethanolContainerVisual;
+
+    private List<Larvae> larvaePupaeCollected;
 
     private Coroutine killMaggotCoroutine;
     private bool isKillingDone;
     private float savedKillingMaggotDuration;
 
-    public event EventHandler<float> OnActionProgress;
-
     private void Awake() {
-        megacephalaMaggotVisual.SetActive(false);
-        scalarisPupaVisual.SetActive(false);
-        maggotsCollected = new List<Larvae>();
-        SetUpContainer(false);
+        SetCorrectVisual();
         isKillingDone = false;
         killMaggotCoroutine = null;
+        savedKillingMaggotDuration = 0f;
     }
 
     private void Start() {
-        maggotsCollected = EvidenceStorageManager.Instance.GetMaggots();
-        savedKillingMaggotDuration = EvidenceStorageManager.Instance.GetKillingMaggotProgressDuration();
         GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+
+        larvaePupaeCollected = EvidenceStorageManager.Instance.GetMaggots();
+        savedKillingMaggotDuration = EvidenceStorageManager.Instance.GetKillingMaggotProgressDuration();
+        isKillingDone = savedKillingMaggotDuration >= 30f;
+
         SetCorrectVisual();
     }
 
-    private void GameInput_OnInteract2Action(object sender, System.EventArgs e) {
-        
-        if (!isKillingDone) {
-            if (maggotsCollected.Count > 0) {
-                if (killMaggotCoroutine != null) {
-                    return;
-                }
-
-                killMaggotCoroutine = StartCoroutine(KillMaggotCoroutine());
-                MessageLogManager.Instance.LogMessage("Poured hot water. Waiting for specimens to be killed...");
-            }
-        } else {
-
-            EvidenceStorageManager.Instance.AddKilledMaggots(maggotsCollected);
-            EvidenceStorageManager.Instance.ClearMaggotCollection();
-            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(0f);
-            SetCorrectVisual();
-
-            SetUpContainer(false);
-            isKillingDone = false;
-            MessageLogManager.Instance.LogMessage("Specimens transferred to ethanol container in inventory.");
-
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Kill specimens", 1);
-            }
-            OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
-            
-        }
-    }
-
-    private IEnumerator KillMaggotCoroutine() {
-        float killDuration = 30f;
-
-        while (savedKillingMaggotDuration < killDuration) {
-            yield return new WaitForSeconds(0.5f);
-
-            savedKillingMaggotDuration += 0.5f;
-            OnActionProgress?.Invoke(this, savedKillingMaggotDuration / killDuration);
-        }
-        savedKillingMaggotDuration = 0f;
-        EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
-        killMaggotCoroutine = null;
-        SetUpContainer(true);
-        isKillingDone = true;
+    /**
+     * Reset interaction details if restart level in the middle of interaction
+     * that creates change in interaction details
+     */
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1) {
         EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
         if (equipmentSO != null) {
-            equipmentSO.ChangeInteractionText("Transfer Specimens", 1);
+            equipmentSO.ChangeInteractionText("Kill specimens", 1);
         }
-        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
     }
 
-    private void SetUpContainer(bool state) {
-        foreach (GameObject gameObject in ethanolContainerVisual) {
-            gameObject.SetActive(state);
-        }
-    }
     public override void Interact() {
-
         if (savedKillingMaggotDuration > 0f) {
             MessageLogManager.Instance.LogMessage("Killing batch of specimen in progress. Wait for batch to be done and transferred.");
             return;
@@ -109,40 +65,119 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
         InteractableObject currentStareAt = Player.Instance.GetStareAt();
 
         if (currentStareAt is Larvae) {
-            Larvae currentMaggotStaringAt = currentStareAt as Larvae;
-
-            Larvae maggotToCollect = currentMaggotStaringAt.GetInventoryObjectSO().prefab.GetComponent<Larvae>();
-
-            //maggotsCollected.Add(maggotToCollect);
-            EvidenceStorageManager.Instance.CollectMaggots(maggotToCollect);
-
-            Destroy(currentStareAt.gameObject);
-
-            SetCorrectVisual();
-
+            CollectLarvaePupae(currentStareAt);
             MessageLogManager.Instance.LogMessage("Specimen successfully collected!");
         } else {
             MessageLogManager.Instance.LogMessage("Unsuitable equipment for picking up such items.");
         }
     }
 
-    private void SetCorrectVisual() {
-        if (maggotsCollected.Count > 0) {
-            foreach (Larvae maggot in maggotsCollected) {
-                string maggotType = maggot.GetInventoryObjectSO().objectName;
+    private void CollectLarvaePupae(InteractableObject currentStareAt) {
+        Larvae currentMaggotStaringAt = currentStareAt as Larvae;
 
-                if (maggotType == "Long thin cylinder") {
-                    scalarisPupaVisual.SetActive(true);
-                }
+        Larvae maggotToCollect = currentMaggotStaringAt.GetInventoryObjectSO().prefab.GetComponent<Larvae>();
 
-                if (maggotType == "Cylindrical Maggot") {
-                    megacephalaMaggotVisual.SetActive(true);
-                }
-            } 
+        EvidenceStorageManager.Instance.CollectMaggots(maggotToCollect);
+
+        Destroy(currentStareAt.gameObject);
+
+        SetCorrectVisual();
+    }
+
+    /**
+     * Handles the killing of collected larvae and pupae. 
+     * Allows for continuation from previous saved progress duration.
+     */
+    private void GameInput_OnInteract2Action(object sender, System.EventArgs e) {
+        
+        if (!isKillingDone) {
+            AttemptNewKillProcedure();
         } else {
-            scalarisPupaVisual.SetActive(false);
-            megacephalaMaggotVisual.SetActive(false);
+            TransferKilledLarvaePupae();
         }
+    }
+
+    private void AttemptNewKillProcedure() {
+        if (larvaePupaeCollected.Count > 0) {
+            if (killMaggotCoroutine != null) {
+                //Current killing process in action
+                return;
+            }
+
+            killMaggotCoroutine = StartCoroutine(KillMaggotCoroutine());
+            MessageLogManager.Instance.LogMessage("Poured hot water. Waiting for specimens to be killed...");
+        }
+    }
+
+    /**
+     * Once killing process is done, player can transfer specimens to ethanol container.
+     */
+    private void TransferKilledLarvaePupae() {
+        EvidenceStorageManager.Instance.AddKilledMaggots(larvaePupaeCollected);
+        EvidenceStorageManager.Instance.ClearMaggotCollection();
+        EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(0f);
+
+        SetCorrectVisual();
+        isKillingDone = false;
+
+        MessageLogManager.Instance.LogMessage("Specimens transferred to ethanol container in inventory.");
+
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Kill specimens", 1);
+        }
+        OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
+    }
+
+    /**
+     * Tracks the killing process while the hot water cup is in use.
+     */
+    private IEnumerator KillMaggotCoroutine() {
+        while (savedKillingMaggotDuration < KILL_DURATION) {
+            yield return new WaitForSeconds(0.1f);
+
+            savedKillingMaggotDuration += 0.1f;
+            OnActionProgress?.Invoke(this, savedKillingMaggotDuration / KILL_DURATION);
+        }
+        
+        //Killing done, reset
+        savedKillingMaggotDuration = 0f;
+        EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(savedKillingMaggotDuration);
+        killMaggotCoroutine = null;
+        isKillingDone = true;
+        
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Transfer Specimens", 1);
+        }
+        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+
+        MessageLogManager.Instance.LogMessage("Killing done. Okay to transfer batch of specimen now!");
+    }
+
+    private void SetCorrectVisual() {
+        if (larvaePupaeCollected == null || larvaePupaeCollected.Count <= 0) {
+            megacephalaMaggotVisual.SetActive(false);
+            scalarisPupaVisual.SetActive(false);
+            ethanolContainerVisual.SetActive(false);
+            return;
+        }
+
+        if (isKillingDone == true) {
+            ethanolContainerVisual.SetActive(true);
+        }
+        
+        foreach (Larvae maggot in larvaePupaeCollected) {
+            string maggotType = maggot.GetInventoryObjectSO().objectName;
+
+            if (maggotType == "Long thin cylinder") {
+                scalarisPupaVisual.SetActive(true);
+            }
+
+            if (maggotType == "Cylindrical Maggot") {
+                megacephalaMaggotVisual.SetActive(true);
+            }
+        }  
     }
 
     private void OnDestroy() {
@@ -156,7 +191,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             }
             OnChangeInteractActionDetails?.Invoke(this, this.GetInventoryObjectSO() as EquipmentSO);
         } else if (isKillingDone) {
-            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(30f);
+            EvidenceStorageManager.Instance.SetKillingMaggotProgressDuration(KILL_DURATION);
         }
 
         GameInput.Instance.OnInteract2Action -= GameInput_OnInteract2Action;

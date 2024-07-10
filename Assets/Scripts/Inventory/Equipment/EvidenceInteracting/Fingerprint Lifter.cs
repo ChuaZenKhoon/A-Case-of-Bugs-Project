@@ -5,6 +5,7 @@ using UnityEngine;
  */
 public class FingerprintLifter : EvidenceInteractingEquipment {
 
+    [SerializeField] private GameObject fingerprintLifterVisual;
     [SerializeField] private GameObject fingerprintLiftedVisual;
 
     private Fingerprint fingerprintLifted;
@@ -17,6 +18,7 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
         fingerprintLifted = EvidenceStorageManager.Instance.GetFingerprint(this.GetEquipmentID());
 
         if (fingerprintLifted != null ) {
+            fingerprintLifterVisual.SetActive(false);
             fingerprintLiftedVisual.SetActive(true);
         }
     }
@@ -51,7 +53,7 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
         EvidenceStorageManager.Instance.SetFingerprint(this.GetEquipmentID(), fingerprintLifted);
         
         Destroy(currentStareAt.gameObject);
-
+        fingerprintLifterVisual.SetActive(false);
         fingerprintLiftedVisual.SetActive(true);
     }
 }

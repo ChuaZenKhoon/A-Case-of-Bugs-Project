@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307445951871617206}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CannotBeTestedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6429649480717260768}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CanBeUsedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8415869198149482989}
   - component: {fileID: 4473691887534407259}
   - component: {fileID: 148055238645610569}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blood_test_kit.tube 03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 8042523609230188817}
   - component: {fileID: 8209323538391752268}
   - component: {fileID: 7009329429746927082}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blood_test_kit.tube 03 lid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 232967808414647686}
   - component: {fileID: 1478138107136383268}
   - component: {fileID: 4244399691940988391}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blood_test_kit.tube 03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 8286008507448666067}
   - component: {fileID: 3076315078536949410}
   - component: {fileID: 5600348456975609956}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blood_test_kit.tube 03 lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8766257148868838700}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Swab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 2115090210877237795}
   - component: {fileID: 3659959769038287974}
   - component: {fileID: 779328830990169978}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: blood_test_kit.swab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 7270805365539874049}
   - component: {fileID: 6068276731624311525}
   - component: {fileID: 1671026541128034307}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UsedRedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 7218321868560023836}
   - component: {fileID: 5807532762835018421}
   - component: {fileID: 4007942387581081875}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PositivePinkVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

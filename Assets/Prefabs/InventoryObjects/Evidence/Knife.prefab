@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8239675886599507057}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: CollectedVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,8 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: b902e38cf6f00a94293174fc838f7a61, type: 2}
   sealedEvidence: {fileID: 5450321713332194575}
-  evidenceVisual: {fileID: 1249285617222948274}
   sealedCollider: {fileID: 6128467720885410084}
+  evidenceVisual: {fileID: 1249285617222948274}
   evidenceCollider: {fileID: 6743569867215233628}
 --- !u!65 &6128467720885410084
 BoxCollider:
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 683517395270942630}
   - component: {fileID: 4155106470368010746}
   - component: {fileID: 1808889044012689930}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 2001954001263009714}
   - component: {fileID: 5948477639619123501}
   - component: {fileID: 5674282053390796444}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,6 +549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: evidence_bags_01_closed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429891615864613103, guid: 82b4c9b6b281b2247836aea631ba5652,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9007622012867025660, guid: 82b4c9b6b281b2247836aea631ba5652,
         type: 3}

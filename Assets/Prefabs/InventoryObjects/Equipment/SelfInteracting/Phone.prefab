@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 114428313418722406}
   - component: {fileID: 1520873240686656986}
   - component: {fileID: 4475111645843747629}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7936977296943904836}
   - component: {fileID: 3095091780991534846}
   - component: {fileID: 5307679883340650386}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1817406137547025672}
   - component: {fileID: 5746621363182517291}
   - component: {fileID: 1082110443514278898}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 5036520696282420574}
   - component: {fileID: 3291428368357125811}
   - component: {fileID: 7249904151689320258}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 4539220805349938720}
   - component: {fileID: 7331660700737566553}
   - component: {fileID: 5474484462452546260}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: WeatherConditionScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 3818629256537302242}
   - component: {fileID: 769694714032901162}
   - component: {fileID: 7506577211524753184}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 29661313078973976}
   - component: {fileID: 2029953658278091944}
   - component: {fileID: 1409618384015915020}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: HumidityScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 8773691765092322886}
   - component: {fileID: 6988743590995508062}
   - component: {fileID: 8496798854839724623}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 6312819347861240395}
   - component: {fileID: 3152028640837933064}
   - component: {fileID: 5300655447399019603}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 3291202126562604094}
   - component: {fileID: 6404164254520371861}
   - component: {fileID: 4144232861317259550}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 6957756926894186311}
   - component: {fileID: 5242332377979984980}
   - component: {fileID: 5136289166993038528}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: TemperatureScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 2741805833219663929}
   - component: {fileID: 1185570950333960245}
   - component: {fileID: 3904203998505387269}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,7 +1147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3958320560185073066}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: screens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 9046119878931267119}
   - component: {fileID: 5970283716297900057}
   - component: {fileID: 6424800798496954885}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 2276958434865923287}
   - component: {fileID: 4989559317189706906}
   - component: {fileID: 5772039708995422341}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Humidity Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 7349670673010452655}
   - component: {fileID: 7883818203889602994}
   - component: {fileID: 4885789482977851104}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,7 +1451,7 @@ GameObject:
   - component: {fileID: 8565889605449186318}
   - component: {fileID: 2942509472812734320}
   - component: {fileID: 8401405416242166054}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 595599197174741591}
   - component: {fileID: 2490495309077477707}
   - component: {fileID: 4859433406935920596}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1601,7 +1601,7 @@ GameObject:
   - component: {fileID: 4771978900732382582}
   - component: {fileID: 8186280694122092845}
   - component: {fileID: 3257687456618357270}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 6093306806603476528}
   - component: {fileID: 2720996600210772053}
   - component: {fileID: 1877758241690501440}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: WeatherCondition Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1826,7 +1826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 3116161149889094093}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Phone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 7867364402273273347}
   - component: {fileID: 5189732289026421644}
   - component: {fileID: 2344754718984194738}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2010,7 +2010,7 @@ GameObject:
   - component: {fileID: 8096402066721560094}
   - component: {fileID: 484273415412921555}
   - component: {fileID: 1333500975789319674}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2144,7 +2144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8157281880059970244}
   - component: {fileID: 5239609008647221015}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: PhoneUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 8944426007119093915}
   - component: {fileID: 3648380866015829322}
   - component: {fileID: 82518953004054831}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Temperature Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2299,7 +2299,7 @@ GameObject:
   - component: {fileID: 6010898921267095351}
   - component: {fileID: 5722606798000592074}
   - component: {fileID: 2587950975499708966}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2432,7 +2432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2310657568034047461}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2468,7 +2468,7 @@ GameObject:
   - component: {fileID: 4395496938612502581}
   - component: {fileID: 5234004423738933429}
   - component: {fileID: 2197110899860078170}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2603,7 +2603,7 @@ GameObject:
   - component: {fileID: 208063775103535150}
   - component: {fileID: 1114494455719348343}
   - component: {fileID: 7076320190590810856}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2694,7 +2694,7 @@ GameObject:
   - component: {fileID: 9148106666144024327}
   - component: {fileID: 1023920746284057978}
   - component: {fileID: 8479187854408657527}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2785,7 +2785,7 @@ GameObject:
   - component: {fileID: 4658505385377469850}
   - component: {fileID: 1749241590614298522}
   - component: {fileID: 44022092195473296}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 1839936961862053598}
   - component: {fileID: 4532786460209344174}
   - component: {fileID: 5479297135725185079}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2935,7 +2935,7 @@ GameObject:
   - component: {fileID: 8385490500483397056}
   - component: {fileID: 7434565154168030608}
   - component: {fileID: 3171986336798969649}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3070,7 +3070,7 @@ GameObject:
   - component: {fileID: 7150661997179987824}
   - component: {fileID: 3570118374984566299}
   - component: {fileID: 3042233844145470016}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3146,6 +3146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: phone_01 (on)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618417244131429161, guid: 008ae74c9f9b4e347ac6966d44d77012,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2318962589344004410, guid: 008ae74c9f9b4e347ac6966d44d77012,
         type: 3}

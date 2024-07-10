@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8158756875412748317}
   - component: {fileID: 354184557329377221}
   - component: {fileID: 5215040794996363966}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 6448981768495117334}
   - component: {fileID: 1379406842382417857}
   - component: {fileID: 6537374519557704632}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: RemovePhotoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5040453814378835277}
   - component: {fileID: 7288514341465263122}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: PhotoGalleryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1430262176090656123}
   - component: {fileID: 5193104573472046244}
   - component: {fileID: 4521578997454886621}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035478229721471138}
   - component: {fileID: 2989933545782724952}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ToggleExitPhotoGallery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 8158815725089998170}
   - component: {fileID: 4672430862576110574}
   - component: {fileID: 1698144997552714973}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 2496385042472097487}
   - component: {fileID: 854855194669411827}
   - component: {fileID: 3570502031343797246}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 143741873801757685}
   - component: {fileID: 9049248650353702120}
   - component: {fileID: 3236433284387529391}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 499528875974084752}
   - component: {fileID: 434614067272829569}
   - component: {fileID: 8486071283919448639}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ButtonBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +899,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 5934463051065540374}
   - component: {fileID: 206628710726790163}
   - component: {fileID: 4468519306718109691}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 7352218835039929820}
   - component: {fileID: 7628983285537676601}
   - component: {fileID: 8057468173874207646}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,7 +1144,7 @@ GameObject:
   - component: {fileID: 4215193278730675209}
   - component: {fileID: 8844119133853458447}
   - component: {fileID: 4382653993957347433}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   - component: {fileID: 126833066504493891}
   - component: {fileID: 1887218458057846302}
   - component: {fileID: 6565878030150974308}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConfirmRemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 7859853010225171489}
   - component: {fileID: 1711705778854405309}
   - component: {fileID: 5732047767455792711}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Photograph No.
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   - component: {fileID: 3272540680291773537}
   - component: {fileID: 3386724079232632834}
   - component: {fileID: 4668878841432568205}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: DenyRemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,7 +1596,7 @@ GameObject:
   - component: {fileID: 968880744800313826}
   - component: {fileID: 2313887498606888729}
   - component: {fileID: 4070974186310955368}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 7044932499959854201}
   - component: {fileID: 7597549225120582036}
   - component: {fileID: 170401658257246889}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 6489651023797994040}
   - component: {fileID: 2927901653839022922}
   - component: {fileID: 4181717212219891677}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ButtonBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1879,7 +1879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9142533998263067358}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: CameraCrossHair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 957081402919711796}
   - component: {fileID: 6722379264577857850}
   - component: {fileID: 4790219331120862133}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5654547347178892008}
   - component: {fileID: 8114895588792722147}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: PhotographyCameraDeletePhotoUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2107,7 +2107,7 @@ GameObject:
   - component: {fileID: 8819923793387374997}
   - component: {fileID: 5384831522797192499}
   - component: {fileID: 2612405214588684239}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2241,7 +2241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557995854565927262}
   - component: {fileID: 1377151131969348838}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ToggleExitCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,7 +2291,7 @@ GameObject:
   - component: {fileID: 5998718996200495178}
   - component: {fileID: 7573207073524954462}
   - component: {fileID: 3092846772572175011}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 1015583289319939884}
   - component: {fileID: 6450772297053620860}
   - component: {fileID: 3604483445826870859}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ButtonBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2447,7 +2447,7 @@ GameObject:
   - component: {fileID: 5931530512754253972}
   - component: {fileID: 7389514981052482759}
   - component: {fileID: 1024705576536990233}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: KeyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 1785878372316205428}
   - component: {fileID: 8615063460221922965}
   - component: {fileID: 5970407953052873528}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2659,7 +2659,7 @@ GameObject:
   - component: {fileID: 3051040030937171272}
   - component: {fileID: 7237906013466680222}
   - component: {fileID: 4889602855155625301}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2734,7 +2734,7 @@ GameObject:
   - component: {fileID: 2312962832566888038}
   - component: {fileID: 1326494687262446332}
   - component: {fileID: 4363998592006844411}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096513684241307842}
   - component: {fileID: 637362680252930911}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ToggleTakePicture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2918,7 +2918,7 @@ GameObject:
   - component: {fileID: 4149649926598723432}
   - component: {fileID: 7995891201980976196}
   - component: {fileID: 2954508897687329727}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: RemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 6991275726060303423}
   - component: {fileID: 6283948566702194439}
   - component: {fileID: 2940058667776046509}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ButtonBackground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3113,7 +3113,7 @@ GameObject:
   - component: {fileID: 1541972401260355237}
   - component: {fileID: 6654921264763414970}
   - component: {fileID: 3374705415940492987}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3249,7 +3249,7 @@ GameObject:
   - component: {fileID: 4579271493447668300}
   - component: {fileID: 8315476562064325422}
   - component: {fileID: 7062373078142431195}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3369,7 +3369,7 @@ GameObject:
   - component: {fileID: 2229746312233270876}
   - component: {fileID: 8307552745746089809}
   - component: {fileID: 7518078199897248578}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: PhotographImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3441,7 +3441,7 @@ GameObject:
   - component: {fileID: 6864053939034517415}
   - component: {fileID: 8603464264060082406}
   - component: {fileID: 1061006662155734359}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3573,9 +3573,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4218979301904642271}
     m_Modifications:
+    - target: {fileID: 132244, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 175982, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_Name
       value: camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 175982, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 176766, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 193790, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 196306, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 434320, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_LocalRotation.x

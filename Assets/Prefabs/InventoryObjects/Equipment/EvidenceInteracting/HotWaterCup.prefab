@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1146809574902865676}
   - component: {fileID: 2164558724772083110}
   - component: {fileID: 4646875599929250240}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ethanolContainerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 2515263051128827686}
   - component: {fileID: 3308616655633743795}
   - component: {fileID: 7702509539586692664}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tweezers long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 5966243965559832730}
   - component: {fileID: 6859537608236321163}
   - component: {fileID: 5421737767533008799}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 8214491418758631804}
   - component: {fileID: 6627901567511853300}
   - component: {fileID: 386387614683236635}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cup.03 lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 3557083559650908152}
   - component: {fileID: 2723313066955927690}
   - component: {fileID: 1978553935741503699}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: BarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 3953981427768281793}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: HotWaterCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 4848124127386834213}
   - component: {fileID: 2426909849344773662}
   - component: {fileID: 3230608696172845180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: casting_kit_01.bowl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 4774646937735219414}
   - component: {fileID: 7416720700966683087}
   - component: {fileID: 5643147738223367708}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043181846543032055}
   - component: {fileID: 1726261404808305982}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ProgressBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,6 +823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Megaselia
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d25c0f345717cb54584d24a4b6a20052,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -851,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_Name
       value: Chrysomya
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4225525764850970, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_LocalScale.x

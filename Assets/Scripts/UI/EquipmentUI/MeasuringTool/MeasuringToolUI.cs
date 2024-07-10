@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/**
+ * A UI component representing the measurement distance displayed to the player
+ * as the player uses the measuring tool equipment.
+ */
 public class MeasuringToolUI : MonoBehaviour {
 
     [SerializeField] private MeasuringTool measuringTool;

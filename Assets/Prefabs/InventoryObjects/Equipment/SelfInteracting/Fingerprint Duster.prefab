@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7130378120847585592}
   - component: {fileID: 2710049743559187653}
   - component: {fileID: 7152962077604646909}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fingerprint_kit_01.print dust 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6657282290421130682}
   - component: {fileID: 7376910714241881156}
   - component: {fileID: 97551778164676215}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6361170868365930071}
   - component: {fileID: 16266401440011564}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: FingerprintDusterUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8367263192633674771}
   - component: {fileID: 333345585155542120}
   - component: {fileID: 2400936591336900150}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fingerprint_kit_01.print dust 02.lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8822862977447366258}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Fingerprint Duster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 4965590266566592415}
   - component: {fileID: 1957432105808997599}
   - component: {fileID: 1461361569139592114}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 4933905103312971556}
   - component: {fileID: 800219797875177910}
   - component: {fileID: 1759630682150141734}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 6149188341241434113}
   - component: {fileID: 536399237697977674}
   - component: {fileID: 2560283277932270394}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: fingerprint_kit_01.brush 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

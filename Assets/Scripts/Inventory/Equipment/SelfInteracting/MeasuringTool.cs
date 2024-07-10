@@ -1,19 +1,23 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The class representing the measuring tool equipment, which allows the player
+ * to measure distances.
+ */
 public class MeasuringTool : SelfInteractingEquipment {
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
 
     public event EventHandler<float> OnMeasuringDistanceChange;
 
+    private static Vector3 OFFSET = new Vector3(0f, 1.3f, 0f);
+
+    private const float distanceMultiplier = 0.75f;
+
+
     [SerializeField] GameObject marker;
     [SerializeField] LineRenderer measuringLine;
-
-    private const float distanceMultiplier = 0.8f;
 
     private bool isInMeasuringMode;
 
@@ -37,46 +41,67 @@ public class MeasuringTool : SelfInteractingEquipment {
         }
 
         if (!isInMeasuringMode) {
-            Equipment.isInAction = true;
-            MessageLogManager.Instance.LogMessage("Starting measurement...");
             StartMeasuring();
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Stop Measuring", 0);
-            }
-
-            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
-        } else {
-            Equipment.isInAction = false;
-            MessageLogManager.Instance.LogMessage("Measurement stopped.");
+        } else {       
             StopMeasuring();
-
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Start Measuring", 0);
-            }
-
-            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         }
     }
 
+    /**
+     * Activates the equipment, starting tracking of distance from start point to player.
+     */
     private void StartMeasuring() {
+        Equipment.isInAction = true;
         isInMeasuringMode = true;
+        MessageLogManager.Instance.LogMessage("Starting measurement...");
+
+        //Update equipment use text
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Stop Measuring", 0);
+        }
+
+        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+
+
         startPosition = Player.Instance.transform.position;
         SetUpMarker();
     }
 
+    /**
+     * Display marker at eye level and anchor tape line points.
+     */
     private void SetUpMarker() {
         marker.SetActive(true);
         marker.transform.SetParent(null, true);
-        marker.transform.position = startPosition + new Vector3(0f, 1.5f, 0f);
-        marker.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        marker.transform.position = startPosition + OFFSET;
+        marker.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         measuringLine.positionCount = 2;
         measuringLine.SetPosition(0, marker.transform.position);
         measuringLine.SetPosition(1, marker.transform.position);
     }
+    private void Update() {
+        if (isInMeasuringMode) {
+            currentPosition = Player.Instance.transform.position;
+            measuringLine.SetPosition(1, currentPosition);
+            float updatedDistance = GetMeasuringDistance();
+            OnMeasuringDistanceChange?.Invoke(this, updatedDistance);
+        }
+    }
+
     private void StopMeasuring() {
+        Equipment.isInAction = false;
         isInMeasuringMode = false;
+        MessageLogManager.Instance.LogMessage("Measurement stopped.");
+
+        //Update equipment use text
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Start Measuring", 0);
+        }
+
+        OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+
         startPosition = Vector3.zero;
         ResetMarker();
     }
@@ -88,12 +113,14 @@ public class MeasuringTool : SelfInteractingEquipment {
         marker.SetActive(false);
     }
 
-    private void Update() {
-        if (isInMeasuringMode) {
-            currentPosition = Player.Instance.transform.position;
-            measuringLine.SetPosition(1, currentPosition);
-            float updatedDistance = GetMeasuringDistance();
-            OnMeasuringDistanceChange?.Invoke(this, updatedDistance);
+    /**
+     * Reset interaction details if restart level in the middle of interaction
+     * that creates change in interaction details
+     */
+    private void OnDestroy() {
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Start Measuring", 0);
         }
     }
 

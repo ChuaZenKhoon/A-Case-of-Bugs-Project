@@ -1,5 +1,7 @@
-
-
+/**
+ * The superclass representing any form of lab equipment that the player can interact with
+ * when holding a item in the hand.
+ */
 public class LabEquipment : InteractableObject {
 
     public static bool isInAction = false;
@@ -12,6 +14,4 @@ public class LabEquipment : InteractableObject {
             MessageLogManager.Instance.LogMessage("There is nothing held to examine.");
         }
     }
-
-
 }

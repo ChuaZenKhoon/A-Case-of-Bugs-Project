@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the phone screen of the phone equipment.
+ */
 public class PhoneUI : MonoBehaviour {
 
     [SerializeField] Button checkTemperatureButton;
@@ -60,6 +61,7 @@ public class PhoneUI : MonoBehaviour {
         return gameObject.activeSelf;
     }
 
+    //Change weather details based on game scene
     public void UpdateText(EquipmentStorageManager.WeatherRecord weatherRecord) {
         temperatureText.text = weatherRecord.temperatureRecord.ToString() + "°C";
         humidityText.text = weatherRecord.humidityRecord.ToString() + "%";

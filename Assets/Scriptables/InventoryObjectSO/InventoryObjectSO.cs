@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+/**
+ * A scriptable object that represents the information an inventory object should have.
+ */
 [CreateAssetMenu()]
 public class InventoryObjectSO : ScriptableObject {
 

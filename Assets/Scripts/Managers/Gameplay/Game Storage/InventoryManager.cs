@@ -275,14 +275,17 @@ public class InventoryManager : MonoBehaviour {
      * @param index The index of the item in the inventory that needs to be dropped 
      */
     public void DropFromInventory(int index) {
+        //Drop item
         GameObject newInventoryObjectToDrop = Instantiate(inventoryObjectsArray[index].GetInventoryObjectSO().prefab);
 
+        //Adjust visual as evidence is sealed after pick up
         if (newInventoryObjectToDrop.TryGetComponent<Evidence>(out Evidence evidence)) {
             evidence.SealEvidence();
         }
 
         newInventoryObjectToDrop.transform.position = Player.Instance.GetStareAtPosition();
 
+        //Update inventory
         inventoryObjectsArray[index] = null;
 
         //Tell relevant UI to update

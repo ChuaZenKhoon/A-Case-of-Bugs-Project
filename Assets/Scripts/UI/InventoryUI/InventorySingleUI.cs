@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 /**
  * A UI element that represents an individual inventory slot.
  */
-public class InventorySingleUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler, IPointerClickHandler{
+public class InventorySingleUI : MonoBehaviour, IHoverUI, IDropHandler, IPointerClickHandler{
 
     //Event for when cursor hovers over the inventory slot UI element
     public static event EventHandler<int> OnHoverEnterInventorySlot;

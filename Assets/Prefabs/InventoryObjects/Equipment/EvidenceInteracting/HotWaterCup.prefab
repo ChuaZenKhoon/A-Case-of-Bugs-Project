@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1146809574902865676}
   - component: {fileID: 2164558724772083110}
   - component: {fileID: 4646875599929250240}
-  m_Layer: 0
-  m_Name: cup.03
+  m_Layer: 12
+  m_Name: ethanolContainerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: -0.616, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8214491418758631804}
   m_Father: {fileID: 4218979301904642271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2164558724772083110
@@ -92,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,10 +113,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4848124127386834213}
+  - {fileID: 2515263051128827686}
+  - {fileID: 1146809574902865676}
   - {fileID: 116786140201522496}
   - {fileID: 1826954670730419957}
-  - {fileID: 8214491418758631804}
-  - {fileID: 1146809574902865676}
   m_Father: {fileID: 1425172521066773357}
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!1 &1284476118656248070
@@ -129,7 +131,7 @@ GameObject:
   - component: {fileID: 2515263051128827686}
   - component: {fileID: 3308616655633743795}
   - component: {fileID: 7702509539586692664}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tweezers long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,12 +146,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284476118656248070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3794091, y: -0.120590724, z: 0.04995027, w: -0.9159758}
-  m_LocalPosition: {x: 0.415, y: 0.098, z: 0.151}
+  m_LocalRotation: {x: 0.25660324, y: -0.1260789, z: 0.03378254, w: -0.9576626}
+  m_LocalPosition: {x: 0.415, y: 0.05557865, z: 0.1712192}
   m_LocalScale: {x: 1.3, y: 1.1999999, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1425172521066773357}
+  m_Father: {fileID: 4218979301904642271}
   m_LocalEulerAnglesHint: {x: 303.226, y: 28.187, z: -24.146}
 --- !u!33 &3308616655633743795
 MeshFilter:
@@ -213,8 +215,8 @@ GameObject:
   - component: {fileID: 5966243965559832730}
   - component: {fileID: 6859537608236321163}
   - component: {fileID: 5421737767533008799}
-  m_Layer: 5
-  m_Name: background
+  m_Layer: 12
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +305,7 @@ GameObject:
   - component: {fileID: 8214491418758631804}
   - component: {fileID: 6627901567511853300}
   - component: {fileID: 386387614683236635}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cup.03 lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,12 +320,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442494999482814296}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3767453, y: -0, z: -0, w: 0.92631686}
-  m_LocalPosition: {x: -0.616, y: 0.10384143, z: 0.106141225}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0.000000059604638, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.00014002249, z: 0.074244395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4218979301904642271}
+  m_Father: {fileID: 1146809574902865676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6627901567511853300
 MeshFilter:
@@ -386,8 +388,8 @@ GameObject:
   - component: {fileID: 3557083559650908152}
   - component: {fileID: 2723313066955927690}
   - component: {fileID: 1978553935741503699}
-  m_Layer: 5
-  m_Name: Image
+  m_Layer: 12
+  m_Name: BarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 3953981427768281793}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: HotWaterCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,8 +482,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2515263051128827686}
-  - {fileID: 4848124127386834213}
   - {fileID: 4218979301904642271}
   - {fileID: 1448231109421958762}
   m_Father: {fileID: 0}
@@ -501,9 +501,7 @@ MonoBehaviour:
   inventoryObjectSO: {fileID: 11400000, guid: e9364e0a0ccedd34e97a4c730030d0ed, type: 2}
   megacephalaMaggotVisual: {fileID: 1824930811560139419}
   scalarisPupaVisual: {fileID: 780592562126114810}
-  ethanolContainerVisual:
-  - {fileID: 4442494999482814296}
-  - {fileID: 395280440708924148}
+  ethanolContainerVisual: {fileID: 395280440708924148}
 --- !u!1 &6272456591135661890
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +513,7 @@ GameObject:
   - component: {fileID: 4848124127386834213}
   - component: {fileID: 2426909849344773662}
   - component: {fileID: 3230608696172845180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: casting_kit_01.bowl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,12 +528,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6272456591135661890}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13052738, y: -0, z: -0, w: 0.99144477}
+  m_LocalRotation: {x: -0.000000014901159, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1425172521066773357}
+  m_Father: {fileID: 4218979301904642271}
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!33 &2426909849344773662
 MeshFilter:
@@ -599,7 +597,7 @@ GameObject:
   - component: {fileID: 4774646937735219414}
   - component: {fileID: 7416720700966683087}
   - component: {fileID: 5643147738223367708}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043181846543032055}
   - component: {fileID: 1726261404808305982}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ProgressBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,6 +823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Megaselia
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d25c0f345717cb54584d24a4b6a20052,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -853,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_Name
       value: Chrysomya
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4225525764850970, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_LocalScale.x

@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/**
+ * The sub class representing equipment that the player can use to 
+ * interact with evidence. There is an emphasis on equipment identification
+ * to track the relevant evidence collected with it.
+ */
 public class EvidenceInteractingEquipment : Equipment {
 
     private int equipmentID;

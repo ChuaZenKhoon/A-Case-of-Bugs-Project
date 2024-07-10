@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the display shown to the user when entering the tutorial.
+ */
 public class IntroMessageUI : MonoBehaviour {
 
     public event EventHandler OnFinishReading;

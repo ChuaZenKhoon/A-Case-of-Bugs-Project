@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218979301904642271}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5615513808620838852}
   - component: {fileID: 7257836174205430654}
   - component: {fileID: 5093565130954528273}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cup.03 lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8627125330074208511}
   - component: {fileID: 1462297667916005884}
   - component: {fileID: 477827099832151020}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cup.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 2202858830922740738}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Ethanol Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 7452659752584567073}
   - component: {fileID: 6577811547411618075}
   - component: {fileID: 7231091722169474144}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tweezers long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,6 +417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Megaselia
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d25c0f345717cb54584d24a4b6a20052,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -445,6 +450,10 @@ PrefabInstance:
     - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_Name
       value: Chrysomya
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4225525764850970, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_LocalScale.x

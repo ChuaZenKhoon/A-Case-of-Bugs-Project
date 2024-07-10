@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the display of the blood test station when the player uses it.
+ */
 public class BloodTestStationUI : MonoBehaviour {
-
     [SerializeField] private BloodTestStation bloodTestStation;
 
     [SerializeField] private Button addEthanolButton;
@@ -16,50 +16,19 @@ public class BloodTestStationUI : MonoBehaviour {
     private void Awake() {
         exitScreenButton.onClick.AddListener(() => {
             Hide();
-            bool isTestedHalfWay = bloodTestStation.CheckHasBeenTestedHalfway();
-            
-            if (isTestedHalfWay) {
-                bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.WrongTestProcedure();
-            } else {
-                bloodTestStation.ExitFromEquipmentScreen();
-            }
-            
+            bloodTestStation.ExitStation();
         });
 
         addEthanolButton.onClick.AddListener(() => {
-            bool isCorrect = bloodTestStation.CheckEthanolIsAddedFirst();
-            if (!isCorrect) {
-                Hide();
-                bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.WrongTestProcedure();
-            } else {
-                MessageLogManager.Instance.LogMessage("Correct step! What next?");
-            }
+            bloodTestStation.AddEthanol();
         });
 
         addPhenolphthaleinButton.onClick.AddListener(() => {
-            bool isCorrect = bloodTestStation.CheckPhenophthaleinIsAddedSecond();
-            if (!isCorrect) {
-                Hide();
-                bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.WrongTestProcedure();
-            } else {
-                MessageLogManager.Instance.LogMessage("Correct step! What next?");
-            }
+            bloodTestStation.AddPhenophtalein();
         });
 
         addHydrogenPeroxideButton.onClick.AddListener(() => {
-            bool isCorrect = bloodTestStation.CheckHydrogenPeroxideIsAddedThird();
-            if (!isCorrect) {
-                Hide();
-                bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.WrongTestProcedure();
-            } else {
-                Hide();
-                bloodTestStation.ExitFromEquipmentScreen();
-                bloodTestStation.CorrectTestProcedure();
-            }
+            bloodTestStation.AddHydrogenPeroxide();
         });
     }
 
@@ -67,7 +36,7 @@ public class BloodTestStationUI : MonoBehaviour {
         Hide();
     }
 
-    private void Hide() {
+    public void Hide() {
         gameObject.SetActive(false);
     }
 

@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A UI component representing the display of the microscope to the player.
+ */
 public class MicroscopeUI : MonoBehaviour {
 
     [SerializeField] private Microscope microscope;

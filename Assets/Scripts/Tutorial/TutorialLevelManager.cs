@@ -1,8 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * A manager in charge of handling the tutorial's flow and stages.
+ */
 public class TutorialLevelManager : MonoBehaviour {
 
     public static TutorialLevelManager Instance { get; private set; }
@@ -15,8 +17,6 @@ public class TutorialLevelManager : MonoBehaviour {
     [SerializeField] private List<NextLocationArrow> nextLocationArrows;
 
     private State state;
-
-    private bool hasHitNextArrow;
 
     public enum State {
         IntroMessage,
@@ -54,7 +54,6 @@ public class TutorialLevelManager : MonoBehaviour {
         state++;
 
         instructionUI.DisplayMessage(state);
-        Debug.Log(state);
         
         if (state == TutorialLevelManager.State.Exit) {
             exitTutorialUI.Show();

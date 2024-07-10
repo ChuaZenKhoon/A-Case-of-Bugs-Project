@@ -2,14 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+/**
+ * The class representing the fly net equipment that is used to collect live adult flies.
+ */
 public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
-    
-    [SerializeField] private GameObject megacephalaFlyVisual;
-    [SerializeField] private GameObject spinigeraFlyVisual;
-    [SerializeField] private GameObject killingJarVisual;
-
-    [SerializeField] private LayerMask flyLayer;
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
     public event EventHandler<float> OnActionProgress;
@@ -18,44 +16,99 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
     }
 
     private const float CATCHING_RADIUS = 2f;
+    private const float CAPTURE_DURATION = 3f;
+
+    [SerializeField] private GameObject megacephalaMaleFlyVisual;
+    [SerializeField] private GameObject megacephalaFemaleFlyVisual;
+    [SerializeField] private GameObject scalarisFlyVisual;
+    [SerializeField] private GameObject ruficornisFlyVisual;
+    [SerializeField] private GameObject killingJarVisual;
+
+    //To interact with flying flies
+    [SerializeField] private LayerMask flyLayer;
 
     private List<AdultFly> fliesCollected;
 
     private Coroutine captureFlyCoroutine;
     private bool isCapturingFlies;
 
-
     private void Awake() {
-        megacephalaFlyVisual.SetActive(false);
-        spinigeraFlyVisual.SetActive(false);
-        SetUpContainer(false);
+        SetCorrectVisual();
         isCapturingFlies = false;
         captureFlyCoroutine = null;
     }
 
     private void Start() {
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         fliesCollected = EvidenceStorageManager.Instance.GetCapturedFlies();
         SetCorrectVisual();
     }
 
-    private IEnumerator CaptureFlyCoroutine() {
-        float captureDuration = 3f;
-        float elapsedTime = 0f;
+    /**
+     * Reset interaction details if restart level in the middle of interaction
+     * that creates change in interaction details
+     */
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+        if (equipmentSO != null) {
+            equipmentSO.ChangeInteractionText("Capture Flies", 0);
+        }
+    }
 
-        isCapturingFlies = true;
-
-        while (elapsedTime < captureDuration) {
-            yield return new WaitForSeconds(0.25f);
-
-            elapsedTime += 0.25f;
-            OnActionProgress?.Invoke(this, elapsedTime / captureDuration);
+    public override void Interact() {
+        if (isCapturingFlies) {
+            MessageLogManager.Instance.LogMessage("Swinging net in progress. Wait for action to be done.");
+            return;
         }
 
-        //Capture flies here
+        if (fliesCollected.Count == 0) {
+            captureFlyCoroutine = StartCoroutine(CaptureFlyCoroutine());
+            MessageLogManager.Instance.LogMessage("Swinging net to capture flies...");
+        } else {
+            EvidenceStorageManager.Instance.AddToKillingJar(fliesCollected);
+            EvidenceStorageManager.Instance.ClearCapturedFlies();
+            isCapturingFlies = false;
+            SetCorrectVisual();
+
+            MessageLogManager.Instance.LogMessage("Flies transferred to acetone killing jar in inventory.");
+
+            //Reset interaction details
+            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
+            if (equipmentSO != null) {
+                equipmentSO.ChangeInteractionText("Capture Flies", 0);
+            }
+            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+        }
+    }
+
+    /**
+     * Tracks the progress of the fly net catching process while the fly net is in use.
+     */
+    private IEnumerator CaptureFlyCoroutine() {
+        float elapsedTime = 0f;
+        isCapturingFlies = true;
+
+        while (elapsedTime < CAPTURE_DURATION) {
+            yield return new WaitForSeconds(0.1f);
+
+            elapsedTime += 0.1f;
+            OnActionProgress?.Invoke(this, elapsedTime / CAPTURE_DURATION);
+        }
+
+        SweepNet();
+
+        captureFlyCoroutine = null;
+        isCapturingFlies = false;
+
+        CheckNet();
+    }
+
+    /**
+     * Attempts to capture adult flies around area player is looking at.
+     */
+    private void SweepNet() {
 
         Vector3 currentStareAt = Player.Instance.GetStareAtPosition();
-
-        //dusts area around lookat spot
         Collider[] hitColliders = Physics.OverlapSphere(currentStareAt, CATCHING_RADIUS, flyLayer);
 
         foreach (Collider hitCollider in hitColliders) {
@@ -65,79 +118,61 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
 
             EvidenceStorageManager.Instance.CaptureFlies(flyCaptured);
         }
+    }
 
-        captureFlyCoroutine = null;
-        isCapturingFlies = false;
-
-
+    /**
+     * Updates next step based on results of fly catching.
+     */
+    private void CheckNet() {
         if (fliesCollected.Count > 0) {
-            SetUpContainer(true);
             SetCorrectVisual();
             EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
             if (equipmentSO != null) {
                 equipmentSO.ChangeInteractionText("Transfer Flies", 0);
             }
-            
+
             OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
-        } 
-    }
-
-    private void SetUpContainer(bool state) {
-        killingJarVisual.SetActive(state);
-    }
-    public override void Interact() {
-
-        if (isCapturingFlies) {
-            MessageLogManager.Instance.LogMessage("Swinging net in progress. Wait for action to be done.");
-            return;
-        }
-
-        if (fliesCollected.Count == 0) {
-            captureFlyCoroutine = StartCoroutine(CaptureFlyCoroutine());
-            MessageLogManager.Instance.LogMessage("Swinging net to capture flies...");
-        
-        } else {
-
-            EvidenceStorageManager.Instance.AddToKillingJar(fliesCollected);
-            EvidenceStorageManager.Instance.ClearCapturedFlies();
-            SetCorrectVisual();
-
-            SetUpContainer(false);
-            isCapturingFlies = false;
-            MessageLogManager.Instance.LogMessage("Flies transferred to acetone killing jar in inventory.");
-
-            EquipmentSO equipmentSO = this.GetInventoryObjectSO() as EquipmentSO;
-            if (equipmentSO != null) {
-                equipmentSO.ChangeInteractionText("Capture Flies", 0);
-            }
-            OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
-
         }
     }
 
     private void SetCorrectVisual() {
-        if (fliesCollected.Count > 0) {
-            foreach (AdultFly adultFly in fliesCollected) {
-                string flyType = adultFly.GetInventoryObjectSO().objectName;
+        if (fliesCollected == null || fliesCollected.Count <= 0) {
+            megacephalaMaleFlyVisual.SetActive(false);
+            megacephalaFemaleFlyVisual.SetActive(false);
+            scalarisFlyVisual.SetActive(false);
+            ruficornisFlyVisual.SetActive(false);
+            killingJarVisual.SetActive(false); ;
+            return;
+        }
 
-                if (flyType == "Black Fly") {
-                    spinigeraFlyVisual.SetActive(true);
-                }
+        killingJarVisual.SetActive(true);
 
-                if (flyType == "Green Fly") {
-                    megacephalaFlyVisual.SetActive(true);
-                }
+        foreach (AdultFly adultFly in fliesCollected) {
+            string flyType = adultFly.GetInventoryObjectSO().objectName;
+            if (flyType == "Green Fly with dark eyes") {
+                megacephalaFemaleFlyVisual.SetActive(true);
             }
-        } else {
-            spinigeraFlyVisual.SetActive(false);
-            megacephalaFlyVisual.SetActive(false);
+
+            if (flyType == "Green Fly with bright orange eyes") {
+                megacephalaMaleFlyVisual.SetActive(true);
+            }
+
+            if (flyType == "Small Brown Fly") {
+                scalarisFlyVisual.SetActive(true);
+            }
+
+            if (flyType == "Grey Fly") {
+                ruficornisFlyVisual.SetActive(true);
+            }
         }
     }
 
+    //Reset any coroutine if swapped to another equipment.
     private void OnDestroy() {
         if (captureFlyCoroutine != null) {
             StopCoroutine(captureFlyCoroutine);
             captureFlyCoroutine = null;
         }
     }
+
 }

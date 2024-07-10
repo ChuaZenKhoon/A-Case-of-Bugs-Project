@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,8 +22,7 @@ public class EvidenceStorageManager : MonoBehaviour {
     public struct BloodStainCollection {
         public Bloodstain bloodStainCollected;
         public int swabID;
-        public bool testedPositive;
-        public bool cannotBeUsedAnymore;
+        public Swab.TestState state;
     }
 
     private List<BloodStainCollection> bloodStainCollection;
@@ -72,7 +70,7 @@ public class EvidenceStorageManager : MonoBehaviour {
     }
 
     //Bloodstain
-    public void SetBloodStain(int swabNum, Bloodstain bloodStain, bool positive, bool obsolete) {
+    public void SetBloodStain(int swabNum, Bloodstain bloodStain, Swab.TestState testState) {
         for (int i = 0; i < bloodStainCollection.Count; i++) {
             if (bloodStainCollection[i].swabID == swabNum) {
                 bloodStainCollection.RemoveAt(i);
@@ -82,22 +80,19 @@ public class EvidenceStorageManager : MonoBehaviour {
         bloodStainCollection.Add(new BloodStainCollection {
             swabID = swabNum,
             bloodStainCollected = bloodStain,
-            testedPositive = positive,
-            cannotBeUsedAnymore = obsolete
+            state = testState
         });
     }
 
-    public Bloodstain GetBloodStain(int swabNum, out bool positive, out bool cannotBeUsed) {
+    public Bloodstain GetBloodStain(int swabNum, out Swab.TestState state) {
         for (int i = 0; i < bloodStainCollection.Count; i++) {
             if (bloodStainCollection[i].swabID == swabNum) {
-                positive = bloodStainCollection[i].testedPositive;
-                cannotBeUsed = bloodStainCollection[i].cannotBeUsedAnymore;
+                state = bloodStainCollection[i].state;
                 return bloodStainCollection[i].bloodStainCollected;
             }
         }
 
-        positive = false;
-        cannotBeUsed = false;
+        state = Swab.TestState.Unused;
         return null;
     }
 
@@ -130,7 +125,7 @@ public class EvidenceStorageManager : MonoBehaviour {
 
 
     //Acetone Kill Jar
-    public List<AdultFly> GetKillingFlies() {
+    public List<AdultFly> GetFliesToKill() {
         return killingAdultFlyCollection;
     }
 

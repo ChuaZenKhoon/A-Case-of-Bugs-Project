@@ -260,15 +260,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseSketchPosition",
-                    "type": "Value",
-                    "id": "7d87e390-1bdd-4a1c-ada9-af1ae41f4290",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "ToggleSketchView",
                     "type": "Button",
                     "id": "2fb65cc7-6912-43e9-aeb6-32a807a8c05c",
@@ -298,17 +289,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ClearSketch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2c546b86-e93a-4838-bcbd-21cfc4beee90",
-                    "path": "<Pointer>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseSketchPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

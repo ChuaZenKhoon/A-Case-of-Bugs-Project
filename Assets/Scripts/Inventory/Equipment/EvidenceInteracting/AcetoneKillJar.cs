@@ -1,8 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The class representing the acetone kill jar equipment that stores captured adult flies.
+ */
 public class AcetoneKillJar : EvidenceInteractingEquipment {
 
     [SerializeField] private GameObject megacephalaMaleFlyVisual;
@@ -12,45 +13,50 @@ public class AcetoneKillJar : EvidenceInteractingEquipment {
 
     private List<AdultFly> killedFliesCollected;
 
-
     private void Awake() {
-        megacephalaMaleFlyVisual.SetActive(false);
-        megacephalaFemaleFlyVisual.SetActive(false);
-        scalarisFlyVisual.SetActive(false);
-        ruficornisFlyVisual.SetActive(false);
+        SetCorrectVisual();
     }
 
     private void Start() {
-        killedFliesCollected = EvidenceStorageManager.Instance.GetKillingFlies();
+        killedFliesCollected = EvidenceStorageManager.Instance.GetFliesToKill();
         SetCorrectVisual();
     }
 
     public override void Interact() {
-        MessageLogManager.Instance.LogMessage("I have to put captured flies in here to kill them for pinning later...");
+        if (killedFliesCollected.Count == 0) {
+            MessageLogManager.Instance.LogMessage("I have to put captured flies in here to kill them for pinning later...");
+        } else {
+            MessageLogManager.Instance.LogMessage("I need to examine the flies under the microscope in the laboratory.");
+        }
     }
 
 
     private void SetCorrectVisual() {
-        if (killedFliesCollected.Count > 0) {
-            foreach (AdultFly adultFly in killedFliesCollected) {
-                string flyType = adultFly.GetInventoryObjectSO().objectName;
-                if (flyType == "Green Fly with dark eyes") {
-                    megacephalaFemaleFlyVisual.SetActive(true);
-                }
+        if (killedFliesCollected == null || killedFliesCollected.Count <= 0) {
+            megacephalaMaleFlyVisual.SetActive(false);
+            megacephalaFemaleFlyVisual.SetActive(false);
+            scalarisFlyVisual.SetActive(false);
+            ruficornisFlyVisual.SetActive(false);
+            return;
+        }
 
-                if (flyType == "Green Fly with bright orange eyes") {
-                    megacephalaMaleFlyVisual.SetActive(true);
-                }
-
-                if (flyType == "Small Brown Fly") {
-                    scalarisFlyVisual.SetActive(true);
-                }
-
-                if (flyType == "Grey Fly") {
-                    ruficornisFlyVisual.SetActive(true);
-                }
+        foreach (AdultFly adultFly in killedFliesCollected) {
+            string flyType = adultFly.GetInventoryObjectSO().objectName;
+            if (flyType == "Green Fly with dark eyes") {
+                megacephalaFemaleFlyVisual.SetActive(true);
             }
 
+            if (flyType == "Green Fly with bright orange eyes") {
+                megacephalaMaleFlyVisual.SetActive(true);
+            }
+
+            if (flyType == "Small Brown Fly") {
+                scalarisFlyVisual.SetActive(true);
+            }
+
+            if (flyType == "Grey Fly") {
+                ruficornisFlyVisual.SetActive(true);
+            }
         }
     }
 

@@ -33,6 +33,7 @@ public class PauseGameUI : MonoBehaviour {
         returnToMainMenuButton.onClick.AddListener(() => {
             SceneManager.LoadScene(Loader.Scene.LoadingScreen.ToString());
             Loader.targetScene = Loader.Scene.MainMenu;
+            Time.timeScale = 1.0f;
         });
 
         closePauseMenuButton.onClick.AddListener(() => {

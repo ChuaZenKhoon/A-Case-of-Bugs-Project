@@ -24,6 +24,7 @@ public class PauseGameUI : MonoBehaviour {
     private void Awake() {
         restartLevelButton.onClick.AddListener(() => {
             SceneManager.LoadScene(Loader.Scene.LoadingScreen.ToString());
+            Time.timeScale = 1.0f;
         });
 
         optionsMenuButton.onClick.AddListener(() => {

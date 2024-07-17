@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class InventoryBarUI : MonoBehaviour {
 
     [SerializeField] private Image[] inventoryBarImages;
+    [SerializeField] private Image[] inventoryBarBackgroundImages;
+    [SerializeField] private Sprite selectedBackgroundImage;
+    [SerializeField] private Sprite notSelectedBackgroundImage;
 
     private const int INVENTORY_BAR_SLOTS = 5;
 
@@ -66,5 +69,15 @@ public class InventoryBarUI : MonoBehaviour {
      */
     public void RemoveFromInventoryBarVisual(int index) {
         UpdateSprite(index, null);
+    }
+
+    public void UpdateSelectedBackgroundImage(int index) {
+        for(int i = 0; i < INVENTORY_BAR_SLOTS; i++) {
+            inventoryBarBackgroundImages[i].sprite = notSelectedBackgroundImage;
+        }
+        if (index == -1) {
+            return;
+        }
+        inventoryBarBackgroundImages[index].sprite = selectedBackgroundImage;
     }
 }

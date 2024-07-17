@@ -74,6 +74,7 @@ public class InventoryManager : MonoBehaviour {
             }
         }
         inventoryBarUI.UpdateVisual(inventorySprites);
+        inventoryBarUI.UpdateSelectedBackgroundImage(-1);
         inventoryScreenUI.UpdateVisual(inventorySprites);
         UpdateFreeInventorySlot();
     }
@@ -141,6 +142,7 @@ public class InventoryManager : MonoBehaviour {
             Player.Instance.UpdateHeldItem(null, NON_EVIDENCE_INTERACTING_EQUIPMENT_ID);
         }
 
+        inventoryBarUI.UpdateSelectedBackgroundImage(currentBarSlotSelected);
     }
 
 
@@ -222,7 +224,7 @@ public class InventoryManager : MonoBehaviour {
                 Player.Instance.UpdateHeldItem(null, NON_EVIDENCE_INTERACTING_EQUIPMENT_ID);
             }
         }
-
+        inventoryBarUI.UpdateSelectedBackgroundImage(currentBarSlotSelected);
         UpdateFreeInventorySlot();
     }
 

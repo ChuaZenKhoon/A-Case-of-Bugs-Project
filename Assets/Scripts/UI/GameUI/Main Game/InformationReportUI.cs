@@ -14,8 +14,8 @@ public class InformationReportUI : MonoBehaviour {
     //Event for when information report is finished
     public event EventHandler OnClickReadFinishReport;
 
-    private static Vector2 NEXT_BUTTON_ORIGINAL_POSITION = new Vector2(0, -450);
-    private static Vector2 NEXT_BUTTON_SHIFTED_POSITION = new Vector2(200, -450);
+    private static Vector2 NEXT_BUTTON_ORIGINAL_POSITION = new Vector2(0, -425);
+    private static Vector2 NEXT_BUTTON_SHIFTED_POSITION = new Vector2(200, -425);
     private const string NEXT_BUTTON_ORIGINAL_TEXT = "Next";
     private const string NEXT_BUTTON_FINAL_PAGE_TEXT = "Finish";
 

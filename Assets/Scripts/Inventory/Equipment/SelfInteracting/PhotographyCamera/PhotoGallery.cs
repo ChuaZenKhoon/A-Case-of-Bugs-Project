@@ -12,6 +12,8 @@ public class PhotoGallery : MonoBehaviour {
     [SerializeField] private PhotoGalleryUI photoGalleryUI;
     [SerializeField] private PhotographyCameraDeletePhotoUI photographyCameraDeletePhotoUI;
 
+
+
     private int nextPhotographNumber;
     private int previousPhotographNumber;
     private int currentPhotographNumber;
@@ -36,6 +38,9 @@ public class PhotoGallery : MonoBehaviour {
         UpdatePhotographSequence();
 
         photoGalleryUI.UpdatePhoto(currentPhotograph);
+
+
+
         photoGalleryUI.Show();
     }
     public void ClosePhotoGallery() {

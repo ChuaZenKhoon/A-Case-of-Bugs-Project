@@ -17,8 +17,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
     
     [SerializeField] private CanvasGroup gameplayCanvas;
 
-    [SerializeField] private Canvas photoGalleryCanvas;
-
     private Transform holdPosition;
     private Transform CameraAtEyePosition;
 
@@ -29,7 +27,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
         GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
         isInCameraMode = false;
         isInGalleryMode = false;
-        photoGalleryCanvas.worldCamera = Camera.main;
         GameObject canvas = GameObject.Find("Gameplay Canvas");
         gameplayCanvas = canvas.GetComponent<CanvasGroup>();
     }
@@ -59,6 +56,9 @@ public class PhotographyCamera: SelfInteractingEquipment {
     private void OpenCameraMode() {
         Equipment.isInAction = true;
         isInCameraMode = true;
+        holdPosition = Player.Instance.GetHoldPosition();
+        CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
+        this.gameObject.transform.position = CameraAtEyePosition.position;
         gameplayCanvas.alpha = 0f;
         photoCapture.GoIntoCameraMode();
     }
@@ -66,6 +66,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
     private void CloseCameraMode() {
         Equipment.isInAction = false;
         isInCameraMode = false;
+        this.gameObject.transform.position = holdPosition.position;
         gameplayCanvas.alpha = 1f;
         photoCapture.ExitFromCameraMode();
     }
@@ -98,8 +99,8 @@ public class PhotographyCamera: SelfInteractingEquipment {
         isInGalleryMode = true;
         holdPosition = Player.Instance.GetHoldPosition();
         CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
-        gameplayCanvas.alpha = 0f;
         this.gameObject.transform.position = CameraAtEyePosition.position;
+        gameplayCanvas.alpha = 0f;
         photoGallery.ViewPhotoGallery();
         OnOpenPhotoGallery?.Invoke(this, EventArgs.Empty);
     }

@@ -10,6 +10,7 @@ public class PhotoCapture : MonoBehaviour {
 
     [SerializeField] private Camera equipmentCamera;
     [SerializeField] private GameObject cameraCrossHair;
+    [SerializeField] private BoxCollider cameraCollider;
 
 
     private Camera playerCamera;
@@ -18,6 +19,7 @@ public class PhotoCapture : MonoBehaviour {
     private void Awake() {
         isCameraCooldownOver = true;
         equipmentCamera.enabled = false;
+        cameraCollider.enabled = false;
         playerCamera = Camera.main;
         cameraCrossHair.SetActive(false); 
     }
@@ -33,6 +35,7 @@ public class PhotoCapture : MonoBehaviour {
     public void GoIntoCameraMode() {
         equipmentCamera.enabled = true;
         playerCamera.enabled = false;
+        cameraCollider.enabled = true;
         cameraCrossHair.SetActive(true);
         Cursor.visible = false;
     }
@@ -40,6 +43,7 @@ public class PhotoCapture : MonoBehaviour {
     public void ExitFromCameraMode() {
         playerCamera.enabled = true;
         equipmentCamera.enabled = false;
+        cameraCollider.enabled = false;
         cameraCrossHair.SetActive(false);
         Cursor.visible = true;
     }

@@ -10,7 +10,8 @@ public class PhotoCapture : MonoBehaviour {
 
     [SerializeField] private Camera equipmentCamera;
     [SerializeField] private GameObject cameraCrossHair;
-    [SerializeField] private CanvasGroup gameplayCanvas;
+    [SerializeField] private BoxCollider cameraCollider;
+
 
     private Camera playerCamera;
     private bool isCameraCooldownOver;
@@ -18,10 +19,9 @@ public class PhotoCapture : MonoBehaviour {
     private void Awake() {
         isCameraCooldownOver = true;
         equipmentCamera.enabled = false;
+        cameraCollider.enabled = false;
         playerCamera = Camera.main;
-        cameraCrossHair.SetActive(false);
-        GameObject canvas = GameObject.Find("Gameplay Canvas");
-        gameplayCanvas = canvas.GetComponent<CanvasGroup>();
+        cameraCrossHair.SetActive(false); 
     }
 
     private void Start() {
@@ -35,16 +35,16 @@ public class PhotoCapture : MonoBehaviour {
     public void GoIntoCameraMode() {
         equipmentCamera.enabled = true;
         playerCamera.enabled = false;
+        cameraCollider.enabled = true;
         cameraCrossHair.SetActive(true);
-        gameplayCanvas.alpha = 0f;
         Cursor.visible = false;
     }
 
     public void ExitFromCameraMode() {
         playerCamera.enabled = true;
         equipmentCamera.enabled = false;
+        cameraCollider.enabled = false;
         cameraCrossHair.SetActive(false);
-        gameplayCanvas.alpha = 1f;
         Cursor.visible = true;
     }
 

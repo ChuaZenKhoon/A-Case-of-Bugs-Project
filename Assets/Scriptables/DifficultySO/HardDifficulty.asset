@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HardDifficulty
   m_EditorClassIdentifier: 
   difficultyLevel: 2
-  difficultyDescription: Challenge yourself! Can you uncover the full mystery? More
-    to come in this mode in the future!
+  difficultyDescription: Challenge yourself! Can you solve the case? More to come
+    in this mode in the future!
   equipmentListToAdd:
   - {fileID: 11400000, guid: c6492306b98b5cd4e8b250a8c937a694, type: 2}
   - {fileID: 11400000, guid: 118c7fcfb8aa0434f954ef328ac82d53, type: 2}

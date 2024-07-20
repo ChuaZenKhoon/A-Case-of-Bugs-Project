@@ -143,7 +143,7 @@ public class GameInput : MonoBehaviour {
                     break;
             }
 
-            OnInventoryBarSelect.Invoke(this, new OnInventoryBarSelectEventArgs { inventoryBarSlot = inventoryBarSlot });
+            OnInventoryBarSelect?.Invoke(this, new OnInventoryBarSelectEventArgs { inventoryBarSlot = inventoryBarSlot });
         }
     }
 

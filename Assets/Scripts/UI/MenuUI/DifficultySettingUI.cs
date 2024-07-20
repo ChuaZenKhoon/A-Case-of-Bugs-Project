@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,20 +17,20 @@ public class DifficultySettingUI : MonoBehaviour {
     [SerializeField] private Button enterGameButton;
     [SerializeField] private Button closeButton;
 
-    [SerializeField] private TextMeshProUGUI difficultyText;
-    [SerializeField] private TextMeshProUGUI difficultyNameText;
-
     [SerializeField] private CanvasGroup canvasGroup;
 
     private void Awake() {
         easyModeButton.onClick.AddListener(() => {
-            DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Easy); 
+            DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Easy);
+            enterGameButton.gameObject.SetActive(true);
         });
         mediumModeButton.onClick.AddListener(() => {
             DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Medium);
+            enterGameButton.gameObject.SetActive(true);
         });
         hardModeButton.onClick.AddListener(() => {
             DifficultySettingManager.Instance.SetDifficulty(DifficultySettingManager.DifficultyLevel.Hard);
+            enterGameButton.gameObject.SetActive(true);
         });
         enterGameButton.onClick.AddListener(() => {
             StartGame();
@@ -37,6 +38,8 @@ public class DifficultySettingUI : MonoBehaviour {
         closeButton.onClick.AddListener(() => {
             Hide();
         });
+
+
     }
 
     //Sets target scene to main game, scene to load async set, then goes to loading screen
@@ -59,10 +62,6 @@ public class DifficultySettingUI : MonoBehaviour {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
-    }
-
-    public void UpdateDifficultyDescription(string difficultyDescription, string difficultyLevelName) {
-        difficultyText.text = difficultyDescription;
-        difficultyNameText.text = difficultyLevelName;
+        enterGameButton.gameObject.SetActive(false);
     }
 }

@@ -11,7 +11,6 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] private Button tutorialButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button creditsButton;
-    [SerializeField] private Button quitButton;
 
     [SerializeField] private OptionsMenuUI optionsMenuUI;
     [SerializeField] private DifficultySettingUI difficultySettingUI;
@@ -30,9 +29,6 @@ public class MainMenuUI : MonoBehaviour {
         });
         creditsButton.onClick.AddListener(() => {
             creditsScreenUI.Show();
-        });
-        quitButton.onClick.AddListener(() => {
-            Application.Quit();
         });
     }
 

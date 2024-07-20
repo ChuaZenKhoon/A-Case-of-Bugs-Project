@@ -14,6 +14,7 @@ public class GameSettingsManager : SettingsManager {
     public event EventHandler<float> OnMouseSensitivityChange;
 
     private const string PLAYER_PREFS_MOUSE_SENSITIVITY = "Mouse Sensitivity";
+    private const float MAX_SENSITIVITY = 4.9f;
 
     private float mouseSensitivityValue;
 
@@ -26,7 +27,7 @@ public class GameSettingsManager : SettingsManager {
             Destroy(gameObject);
         }
 
-        mouseSensitivityValue = PlayerPrefs.GetFloat(PLAYER_PREFS_MOUSE_SENSITIVITY, 0.9f/4.9f);
+        mouseSensitivityValue = PlayerPrefs.GetFloat(PLAYER_PREFS_MOUSE_SENSITIVITY, 0.9f/MAX_SENSITIVITY);
         SetSensitivity(mouseSensitivityValue);
     }
 
@@ -50,7 +51,7 @@ public class GameSettingsManager : SettingsManager {
 
     private void SetSensitivity(float sensitivity) {
         mouseSensitivityValue = sensitivity;
-        float scaledMouseSensitivity = (sensitivity * 4.9f) + 0.1f;
+        float scaledMouseSensitivity = (sensitivity * MAX_SENSITIVITY) + 0.1f;
         OnMouseSensitivityChange?.Invoke(this, scaledMouseSensitivity);
         PlayerPrefs.SetFloat(PLAYER_PREFS_MOUSE_SENSITIVITY, mouseSensitivityValue);
         PlayerPrefs.Save();
@@ -61,6 +62,6 @@ public class GameSettingsManager : SettingsManager {
     }
 
     public float GetScaledSensitivity() {
-        return (mouseSensitivityValue * 4.9f) + 0.1f; ;
+        return (mouseSensitivityValue * MAX_SENSITIVITY) + 0.1f; ;
     }
 }

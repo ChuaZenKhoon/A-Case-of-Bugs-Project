@@ -198,4 +198,8 @@ public class PlayerInteractor : MonoBehaviour {
     public InventoryObject GetHeldItem() {
         return currentHeldObject;
     }
+
+    public Transform GetHoldPosition() {
+        return objectHoldPoint;
+    }
 }

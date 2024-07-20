@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 /**
@@ -28,11 +29,19 @@ public class OptionsMenuUI : MonoBehaviour {
     [SerializeField] private Button graphicsTab;
     [SerializeField] private Button gameSettingsTab;
     [SerializeField] private GameObject[] settingTabs;
+    private const int SOUNDS_TAB = 0;
+    private const int GRAPHICS_TAB = 1;
+    private const int GAMESETTINGS_TAB = 2;
+
 
     //Sounds
     [SerializeField] private Slider masterVolSlider;
     [SerializeField] private Slider bgmVolSlider;
     [SerializeField] private Slider sfxVolSlider;
+    [SerializeField] private TextMeshProUGUI masterVolValue;
+    [SerializeField] private TextMeshProUGUI sfxVolValue;
+    [SerializeField] private TextMeshProUGUI bgmVolValue;
+
 
     //Graphics
     [SerializeField] private Button applyGraphicsButton;
@@ -43,18 +52,22 @@ public class OptionsMenuUI : MonoBehaviour {
 
     //Game Settings
     [SerializeField] private Slider mouseSensitivitySlider;
+    [SerializeField] private TextMeshProUGUI mouseSensitivityValueText;
 
     //Add listeners to buttons and sliders
     private void Awake() {
 
         masterVolSlider.onValueChanged.AddListener((float volume) => {
             OnMasterVolumeChange?.Invoke(this, volume);
+            masterVolValue.text = Mathf.RoundToInt(volume * 100f).ToString();
         });
         sfxVolSlider.onValueChanged.AddListener((float volume) => {
             OnSFXVolumeChange?.Invoke(this, volume);
+            sfxVolValue.text = Mathf.RoundToInt(volume * 100f).ToString();
         });
         bgmVolSlider.onValueChanged.AddListener((float volume) => {
             OnBGMVolumeChange?.Invoke(this, volume);
+            bgmVolValue.text = Mathf.RoundToInt(volume * 100f).ToString();
         });
 
         closeButton.onClick.AddListener(() => {
@@ -76,18 +89,19 @@ public class OptionsMenuUI : MonoBehaviour {
 
         mouseSensitivitySlider.onValueChanged.AddListener((float sensitivity) => {
             OnMouseSensitivityChange?.Invoke(this, sensitivity);
+            mouseSensitivityValueText.text = Math.Round(GameSettingsManager.Instance.GetScaledSensitivity(), 1).ToString();
         });
 
         soundsTab.onClick.AddListener(() => {
-            SwitchTab(0);
+            SwitchTab(SOUNDS_TAB);
         });
 
         graphicsTab.onClick.AddListener(() => {
-            SwitchTab(1);
+            SwitchTab(GRAPHICS_TAB);
         });
 
         gameSettingsTab.onClick.AddListener(() => {
-            SwitchTab(2);
+            SwitchTab(GAMESETTINGS_TAB);
         });
     }
 
@@ -96,8 +110,11 @@ public class OptionsMenuUI : MonoBehaviour {
 
         //Sounds set up
         masterVolSlider.value = SoundManager.Instance.GetMasterVolume();
+        masterVolValue.text = Mathf.RoundToInt(masterVolSlider.value * 100f).ToString();
         sfxVolSlider.value = SoundManager.Instance.GetSFXVolume();
+        sfxVolValue.text = Mathf.RoundToInt(sfxVolSlider.value * 100f).ToString();
         bgmVolSlider.value = SoundManager.Instance.GetBGMVolume();
+        bgmVolValue.text = Mathf.RoundToInt(bgmVolSlider.value * 100f).ToString();
 
         //Graphics set up
         InitialiseGraphicsQualityDropDown();
@@ -115,6 +132,7 @@ public class OptionsMenuUI : MonoBehaviour {
 
         //Game Settings Set up
         mouseSensitivitySlider.value = GameSettingsManager.Instance.GetSensitivity();
+        mouseSensitivityValueText.text = Math.Round(GameSettingsManager.Instance.GetScaledSensitivity(), 1).ToString();
 
         Hide();
     }

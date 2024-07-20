@@ -7,6 +7,7 @@ using UnityEngine.UI;
  */
 public class PhotoGalleryUI : MonoBehaviour {
 
+    [SerializeField] private PhotographyCamera photographyCamera;
     [SerializeField] private PhotoGallery photoGallery;
 
     [SerializeField] RawImage photographImage;
@@ -14,6 +15,7 @@ public class PhotoGalleryUI : MonoBehaviour {
     [SerializeField] private Button backButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button removePictureButton;
+    [SerializeField] private Button ExitButton;
     [SerializeField] private TextMeshProUGUI photographText;
 
     private void Awake() {
@@ -25,6 +27,9 @@ public class PhotoGalleryUI : MonoBehaviour {
         });
         removePictureButton.onClick.AddListener(() => {
             photoGallery.DeletePhoto(); 
+        });
+        ExitButton.onClick.AddListener(() => {
+            photographyCamera.ClosePhotoGallery();
         });
     }
 

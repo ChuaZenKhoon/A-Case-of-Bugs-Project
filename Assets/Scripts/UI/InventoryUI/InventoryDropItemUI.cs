@@ -32,6 +32,7 @@ public class InventoryDropItemUI : MonoBehaviour {
     //Subscribe to right click in inventory screen event
     private void Start() {
         InventorySingleUI.OnRightClickInventorySlot += InventorySingleUI_OnRightClickInventorySlot;
+        CloseDropItemUI();
     }
     
     //Close the UI element, then invoke the event for logic to handle
@@ -47,10 +48,8 @@ public class InventoryDropItemUI : MonoBehaviour {
             this.gameObject.transform.position = e.mousePosition;
             this.dropItemIndex = e.inventorySlotIndex;
 
-            foreach (GameObject child in dropItemUI) {
-                child.gameObject.SetActive(true);
-            }
-
+            this.gameObject.SetActive(true);
+            
             isOpened = true;
         }
     }
@@ -60,10 +59,7 @@ public class InventoryDropItemUI : MonoBehaviour {
     }
 
     public void CloseDropItemUI() {
-        foreach (GameObject child in dropItemUI) {
-            child.gameObject.SetActive(false);
-        }
-
+        this.gameObject.SetActive(false);
         isOpened= false;
     }
 }

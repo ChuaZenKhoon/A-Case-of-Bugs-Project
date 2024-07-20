@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
     [SerializeField] private PlayerInteractor playerInteractor;
     [SerializeField] private PlayerSound playerSound;
 
+    [SerializeField] private Transform photoCameraToPlayerEyePosition;
+
     private bool isMovementActivated;
     private bool isInteractionActivated;
     private bool isCameraAllowedToMove;
@@ -128,5 +130,13 @@ public class Player : MonoBehaviour {
 
     public void UpdateHeldItem(InventoryObjectSO inventoryObjectSO, int equipmentID) {
         playerInteractor.UpdateHeldItem(inventoryObjectSO, equipmentID);
+    }
+
+    public Transform GetPhotoCameraMovePosition() {
+        return photoCameraToPlayerEyePosition;
+    }
+
+    public Transform GetHoldPosition() {
+        return playerInteractor.GetHoldPosition();
     }
 }

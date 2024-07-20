@@ -50,13 +50,13 @@ public class SketchDrawSpace : MonoBehaviour {
     }
 
     private void GameInput_OnClearSketch(object sender, System.EventArgs e) {
-        if (gameObject.activeSelf) {
+        if (drawSpaceUI.gameObject.activeSelf) {
             drawingTool.ClearCanvas();
         }
     }
 
     private void GameInput_OnInteract2Action(object sender, System.EventArgs e) {
-        if (gameObject.activeSelf) {
+        if (drawSpaceUI.gameObject.activeSelf) {
             drawingTool.UndoLastLine();
         }
     }

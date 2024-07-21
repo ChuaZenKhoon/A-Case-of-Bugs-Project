@@ -150,12 +150,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: 9bc403d0e6582a24f970cb9a446a8f45, type: 2}
   sealedEvidence: {fileID: 0}
-  evidenceVisual: {fileID: 0}
   sealedCollider: {fileID: 0}
+  evidenceVisual: {fileID: 0}
   evidenceCollider: {fileID: 0}
   examinedSprites:
   - {fileID: 21300000, guid: 6c384a3e656522a4581ff8edfd5f7e12, type: 3}
-  speciesName: Pupa Megaselia scalaris
+  speciesName: 'Pupa Megaselia scalaris (mpmi: 5 days)'
 --- !u!1001 &1879843960908213020
 PrefabInstance:
   m_ObjectHideFlags: 0

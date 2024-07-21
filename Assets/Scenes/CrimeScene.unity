@@ -25643,10 +25643,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You are a forensic scientist accompanying the police investigators to
-    the crime scene. The pathologist will arrive after you leave. \n\nYour role in
-    these 15 minutes is to gather evidence that will help in establishing what happened
-    here.\n\nYour tasks are to: "
+  m_text: 'You are a forensic scientist accompanying the police investigators to
+    the crime scene. The pathologist will arrive after you leave.
+
+
+    You put on
+    the appropriate protective equipment: Disposable lab coats, shoe covers, hair
+    nets, gloves, mask, and your goggles.
+
+
+    Your role in these 15 minutes is
+    to gather evidence that will help in establishing what happened here.
+
+
+    Your
+    tasks are to: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa351dd908af112429bf08c811681171, type: 2}
   m_sharedMaterial: {fileID: 6276693404669984431, guid: aa351dd908af112429bf08c811681171,
@@ -25674,7 +25685,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.1
+  m_fontSize: 48.8
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1

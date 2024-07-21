@@ -17031,10 +17031,11 @@ MonoBehaviour:
   equipmentUseText:
   - Use Q to open/close your inventory <br><br> You can left click drag around items
     between slots to swap their places.<br><br> Equip items from the 5 active slots
-    at the top of your inventory, into your hand with 1/2/3/4/5.<br><br> Right click
-    on items in the inventory to drop them! You will learn how to interact and pick
-    up items later, don't worry if you dropped any items! <br><br> Equipment(given
-    later) cannot be dropped.
+    at the top of your inventory, into your hand with 1/2/3/4/5. The slots are correspondingly
+    shown at the middle bottom of your screen!<br><br> Right click on items in the
+    inventory to drop them! You will learn how to interact and pick up items later,
+    don't worry if you dropped any items! <br><br> Equipment(given later) cannot
+    be dropped.
   - 'Photographs serve as hard evidence, playing a big role in establishing context,
     identification and corroboration of statements. <br><br> You should always take
     a picture of the entrance to the crime scene! <br><br> There are 3 types of shots

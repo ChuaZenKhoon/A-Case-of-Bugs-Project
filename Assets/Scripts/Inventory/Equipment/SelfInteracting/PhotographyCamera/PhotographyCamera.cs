@@ -56,9 +56,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
     private void OpenCameraMode() {
         Equipment.isInAction = true;
         isInCameraMode = true;
-        holdPosition = Player.Instance.GetHoldPosition();
-        CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
-        this.gameObject.transform.position = CameraAtEyePosition.position;
         gameplayCanvas.alpha = 0f;
         photoCapture.GoIntoCameraMode();
     }
@@ -66,7 +63,6 @@ public class PhotographyCamera: SelfInteractingEquipment {
     private void CloseCameraMode() {
         Equipment.isInAction = false;
         isInCameraMode = false;
-        this.gameObject.transform.position = holdPosition.position;
         gameplayCanvas.alpha = 1f;
         photoCapture.ExitFromCameraMode();
     }

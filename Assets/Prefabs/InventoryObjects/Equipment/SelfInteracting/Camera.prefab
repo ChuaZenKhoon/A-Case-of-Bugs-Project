@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8158756875412748317}
   - component: {fileID: 354184557329377221}
   - component: {fileID: 5215040794996363966}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 6448981768495117334}
   - component: {fileID: 1379406842382417857}
   - component: {fileID: 6537374519557704632}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: RemovePhotoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5040453814378835277}
   - component: {fileID: 7288514341465263122}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PhotoGalleryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 1430262176090656123}
   - component: {fileID: 5193104573472046244}
   - component: {fileID: 4521578997454886621}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 5934463051065540374}
   - component: {fileID: 206628710726790163}
   - component: {fileID: 4468519306718109691}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 126833066504493891}
   - component: {fileID: 1887218458057846302}
   - component: {fileID: 6565878030150974308}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: ConfirmRemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 7859853010225171489}
   - component: {fileID: 1711705778854405309}
   - component: {fileID: 5732047767455792711}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Photograph No.
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 3272540680291773537}
   - component: {fileID: 3386724079232632834}
   - component: {fileID: 4668878841432568205}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: DenyRemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 7044932499959854201}
   - component: {fileID: 7597549225120582036}
   - component: {fileID: 170401658257246889}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 4663036971854206916}
   - component: {fileID: 6758842727462419131}
   - component: {fileID: 7250744837519615331}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5654547347178892008}
   - component: {fileID: 8114895588792722147}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PhotographyCameraDeletePhotoUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 249152000417203292}
   - component: {fileID: 5186807658540388142}
   - component: {fileID: 1125679706021040881}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PhotoNo.Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 5998718996200495178}
   - component: {fileID: 7573207073524954462}
   - component: {fileID: 3092846772572175011}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 2312962832566888038}
   - component: {fileID: 1326494687262446332}
   - component: {fileID: 4363998592006844411}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1666,7 +1666,7 @@ GameObject:
   - component: {fileID: 491575657683515684}
   - component: {fileID: 8790157140723730967}
   - component: {fileID: 8151482583306803302}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1742,7 +1742,7 @@ GameObject:
   - component: {fileID: 4149649926598723432}
   - component: {fileID: 7995891201980976196}
   - component: {fileID: 2954508897687329727}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: RemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1863,7 +1863,7 @@ GameObject:
   - component: {fileID: 4579271493447668300}
   - component: {fileID: 8315476562064325422}
   - component: {fileID: 7062373078142431195}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1983,7 +1983,7 @@ GameObject:
   - component: {fileID: 2229746312233270876}
   - component: {fileID: 8307552745746089809}
   - component: {fileID: 7518078199897248578}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PhotographImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2056,7 +2056,7 @@ GameObject:
   - component: {fileID: 4497906122188679324}
   - component: {fileID: 1996177259018644845}
   - component: {fileID: 8079782334747699497}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: PhotoGalleryCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2071,7 +2071,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8435723052983295341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.191}
+  m_LocalPosition: {x: 0, y: 0, z: -0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2158,7 +2158,7 @@ GameObject:
   - component: {fileID: 6864053939034517415}
   - component: {fileID: 8603464264060082406}
   - component: {fileID: 1061006662155734359}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2588,11 +2588,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5934463051065540374}
     m_Modifications:
+    - target: {fileID: 1034237715965472625, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1371459301406107684, guid: f14e763baf041264e9afa0cf0e9c2275,
         type: 3}
       propertyPath: m_Name
       value: TogglePhotoGallery
       objectReference: {fileID: 0}
+    - target: {fileID: 1371459301406107684, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2549617685009829542, guid: f14e763baf041264e9afa0cf0e9c2275,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2622,6 +2632,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553899247419907902, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599009957106722033, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335409482607651121, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4458293538730637002, guid: f14e763baf041264e9afa0cf0e9c2275,
         type: 3}
@@ -2657,6 +2682,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856245751418281113, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 0.29411766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856245751418281113, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.a
+      value: 0.078431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856245751418281113, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856245751418281113, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856245751418281113, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5420707221730229984, guid: f14e763baf041264e9afa0cf0e9c2275,
         type: 3}
@@ -2798,6 +2848,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7073637448129939601, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2903,7 +2958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453522, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 453522, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2911,7 +2966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453522, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 453522, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2961,6 +3016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CameraType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514193118327178397, guid: 09db9ea8cde56844287e21c4c9fddcb0,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

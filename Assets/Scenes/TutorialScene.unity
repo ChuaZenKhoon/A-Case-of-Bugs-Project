@@ -2214,7 +2214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3596,8 +3596,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.500244, y: -0.00064086914}
-  m_SizeDelta: {x: 16, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &473265081
 MonoBehaviour:
@@ -12682,7 +12682,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1182678569}
   m_HandleRect: {fileID: 1182678568}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17031,10 +17031,11 @@ MonoBehaviour:
   equipmentUseText:
   - Use Q to open/close your inventory <br><br> You can left click drag around items
     between slots to swap their places.<br><br> Equip items from the 5 active slots
-    at the top of your inventory, into your hand with 1/2/3/4/5.<br><br> Right click
-    on items in the inventory to drop them! You will learn how to interact and pick
-    up items later, don't worry if you dropped any items! <br><br> Equipment(given
-    later) cannot be dropped.
+    at the top of your inventory, into your hand with 1/2/3/4/5. The slots are correspondingly
+    shown at the middle bottom of your screen!<br><br> Right click on items in the
+    inventory to drop them! You will learn how to interact and pick up items later,
+    don't worry if you dropped any items! <br><br> Equipment(given later) cannot
+    be dropped.
   - 'Photographs serve as hard evidence, playing a big role in establishing context,
     identification and corroboration of statements. <br><br> You should always take
     a picture of the entrance to the crime scene! <br><br> There are 3 types of shots

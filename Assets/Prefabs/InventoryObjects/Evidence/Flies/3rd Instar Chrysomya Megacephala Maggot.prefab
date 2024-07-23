@@ -150,13 +150,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: 193d1385ebe1da742925ca310c82b117, type: 2}
   sealedEvidence: {fileID: 0}
-  evidenceVisual: {fileID: 0}
   sealedCollider: {fileID: 0}
+  evidenceVisual: {fileID: 0}
   evidenceCollider: {fileID: 0}
   examinedSprites:
   - {fileID: 21300000, guid: c3d551066fb7ad941bf31bb4c47675d0, type: 3}
   - {fileID: 21300000, guid: 05ce0513e07e84a45837f08f6f18daf5, type: 3}
-  speciesName: 3rd Instar Chrysomya megacephala
+  speciesName: 3rd Instar Chrysomya megacephala (mpmi 3 days)
 --- !u!1001 &3836519847758561580
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,6 +6,9 @@ using UnityEngine;
  * A logic component of the photography camera that handles the function of taking photos.
  */
 public class PhotoCapture : MonoBehaviour {
+
+    public event EventHandler OnPhotoTaken;
+    public event EventHandler OnCameraStillRefocus;
 
     [SerializeField] private PhotographyCamera photographyCamera;
 
@@ -72,8 +76,10 @@ public class PhotoCapture : MonoBehaviour {
             equipmentCamera.targetTexture = null;
             RenderTexture.active = null;
 
+            OnPhotoTaken?.Invoke(this, EventArgs.Empty);
             MessageLogManager.Instance.LogMessage("Photo successfully taken!");
         } else if (!isCameraCooldownOver) {
+            OnCameraStillRefocus?.Invoke(this, EventArgs.Empty);
             MessageLogManager.Instance.LogMessage("Camera still refocusing.");
         }
     }

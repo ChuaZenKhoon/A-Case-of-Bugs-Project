@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
  * A logic component of the photography camera that handles the function of the photo gallery.
  */
 public class PhotoGallery : MonoBehaviour {
+
+    public event EventHandler OnShufflePicButtonClick;
 
     [SerializeField] private PhotographyCamera photographyCamera;
 
@@ -61,6 +64,8 @@ public class PhotoGallery : MonoBehaviour {
         photoGalleryUI.UpdatePhoto(currentPhotograph);
 
         UpdatePhotographSequence();
+
+        OnShufflePicButtonClick?.Invoke(this, EventArgs.Empty);
     }
 
     public void PreviousPhotograph() {
@@ -69,10 +74,12 @@ public class PhotoGallery : MonoBehaviour {
         photoGalleryUI.UpdatePhoto(currentPhotograph);
 
         UpdatePhotographSequence();
+        OnShufflePicButtonClick?.Invoke(this, EventArgs.Empty);
     }
 
     public void DeletePhoto() {
         photographyCameraDeletePhotoUI.Show();
+        OnShufflePicButtonClick?.Invoke(this, EventArgs.Empty);
     }
 
     /**

@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObject: {fileID: 3230177554624967148}
+  interactableObject: {fileID: 4712547467064972341}
   selectedVisualArray:
   - {fileID: 721419868950520285}
   - {fileID: 8545036621699085048}
@@ -310,8 +310,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8566033277688626651}
-  - component: {fileID: 3230177554624967148}
   - component: {fileID: 2011813051820278434}
+  - component: {fileID: -6822559722985368063}
+  - component: {fileID: 4712547467064972341}
   m_Layer: 6
   m_Name: Can Drink Unopened
   m_TagString: Untagged
@@ -358,23 +359,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 0.45, z: 0.25}
   m_Center: {x: 0, y: 0.2, z: 0}
---- !u!114 &3230177554624967148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450798009186736383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56da51594c6d7944a6e319d24e0433d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryObjectSO: {fileID: 11400000, guid: e876a1ee25d4e6846bca97c235f33554, type: 2}
-  sealedEvidence: {fileID: 8008201423408956370}
-  sealedCollider: {fileID: 2011813051820278434}
-  evidenceVisual: {fileID: 1249285617222948274}
-  evidenceCollider: {fileID: 8566033277688626651}
 --- !u!65 &2011813051820278434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -396,6 +380,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.6, z: 0.2}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &-6822559722985368063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667672c2bb9c07f48beca193a5dad559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sealedEvidence: {fileID: 4712547467064972341}
+--- !u!114 &4712547467064972341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c8910b09ea32842b5d9441c86cfc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryObjectSO: {fileID: 11400000, guid: e876a1ee25d4e6846bca97c235f33554, type: 2}
+  sealedVisual: {fileID: 8008201423408956370}
+  sealedCollider: {fileID: 2011813051820278434}
+  evidenceVisual: {fileID: 1249285617222948274}
+  evidenceCollider: {fileID: 8566033277688626651}
 --- !u!1 &5719734854478995792
 GameObject:
   m_ObjectHideFlags: 0

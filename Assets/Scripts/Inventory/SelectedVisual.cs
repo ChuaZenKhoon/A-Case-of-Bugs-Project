@@ -33,7 +33,7 @@ public class SelectedVisual : MonoBehaviour {
             selectedVisual.SetActive(true);
         }
 
-        if (interactableObject is Evidence) {
+        if (interactableObject is SealedEvidence) {
             HandleEvidenceSealing();
         }
     }
@@ -46,7 +46,7 @@ public class SelectedVisual : MonoBehaviour {
 
     //If evidence is picked up, it is sealed and should highlight seal bag and not evidence.
     private void HandleEvidenceSealing() {
-        Evidence evidence = interactableObject as Evidence;
+        SealedEvidence evidence = interactableObject as SealedEvidence;
         if (evidence.IsSealed()) {
             selectedVisualArray[EVIDENCE_INDEX].SetActive(false);
         } else {

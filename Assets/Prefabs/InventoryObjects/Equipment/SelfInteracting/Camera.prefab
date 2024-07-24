@@ -677,6 +677,7 @@ GameObject:
   - component: {fileID: 126833066504493891}
   - component: {fileID: 1887218458057846302}
   - component: {fileID: 6565878030150974308}
+  - component: {fileID: 5910015650054261427}
   m_Layer: 12
   m_Name: ConfirmRemoveButton
   m_TagString: Untagged
@@ -786,6 +787,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5910015650054261427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471129229877898877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309d9948acee9b4f8b9a42e6058c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 6565878030150974308}
 --- !u!1 &2592438543259295333
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +947,7 @@ GameObject:
   - component: {fileID: 3272540680291773537}
   - component: {fileID: 3386724079232632834}
   - component: {fileID: 4668878841432568205}
+  - component: {fileID: 6635281422709461923}
   m_Layer: 12
   m_Name: DenyRemoveButton
   m_TagString: Untagged
@@ -1042,6 +1057,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6635281422709461923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738427440753715163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309d9948acee9b4f8b9a42e6058c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 4668878841432568205}
 --- !u!1 &3473962503165277512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1401,7 @@ GameObject:
   - component: {fileID: 5998718996200495178}
   - component: {fileID: 7573207073524954462}
   - component: {fileID: 3092846772572175011}
+  - component: {fileID: 4445576096662277406}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1445,6 +1474,20 @@ MonoBehaviour:
   photographyCamera: {fileID: 5998718996200495178}
   photoGalleryUI: {fileID: 7288514341465263122}
   photographyCameraDeletePhotoUI: {fileID: 8114895588792722147}
+--- !u!114 &4445576096662277406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59426b464d251824bbead46c7a86696a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photoCapture: {fileID: 7573207073524954462}
+  photoGallery: {fileID: 3092846772572175011}
 --- !u!1 &6861282047481347475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,8 +2899,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3553899247419907902, guid: f14e763baf041264e9afa0cf0e9c2275,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3303484064906594937}
   m_SourcePrefab: {fileID: 100100000, guid: f14e763baf041264e9afa0cf0e9c2275, type: 3}
+--- !u!1 &1030346214557573988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3553899247419907902, guid: f14e763baf041264e9afa0cf0e9c2275,
+    type: 3}
+  m_PrefabInstance: {fileID: 4547926323009600602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3303484064906594937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030346214557573988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309d9948acee9b4f8b9a42e6058c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 8969379546972020931}
 --- !u!224 &7236684409163898362 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6588947424959586720, guid: f14e763baf041264e9afa0cf0e9c2275,
@@ -2870,7 +2936,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4547926323009600602}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1030346214557573988}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

@@ -16,3 +16,42 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7bbba64a18b79de498dd37a6a2406d7d, type: 3}
   - {fileID: 8300000, guid: 2b3d6ddf376c2ad408b8bc741f7ce123, type: 3}
   - {fileID: 8300000, guid: d630ff9fbf123634b8355ac25908182b, type: 3}
+  countdownTimerTick: {fileID: 8300000, guid: 2d897442661fa254c92798696e51c57f, type: 3}
+  countdonwTimerEnd: {fileID: 8300000, guid: 647f5c77b8337a340b5c8b39ec7c810c, type: 3}
+  nextArrowTouch: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+  buttonClick:
+  - {fileID: 8300000, guid: 523924e8918aa8e47a8e695ff5b7a463, type: 3}
+  - {fileID: 8300000, guid: 44a5d716536c11248a09ee1a54d5d168, type: 3}
+  paperFlipButtonClick:
+  - {fileID: 8300000, guid: 4e7ce19b0c9dda1458946554f940d3b8, type: 3}
+  - {fileID: 8300000, guid: 9e47b190e12f3d64ab67580401700dae, type: 3}
+  difficultyButtonClick:
+  - {fileID: 8300000, guid: 7945d031f27ee5344afe8f19daf2589c, type: 3}
+  - {fileID: 8300000, guid: d6269c68114ac504e8a0d4e155423e84, type: 3}
+  - {fileID: 8300000, guid: c460887f3ffef954bbd3987196cd2305, type: 3}
+  informationHover:
+  - {fileID: 8300000, guid: 1340ba1fa579f674ab71453241682a8a, type: 3}
+  - {fileID: 8300000, guid: 41c5c2b983676c14abbebce504e00d9a, type: 3}
+  - {fileID: 8300000, guid: e26b12344a8fdd2439361d014323be33, type: 3}
+  inventorySlotHover:
+  - {fileID: 8300000, guid: 7abccce1359ba0d4a8421bcc212783c5, type: 3}
+  - {fileID: 8300000, guid: e8af9035f5758f44da37af4225a02619, type: 3}
+  - {fileID: 8300000, guid: c230389cdba1a4d47bda71c4d0e2b6f9, type: 3}
+  - {fileID: 8300000, guid: f44b7388dcf5dd14a981e85a3aa5a9f6, type: 3}
+  - {fileID: 8300000, guid: cb231dc76449c8e46989b1203a51c32d, type: 3}
+  inventorySwapSuccessWithItem: {fileID: 8300000, guid: cc7b975e5ed3528428d1a4aab7d2ff83,
+    type: 3}
+  inventorySwapSuccessWithEmptySpace: {fileID: 8300000, guid: 09f8dc09efedc414784e7ba556669245,
+    type: 3}
+  inventoryOpen: {fileID: 8300000, guid: 8e746bda97a9f634f9c225c03bd4bfcb, type: 3}
+  inventoryClose: {fileID: 8300000, guid: 1ad78fd6586d8ba4c8a0e9cfe64d6d14, type: 3}
+  inventoryDropItem: {fileID: 8300000, guid: 6f6ef3f6b8da43c4391f4b5b74fd524c, type: 3}
+  pauseGame: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+  resumeGame: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  sealEvidence: {fileID: 8300000, guid: d50fff9f23652b348a8f4c79d373a00d, type: 3}
+  cameraTakePicture: {fileID: 8300000, guid: 9308167c265bfca4891a5f6f5f130f31, type: 3}
+  cameraRefocus: {fileID: 8300000, guid: 3fa6f78847563b049976bd903ce7a418, type: 3}
+  photoGalleryShufflePics:
+  - {fileID: 8300000, guid: 818ceeca65489e14ab6864f21ac80fd5, type: 3}
+  - {fileID: 8300000, guid: b8cab79e81e870148a3ca59bbcf31d1e, type: 3}
+  - {fileID: 8300000, guid: cd7b383f7b2a33e4ab9998acf6a28acf, type: 3}

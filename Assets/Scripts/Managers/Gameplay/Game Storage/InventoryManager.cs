@@ -9,7 +9,9 @@ public class InventoryManager : MonoBehaviour {
     public static InventoryManager Instance { get; private set; }
 
     //Event for when inventory screen UI is to open/close
-    public event EventHandler OnInventoryOpenStateChange;
+    public event EventHandler<bool> OnInventoryOpenStateChange;
+    public event EventHandler OnSuccessfulSwapWithItem;
+    public event EventHandler OnSuccessfulSwapWithEmptySpace;
 
     private const int INVENTORY_SLOTS = 20;
 
@@ -169,7 +171,7 @@ public class InventoryManager : MonoBehaviour {
             inventoryScreenUI.Hide();
         }
 
-        OnInventoryOpenStateChange?.Invoke(this, EventArgs.Empty);
+        OnInventoryOpenStateChange?.Invoke(this, isInventoryOpened);
     }
     
     public InventoryObject[] GetInventoryObjectArray() {
@@ -210,6 +212,9 @@ public class InventoryManager : MonoBehaviour {
 
         if (inventoryObjectsArray[newIndex] != null) {
             newIndexSprite = inventoryObjectsArray[newIndex].GetInventoryObjectSO().sprite;
+            OnSuccessfulSwapWithItem?.Invoke(this, EventArgs.Empty);
+        } else {
+            OnSuccessfulSwapWithEmptySpace?.Invoke(this, EventArgs.Empty);
         }
 
         inventoryBarUI.SwapInventoryBarVisual(oldIndex, newIndex, oldIndexSprite, newIndexSprite);
@@ -226,6 +231,8 @@ public class InventoryManager : MonoBehaviour {
         }
         inventoryBarUI.UpdateSelectedBackgroundImage(currentBarSlotSelected);
         UpdateFreeInventorySlot();
+
+
     }
 
     /**
@@ -281,7 +288,7 @@ public class InventoryManager : MonoBehaviour {
         GameObject newInventoryObjectToDrop = Instantiate(inventoryObjectsArray[index].GetInventoryObjectSO().prefab);
 
         //Adjust visual as evidence is sealed after pick up
-        if (newInventoryObjectToDrop.TryGetComponent<Evidence>(out Evidence evidence)) {
+        if (newInventoryObjectToDrop.TryGetComponent<SealedEvidence>(out SealedEvidence evidence)) {
             evidence.SealEvidence();
         }
 

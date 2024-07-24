@@ -175,8 +175,8 @@ public class PlayerInteractor : MonoBehaviour {
             currentHeldEvidenceInteractingEquipment.SetEquipmentID(equipmentID);
         }
 
-        if (currentHeldObject is Evidence) {
-            Evidence currentHeldEvidence = currentHeldObject as Evidence;
+        if (currentHeldObject is SealedEvidence) {
+            SealedEvidence currentHeldEvidence = currentHeldObject as SealedEvidence;
             currentHeldEvidence.SealEvidence();
             BoxCollider[] colliders = currentHeldEvidence.GetComponents<BoxCollider>();
             if (colliders.Length > 1) {

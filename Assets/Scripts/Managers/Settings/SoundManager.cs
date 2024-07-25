@@ -18,9 +18,6 @@ public class SoundManager : SettingsManager {
 
     [SerializeField] private AudioMixer audioMixer;
 
-    //SoundSO stores all audioclips, just reference it to get audioclip needed
-    [SerializeField] private SoundSO soundSO;
-
     private float masterVolume;
     private float sfxVolume;
     private float bgmVolume;
@@ -107,6 +104,8 @@ public class SoundManager : SettingsManager {
             audioMixer.SetFloat("SFX", Mathf.Log10(sfxVolume) * 20);
         }
 
+        UISFXPlayer.Instance.SetSFXVolume(sfxVolume);
+        GameElementSFXPlayer.Instance.SetSFXVolume(sfxVolume);
 
         PlayerPrefs.SetFloat(PLAYER_PREFS_SFX_VOL, sfxVolume);
         PlayerPrefs.Save();
@@ -140,18 +139,5 @@ public class SoundManager : SettingsManager {
         return bgmVolume;
     }
 
-    //Following functions handle audioclip playing
-    private void PlaySound(AudioClip[] audioClipArray, Vector3 pos, float volume = 1f) {
-        PlaySound(audioClipArray[Random.Range(0, audioClipArray.Length)], pos, volume);
-    }
-
-    private void PlaySound(AudioClip audioClip, Vector3 pos, float volumeMultiplier = 1f) {
-        AudioSource.PlayClipAtPoint(audioClip, pos, volumeMultiplier * sfxVolume);
-    }
-
-    public void PlayFootstepSound(Vector3 position, float volumeMultiplier) {
-        PlaySound(soundSO.footsteps, position, volumeMultiplier);
-    }
-
-
+    
 }

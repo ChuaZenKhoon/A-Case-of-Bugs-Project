@@ -170,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 2361892454598074100}
+  - component: {fileID: 4522719954354498279}
   m_Layer: 12
   m_Name: Insect Net
   m_TagString: Untagged
@@ -219,6 +220,19 @@ MonoBehaviour:
   flyLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &4522719954354498279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b939657cd742ebf44bee32e47bbbcfac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyNet: {fileID: 2361892454598074100}
 --- !u!1 &6438115732515609227
 GameObject:
   m_ObjectHideFlags: 0

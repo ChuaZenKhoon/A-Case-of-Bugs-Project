@@ -444,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8766257148868838700}
+  - component: {fileID: 4172000224935266714}
   m_Layer: 12
   m_Name: Swab
   m_TagString: Untagged
@@ -484,6 +485,19 @@ MonoBehaviour:
   usedVisual: {fileID: 6639884972963572982}
   positiveResultVisual: {fileID: 7538792961815437262}
   cannotBeTestedVisual: {fileID: 475769372718013846}
+--- !u!114 &4172000224935266714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d89ec4339d726647b9695cbb98073d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swab: {fileID: 8766257148868838700}
 --- !u!1 &5767329968687555217
 GameObject:
   m_ObjectHideFlags: 0

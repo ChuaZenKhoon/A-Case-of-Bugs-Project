@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ using UnityEngine;
  * The class representing the container equipment for collecting dead adult flies. 
  */
 public class Container : EvidenceInteractingEquipment {
+
+    public event EventHandler OnCollectFly;
 
     [SerializeField] private GameObject megacephalaMaleFlyVisual;
     [SerializeField] private GameObject megacephalaFemaleFlyVisual;
@@ -43,6 +46,7 @@ public class Container : EvidenceInteractingEquipment {
         Destroy(currentStareAt.gameObject);
 
         SetCorrectVisual();
+        OnCollectFly?.Invoke(this, EventArgs.Empty);
     }
 
     private void SetCorrectVisual() {

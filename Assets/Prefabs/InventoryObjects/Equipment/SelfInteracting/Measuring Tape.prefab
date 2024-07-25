@@ -439,6 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8726245467405634527}
+  - component: {fileID: 7754334843157205182}
   m_Layer: 12
   m_Name: Measuring Tape
   m_TagString: Untagged
@@ -479,6 +480,19 @@ MonoBehaviour:
   inventoryObjectSO: {fileID: 11400000, guid: 3b435c6f340df7842977afcd8333a363, type: 2}
   marker: {fileID: 7105723798615097234}
   measuringLine: {fileID: 8081009995713683916}
+--- !u!114 &7754334843157205182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3c980d3846a2c42b7ddc50a29ed33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  measuringTool: {fileID: 8726245467405634527}
 --- !u!1 &5802010555393254634
 GameObject:
   m_ObjectHideFlags: 0

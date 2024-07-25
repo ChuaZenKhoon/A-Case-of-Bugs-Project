@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8438780274453167479}
+  - component: {fileID: 1993707383344772442}
   m_Layer: 12
   m_Name: Container
   m_TagString: Untagged
@@ -254,6 +255,19 @@ MonoBehaviour:
   megacephalaFemaleFlyVisual: {fileID: 3621101569453544838}
   scalarisFlyVisual: {fileID: 3862155579731407779}
   ruficornisFlyVisual: {fileID: 287241044041967014}
+--- !u!114 &1993707383344772442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e19b347ed64bb48b031f6b939b4e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 8438780274453167479}
 --- !u!1 &8912646378809135154
 GameObject:
   m_ObjectHideFlags: 0

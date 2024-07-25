@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37babb7c3bac9d4d8cda1766dbd8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObject: {fileID: 6307722982637827484}
+  interactableObject: {fileID: 655709387882493915}
   selectedVisualArray:
   - {fileID: 6286606302584407411}
   - {fileID: 3569542694346531852}
@@ -125,8 +125,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 6743569867215233628}
-  - component: {fileID: 6307722982637827484}
   - component: {fileID: 6128467720885410084}
+  - component: {fileID: 5116214481316844127}
+  - component: {fileID: 655709387882493915}
   m_Layer: 6
   m_Name: Knife
   m_TagString: Untagged
@@ -173,23 +174,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.6, z: 0.2}
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &6307722982637827484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5450798009186736383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56da51594c6d7944a6e319d24e0433d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryObjectSO: {fileID: 11400000, guid: b902e38cf6f00a94293174fc838f7a61, type: 2}
-  sealedEvidence: {fileID: 5450321713332194575}
-  sealedCollider: {fileID: 6128467720885410084}
-  evidenceVisual: {fileID: 1249285617222948274}
-  evidenceCollider: {fileID: 6743569867215233628}
 --- !u!65 &6128467720885410084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -211,6 +195,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.6, z: 0.2}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &5116214481316844127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667672c2bb9c07f48beca193a5dad559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sealedEvidence: {fileID: 655709387882493915}
+--- !u!114 &655709387882493915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c8910b09ea32842b5d9441c86cfc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryObjectSO: {fileID: 11400000, guid: b902e38cf6f00a94293174fc838f7a61, type: 2}
+  sealedVisual: {fileID: 5450321713332194575}
+  sealedCollider: {fileID: 6128467720885410084}
+  evidenceVisual: {fileID: 1249285617222948274}
+  evidenceCollider: {fileID: 6743569867215233628}
 --- !u!1 &8676994035417517387
 GameObject:
   m_ObjectHideFlags: 0

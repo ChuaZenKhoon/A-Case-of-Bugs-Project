@@ -67,7 +67,7 @@ public class GameSubStateManager : PlayerActionsManager {
     }
 
     //SubState change
-    private void InventoryManager_OnInventoryUIOpenStateChange(object sender, System.EventArgs e) {
+    private void InventoryManager_OnInventoryUIOpenStateChange(object sender, bool e) {
         CheckGameSubState();
     }
     private void BloodTestStation_OnUseBloodTestStation(object sender, System.EventArgs e) {

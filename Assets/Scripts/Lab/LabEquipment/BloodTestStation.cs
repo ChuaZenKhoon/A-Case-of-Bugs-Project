@@ -11,6 +11,9 @@ public class BloodTestStation : LabEquipment {
         OnUseBloodTestStation = null;
     }
 
+    public event EventHandler OnCorrectTest;
+    public event EventHandler OnWrongTest;
+
     [SerializeField] private BloodTestStationUI bloodTestStationUI;
     [SerializeField] private Camera equipmentCamera;
     [SerializeField] private CanvasGroup gameplayCanvas;
@@ -159,7 +162,6 @@ public class BloodTestStation : LabEquipment {
         } else {
             WrongTestProcedure();
         }
-
         bloodTestStationUI.Hide();
         ExitFromEquipmentScreen();
     }
@@ -202,16 +204,19 @@ public class BloodTestStation : LabEquipment {
     public void WrongTestProcedure() {
         swabToTest.AdministerIncorrectTest();
         swabToTest = null;
+        OnWrongTest?.Invoke(this, EventArgs.Empty);
     }
 
     public void CorrectTestProcedure() {
         swabToTest.AdministerCorrectTest();
         swabToTest = null;
+        OnCorrectTest?.Invoke(this, EventArgs.Empty);
     }
 
     public void IncompleteTestProcedure() {
         swabToTest.AdministerIncompleteTest();
         swabToTest = null;
+        OnWrongTest?.Invoke(this, EventArgs.Empty);
     }
 
 }

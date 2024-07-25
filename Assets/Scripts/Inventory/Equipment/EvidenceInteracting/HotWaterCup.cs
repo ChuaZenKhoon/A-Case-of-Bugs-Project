@@ -11,6 +11,8 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
     
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
     public event EventHandler<float> OnActionProgress;
+    public event EventHandler OnPourWater;
+    public event EventHandler OnCollectSpecimen;
     new public static void ResetStaticData() {
         OnChangeInteractActionDetails = null;
     }
@@ -20,6 +22,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
     [SerializeField] private GameObject megacephalaMaggotVisual;
     [SerializeField] private GameObject scalarisPupaVisual;
     [SerializeField] private GameObject ethanolContainerVisual;
+    [SerializeField] private GameObject waterVisual;
 
     private List<Larvae> larvaePupaeCollected;
 
@@ -82,6 +85,8 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
         Destroy(currentStareAt.gameObject);
 
         SetCorrectVisual();
+
+        OnCollectSpecimen?.Invoke(this, EventArgs.Empty);
     }
 
     /**
@@ -105,6 +110,8 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             }
 
             killMaggotCoroutine = StartCoroutine(KillMaggotCoroutine());
+            waterVisual.SetActive(true);
+            OnPourWater?.Invoke(this, EventArgs.Empty);
             MessageLogManager.Instance.LogMessage("Poured hot water. Waiting for specimens to be killed...");
         }
     }
@@ -160,6 +167,7 @@ public class HotWaterCup : EvidenceInteractingEquipment, IHasProgress {
             megacephalaMaggotVisual.SetActive(false);
             scalarisPupaVisual.SetActive(false);
             ethanolContainerVisual.SetActive(false);
+            waterVisual.SetActive(false);
             return;
         }
 

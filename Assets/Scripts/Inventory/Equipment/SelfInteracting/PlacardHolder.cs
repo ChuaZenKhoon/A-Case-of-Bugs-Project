@@ -6,6 +6,9 @@ using UnityEngine;
  */
 public class PlacardHolder : SelfInteractingEquipment {
 
+    public event EventHandler OnPickup;
+    public event EventHandler OnPutDown;
+
     [SerializeField] private GameObject[] placardVisualList;
     [SerializeField] private GameObject[] placementVisual;
 
@@ -50,6 +53,8 @@ public class PlacardHolder : SelfInteractingEquipment {
             Destroy(currentStareAt.gameObject);
             UpdateNextPlacard();
             UpdateVisual();
+
+            OnPickup?.Invoke(this, EventArgs.Empty);
         } else {
             MessageLogManager.Instance.LogMessage("Cannot pick up normal items with the placard holder.");
         }
@@ -81,6 +86,8 @@ public class PlacardHolder : SelfInteractingEquipment {
         
         //Update storage
         EquipmentStorageManager.Instance.SetPlacard(CURRENT_LOWEST_PLACARD_NUM, null);
+
+        OnPutDown?.Invoke(this, EventArgs.Empty);
     }
 
     /**

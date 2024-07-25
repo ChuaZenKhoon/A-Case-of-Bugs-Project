@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /**
@@ -5,6 +6,8 @@ using UnityEngine;
  * As of the current iteration, swabs can only collect red stains, not DNA.
  */
 public class Swab : EvidenceInteractingEquipment {
+
+    public event EventHandler OnSwabUse;
 
     [SerializeField] private GameObject canBeTestedVisual;
     [SerializeField] private GameObject usedVisual; //is part of the above
@@ -62,6 +65,7 @@ public class Swab : EvidenceInteractingEquipment {
         EvidenceStorageManager.Instance.SetBloodStain(this.GetEquipmentID(), bloodStain, state);
 
         UpdateVisual(state);
+        OnSwabUse?.Invoke(this, EventArgs.Empty);
     }
 
     //Updates the shown swab based on the state of it

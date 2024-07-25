@@ -2505,7 +2505,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -959296122444647058, guid: 52f166403d68f75429efb7292d33615b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 92aaa557da09363469d0a995a1295a95, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 441b163062136b74584af521dd8f7c19, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3411,6 +3411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 427832718}
+  - component: {fileID: 427832719}
   m_Layer: 0
   m_Name: NextLocationArrows
   m_TagString: Untagged
@@ -3446,6 +3447,18 @@ Transform:
   - {fileID: 1992245795}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427832719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427832717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cd69826dddbcd4f83e820380578253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &440155035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,7 +4251,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
+  m_Intensity: 40
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5136,6 +5149,7 @@ GameObject:
   - component: {fileID: 564712502}
   - component: {fileID: 564712501}
   - component: {fileID: 564712500}
+  - component: {fileID: 564712503}
   m_Layer: 5
   m_Name: closeButton
   m_TagString: Untagged
@@ -5245,6 +5259,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564712498}
   m_CullTransparentMesh: 1
+--- !u!114 &564712503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564712498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309d9948acee9b4f8b9a42e6058c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 564712500}
 --- !u!1 &572290319
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,6 +5282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572290320}
   - component: {fileID: 572290321}
+  - component: {fileID: 572290322}
   m_Layer: 0
   m_Name: PauseManager
   m_TagString: Untagged
@@ -5290,6 +5318,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseGameUI: {fileID: 936597994}
+--- !u!114 &572290322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572290319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ab2f3e71bf08041986d767cb76aef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &578231223
 GameObject:
   m_ObjectHideFlags: 0
@@ -6487,7 +6527,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 80
+  m_Intensity: 40
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6673,7 +6713,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
+  m_Intensity: 30
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7532,8 +7572,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
-  m_Range: 12
+  m_Intensity: 30
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9811,6 +9851,7 @@ GameObject:
   - component: {fileID: 1119095479}
   - component: {fileID: 1119095478}
   - component: {fileID: 1119095477}
+  - component: {fileID: 1119095480}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -9920,6 +9961,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119095475}
   m_CullTransparentMesh: 1
+--- !u!114 &1119095480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119095475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3916d08a6a52246a0d05e4e00c4146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1119095477}
 --- !u!1001 &1130743658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12794,7 +12848,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
+  m_Intensity: 40
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14371,7 +14425,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 50
+  m_Intensity: 40
   m_Range: 17.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14741,7 +14795,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 80
+  m_Intensity: 40
   m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14803,6 +14857,7 @@ GameObject:
   - component: {fileID: 1734167428}
   - component: {fileID: 1734167427}
   - component: {fileID: 1734167426}
+  - component: {fileID: 1734167429}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -14912,6 +14967,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734167424}
   m_CullTransparentMesh: 1
+--- !u!114 &1734167429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734167424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3916d08a6a52246a0d05e4e00c4146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1734167426}
 --- !u!1001 &1763893136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16523,7 +16591,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
+  m_Intensity: 30
   m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17886,6 +17954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1996403254}
   - component: {fileID: 1996403255}
+  - component: {fileID: 1996403256}
   m_Layer: 0
   m_Name: Inventory
   m_TagString: Untagged
@@ -17944,6 +18013,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   equipmentIDArray: 
+--- !u!114 &1996403256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996403253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926e95f1eeb0fd944917fab71b8db1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2006965856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18807,8 +18888,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 75
-  m_Range: 15
+  m_Intensity: 40
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

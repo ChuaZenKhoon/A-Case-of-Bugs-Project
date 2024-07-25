@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 /**
  * The class representing the fingerprint lifter equipment.
  */
 public class FingerprintLifter : EvidenceInteractingEquipment {
+
+    public event EventHandler OnLiftFingerprint;
 
     [SerializeField] private GameObject fingerprintLifterVisual;
     [SerializeField] private GameObject fingerprintLiftedVisual;
@@ -55,5 +58,6 @@ public class FingerprintLifter : EvidenceInteractingEquipment {
         Destroy(currentStareAt.gameObject);
         fingerprintLifterVisual.SetActive(false);
         fingerprintLiftedVisual.SetActive(true);
+        OnLiftFingerprint?.Invoke(this, EventArgs.Empty);
     }
 }

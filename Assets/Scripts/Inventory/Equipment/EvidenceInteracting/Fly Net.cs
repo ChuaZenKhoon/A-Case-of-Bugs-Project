@@ -11,6 +11,7 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
     public event EventHandler<float> OnActionProgress;
+    public event EventHandler OnSweepNet;
     new public static void ResetStaticData() {
         OnChangeInteractActionDetails = null;
     }
@@ -93,6 +94,7 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
 
             elapsedTime += 0.1f;
             OnActionProgress?.Invoke(this, elapsedTime / CAPTURE_DURATION);
+            OnSweepNet?.Invoke(this, EventArgs.Empty);
         }
 
         SweepNet();

@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 3818629256537302242}
   - component: {fileID: 769694714032901162}
   - component: {fileID: 7506577211524753184}
+  - component: {fileID: 694141527616424798}
   m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
@@ -589,6 +590,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &694141527616424798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086838185208715926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7506577211524753184}
 --- !u!1 &1249285617222948274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1198,7 @@ GameObject:
   - component: {fileID: 4989559317189706906}
   - component: {fileID: 5772039708995422341}
   - component: {fileID: 7114424168721215046}
+  - component: {fileID: 6871041289279127325}
   m_Layer: 12
   m_Name: Humidity Button
   m_TagString: Untagged
@@ -1293,6 +1308,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6871041289279127325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044625995298839867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 5772039708995422341}
 --- !u!1 &4228876719038071861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1645,7 @@ GameObject:
   - component: {fileID: 2720996600210772053}
   - component: {fileID: 1877758241690501440}
   - component: {fileID: 6967645629808683875}
+  - component: {fileID: 7152103178572505001}
   m_Layer: 12
   m_Name: WeatherCondition Button
   m_TagString: Untagged
@@ -1726,6 +1755,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7152103178572505001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347338495408633101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1877758241690501440}
 --- !u!1 &5450798009186736383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 3116161149889094093}
+  - component: {fileID: 7426583573771656259}
   m_Layer: 12
   m_Name: Phone
   m_TagString: Untagged
@@ -1774,6 +1817,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryObjectSO: {fileID: 11400000, guid: 484312e7b27a28c479ddba1da9b56e0b, type: 2}
   phoneUI: {fileID: 5239609008647221015}
+--- !u!114 &7426583573771656259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64f100f23552164cb879d94db1d6077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5477516323338270841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2174,7 @@ GameObject:
   - component: {fileID: 3648380866015829322}
   - component: {fileID: 82518953004054831}
   - component: {fileID: 9168096187391012535}
+  - component: {fileID: 5689935715160871012}
   m_Layer: 12
   m_Name: Temperature Button
   m_TagString: Untagged
@@ -2228,6 +2284,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5689935715160871012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734769119843700672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 82518953004054831}
 --- !u!1 &6817029028675672032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,6 +2643,7 @@ GameObject:
   - component: {fileID: 208063775103535150}
   - component: {fileID: 1114494455719348343}
   - component: {fileID: 7076320190590810856}
+  - component: {fileID: 8141605048988716980}
   m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
@@ -2654,6 +2724,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8141605048988716980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676700061396570413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 7076320190590810856}
 --- !u!1 &8364873692240934877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2748,7 @@ GameObject:
   - component: {fileID: 9148106666144024327}
   - component: {fileID: 1023920746284057978}
   - component: {fileID: 8479187854408657527}
+  - component: {fileID: 2412503949966590639}
   m_Layer: 12
   m_Name: Button
   m_TagString: Untagged
@@ -2745,6 +2829,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2412503949966590639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364873692240934877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdae2abfdf2af647b45b7592d871c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 8479187854408657527}
 --- !u!1 &8456351866747781327
 GameObject:
   m_ObjectHideFlags: 0

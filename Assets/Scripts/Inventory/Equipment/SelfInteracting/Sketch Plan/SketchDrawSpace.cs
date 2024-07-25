@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /**
@@ -5,6 +6,11 @@ using UnityEngine;
  * Note: The drawing logic can be found in the Drawing Tool class.
  */
 public class SketchDrawSpace : MonoBehaviour {
+
+    public event EventHandler OnSketchViewToggled;
+    public event EventHandler OnClearSketchDone;
+    public event EventHandler OnUndoLineDone;
+
 
     [SerializeField] private SketchPlan sketchPlan;
     [SerializeField] private SketchDrawSpaceUI drawSpaceUI;
@@ -46,18 +52,21 @@ public class SketchDrawSpace : MonoBehaviour {
                 toggleViewCanvas.gameObject.SetActive(false);
             }
 
+            OnSketchViewToggled?.Invoke(this, EventArgs.Empty);
         }
     }
 
     private void GameInput_OnClearSketch(object sender, System.EventArgs e) {
         if (drawSpaceUI.gameObject.activeSelf) {
             drawingTool.ClearCanvas();
+            OnClearSketchDone?.Invoke(this, EventArgs.Empty);
         }
     }
 
     private void GameInput_OnInteract2Action(object sender, System.EventArgs e) {
         if (drawSpaceUI.gameObject.activeSelf) {
             drawingTool.UndoLastLine();
+            OnUndoLineDone?.Invoke(this, EventArgs.Empty);
         }
     }
 

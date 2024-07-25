@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8553214425034147854}
+  - component: {fileID: 7995634864603778840}
   m_Layer: 12
   m_Name: PlacardHolder
   m_TagString: Untagged
@@ -113,6 +114,19 @@ MonoBehaviour:
   - {fileID: 6856668525115800440}
   - {fileID: 8401565621897487833}
   - {fileID: 8938482958028181948}
+--- !u!114 &7995634864603778840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e236fb1542b41354caa51168a396da19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placardHolder: {fileID: 8553214425034147854}
 --- !u!1 &8322121083443859225
 GameObject:
   m_ObjectHideFlags: 0

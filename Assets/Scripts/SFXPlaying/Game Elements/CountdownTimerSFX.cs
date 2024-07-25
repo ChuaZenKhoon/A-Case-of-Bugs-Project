@@ -21,12 +21,12 @@ public class CountdownTimerSFX : SFX {
         float countdownTime = 5f;
 
         while (countdownTime > 0f) {
-            SFXPlayer.Instance.PlayCountdownTickSound(volMultiplier);
+            GameElementSFXPlayer.Instance.PlayCountdownTickSound(volMultiplier);
             yield return new WaitForSeconds(1f);
             countdownTime -= 1f;
         }
 
-        SFXPlayer.Instance.PlayCountdownEndSound(volMultiplier);
+        GameElementSFXPlayer.Instance.PlayCountdownEndSound(volMultiplier);
 
     }
 }

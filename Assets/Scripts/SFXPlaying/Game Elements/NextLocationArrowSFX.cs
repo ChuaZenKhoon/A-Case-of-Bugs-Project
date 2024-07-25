@@ -13,6 +13,6 @@ public class NextLocationArrowSFX : SFX {
     }
 
     private void NextLocationArrow_OnTouchArrow(object sender, int e) {
-        SFXPlayer.Instance.PlayNextArrowReachedSound(volMultiplier);
+        GameElementSFXPlayer.Instance.PlayNextArrowReachedSound(volMultiplier);
     }
 }

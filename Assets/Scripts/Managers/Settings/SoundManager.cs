@@ -104,7 +104,8 @@ public class SoundManager : SettingsManager {
             audioMixer.SetFloat("SFX", Mathf.Log10(sfxVolume) * 20);
         }
 
-        SFXPlayer.Instance.SetSFXVolume(sfxVolume);
+        UISFXPlayer.Instance.SetSFXVolume(sfxVolume);
+        GameElementSFXPlayer.Instance.SetSFXVolume(sfxVolume);
 
         PlayerPrefs.SetFloat(PLAYER_PREFS_SFX_VOL, sfxVolume);
         PlayerPrefs.Save();

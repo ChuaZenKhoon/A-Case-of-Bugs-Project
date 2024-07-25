@@ -10,6 +10,9 @@ public class MeasuringTool : SelfInteractingEquipment {
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
 
     public event EventHandler<float> OnMeasuringDistanceChange;
+    public event EventHandler OnMeasuringStart;
+    public event EventHandler OnMeasuringStop;
+
 
     private static Vector3 OFFSET = new Vector3(0f, 1.3f, 0f);
 
@@ -62,7 +65,7 @@ public class MeasuringTool : SelfInteractingEquipment {
         }
 
         OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
-
+        OnMeasuringStart?.Invoke(this, EventArgs.Empty);
 
         startPosition = Player.Instance.transform.position;
         SetUpMarker();
@@ -101,6 +104,7 @@ public class MeasuringTool : SelfInteractingEquipment {
         }
 
         OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
+        OnMeasuringStop?.Invoke(this, EventArgs.Empty);
 
         startPosition = Vector3.zero;
         ResetMarker();

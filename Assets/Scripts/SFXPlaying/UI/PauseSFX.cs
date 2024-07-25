@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/**
+ * A component of the pause menu that handles its sound effects.
+ */
 public class PauseSFX : SFX {
 
     private void Awake() {
@@ -14,10 +13,10 @@ public class PauseSFX : SFX {
     }
 
     private void PauseManager_OnGameUnpause(object sender, System.EventArgs e) {
-        SFXPlayer.Instance.PlayResumeGameSound(volMultiplier);
+        UISFXPlayer.Instance.PlayResumeGameSound(volMultiplier);
     }
 
     private void PauseManager_OnGamePause(object sender, System.EventArgs e) {
-        SFXPlayer.Instance.PlayPauseGameSound(volMultiplier);
+        UISFXPlayer.Instance.PlayPauseGameSound(volMultiplier);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 /**
  * A component of the photographyCamera that handles its sound effects.
  */
-public class CameraSFX : SFX {
+public class PhotographyCameraSFX : SFX {
 
     [SerializeField] private PhotoCapture photoCapture;
     [SerializeField] private PhotoGallery photoGallery;
@@ -23,7 +23,7 @@ public class CameraSFX : SFX {
     }
 
     private void PhotoGallery_OnShufflePicButtonClick(object sender, System.EventArgs e) {
-        SFXPlayer.Instance.PlayCameraGalleryShufflePicsSound(photoGallery.transform.position, volMultiplier);
+        GameElementSFXPlayer.Instance.PlayCameraGalleryShufflePicsSound(photoGallery.transform.position, volMultiplier);
     }
 
     private void PhotoCapture_OnCameraStillRefocus(object sender, System.EventArgs e) {
@@ -33,11 +33,11 @@ public class CameraSFX : SFX {
         cameraCooldownCoroutine = StartCoroutine(CameraCooldown());
     }
     private void PhotoCapture_OnPhotoTaken(object sender, System.EventArgs e) {
-        SFXPlayer.Instance.PlayTakePictureSound(photoCapture.transform.position, volMultiplier);
+        GameElementSFXPlayer.Instance.PlayTakePictureSound(photoCapture.transform.position, volMultiplier);
     }
 
     private IEnumerator CameraCooldown() {
-        SFXPlayer.Instance.PlayCameraRefocusSound(photoCapture.transform.position, volMultiplier);
+        GameElementSFXPlayer.Instance.PlayCameraRefocusSound(photoCapture.transform.position, volMultiplier);
         yield return new WaitForSeconds(0.5f);
         cameraCooldownCoroutine = null;
     }

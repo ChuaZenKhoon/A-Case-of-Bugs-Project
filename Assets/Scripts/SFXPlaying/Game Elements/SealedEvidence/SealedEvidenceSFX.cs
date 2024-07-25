@@ -15,6 +15,6 @@ public class SealedEvidenceSFX : SFX {
     }
 
     private void SealedEvidence_OnPickUp(object sender, System.EventArgs e) {
-        SFXPlayer.Instance.PlaySealEvidenceSound(Player.Instance.transform.position, volMultiplier);
+        GameElementSFXPlayer.Instance.PlaySealEvidenceSound(Player.Instance.transform.position, volMultiplier);
     }
 }

@@ -23,7 +23,7 @@ public class PlayerSound : MonoBehaviour {
                 //Reset timer
                 footstepTimer = footstepResetTiming;
                 float volumeMultiplier = 0.6f;
-                SFXPlayer.Instance.PlayFootstepSound(Player.Instance.transform.position, volumeMultiplier);
+                GameElementSFXPlayer.Instance.PlayFootstepSound(Player.Instance.transform.position, volumeMultiplier);
             }
         }
     }

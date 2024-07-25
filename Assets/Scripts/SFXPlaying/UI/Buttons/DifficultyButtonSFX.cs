@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * A component of the difficulty UI buttons that handles its sound effects.
+ */
 public class DifficultyButtonSFX : ButtonSFX {
 
     [SerializeField] private int difficultyNum;
@@ -13,7 +14,7 @@ public class DifficultyButtonSFX : ButtonSFX {
         });
     }
     protected override void PlaySpecificSound() {
-        SFXPlayer.Instance.PlayDifficultyButtonSound(difficultyNum, volMultiplier);
+        UISFXPlayer.Instance.PlayDifficultyButtonSound(difficultyNum, volMultiplier);
     }
 
 

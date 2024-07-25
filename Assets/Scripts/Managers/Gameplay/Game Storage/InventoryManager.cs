@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour {
     public event EventHandler<bool> OnInventoryOpenStateChange;
     public event EventHandler OnSuccessfulSwapWithItem;
     public event EventHandler OnSuccessfulSwapWithEmptySpace;
+    public event EventHandler OnEquipItem;
 
     private const int INVENTORY_SLOTS = 20;
 
@@ -140,6 +141,7 @@ public class InventoryManager : MonoBehaviour {
         if (inventoryObjectsArray[currentBarSlotSelected] != null) {
             Player.Instance.UpdateHeldItem(inventoryObjectsArray[currentBarSlotSelected].GetInventoryObjectSO(),
                     equipmentIDArray[currentBarSlotSelected]);
+            OnEquipItem?.Invoke(this, EventArgs.Empty);
         } else {
             Player.Instance.UpdateHeldItem(null, NON_EVIDENCE_INTERACTING_EQUIPMENT_ID);
         }

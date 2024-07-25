@@ -1406,6 +1406,7 @@ GameObject:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8566033277688626651}
   - component: {fileID: 5578405714642773934}
+  - component: {fileID: 663828280357058482}
   m_Layer: 6
   m_Name: BloodTestStation
   m_TagString: Untagged
@@ -1469,6 +1470,22 @@ MonoBehaviour:
   equipmentCamera: {fileID: 5095082355491835269}
   gameplayCanvas: {fileID: 0}
   boxCollider: {fileID: 8566033277688626651}
+--- !u!114 &663828280357058482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e97d7b1ddfadf4ba3c8680005bf6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodTestStation: {fileID: 5578405714642773934}
+  addEthanolButton: {fileID: 4813327990571150810}
+  addPhenolphthaleinButton: {fileID: 2757959320455268269}
+  addHydrogenPeroxideButton: {fileID: 392916213594319236}
 --- !u!1 &5545898815456213778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2523,7 @@ GameObject:
   - component: {fileID: 6364710792955950910}
   - component: {fileID: 1878561355399363756}
   - component: {fileID: 9090314573991951666}
+  - component: {fileID: 8355533661477630189}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -2615,6 +2633,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8355533661477630189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129904983076874784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f309d9948acee9b4f8b9a42e6058c556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 9090314573991951666}
 --- !u!1 &8730072495343098700
 GameObject:
   m_ObjectHideFlags: 0

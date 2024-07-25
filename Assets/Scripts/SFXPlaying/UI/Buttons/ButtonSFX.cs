@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * A component of UI buttons that handles its sound effects.
+ */
 public class ButtonSFX : SFX {
 
     [SerializeField] protected Button button;
@@ -13,6 +16,6 @@ public class ButtonSFX : SFX {
     }
 
     protected virtual void PlaySpecificSound() {
-        SFXPlayer.Instance.PlayButtonSound(volMultiplier);
+        UISFXPlayer.Instance.PlayButtonSound(volMultiplier);
     }
 }

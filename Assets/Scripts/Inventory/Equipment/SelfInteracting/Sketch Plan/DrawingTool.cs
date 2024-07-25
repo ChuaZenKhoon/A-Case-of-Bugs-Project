@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,8 @@ using UnityEngine.UI;
  * A logic component that handles the drawing logic in the drawing section of the sketch plan.
  */
 public class DrawingTool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
+
+    public event EventHandler OnDrawing;
 
     [SerializeField] private SketchDrawSpace drawSpace;
     [SerializeField] private SketchDrawSpaceUI parentUI;
@@ -89,6 +92,8 @@ public class DrawingTool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         DrawToCanvas(previousMousePosition, currentMousePosition);
 
         previousMousePosition = currentMousePosition;
+
+        OnDrawing?.Invoke(this, EventArgs.Empty);
     }
 
     public void OnEndDrag(PointerEventData eventData) {

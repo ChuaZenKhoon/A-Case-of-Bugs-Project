@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InformationHoverSFX : MonoBehaviour, IPointerEnterHandler {
+/**
+ * A component of hover UI elements that handle its sound effects.
+ */
+public class InformationHoverSFX : SFX, IPointerEnterHandler {
 
-    private float volMultiplier = 0.8f;
+    private void Awake() {
+        volMultiplier = 0.8f;
+    }
     public void OnPointerEnter(PointerEventData eventData) {
-        SFXPlayer.Instance.PlayInformationHoverSound(volMultiplier);
+        UISFXPlayer.Instance.PlayInformationHoverSound(volMultiplier);
     }
 }
 

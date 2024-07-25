@@ -69,6 +69,6 @@ public class LoadingManager : MonoBehaviour {
         progressText.text = (finishedProgress * 100f).ToString("F0") + "%";
         yield return new WaitForSeconds(0.5f);
         asyncOperation.allowSceneActivation = true;
-
+        holdLoadingCoroutine = null;
     }
 }

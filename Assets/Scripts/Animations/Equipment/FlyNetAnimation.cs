@@ -14,7 +14,7 @@ public class FlyNetAnimation : CustomAnimation {
         sweepingNetCoroutine = null;
     }
     private void Start() {
-        flyNet.OnSweepNet += FlyNet_OnSweepNet;
+        flyNet.OnStartNetSweeping += FlyNet_OnSweepNet;
     }
 
     private void FlyNet_OnSweepNet(object sender, System.EventArgs e) {
@@ -26,7 +26,7 @@ public class FlyNetAnimation : CustomAnimation {
     }
 
     private IEnumerator SweepNetCoroutine() {
-        yield return new WaitForSeconds(3.15f);
+        yield return new WaitForSeconds(3f);
         animator.SetBool(SWEEP_NET_ANIMATION_BOOL, false);
         sweepingNetCoroutine = null;
     }

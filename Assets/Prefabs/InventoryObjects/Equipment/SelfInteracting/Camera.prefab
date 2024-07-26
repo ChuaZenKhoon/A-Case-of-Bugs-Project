@@ -1695,7 +1695,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c426135c154c84d468bc776038a17520, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1717,8 +1717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3533fc391db4c47beb45f1a174f6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photoCapture: {fileID: 7573207073524954462}
   animator: {fileID: 8446655011453070769}
+  photoCapture: {fileID: 7573207073524954462}
 --- !u!1 &5454005644128574774
 GameObject:
   m_ObjectHideFlags: 0

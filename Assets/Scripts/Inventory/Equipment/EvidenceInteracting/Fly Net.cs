@@ -90,11 +90,11 @@ public class FlyNet : EvidenceInteractingEquipment, IHasProgress {
         isCapturingFlies = true;
 
         while (elapsedTime < CAPTURE_DURATION) {
-            yield return new WaitForSeconds(0.1f);
-
             elapsedTime += 0.1f;
             OnActionProgress?.Invoke(this, elapsedTime / CAPTURE_DURATION);
             OnSweepNet?.Invoke(this, EventArgs.Empty);
+            
+            yield return new WaitForSeconds(0.1f); 
         }
 
         SweepNet();

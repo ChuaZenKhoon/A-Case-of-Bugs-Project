@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhotographyCameraAnimation : MonoBehaviour {
+public class PhotographyCameraAnimation : CustomAnimation {
 
     [SerializeField] private PhotoCapture photoCapture;
 
-    [SerializeField] private Animator animator;
+    private const string TAKING_PICTURE_ANIMATION_BOOLEAN = "isTakingPicture";
 
     private Coroutine takingPictureCoroutine;
 
@@ -19,16 +19,13 @@ public class PhotographyCameraAnimation : MonoBehaviour {
             return;
         }
         
-        animator.SetBool("isTakingPicture", true);
-
-        // Optionally, you can reset the boolean after the animation duration
-        // Here we assume the TakePicture animation lasts 1 second
+        animator.SetBool(TAKING_PICTURE_ANIMATION_BOOLEAN, true);
         takingPictureCoroutine = StartCoroutine(ResetAnimationTrigger(1.5f));
     }
 
     private IEnumerator ResetAnimationTrigger(float delay) {
         yield return new WaitForSeconds(delay);
-        animator.SetBool("isTakingPicture", false);
+        animator.SetBool(TAKING_PICTURE_ANIMATION_BOOLEAN, false);
         takingPictureCoroutine = null;
     }
 }

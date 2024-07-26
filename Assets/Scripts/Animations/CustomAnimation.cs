@@ -6,5 +6,4 @@ public class CustomAnimation : MonoBehaviour {
 
     [SerializeField] protected Animator animator;
 
-
 }

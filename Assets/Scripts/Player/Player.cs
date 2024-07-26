@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private PlayerSound playerSound;
 
     [SerializeField] private Transform photoCameraToPlayerEyePosition;
+    [SerializeField] private Transform measuringToolStomachPosition;
 
     private bool isMovementActivated;
     private bool isInteractionActivated;
@@ -134,6 +135,10 @@ public class Player : MonoBehaviour {
 
     public Transform GetPhotoCameraMovePosition() {
         return photoCameraToPlayerEyePosition;
+    }
+
+    public Transform GetMeasuringToolUsePosition() {
+        return measuringToolStomachPosition;
     }
 
     public Transform GetHoldPosition() {

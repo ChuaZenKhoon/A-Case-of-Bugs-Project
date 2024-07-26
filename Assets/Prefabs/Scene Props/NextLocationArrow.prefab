@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1508417874722574048}
   - component: {fileID: 1450628480139744041}
   - component: {fileID: 5768604849082252648}
+  - component: {fileID: 1523377603338774146}
   m_Layer: 0
   m_Name: NextLocationArrow
   m_TagString: Untagged
@@ -71,6 +72,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+--- !u!95 &1523377603338774146
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402868909955769961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d97b2559abe14574f90496475cf381df, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3329628993706162578
 GameObject:
   m_ObjectHideFlags: 0

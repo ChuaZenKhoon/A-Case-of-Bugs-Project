@@ -8,11 +8,13 @@ using UnityEngine;
 public class MeasuringTool : SelfInteractingEquipment {
 
     public static event EventHandler<EquipmentSO> OnChangeInteractActionDetails;
+    new public static void ResetStaticData() {
+        OnChangeInteractActionDetails = null;
+    }
 
     public event EventHandler<float> OnMeasuringDistanceChange;
     public event EventHandler OnMeasuringStart;
     public event EventHandler OnMeasuringStop;
-
 
     private static Vector3 OFFSET = new Vector3(0f, 1.3f, 0f);
 
@@ -24,17 +26,19 @@ public class MeasuringTool : SelfInteractingEquipment {
 
     private bool isInMeasuringMode;
 
+
     private Vector3 startPosition;
     private Vector3 currentPosition;
 
-    new public static void ResetStaticData() {
-        OnChangeInteractActionDetails = null;
-    }
+    private Transform holdPosition;
+    private Transform measuringToolAtStomachPosition;
 
     private void Awake() {
         isInMeasuringMode = false;
         marker.transform.position = this.transform.position;
         marker.SetActive(false);
+        holdPosition = Player.Instance.GetHoldPosition();
+        measuringToolAtStomachPosition = Player.Instance.GetMeasuringToolUsePosition();
     }
 
     public override void Interact() {
@@ -67,7 +71,10 @@ public class MeasuringTool : SelfInteractingEquipment {
         OnChangeInteractActionDetails?.Invoke(this, equipmentSO);
         OnMeasuringStart?.Invoke(this, EventArgs.Empty);
 
-        startPosition = Player.Instance.transform.position;
+        startPosition = measuringToolAtStomachPosition.position;
+        this.gameObject.transform.SetParent(measuringToolAtStomachPosition, false);
+        this.gameObject.transform.localPosition = Vector3.zero;
+
         SetUpMarker();
     }
 
@@ -77,7 +84,7 @@ public class MeasuringTool : SelfInteractingEquipment {
     private void SetUpMarker() {
         marker.SetActive(true);
         marker.transform.SetParent(null, true);
-        marker.transform.position = startPosition + OFFSET;
+        marker.transform.position = startPosition;
         marker.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         measuringLine.positionCount = 2;
         measuringLine.SetPosition(0, marker.transform.position);
@@ -85,7 +92,7 @@ public class MeasuringTool : SelfInteractingEquipment {
     }
     private void Update() {
         if (isInMeasuringMode) {
-            currentPosition = Player.Instance.transform.position;
+            currentPosition = this.gameObject.transform.position;
             measuringLine.SetPosition(1, currentPosition);
             float updatedDistance = GetMeasuringDistance();
             OnMeasuringDistanceChange?.Invoke(this, updatedDistance);
@@ -107,6 +114,8 @@ public class MeasuringTool : SelfInteractingEquipment {
         OnMeasuringStop?.Invoke(this, EventArgs.Empty);
 
         startPosition = Vector3.zero;
+        this.gameObject.transform.SetParent(holdPosition, false);
+        this.gameObject.transform.localPosition = Vector3.zero;
         ResetMarker();
     }
 

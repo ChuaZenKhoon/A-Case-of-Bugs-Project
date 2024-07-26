@@ -25,7 +25,7 @@ public class FlyNetSFX : SFX {
 
     private IEnumerator SweepNetCoroutine() {
         GameElementSFXPlayer.Instance.PlayFlyNetUseSound(Player.Instance.GetHoldPosition().position, volMultiplier);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         sweepNetCoroutine = null;
     }
 }

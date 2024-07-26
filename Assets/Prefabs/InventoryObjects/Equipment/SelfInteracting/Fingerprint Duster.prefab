@@ -338,6 +338,8 @@ GameObject:
   - component: {fileID: 1425172521066773357}
   - component: {fileID: 8822862977447366258}
   - component: {fileID: 5214686092163280215}
+  - component: {fileID: 992613079949599617}
+  - component: {fileID: 6279287533581458432}
   m_Layer: 12
   m_Name: Fingerprint Duster
   m_TagString: Untagged
@@ -390,6 +392,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d08ea8c63e21248b9abed0b751af34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fingerprintDuster: {fileID: 8822862977447366258}
+--- !u!95 &992613079949599617
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9b7b8b094f3cd944a4dda656a68ed7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6279287533581458432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450798009186736383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d246defd3e05d094eaa5c69d1d5d0646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 992613079949599617}
   fingerprintDuster: {fileID: 8822862977447366258}
 --- !u!1 &6081456024323092125
 GameObject:

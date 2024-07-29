@@ -71,7 +71,7 @@ public class Microscope : LabEquipment {
 
         if (fliesToExamine.Count > 0) {
             currentFlyExamined = fliesToExamine[0];
-            currentItemName = currentFlyExamined.GetInventoryObjectSO().name;
+            currentItemName = currentFlyExamined.GetSpeciesName();
             currentItemIndex = 0;
 
             currentImagesOfExamined = currentFlyExamined.GetSpritesForExamination();
@@ -95,7 +95,7 @@ public class Microscope : LabEquipment {
 
         if (fliesToExamine.Count > 0) { 
             currentFlyExamined = fliesToExamine[0];
-            currentItemName = currentFlyExamined.GetInventoryObjectSO().name;
+            currentItemName = currentFlyExamined.GetSpeciesName();
             currentItemIndex = 0;
 
             currentImagesOfExamined = currentFlyExamined.GetSpritesForExamination();
@@ -119,7 +119,7 @@ public class Microscope : LabEquipment {
 
         if (larvaeToExamine.Count > 0) {
             currentLarvaExamined = larvaeToExamine[0];
-            currentItemName = currentLarvaExamined.GetInventoryObjectSO().name;
+            currentItemName = currentLarvaExamined.GetSpeciesName();
             currentItemIndex = 0;
 
             currentImagesOfExamined = currentLarvaExamined.GetSpritesForExamination();
@@ -144,14 +144,14 @@ public class Microscope : LabEquipment {
             currentItemIndex = nextItemNumber;
             currentFlyExamined = fliesToExamine[currentItemIndex];
             currentImagesOfExamined = currentFlyExamined.GetSpritesForExamination();
-            currentItemName = currentFlyExamined.GetInventoryObjectSO().name;
+            currentItemName = currentFlyExamined.GetSpeciesName();
             UpdateVisual();
         } else if (larvaeToExamine != null) {
             int nextItemNumber = (currentItemIndex + 1) % larvaeToExamine.Count;
             currentItemIndex = nextItemNumber;
             currentLarvaExamined = larvaeToExamine[currentItemIndex];
             currentImagesOfExamined = currentLarvaExamined.GetSpritesForExamination();
-            currentItemName = currentLarvaExamined.GetInventoryObjectSO().name;
+            currentItemName = currentLarvaExamined.GetSpeciesName();
             UpdateVisual();
         }
     }
@@ -171,14 +171,14 @@ public class Microscope : LabEquipment {
             currentItemIndex = previousItemNumber;
             currentFlyExamined = fliesToExamine[currentItemIndex];
             currentImagesOfExamined = currentFlyExamined.GetSpritesForExamination();
-            currentItemName = currentFlyExamined.GetInventoryObjectSO().name;
+            currentItemName = currentFlyExamined.GetSpeciesName();
             UpdateVisual();
         } else if (larvaeToExamine != null) {
             int previousItemNumber = (currentItemIndex - 1 + larvaeToExamine.Count) % larvaeToExamine.Count;
             currentItemIndex = previousItemNumber;
             currentLarvaExamined = larvaeToExamine[currentItemIndex];
             currentImagesOfExamined = currentLarvaExamined.GetSpritesForExamination();
-            currentItemName = currentLarvaExamined.GetInventoryObjectSO().name;
+            currentItemName = currentLarvaExamined.GetSpeciesName();
             UpdateVisual();
         }
     }

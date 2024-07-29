@@ -35,6 +35,8 @@ public class EvidenceStorageManager : MonoBehaviour {
 
     private List<Larvae> maggotCollection;
 
+    private List<Larvae> killedMaggotsReadyToTransferCollection;
+
     private List<Larvae> killedMaggotsCollection;
 
     private float killingMaggotsDuration;
@@ -48,6 +50,7 @@ public class EvidenceStorageManager : MonoBehaviour {
         killingAdultFlyCollection = new List<AdultFly>();
         deadAdultFlyCollection = new List<AdultFly>();
         maggotCollection = new List<Larvae>();
+        killedMaggotsReadyToTransferCollection = new List<Larvae>();
         killedMaggotsCollection = new List<Larvae>();
     }
 
@@ -142,6 +145,10 @@ public class EvidenceStorageManager : MonoBehaviour {
         return maggotCollection;
     }
 
+    public List<Larvae> GetReadyToTransferMaggots() {
+        return killedMaggotsReadyToTransferCollection;
+    }
+
     public void CollectMaggots(Larvae maggot) {
         maggotCollection.Add(maggot);
     }
@@ -149,6 +156,17 @@ public class EvidenceStorageManager : MonoBehaviour {
     public void ClearMaggotCollection() {
         maggotCollection.Clear();
     }
+
+    public void AddKilledMaggotReadyToTransfer(List<Larvae> maggotsReadyToTransfer) {
+        foreach (Larvae maggot in maggotsReadyToTransfer) {
+            killedMaggotsReadyToTransferCollection.Add(maggot);
+        }
+    }
+
+    public void ClearReadyToTransferMaggots() {
+        killedMaggotsReadyToTransferCollection.Clear();
+    }
+
     public void AddKilledMaggots(List<Larvae> maggotsKilled) {
         foreach (Larvae maggot in maggotsKilled) {
             killedMaggotsCollection.Add(maggot);

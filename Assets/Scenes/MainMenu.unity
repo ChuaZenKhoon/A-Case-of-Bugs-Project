@@ -5645,7 +5645,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Easy
 
-    Focus on the fundemental skills to excel in the CSI Practical!
+    Focus on the fundamental skills to excel in the CSI Practical!
     This mode features less requirements on the tasks.
 
 '
@@ -6941,7 +6941,7 @@ PrefabInstance:
     - target: {fileID: 9042892792462855591, guid: 5717ea2d71d4a6344881dac9e8703ebf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.000045776367
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

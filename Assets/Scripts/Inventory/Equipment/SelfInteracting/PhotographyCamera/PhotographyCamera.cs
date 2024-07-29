@@ -17,18 +17,28 @@ public class PhotographyCamera: SelfInteractingEquipment {
     
     [SerializeField] private CanvasGroup gameplayCanvas;
 
+    [SerializeField] private BoxCollider cameraCollider;
+    [SerializeField] private LayerMask mainPathMask;
+    private CapsuleCollider playerCollider;
+
     private Transform holdPosition;
     private Transform CameraAtEyePosition;
 
     private bool isInCameraMode;
     private bool isInGalleryMode;
 
-    private void Start() {
-        GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
+    private void Awake() {
+        cameraCollider.enabled = false;
         isInCameraMode = false;
         isInGalleryMode = false;
         GameObject canvas = GameObject.Find("Gameplay Canvas");
         gameplayCanvas = canvas.GetComponent<CanvasGroup>();
+        GameObject player = GameObject.Find("Player");
+        playerCollider = player.GetComponent<CapsuleCollider>();
+    }
+
+    private void Start() {
+        GameInput.Instance.OnInteract2Action += GameInput_OnInteract2Action;
     }
     private void OnDestroy() {
         GameInput.Instance.OnInteract2Action -= GameInput_OnInteract2Action;
@@ -54,16 +64,49 @@ public class PhotographyCamera: SelfInteractingEquipment {
     }
 
     private void OpenCameraMode() {
+        if (CheckObstructionToHoldCamera()) {
+            MessageLogManager.Instance.LogMessage("Move away from any nearby wall or objects before holding up the camera to your eye.");
+            return;
+        }
         Equipment.isInAction = true;
         isInCameraMode = true;
+        holdPosition = Player.Instance.GetHoldPosition();
+        CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
+        this.gameObject.transform.position = CameraAtEyePosition.position;
         gameplayCanvas.alpha = 0f;
+        cameraCollider.enabled = true;
         photoCapture.GoIntoCameraMode();
+    }
+
+    //Checks for sufficient space to hold up camera to prevent wall clipping
+    //Except invisble colliders such as main path and player
+    private bool CheckObstructionToHoldCamera() {
+        Vector3 center = Player.Instance.GetPhotoCameraMovePosition().position;
+        Vector3 halfExtents = cameraCollider.bounds.extents;
+
+        Collider[] overlaps = Physics.OverlapBox(center, halfExtents, Quaternion.identity, ~mainPathMask);
+
+        bool isObstructed = false;
+        if (overlaps.Length > 0) {
+            foreach (Collider b in overlaps) {
+                if (b == playerCollider) {
+                    continue;
+                } else {
+                    isObstructed = true;
+                    break;
+                }
+            }
+        }
+
+        return isObstructed;
     }
 
     private void CloseCameraMode() {
         Equipment.isInAction = false;
         isInCameraMode = false;
+        this.gameObject.transform.position = holdPosition.position;
         gameplayCanvas.alpha = 1f;
+        cameraCollider.enabled = false;
         photoCapture.ExitFromCameraMode();
     }
 

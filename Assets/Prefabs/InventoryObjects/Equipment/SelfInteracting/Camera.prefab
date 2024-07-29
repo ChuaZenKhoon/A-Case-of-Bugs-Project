@@ -1639,6 +1639,10 @@ MonoBehaviour:
   photoCapture: {fileID: 7573207073524954462}
   photoGallery: {fileID: 3092846772572175011}
   gameplayCanvas: {fileID: 0}
+  cameraCollider: {fileID: 3169910170238469196}
+  mainPathMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &7573207073524954462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,7 +1658,6 @@ MonoBehaviour:
   photographyCamera: {fileID: 5998718996200495178}
   equipmentCamera: {fileID: 5999626115418204232}
   cameraCrossHair: {fileID: 4281113047593254251}
-  cameraCollider: {fileID: 5975431298254430709}
 --- !u!114 &3092846772572175011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3634,7 +3637,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 193790, guid: 09db9ea8cde56844287e21c4c9fddcb0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5975431298254430709}
+      addedObject: {fileID: 3169910170238469196}
   m_SourcePrefab: {fileID: 100100000, guid: 09db9ea8cde56844287e21c4c9fddcb0, type: 3}
 --- !u!20 &5999626115418204232 stripped
 Camera:
@@ -3694,7 +3697,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5999626115419204374}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5975431298254430709
+--- !u!65 &3169910170238469196
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

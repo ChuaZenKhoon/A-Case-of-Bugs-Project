@@ -17205,12 +17205,14 @@ MonoBehaviour:
   - 'Photographs serve as hard evidence, playing a big role in establishing context,
     identification and corroboration of statements. <br><br> You should always take
     a picture of the entrance to the crime scene! <br><br> There are 3 types of shots
-    to take: Far shots, Near shots, close ups. Far shots cover the entire crime scene,
-    near shots cover a few exhibits with overlaps from previous and the next near
-    shots to establish context, and close ups are single exhibit shots taken to mark
-    each exhibit with more details. <br><br>Use E to enter and exit camera mode to
-    take pictures. <br><br> Use R to enter and exit the photo gallery to view taken
-    pictures and delete where appropriate.'
+    to take: Far shots, mid shots and close ups. Far shots cover the entire crime
+    scene, mid shots cover a few exhibits with overlaps from previous and the next
+    mid shot to establish context, and close ups are single exhibit shots taken to
+    mark each exhibit with more details. Usually, a measuring ruler with a circle
+    on it is used with close ups to ensure the photo is taken at 90 degrees perpendicularly
+    above the exhibit.<br><br>Use E to enter and exit camera mode, and take pictures
+    with the left mouse click in camera mode! <br><br> Use R to enter and exit the
+    photo gallery to view taken pictures and delete where appropriate.'
   - A sketch plan helps investigators understand the layout of the crime scene in
     a simplified manner, highlighting key information and placement of exhibits.
     If drawn to scale, investigators can gauge the plausibility of certain actions.

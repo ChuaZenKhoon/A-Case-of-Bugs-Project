@@ -110,7 +110,7 @@ public class InventoryManager : MonoBehaviour {
 
     private void GameInput_OnInventoryBarSelect(object sender, GameInput.OnInventoryBarSelectEventArgs e) {
         //Guard clause to deny swapping items if equipment is in use
-        if (Equipment.isInAction) {
+        if (Equipment.IS_IN_ACTION) {
             MessageLogManager.Instance.LogMessage("Equipment in use. Exit equipment usage before swapping held item.");
             return;
         }
@@ -157,12 +157,18 @@ public class InventoryManager : MonoBehaviour {
     //Tell inventory screen UI to open/close
     private void GameInput_OnInventoryOpen(object sender, System.EventArgs e) {
         //Guard clause to deny opening inventory if equipment is in use
-        if (Equipment.isInAction) {
+        if (Equipment.IS_IN_ACTION) {
             //For sketch plan, prevent confusing message when typing
             if (SketchPlan.IsInSketchMode()) {
                 return;
             }
             MessageLogManager.Instance.LogMessage("Equipment in use. Exit equipment usage before opening Inventory.");
+            return;
+        }
+
+        //If inventory dragging is happening, also deny closing to prevent bugs
+        if (InventoryDragDrop.IS_DRAGGING_CURRENTLY) {
+            MessageLogManager.Instance.LogMessage("Finish the drag action or let go of the left click before closing Inventory.");
             return;
         }
 

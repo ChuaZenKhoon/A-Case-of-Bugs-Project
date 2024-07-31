@@ -68,7 +68,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
             MessageLogManager.Instance.LogMessage("Move away from any nearby wall or objects before holding up the camera to your eye.");
             return;
         }
-        Equipment.isInAction = true;
+        Equipment.IS_IN_ACTION = true;
         isInCameraMode = true;
         holdPosition = Player.Instance.GetHoldPosition();
         CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
@@ -102,7 +102,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
     }
 
     private void CloseCameraMode() {
-        Equipment.isInAction = false;
+        Equipment.IS_IN_ACTION = false;
         isInCameraMode = false;
         this.gameObject.transform.position = holdPosition.position;
         gameplayCanvas.alpha = 1f;
@@ -134,7 +134,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
     }
 
     private void OpenPhotoGallery() {
-        Equipment.isInAction = true;
+        Equipment.IS_IN_ACTION = true;
         isInGalleryMode = true;
         holdPosition = Player.Instance.GetHoldPosition();
         CameraAtEyePosition = Player.Instance.GetPhotoCameraMovePosition();
@@ -145,7 +145,7 @@ public class PhotographyCamera: SelfInteractingEquipment {
     }
 
     public void ClosePhotoGallery() {
-        Equipment.isInAction = false;
+        Equipment.IS_IN_ACTION = false;
         isInGalleryMode = false;
         gameplayCanvas.alpha = 1f;
         this.gameObject.transform.position = holdPosition.position;

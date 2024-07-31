@@ -42,7 +42,7 @@ public class GameSubStateManager : PlayerActionsManager {
      */
     public void CheckGameSubState() {
         bool isInventoryInUse = InventoryManager.Instance.IsInventoryOpen();
-        bool isEquipmentInUse = Equipment.isInAction;
+        bool isEquipmentInUse = Equipment.IS_IN_ACTION;
         bool isLabEquipmentInUse = LabEquipment.isInAction;
         bool isTutorial = FindAnyObjectByType<TutorialItemsManager>();
         bool isEquipmentGuideScreenShowing = false;

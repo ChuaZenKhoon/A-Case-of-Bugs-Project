@@ -58,7 +58,7 @@ public class MeasuringTool : SelfInteractingEquipment {
      * Activates the equipment, starting tracking of distance from start point to player.
      */
     private void StartMeasuring() {
-        Equipment.isInAction = true;
+        Equipment.IS_IN_ACTION = true;
         isInMeasuringMode = true;
         MessageLogManager.Instance.LogMessage("Starting measurement...");
 
@@ -100,7 +100,7 @@ public class MeasuringTool : SelfInteractingEquipment {
     }
 
     private void StopMeasuring() {
-        Equipment.isInAction = false;
+        Equipment.IS_IN_ACTION = false;
         isInMeasuringMode = false;
         MessageLogManager.Instance.LogMessage("Measurement stopped.");
 

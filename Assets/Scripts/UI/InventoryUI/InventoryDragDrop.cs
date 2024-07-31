@@ -10,6 +10,12 @@ using UnityEngine.UI;
  */
 public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
 
+    public static bool IS_DRAGGING_CURRENTLY = false;
+
+    public static void ResetStaticData() {
+        IS_DRAGGING_CURRENTLY = false;
+    }
+
     private static Color INVISIBLE_SPRITE = new Color(1, 1, 1, 0);
     private static Color VISIBLE_SPRITE = new Color(1, 1, 1, 1);
 
@@ -22,8 +28,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     private Canvas canvas;
 
     private Transform originalParentPosition;
-    
-    private bool isDragging;
+   
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
@@ -34,7 +39,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     //Drags the inventory slot sprite with left click drag only
     public void OnBeginDrag(PointerEventData eventData) {
         if (eventData.button == PointerEventData.InputButton.Left) {
-            isDragging = true;
+            IS_DRAGGING_CURRENTLY = true;
         } else {
             return;
         }
@@ -48,7 +53,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
     //Handles the drag tracking of the sprite with the cursor
     public void OnDrag(PointerEventData eventData) {
-        if (isDragging) {
+        if (IS_DRAGGING_CURRENTLY) {
             rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         } else {
             return;
@@ -58,7 +63,7 @@ public class InventoryDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     //Resets the visual of the sprite back to original position after drag is complete
     public void OnEndDrag(PointerEventData eventData) {
         if (eventData.button == PointerEventData.InputButton.Left) {
-            isDragging = false;
+            IS_DRAGGING_CURRENTLY = false;
         } else {
             return;
         }

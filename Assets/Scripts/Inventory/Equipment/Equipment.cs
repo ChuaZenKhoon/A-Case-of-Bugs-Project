@@ -3,10 +3,10 @@
  */
 public class Equipment : InventoryObject {
 
-    public static bool isInAction = false;
+    public static bool IS_IN_ACTION = false;
 
     public static void ResetStaticData() {
-        isInAction = false;
+        IS_IN_ACTION = false;
     }
 
 }

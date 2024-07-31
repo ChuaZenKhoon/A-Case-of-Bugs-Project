@@ -45,7 +45,7 @@ public class SketchPlan : SelfInteractingEquipment {
     }
 
     private void OpenSketchPlan() {
-        Equipment.isInAction = true;
+        Equipment.IS_IN_ACTION = true;
         isSketchPlanShown = true;
         
         UpdateSketchImages();
@@ -61,7 +61,7 @@ public class SketchPlan : SelfInteractingEquipment {
     }
 
     public void CloseSketchPlan() {
-        Equipment.isInAction = false;
+        Equipment.IS_IN_ACTION = false;
         isSketchPlanShown = false;
         sketchPlanUI.Hide();
 

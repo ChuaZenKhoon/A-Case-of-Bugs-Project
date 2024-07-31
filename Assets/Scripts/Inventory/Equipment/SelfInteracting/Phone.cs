@@ -45,7 +45,7 @@ public class Phone : SelfInteractingEquipment {
     }
 
     private void OpenPhone() {
-        Equipment.isInAction = true;
+        Equipment.IS_IN_ACTION = true;
         phoneUI.Show();
         OnPhoneOpen?.Invoke(this, EventArgs.Empty);
         
@@ -59,7 +59,7 @@ public class Phone : SelfInteractingEquipment {
     }
 
     private void ClosePhone() {
-        Equipment.isInAction = false;
+        Equipment.IS_IN_ACTION = false;
         phoneUI.Hide();
         OnPhoneOpen?.Invoke(this, EventArgs.Empty);
 

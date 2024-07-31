@@ -19,6 +19,8 @@ public class BloodTestStation : LabEquipment {
     [SerializeField] private CanvasGroup gameplayCanvas;
     [SerializeField] private BoxCollider boxCollider;
 
+    [SerializeField] private Transform holdSwabPosition;
+
     private Camera playerCamera;
 
     private bool isUsingEquipmentMode;
@@ -101,6 +103,9 @@ public class BloodTestStation : LabEquipment {
         gameplayCanvas.alpha = 0f;
         gameplayCanvas.blocksRaycasts = false;
 
+        InventoryObject playerHeldItem = Player.Instance.GetHeldItem();
+        playerHeldItem.gameObject.transform.SetParent(holdSwabPosition, false);
+        playerHeldItem.gameObject.transform.localPosition = Vector3.zero;
         bloodTestStationUI.Show();
     }
 
@@ -118,6 +123,10 @@ public class BloodTestStation : LabEquipment {
 
         gameplayCanvas.alpha = 1f;
         gameplayCanvas.blocksRaycasts = true;
+
+        InventoryObject playerHeldItem = Player.Instance.GetHeldItem();
+        playerHeldItem.gameObject.transform.SetParent(Player.Instance.GetHoldPosition(), false);
+        playerHeldItem.gameObject.transform.localPosition = Vector3.zero;
     }
 
     //The following 4 methods deal with using the blood test station.

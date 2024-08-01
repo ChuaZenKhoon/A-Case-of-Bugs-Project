@@ -33,14 +33,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Start() {
-        if (Loader.targetScene == Loader.Scene.CrimeScene) {
-            CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
-        }
-
-        if (Loader.targetScene == Loader.Scene.TutorialScene) {
-            TutorialLevelManager.Instance.OnStateChange += TutorialLevelManager_OnStateChange;
-        }
-
         playerInteractor.OnPlayerStareAtInteractableObjectChange += PlayerInteractor_OnPlayerStareAtInteractableObjectChange;
         playerInteractor.OnUpdateHeldItemToEquipment += PlayerInteractor_OnUpdateHeldItemToEquipment;
     }
@@ -52,27 +44,6 @@ public class Player : MonoBehaviour {
 
     private void PlayerInteractor_OnPlayerStareAtInteractableObjectChange(object sender, PlayerInteractor.OnPlayerStareAtInteractableObjectChangeEventArgs e) {
         OnPlayerStareAtInteractableObjectChange?.Invoke(this, e);
-    }
-
-    //Enable movement and interaction from correct tutorial stage
-    private void TutorialLevelManager_OnStateChange(object sender, EventArgs e) {
-        if (TutorialLevelManager.Instance.IsStartingMovement()) {
-            isMovementActivated = true;
-            isCameraAllowedToMove = true;
-        }
-
-        if (TutorialLevelManager.Instance.IsStartingInteraction()) {
-            isInteractionActivated = true;
-        }
-    }
-
-    //Enable movement and interaction only when game starts
-    private void CrimeSceneLevelManager_OnStateChange(object sender, EventArgs e) {
-        if (CrimeSceneLevelManager.Instance.IsGamePlaying()) {
-            isMovementActivated = true;
-            isInteractionActivated = true;
-            isCameraAllowedToMove = true;
-        }
     }
 
     //Using rigid body physics so fixedUpdate instead of normal update

@@ -17202,38 +17202,39 @@ MonoBehaviour:
     inventory to drop them! You will learn how to interact and pick up items later,
     don't worry if you dropped any items! <br><br> Equipment(given later) cannot
     be dropped.
-  - 'Photographs serve as hard evidence, playing a big role in establishing context,
-    identification and corroboration of statements. <br><br> You should always take
-    a picture of the entrance to the crime scene! <br><br> There are 3 types of shots
-    to take: Far shots, mid shots and close ups. Far shots cover the entire crime
-    scene, mid shots cover a few exhibits with overlaps from previous and the next
-    mid shot to establish context, and close ups are single exhibit shots taken to
-    mark each exhibit with more details. Usually, a measuring ruler with a circle
-    on it is used with close ups to ensure the photo is taken at 90 degrees perpendicularly
-    above the exhibit.<br><br>Use E to enter and exit camera mode, and take pictures
-    with the left mouse click in camera mode! <br><br> Use R to enter and exit the
-    photo gallery to view taken pictures and delete where appropriate.'
-  - A sketch plan helps investigators understand the layout of the crime scene in
+  - 'Photographs can serve as strong pieces of evidence, playing a big role in establishing
+    context, identification and corroboration of statements. <br><br> You should
+    always take a picture of the entrance to the crime scene! <br><br> There are
+    3 types of shots to take: Far shots, mid shots and close ups. Far shots cover
+    the entire crime scene, mid shots cover a few exhibits with overlaps from previous
+    and the next mid shot to establish context, and close ups are single exhibit
+    shots taken to mark each exhibit with more details. Usually, a measuring ruler
+    with a circle on it is used with close ups to ensure the photo is taken at 90
+    degrees perpendicularly above the exhibit.<br><br>Use E to enter and exit camera
+    mode, and take pictures with the left mouse click in camera mode! <br><br> Use
+    R to enter and exit the photo gallery to view taken pictures and delete where
+    appropriate. '
+  - 'A sketch plan helps investigators understand the layout of the crime scene in
     a simplified manner, highlighting key information and placement of exhibits.
-    If drawn to scale, investigators can gauge the plausibility of certain actions.
-    <br><br> Use E to open and exit the sketch plan. When open, click on any of the
-    3 sections. In the sketch section, draw by holding and dragging the left mouse
-    click. <br> Use F to view the scene and again to return to your sketch. <br>
-    Use R to undo any lines and Z to clear the sketch. <br><br> In the details section,
-    fill up the details accordingly by clicking on the input box and typing. <br><br>
-    In the legend section, click the +/- buttons to add or remove legend numbers,
-    and fill up the description of the exhibit represented by the number similar
-    to the details section. <br><br> Click the back button in any of the 3 sections
-    to save the details and return to the full sketch plan screen. <br><br> All details
-    are saved.
+    If drawn to scale, investigators can potentially infer more details about the
+    crime scene. <br><br> Use E to open and exit the sketch plan. When open, click
+    on any of the 3 sections. In the sketch section, draw by holding and dragging
+    the left mouse click. <br> Use F to view the scene and again to return to your
+    sketch. <br> Use R to undo any lines and Z to clear the sketch. <br><br> In the
+    details section, fill up the details accordingly by clicking on the input box
+    and typing. <br><br> In the legend section, click the +/- buttons to add or remove
+    legend numbers, and fill up the description of the exhibit represented by the
+    number similar to the details section. <br><br> Click the back button in any
+    of the 3 sections to save the details and return to the full sketch plan screen.
+    <br><br> All details are saved.  '
   - "Placards are used in conjunction with the camera to label exhibits in photographs
-    with the numbers on them. In a crime scene, placards are usually placed in a
-    certain order to introduce systematic labelling. <br><br> Use E to place a placard
-    that will pop up in the green indication area. If no indication area appears,
-    a placard will be placed at the player\u2019s feet. <br><br> Use R when looking
-    at a placard in short distance to pick up a placard into the stack. <br><br>
-    Placards are limited, so only label exhibits of interest, not everything in the
-    crime scene!"
+    with the numbers on them. In a crime scene, placards are usually placed orderly;
+    Labelling exhibits clockwise or anticlockwise in the crime scene to introduce
+    systematic labelling. <br><br> Use E to place a placard that will pop up in the
+    green indication area. If no indication area appears, a placard will be placed
+    at the player\u2019s feet. <br><br> Use R when looking at a placard in short
+    distance to pick up a placard into the stack. <br><br> Placards are limited,
+    so only label exhibits of interest, not everything in the crime scene!  "
   - "The measuring tape is used to record the distances between objects in the crime
     scene that are to be included in the sketch plan to supplement it. There are
     various measurement methods such as the baseline and triangulation methods. <br><br>
@@ -17263,15 +17264,16 @@ MonoBehaviour:
     at. <br><br> This game only supports blood collection now. More to come in the
     future!"
   - Containers can be used to collect small pieces of evidence. In this game, we
-    focus on the collection of dead adult Diptera(Flies) and sometimes Coleoptera(Beetles)
-    for species identification. The identification process is done in the lab by
-    pinning the flies and observing the flies under a microscope with the use of
-    an identification key. We use one container to collect all related evidence to
-    practise limited equipment available, but do note you should always separate
-    evidence types if possible! E.g different flies, different locations collected.
-    <br><br> Use E to collect dead adult flies close to the player in the direction
-    it is looking at. <br><br> Remember to never use your bare hands to pick up any
-    form of evidence! Use tweezers in order to not damage the flies accidentally.
+    focus on the collection of dead adult Diptera(Flies)for species identification,
+    but Coleoptera(Beetles) are also collected in practice due to insect succession.
+    The identification process is done in the lab by pinning the flies and observing
+    the flies under a microscope with the use of an identification key. We use one
+    container to collect all related evidence to practise limited equipment available,
+    but do note you should always separate evidence types if possible! E.g different
+    flies, different locations collected. <br><br> Use E to collect dead adult flies
+    close to the player in the direction it is looking at. <br><br> Remember to never
+    use your bare hands to pick up any form of evidence! Use tweezers in order to
+    not damage the flies accidentally.
   - In the collection of adult fly specimens, live flies will be more common than
     dead ones. In this game, we do not deal with long term preservation of samples,
     hence any specimens collected are to be killed and ready for pinning in the lab

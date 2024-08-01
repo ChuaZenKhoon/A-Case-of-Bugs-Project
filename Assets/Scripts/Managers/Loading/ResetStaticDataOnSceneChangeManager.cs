@@ -34,6 +34,7 @@ public class ResetStaticDataOnSceneChangeManager : MonoBehaviour {
     private void ResetData() {
         InventoryDropItemUI.ResetStaticData();
         InventorySingleUI.ResetStaticData();
+        InventoryDragDrop.ResetStaticData();
 
         Equipment.ResetStaticData();
         LabEquipment.ResetStaticData();

@@ -1,4 +1,7 @@
 
+
+using UnityEngine;
+
 /**
  * A manager that handles the player actions based on the state of the game.
  */
@@ -19,18 +22,18 @@ public class GameStateManager : PlayerActionsManager {
     }
 
     private void SubscribeToGameStates() {
+
         //Game Pause State
         PauseManager.Instance.OnGamePause += PauseManager_OnGamePause;
         PauseManager.Instance.OnGameUnpause += PauseManager_OnGameUnpause;
 
 
         //Game Play State
-        if (Loader.targetScene == Loader.Scene.CrimeScene) {
-            CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
-        }
-
         if (Loader.targetScene == Loader.Scene.TutorialScene) {
             TutorialLevelManager.Instance.OnStateChange += TutorialLevelManager_OnStateChange;
+        }
+        if (Loader.targetScene == Loader.Scene.CrimeScene) {
+            CrimeSceneLevelManager.Instance.OnStateChange += CrimeSceneLevelManager_OnStateChange;
         }
     }
 

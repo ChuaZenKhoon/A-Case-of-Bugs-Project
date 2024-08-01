@@ -68,20 +68,12 @@ public class TutorialLevelManager : MonoBehaviour {
         OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 
-    public bool IsStartingMovement() {
-        return state == State.Movement;
-    }
-
     public bool IsGamePlaying() {
         return state != State.IntroMessage && state != State.Exit;
     }
 
     public bool IsStartingInventory() {
         return state == State.Inventory;
-    }
-
-    public bool IsStartingInteraction() {
-        return state == State.Interaction;
     }
 
     public State GetState() {

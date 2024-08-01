@@ -7822,10 +7822,8 @@ MonoBehaviour:
 
 
     4. Collect relevant
-    evidence using the equipment in your inventory, for you to analyse in the laboratory
-    later
-
-'
+    evidence using the equipment in your inventory, some of which need to be processed
+    in the laboratory later'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa351dd908af112429bf08c811681171, type: 2}
   m_sharedMaterial: {fileID: 6276693404669984431, guid: aa351dd908af112429bf08c811681171,
